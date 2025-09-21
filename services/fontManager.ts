@@ -126,7 +126,8 @@ export class FontManager implements IFontManager {
     try {
       // For fonts with file paths, use FontFace API
       if (font.file) {
-        const fontFace = new FontFace(font.family.replace(/['"]/g, ''), `url(${font.file})`);
+        const primaryFamily = font.family.split(',')[0].trim().replace(/^['"]|['"]$/g, '');
+        const fontFace = new FontFace(primaryFamily, `url(${font.file})`);
         await fontFace.load();
         document.fonts.add(fontFace);
       }

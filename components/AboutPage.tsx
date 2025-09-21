@@ -65,7 +65,7 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
           </p>
 
           <p className="text-center text-lg pt-2">
-            <span className="font-mono text-[var(--accent-color)]">Made with vibes by Th3-F00L</span>
+            <span className="font-mono text-[var(--accent-color)]">Made with $ by Th3-F00L</span>
           </p>
         </div>
         <SupportCTA

@@ -257,7 +257,13 @@ const Testimonials: React.FC = () => {
                     >
                       <span className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-2 bg-[var(--accent-color)] rounded-full opacity-70 shadow-md"></span>
                       <div className="mb-4 relative">
-                        <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full border-2 border-[var(--panel-border)] shadow-lg" />
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-20 h-20 rounded-full border-2 border-[var(--panel-border)] shadow-lg"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                     <p
                       className="mb-4 leading-relaxed"

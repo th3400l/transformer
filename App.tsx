@@ -37,6 +37,8 @@ import { getQualityManager, QualitySettings } from './services/qualityManager';
 import { computeHandwritingLayoutMetrics } from './services/layoutMetrics';
 import { embedDigitalSignature } from './services/imageSignature';
 import CookieConsentBanner from './components/CookieConsentBanner';
+import { SUPPORT_EMAIL } from './components/SupportCTA';
+import { StructuredData, MetaTag } from './services/seoOptimizer';
 
 // import { getSystemIntegrationManager, SystemIntegrationManager } from './services/systemIntegration';
 
@@ -163,6 +165,37 @@ const GENERATION_TIPS = [
 
 const MAX_PAGES_PER_RUN = 2;
 const MAX_TOTAL_PAGES = 6;
+const FEEDBACK_DIALOG_DELAY_MS = 90000;
+const DEFAULT_SITE_URL = 'https://txttohandwriting.org';
+const DEFAULT_SOCIAL_IMAGE = `${DEFAULT_SITE_URL}/app-screenshot.jpg`;
+const DEFAULT_KEYWORDS = 'handwriting generator, text to handwriting, custom fonts, realistic handwriting, handwritten text, paper templates, ink colors, study notes';
+
+const FAQ_ENTRIES = [
+  {
+    question: 'Is this actually free?',
+    answer: "Fr fr, it's free. No cap. We're not about that subscription life. Go wild (just don't break anything)."
+  },
+  {
+    question: 'Can I use this for my side hustle?',
+    answer: 'Totally. Make your memes, brand your Depop, whatever. Go get that bread. No credit needed, but a shoutout would be iconic.'
+  },
+  {
+    question: 'Are you reading my unhinged thoughts?',
+    answer: "Nah, we can't see a thing. We don't need your data. Our servers are like stones anyway. Your secrets are safe with us, bestie."
+  },
+  {
+    question: "What's the deal with downloads?",
+    answer: "Right now it's just PNGs. It's giving high quality. We'll add more formats later if the vibes are right."
+  },
+  {
+    question: 'Why does the font look kinda off?',
+    answer: "It's probably your browser. Try updating it. If it's still looking sus, it might just be your OS doing its thing."
+  },
+  {
+    question: 'My faculty asks for hardcopies, what should I do?',
+    answer: 'We linked a video walkthrough that keeps things on the low — check the FAQ link for the exact steps.'
+  }
+];
 
 type GenerationLimitDialogState =
   | { type: 'per-run'; attempted: number; allowed: number }
@@ -178,6 +211,107 @@ const INK_HEX_MAP: Record<string, string> = {
 
 type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about';
 export type Theme = 'nightlight' | 'dark' | 'feminine';
+
+const stripHtmlTags = (input: string): string =>
+  input
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const createFaqStructuredData = (): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ENTRIES.map(entry => ({
+    '@type': 'Question',
+    name: entry.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: entry.answer
+    }
+  }))
+});
+
+const createTermsStructuredData = (url: string): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Terms and Conditions - txttohandwriting.org',
+  url,
+  description: 'Terms of service, data use, and consent information for txttohandwriting.org.',
+  inLanguage: 'en-US'
+});
+
+const createAboutStructuredData = (url: string): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About txttohandwriting.org',
+  url,
+  description: 'Story, mission, and team behind txttohandwriting.org — the handwriting generator crafted for students and creators.'
+});
+
+const createBlogStructuredData = (baseUrl: string): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'txttohandwriting.org Blog',
+  description: 'Guides and ideas for turning typed text into aesthetic handwriting for study notes, planners, and content.',
+  url: `${baseUrl}/blog`,
+  blogPost: blogPosts.map(post => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    url: `${baseUrl}/blog/${post.slug}`,
+    datePublished: (() => {
+      const parsed = new Date(post.date);
+      return isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
+    })(),
+    author: {
+      '@type': 'Person',
+      name: post.author
+    }
+  }))
+});
+
+const createBlogPostStructuredData = (baseUrl: string, post: typeof blogPosts[number], socialImage: string): StructuredData => {
+  const parsed = new Date(post.date);
+  const isoDate = isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
+  const articleBody = stripHtmlTags(post.content);
+  const description = articleBody.slice(0, 220);
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description,
+    articleBody,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    url: `${baseUrl}/blog/${post.slug}`,
+    image: socialImage,
+    author: {
+      '@type': 'Person',
+      name: post.author
+    }
+  };
+};
+
+const getPathForPage = (page: Page, slug: string | null): string => {
+  switch (page) {
+    case 'terms':
+      return '/terms';
+    case 'faq':
+      return '/faq';
+    case 'about':
+      return '/about';
+    case 'blog':
+      return '/blog';
+    case 'blogPost':
+      return slug ? `/blog/${slug}` : '/blog';
+    case 'main':
+    default:
+      return '/';
+  }
+};
 
 const App: React.FC = () => {
   // Initialize service container
@@ -196,6 +330,16 @@ const App: React.FC = () => {
       setInitializationError('Failed to initialize services. Please refresh the page.');
     }
   }, []);
+  const [canonicalBase] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const origin = window.location.origin;
+      if (/localhost|127\.0\.0\.1|::1/.test(origin)) {
+        return DEFAULT_SITE_URL;
+      }
+      return origin;
+    }
+    return DEFAULT_SITE_URL;
+  });
   const [text, setText] = useState<string>("Got some tea to spill? Or just trying to make your essay look like you actually wrote it? \n\nDrop it here. Main character energy only.");
   const [selectedFontId, setSelectedFontId] = useState<string>('inkwell');
   const [fontFamily, setFontFamily] = useState<string>("'Caveat', cursive");
@@ -297,20 +441,195 @@ const App: React.FC = () => {
   const bodyOverflowRef = useRef<string | null>(null);
   const [overlayTipIndex, setOverlayTipIndex] = useState<number>(0);
   const [generationLimitDialog, setGenerationLimitDialog] = useState<GenerationLimitDialogState | null>(null);
+  const feedbackTimerRef = useRef<number | null>(null);
+  const [hasStartedUsing, setHasStartedUsing] = useState<boolean>(false);
+  const [showFeedbackDialog, setShowFeedbackDialog] = useState<boolean>(false);
+  const [feedbackDismissed, setFeedbackDismissed] = useState<boolean>(false);
+  const normalizedCanonicalBase = useMemo(() => canonicalBase.replace(/\/+$/, ''), [canonicalBase]);
+  const socialImageUrl = useMemo(() => `${normalizedCanonicalBase}/app-screenshot.jpg`, [normalizedCanonicalBase]);
 
   // System integration manager disabled for now
   // const [systemManager] = useState<SystemIntegrationManager | null>(() => systemIntegrationManager);
 
+  const seoOptions = useMemo(() => {
+    const defaultTitle = 'Handwriting Generator - Convert Text to Realistic Handwriting';
+    const defaultDescription = 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates.';
+    const canonicalPath = getPathForPage(page, currentPostSlug);
+    const canonicalUrl = `${normalizedCanonicalBase}${canonicalPath === '/' ? '' : canonicalPath}`;
+    const alternateLocales = [
+      { hrefLang: 'x-default', url: canonicalUrl },
+      { hrefLang: 'en', url: canonicalUrl }
+    ];
+
+    let title = defaultTitle;
+    let description = defaultDescription;
+    let keywords = DEFAULT_KEYWORDS;
+    let ogImage = socialImageUrl;
+    let twitterCard: 'summary' | 'summary_large_image' = 'summary_large_image';
+    let noindex = false;
+    const customMetaTags: MetaTag[] = [];
+    const structuredData: StructuredData[] = [];
+
+    const activeBlogPost = currentPostSlug ? blogPosts.find(post => post.slug === currentPostSlug) : undefined;
+
+    switch (page) {
+      case 'faq':
+        title = 'Handwriting Generator FAQ | txttohandwriting.org';
+        description = 'Answers to the most common questions about txttohandwriting.org — pricing, privacy, downloads, and usage rights.';
+        keywords = `${DEFAULT_KEYWORDS}, handwriting generator faq, handwriting tool support`;
+        structuredData.push(createFaqStructuredData());
+        break;
+      case 'terms':
+        title = 'Terms & Conditions | txttohandwriting.org';
+        description = 'Review the official terms of service, usage policies, and consent details for txttohandwriting.org.';
+        keywords = `${DEFAULT_KEYWORDS}, handwriting generator terms, txttohandwriting terms of service`;
+        structuredData.push(createTermsStructuredData(canonicalUrl));
+        break;
+      case 'about':
+        title = 'About txttohandwriting.org | Meet the Team and Mission';
+        description = 'Get to know the people and purpose behind txttohandwriting.org — a handwriting generator built for students, creators, and storytellers.';
+        keywords = `${DEFAULT_KEYWORDS}, about txttohandwriting, handwriting generator mission`;
+        structuredData.push(createAboutStructuredData(canonicalUrl));
+        break;
+      case 'blog':
+        title = 'Handwriting Inspiration Blog | txttohandwriting.org';
+        description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
+        keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
+        structuredData.push(createBlogStructuredData(normalizedCanonicalBase));
+        break;
+      case 'blogPost':
+        if (activeBlogPost) {
+          const articleBody = stripHtmlTags(activeBlogPost.content);
+          const snippet = articleBody.slice(0, 155);
+          title = `${activeBlogPost.title} | txttohandwriting.org`;
+          description = snippet.length === articleBody.length ? snippet : `${snippet}…`;
+          keywords = `${DEFAULT_KEYWORDS}, handwriting blog, ${activeBlogPost.title.toLowerCase()}`;
+          structuredData.push(createBlogPostStructuredData(normalizedCanonicalBase, activeBlogPost, socialImageUrl));
+          customMetaTags.push({ property: 'og:type', content: 'article' });
+        } else {
+          title = 'Handwriting Inspiration Blog | txttohandwriting.org';
+          description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
+          keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
+          structuredData.push(createBlogStructuredData(normalizedCanonicalBase));
+        }
+        break;
+      default:
+        title = defaultTitle;
+        description = defaultDescription;
+        keywords = DEFAULT_KEYWORDS;
+    }
+
+    if (customMetaTags.length === 0) {
+      customMetaTags.push({ property: 'og:type', content: 'website' });
+    }
+
+    return {
+      title,
+      description,
+      keywords,
+      canonicalUrl,
+      alternateLocales,
+      ogImage,
+      twitterCard,
+      noindex,
+      customMetaTags,
+      structuredData: structuredData.length ? structuredData : undefined
+    };
+  }, [page, currentPostSlug, normalizedCanonicalBase, socialImageUrl]);
+
   // SEO optimization - Requirements 7.1, 7.2
-  useSEO({
-    title: 'Handwriting Generator - Convert Text to Realistic Handwriting',
-    description: 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates.',
-    keywords: 'handwriting generator, text to handwriting, custom fonts, realistic handwriting, handwritten text, paper templates, ink colors'
-  });
+  useSEO(seoOptions);
 
   useEffect(() => {
     console.log('ErrorBoundary resetKeys:', { page, selectedTemplate, selectedFontId });
   }, [page, selectedTemplate, selectedFontId]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const rawPath = window.location.pathname.replace(/\/+$/, '') || '/';
+
+    if (rawPath === '/' || rawPath === '') {
+      return;
+    }
+
+    if (rawPath === '/terms') {
+      setPage('terms');
+      return;
+    }
+
+    if (rawPath === '/faq') {
+      setPage('faq');
+      return;
+    }
+
+    if (rawPath === '/about') {
+      setPage('about');
+      return;
+    }
+
+    if (rawPath === '/blog') {
+      setPage('blog');
+      return;
+    }
+
+    if (rawPath.startsWith('/blog/')) {
+      const slug = rawPath.split('/').filter(Boolean).pop() || null;
+      if (slug && blogPosts.some(post => post.slug === slug)) {
+        setCurrentPostSlug(slug);
+        setPage('blogPost');
+        return;
+      }
+      setPage('blog');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasStartedUsing && generatedImages.length > 0) {
+      setHasStartedUsing(true);
+    }
+  }, [generatedImages, hasStartedUsing]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const targetPath = getPathForPage(page, currentPostSlug);
+    if (window.location.pathname !== targetPath) {
+      window.history.replaceState({}, '', targetPath);
+    }
+  }, [page, currentPostSlug]);
+
+  useEffect(() => {
+    if (!hasStartedUsing || feedbackDismissed || showFeedbackDialog) {
+      return;
+    }
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    if (feedbackTimerRef.current !== null) {
+      return;
+    }
+
+    const timerId = window.setTimeout(() => {
+      setShowFeedbackDialog(true);
+      feedbackTimerRef.current = null;
+    }, FEEDBACK_DIALOG_DELAY_MS);
+
+    feedbackTimerRef.current = timerId;
+
+    return () => {
+      if (feedbackTimerRef.current !== null) {
+        window.clearTimeout(feedbackTimerRef.current);
+        feedbackTimerRef.current = null;
+      }
+    };
+  }, [hasStartedUsing, feedbackDismissed, showFeedbackDialog]);
 
   // Performance monitoring - Requirements 7.4, 7.5, 7.6
   const performanceMonitor = usePerformanceMonitoring({
@@ -637,6 +956,31 @@ const App: React.FC = () => {
     window.open('https://www.buymeacoffee.com/th3f00l', '_blank', 'noopener,noreferrer');
   };
 
+  const closeFeedbackDialog = () => {
+    if (typeof window !== 'undefined' && feedbackTimerRef.current !== null) {
+      window.clearTimeout(feedbackTimerRef.current);
+    }
+    feedbackTimerRef.current = null;
+    setShowFeedbackDialog(false);
+    setFeedbackDismissed(true);
+  };
+
+  const handleFeedbackEmail = () => {
+    if (typeof window !== 'undefined') {
+      const subject = encodeURIComponent('txttohandwriting.org feedback');
+      window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}`;
+    }
+    closeFeedbackDialog();
+  };
+
+  const handleFeedbackShare = async () => {
+    try {
+      await handleShareSite();
+    } finally {
+      closeFeedbackDialog();
+    }
+  };
+
   // Enhanced bulk download handler - Requirements: 2.1, 2.2, 2.3, 2.4
   const handleBulkDownload = () => {
     if (generatedImages.length === 0) {
@@ -756,6 +1100,8 @@ const App: React.FC = () => {
       setGenerationLimitDialog({ type: 'gallery', attempted: existingCount + pagesToAdd, allowed: MAX_TOTAL_PAGES, remove });
       return;
     }
+
+    setHasStartedUsing(true);
 
     const runGeneration = async () => {
       try {
@@ -1301,6 +1647,61 @@ const App: React.FC = () => {
       />
 
       <CookieConsentBanner onOpenTerms={() => setPage('terms')} />
+
+      {showFeedbackDialog && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="feedback-dialog-title"
+        >
+          <div className="relative w-full max-w-lg space-y-6 rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 text-left shadow-2xl">
+            <button
+              type="button"
+              onClick={closeFeedbackDialog}
+              className="absolute right-4 top-4 text-[var(--text-muted)] transition-colors hover:text-[var(--text-color)] focus:outline-none"
+              aria-label="Close feedback message"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            <div className="space-y-3 text-[var(--text-color)]">
+              <h3 id="feedback-dialog-title" className="text-2xl font-semibold">
+                Loving the handwritten vibes?
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--text-muted)]">
+                We'd love to hear how it's working for you. Drop us a note at <span className="text-[var(--accent-color)]">{SUPPORT_EMAIL}</span> or pass the link to a friend who could use prettier notes.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={handleFeedbackEmail}
+                className="flex-1 min-w-[140px] rounded-lg bg-[var(--accent-color)] px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--accent-color-hover)] hover:shadow-lg"
+              >
+                Email support
+              </button>
+              <button
+                type="button"
+                onClick={handleFeedbackShare}
+                className="flex-1 min-w-[140px] rounded-lg border border-[var(--accent-color)] bg-transparent px-4 py-2 text-sm font-semibold text-[var(--accent-color)] shadow-md transition-all hover:bg-[var(--accent-color)]/10"
+              >
+                Share with friends
+              </button>
+              <button
+                type="button"
+                onClick={closeFeedbackDialog}
+                className="min-w-[120px] rounded-lg border border-[var(--panel-border)] bg-[var(--control-bg)] px-4 py-2 text-sm font-medium text-[var(--text-muted)] transition-all hover:text-[var(--text-color)]"
+              >
+                Maybe later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {downloadIntent && (
         <div

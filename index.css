@@ -5,47 +5,47 @@
 /* Custom Font Faces */
 @font-face {
   font-family: 'Handwriting-1';
-  src: url('./fonts/Handwriting-1.ttf') format('truetype');
+  src: url('/fonts/Handwriting-1.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-2';
-  src: url('./fonts/Handwriting-2.ttf') format('truetype');
+  src: url('/fonts/Handwriting-2.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-3';
-  src: url('./fonts/Handwriting-3.ttf') format('truetype');
+  src: url('/fonts/Handwriting-3.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-4';
-  src: url('./fonts/Handwriting-4.ttf') format('truetype');
+  src: url('/fonts/Handwriting-4.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-5';
-  src: url('./fonts/Handwriting-5.ttf') format('truetype');
+  src: url('/fonts/Handwriting-5.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-6';
-  src: url('./fonts/Handwriting-6.ttf') format('truetype');
+  src: url('/fonts/Handwriting-6.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-7';
-  src: url('./fonts/Handwriting-7.ttf') format('truetype');
+  src: url('/fonts/Handwriting-7.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-8';
-  src: url('./fonts/Handwriting-8.ttf') format('truetype');
+  src: url('/fonts/Handwriting-8.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Handwriting-9';
-  src: url('./fonts/Handwriting-9.ttf') format('truetype');
+  src: url('/fonts/Handwriting-9.ttf') format('truetype');
 }
 
 :root {

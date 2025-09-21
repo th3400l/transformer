@@ -171,6 +171,8 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
           className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
+          loading="eager"
+          decoding="async"
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageLoaded(true)}
           style={{

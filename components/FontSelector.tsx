@@ -122,7 +122,8 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
     return new Promise(async (resolve) => {
       try {
         if (font.file) {
-          const fontFace = new FontFace(font.family.replace(/['"]/g, ''), `url(${font.file})`);
+          const primaryFamily = font.family.split(',')[0].trim().replace(/^['"]|['"]$/g, '');
+          const fontFace = new FontFace(primaryFamily, `url(${font.file})`);
           await fontFace.load();
           document.fonts.add(fontFace);
         }
@@ -207,11 +208,6 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         {status === 'failed' && (
           <span className="text-xs opacity-75" title="Font failed to load, using fallback">
             ⚠
-          </span>
-        )}
-        {font.index && font.index >= 10 && (
-          <span className="text-xs opacity-75 ml-2">
-            #{font.index}
           </span>
         )}
       </li>

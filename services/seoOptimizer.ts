@@ -3,22 +3,15 @@ import { GeneratedImage } from '../types/gallery';
 export interface MetaTag {
   name?: string;
   property?: string;
+  httpEquiv?: string;
   content: string;
 }
 
-export interface StructuredData {
-  '@context': string;
-  '@type': string;
-  name: string;
-  description: string;
+export type StructuredData = Record<string, unknown>;
+
+export interface AlternateLocaleLink {
+  hrefLang: string;
   url: string;
-  applicationCategory: string;
-  operatingSystem: string;
-  offers?: {
-    '@type': string;
-    price: string;
-    priceCurrency: string;
-  };
 }
 
 export interface SitemapEntry {
@@ -34,7 +27,9 @@ export interface ISEOOptimizer {
   optimizeImageAlt(image: GeneratedImage): string;
   generateSitemap(): SitemapEntry[];
   updateDocumentMeta(metaTags: MetaTag[]): void;
-  injectStructuredData(data: StructuredData): void;
+  injectStructuredData(data: StructuredData | StructuredData[]): void;
+  updateCanonicalLink(url?: string): void;
+  updateAlternateLocaleLinks(alternates: AlternateLocaleLink[]): void;
 }
 
 export class SEOOptimizer implements ISEOOptimizer {
@@ -43,7 +38,7 @@ export class SEOOptimizer implements ISEOOptimizer {
   private readonly appDescription: string;
 
   constructor() {
-    this.baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    this.baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://txttohandwriting.org';
     this.appName = 'Handwriting Generator';
     this.appDescription = 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples.';
   }
@@ -158,19 +153,80 @@ export class SEOOptimizer implements ISEOOptimizer {
     });
   }
 
-  injectStructuredData(data: StructuredData): void {
+  injectStructuredData(data: StructuredData | StructuredData[]): void {
     if (typeof document === 'undefined') return;
 
-    // Remove existing structured data
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    const existingScript = document.getElementById('seo-structured-data');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Add new structured data
+    const normalized = Array.isArray(data) ? data : [data];
+    const DEFAULT_CONTEXT = 'https://schema.org';
+
+    const entries = normalized.map(item => {
+      const context = (item['@context'] as string | undefined) || DEFAULT_CONTEXT;
+      return {
+        '@context': context,
+        ...item
+      };
+    });
+
+    let payload: StructuredData;
+
+    if (entries.length === 1) {
+      payload = entries[0];
+    } else {
+      payload = {
+        '@context': DEFAULT_CONTEXT,
+        '@graph': entries.map(entry => {
+          const { ['@context']: context, ...rest } = entry;
+          return context && context !== DEFAULT_CONTEXT ? { '@context': context, ...rest } : rest;
+        })
+      };
+    }
+
     const script = document.createElement('script');
     script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(data);
+    script.id = 'seo-structured-data';
+    script.textContent = JSON.stringify(payload);
     document.head.appendChild(script);
+  }
+
+  updateCanonicalLink(url?: string): void {
+    if (typeof document === 'undefined') return;
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+
+    if (!url) {
+      if (canonical) {
+        canonical.remove();
+      }
+      return;
+    }
+
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+
+    canonical.href = url;
+  }
+
+  updateAlternateLocaleLinks(alternates: AlternateLocaleLink[]): void {
+    if (typeof document === 'undefined') return;
+
+    const existing = document.querySelectorAll('link[rel="alternate"][data-seo-alternate="true"]');
+    existing.forEach(link => link.remove());
+
+    alternates.forEach(({ hrefLang, url }) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = hrefLang;
+      link.href = url;
+      link.dataset.seoAlternate = 'true';
+      document.head.appendChild(link);
+    });
   }
 }
