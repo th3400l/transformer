@@ -1,0 +1,17 @@
+{
+  "id": "lined-3",
+  "name": "Narrow Ruled",
+  "type": "lined",
+  "lineHeight": 18,
+  "marginTop": 35,
+  "marginLeft": 55,
+  "marginRight": 35,
+  "marginBottom": 35,
+  "lineSpacing": 18,
+  "lineColor": "#C8D5E6",
+  "hasMarginLine": true,
+  "marginLinePosition": 55,
+  "marginLineColor": "#FF5B5B",
+  "baselineOffset": 14,
+  "description": "Narrow-ruled paper with 18px line spacing for compact writing"
+}

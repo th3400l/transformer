@@ -1,0 +1,6 @@
+{
+  "name": "txttohandwriting.org",
+  "description": "A simple and aesthetic tool to convert your typed text into a handwritten style. Choose from various fonts, adjust the size, and select different paper backgrounds to create the perfect look. You can download your creation as a PNG image.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

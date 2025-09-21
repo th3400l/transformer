@@ -1,0 +1,17 @@
+{
+  "id": "lined-2",
+  "name": "Wide Ruled",
+  "type": "lined",
+  "lineHeight": 32,
+  "marginTop": 45,
+  "marginLeft": 65,
+  "marginRight": 45,
+  "marginBottom": 45,
+  "lineSpacing": 32,
+  "lineColor": "#A8B5C6",
+  "hasMarginLine": true,
+  "marginLinePosition": 65,
+  "marginLineColor": "#FF7B7B",
+  "baselineOffset": 24,
+  "description": "Wide-ruled paper with 32px line spacing for larger handwriting"
+}

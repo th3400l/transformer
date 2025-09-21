@@ -1,0 +1,17 @@
+{
+  "id": "lined-1",
+  "name": "College Ruled",
+  "type": "lined",
+  "lineHeight": 24,
+  "marginTop": 40,
+  "marginLeft": 60,
+  "marginRight": 40,
+  "marginBottom": 40,
+  "lineSpacing": 24,
+  "lineColor": "#B8C5D6",
+  "hasMarginLine": true,
+  "marginLinePosition": 60,
+  "marginLineColor": "#FF6B6B",
+  "baselineOffset": 18,
+  "description": "Standard college-ruled paper with 24px line spacing"
+}
