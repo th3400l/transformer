@@ -36,6 +36,7 @@ import Testimonials from './components/Testimonials';
 import { getQualityManager, QualitySettings } from './services/qualityManager';
 import { computeHandwritingLayoutMetrics } from './services/layoutMetrics';
 import { embedDigitalSignature } from './services/imageSignature';
+import CookieConsentBanner from './components/CookieConsentBanner';
 
 // import { getSystemIntegrationManager, SystemIntegrationManager } from './services/systemIntegration';
 
@@ -155,8 +156,9 @@ const GENERATION_TIPS = [
   'Gear 2 is in development—expect advanced stroke physics, smarter spacing, and richer paper sets.',
   'Switch inks freely: blue, red, and green all embed into the export along with a digital ID signature.',
   'Remember to skim the Terms & Conditions before submitting generated work anywhere official.',
-  'Each export carries a txttohandwriting.org digital ID so you can prove it came from here.',
-  'Bulk download packs pages into a tidy ZIP—perfect for big assignments or journaling sessions.'
+  'Feel free to switch between all the available fonts -- for the users convenience we have 15+ fonts stacked',
+  'Bulk download pushes all the generated pages at once into user\'s memory, easy option for assignments or journaling sessions.',
+  'For any support or feedback please reach out to support@txttohandwriting.org'
 ];
 
 const MAX_PAGES_PER_RUN = 2;
@@ -213,6 +215,7 @@ const App: React.FC = () => {
   const [textureManager, setTextureManager] = useState<IPaperTextureManager | null>(null);
   const [fontManager, setFontManager] = useState<IFontManager | null>(null);
   const [pageSplitter, setPageSplitter] = useState<IPageSplitter | null>(null);
+  const [previewRefreshToken, setPreviewRefreshToken] = useState(0);
 
   const distortionProfile = useMemo(
     () => DISTORTION_PROFILES[paperDistortionLevel],
@@ -946,13 +949,31 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (page) {
       case 'terms':
-        return <TermsPage onGoBack={() => setPage('main')} />;
+        return <TermsPage onGoBack={() => {
+          setPage('main');
+          setPreviewRefreshToken(token => token + 1);
+        }} />;
       case 'faq':
-        return <FaqPage onGoBack={() => setPage('main')} />;
+        return <FaqPage onGoBack={() => {
+          setPage('main');
+          setPreviewRefreshToken(token => token + 1);
+        }} />;
       case 'about':
-        return <AboutPage onGoBack={() => setPage('main')} />;
+        return <AboutPage onGoBack={() => {
+          setPage('main');
+          setPreviewRefreshToken(token => token + 1);
+        }} />;
       case 'blog':
-        return <BlogPage onGoBack={() => setPage('main')} onSelectPost={(slug: string) => { setCurrentPostSlug(slug); setPage('blogPost'); }} />;
+        return <BlogPage
+          onGoBack={() => {
+            setPage('main');
+            setPreviewRefreshToken(token => token + 1);
+          }}
+          onSelectPost={(slug: string) => {
+            setCurrentPostSlug(slug);
+            setPage('blogPost');
+          }}
+        />;
       case 'blogPost':
         const post = blogPosts.find(p => p.slug === currentPostSlug);
         if (!post) {
@@ -1150,6 +1171,7 @@ const App: React.FC = () => {
                     distortionLevel={paperDistortionLevel}
                     isTemplateLoading={isTemplateLoading}
                     className="w-full h-full min-h-[460px] md:min-h-[520px] p-6"
+                    refreshToken={previewRefreshToken}
                   />
                 </div>
 
@@ -1219,7 +1241,15 @@ const App: React.FC = () => {
             });
           }}
         >
-          <Header theme={theme} setTheme={setTheme} onGoHome={() => setPage('main')} onGoToBlog={() => setPage('blog')} />
+          <Header
+            theme={theme}
+            setTheme={setTheme}
+            onGoHome={() => {
+              setPage('main');
+              setPreviewRefreshToken(token => token + 1);
+            }}
+            onGoToBlog={() => setPage('blog')}
+          />
         </ErrorBoundary>
         
         <div className="flex-grow flex flex-col">
@@ -1269,6 +1299,8 @@ const App: React.FC = () => {
         result={bulkDownload.result}
         onClose={handleDownloadModalClose}
       />
+
+      <CookieConsentBanner onOpenTerms={() => setPage('terms')} />
 
       {downloadIntent && (
         <div
@@ -1352,10 +1384,10 @@ const App: React.FC = () => {
               </h3>
               <p className="text-sm leading-relaxed text-[var(--text-muted)]">
                 {generationLimitDialog.type === 'total'
-                  ? `txttohandwriting.org can render up to ${generationLimitDialog.allowed} pages from a single block of text. Your input would spill into ${generationLimitDialog.attempted} pages. Trim the content or split it into smaller batches, then generate them one after another.`
+                  ? `txttohandwriting.org can only render up to ${generationLimitDialog.allowed} pages from a single block of text. Your input would spill into ${generationLimitDialog.attempted} pages. Please trim the content or split it into smaller batches, then generate them one after another.`
                   : generationLimitDialog.type === 'per-run'
-                    ? `We only generate ${generationLimitDialog.allowed} pages per pass so you can review the layout between batches. Your text would create ${generationLimitDialog.attempted} pages. Cut it down to the first two pages’ worth, generate, then paste the next chunk and repeat.`
-                    : `You can keep at most ${generationLimitDialog.allowed} pages in the gallery. Remove at least ${generationLimitDialog.remove} page${generationLimitDialog.remove > 1 ? 's' : ''} before generating again.`}
+                    ? `We only generate ${generationLimitDialog.allowed} pages per pass, We are actively working to increase the limit. Your text would create ${generationLimitDialog.attempted} pages. Cut it down to the first two pages’ worth, generate, then paste the next chunk and repeat.`
+                    : `You can only keep at most ${generationLimitDialog.allowed} pages in the gallery. Remove at least ${generationLimitDialog.remove} page${generationLimitDialog.remove > 1 ? 's' : ''} before generating again. We are doing this to optimize your experience, Kindly consider.`}
               </p>
             </div>
             <div className="flex justify-end">

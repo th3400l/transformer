@@ -4,6 +4,7 @@
 */
 import React from 'react';
 import { BlogPost } from '../services/blogPosts';
+import SupportCTA from './SupportCTA';
 
 interface BlogPostPageProps {
   post: BlogPost;
@@ -28,6 +29,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onGoBack }) => {
         <div
           className="text-[var(--text-muted)] space-y-4 leading-relaxed blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+        <SupportCTA
+          headline="Want to respond or pitch a follow-up?"
+          description="Send your thoughts, corrections, or fan mail—everything lands in the same inbox."
         />
       </div>
     </div>

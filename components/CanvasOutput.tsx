@@ -9,6 +9,8 @@ import { ICanvasRenderer, RenderingConfig, PaperTemplate } from '../types/core';
 import { DEFAULT_RENDERING_CONFIG } from '../types/index';
 import { useResponsiveCanvas, useResponsiveCanvasContainer } from '../hooks/useResponsiveCanvas';
 import { RoseSpinner } from './Spinner';
+import { SUPPORT_EMAIL } from './SupportCTA';
+import { globalErrorHandler } from '../services/errorHandler';
 
 const clamp = (value: number, min: number, max: number): number => {
   if (value < min) {
@@ -80,6 +82,8 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isRendering, setIsRendering] = useState<boolean>(false);
   const [renderError, setRenderError] = useState<string | null>(null);
+  const [errorDetails, setErrorDetails] = useState<string | null>(null);
+  const [supportCopied, setSupportCopied] = useState<boolean>(false);
   const [lastRenderConfig, setLastRenderConfig] = useState<string>('');
   const panStateRef = useRef<PanState>({
     pointerId: null,
@@ -188,20 +192,25 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
       return;
     }
 
+    let configHash = '';
+
+    let config: RenderingConfig | null = null;
+
     try {
       setIsRendering(true);
       setRenderError(null);
 
-      const config = createRenderingConfig();
+      const currentConfig = createRenderingConfig();
+      config = currentConfig;
       
       // Create a config hash to avoid unnecessary re-renders (includes responsive dimensions)
-      const configHash = JSON.stringify({
-        text: config.text,
-        paperTemplate: config.paperTemplate?.id,
-        canvasWidth: config.canvasWidth,
-        canvasHeight: config.canvasHeight,
-        baseInkColor: config.baseInkColor,
-        renderingQuality: config.renderingQuality,
+      configHash = JSON.stringify({
+        text: currentConfig.text,
+        paperTemplate: currentConfig.paperTemplate?.id,
+        canvasWidth: currentConfig.canvasWidth,
+        canvasHeight: currentConfig.canvasHeight,
+        baseInkColor: currentConfig.baseInkColor,
+        renderingQuality: currentConfig.renderingQuality,
         deviceType: `${dimensions.isMobile}-${dimensions.isTablet}-${dimensions.isDesktop}`
       });
 
@@ -212,7 +221,7 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
       }
 
       // Render new canvas
-      const newCanvas = await canvasRenderer.render(config);
+      const newCanvas = await canvasRenderer.render(currentConfig);
       
       // Remove old canvas if it exists
       if (canvasRef.current && canvasRef.current.parentNode) {
@@ -253,6 +262,9 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
 
       // Update last render config
       setLastRenderConfig(configHash);
+      setRenderError(null);
+      setErrorDetails(null);
+      setSupportCopied(false);
 
       // Notify parent component
       if (onRenderComplete) {
@@ -262,10 +274,29 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
     } catch (error) {
       console.error('Canvas rendering failed:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown rendering error';
-      setRenderError(errorMessage);
-      
+      const errorStack = error instanceof Error && error.stack ? error.stack : 'No stack available';
+      const errorObject = error instanceof Error ? error : new Error(errorMessage);
+      globalErrorHandler.handleError(errorObject, 'canvas-output-render', 'medium', {
+        configHash,
+        templateId: config?.paperTemplate?.id,
+        fontFamily,
+        fontSize,
+        inkColor,
+        isMobile: dimensions.isMobile,
+        isTablet: dimensions.isTablet
+      });
+      const detailedReport = [
+        `Message: ${errorMessage}`,
+        `Stack: ${errorStack}`,
+        `Render config hash: ${configHash}`,
+        `Timestamp: ${new Date().toISOString()}`,
+        `Location: ${window.location.href}`
+      ].join('\n');
+      setRenderError('Your canvas failed to load and we\'re actively working on fixing it.');
+      setErrorDetails(detailedReport);
+
       if (onRenderError) {
-        onRenderError(error instanceof Error ? error : new Error(errorMessage));
+        onRenderError(errorObject);
       }
     } finally {
       setIsRendering(false);
@@ -432,6 +463,44 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
     };
   }, []);
 
+  const copyToClipboard = async (value: string): Promise<boolean> => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard && 'writeText' in navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      return true;
+    } catch (copyError) {
+      console.warn('Failed to copy canvas error details:', copyError);
+      return false;
+    }
+  };
+
+  const handleContactSupport = async () => {
+    const summary = errorDetails ?? 'Canvas error occurred without additional diagnostic information.';
+    const copied = await copyToClipboard(summary);
+    if (copied) {
+      setSupportCopied(true);
+      setTimeout(() => setSupportCopied(false), 2500);
+    }
+
+    const emailSubject = encodeURIComponent('Canvas failed to load');
+    const emailBody = encodeURIComponent(
+      `Hi txttohandwriting team,%0D%0A%0D%0AMy canvas failed to load while using txttohandwriting.org.%0D%0AThe error details have been copied to my clipboard:%0D%0A%0D%0A${summary}%0D%0A%0D%0AAdditional notes:%0D%0A`
+    );
+
+    window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+  };
+
   const overlayContent = renderError ? (
     <div className="absolute inset-0 flex items-center justify-center px-4">
       <div className={`text-center max-w-md pointer-events-auto ${
@@ -445,27 +514,41 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
         </div>
-        <h3 className={`text-[var(--text-color)] font-medium mb-2 ${
+        <h3 className={`text-[var(--text-color)] font-semibold mb-2 ${
           dimensions.isMobile ? 'text-sm' : 'text-base'
         }`}>
-          Rendering Error
+          Canvas Failed to Load
         </h3>
-        <p className={`text-[var(--text-muted)] mb-4 ${
+        <p className={`text-[var(--text-muted)] mb-4 leading-relaxed ${
           dimensions.isMobile ? 'text-xs' : 'text-sm'
         }`}>
           {renderError}
         </p>
-        <button
-          onClick={renderCanvas}
-          className={`bg-[var(--accent-color)] text-white rounded-lg hover:bg-[var(--accent-color-hover)] transition-colors ${
-            dimensions.isMobile 
-              ? 'px-3 py-2 text-xs min-h-[44px]' // Touch-friendly size
-              : 'px-4 py-2 text-sm'
-          }`}
-          style={{ minHeight: dimensions.isMobile ? '44px' : 'auto' }}
-        >
-          Try Again
-        </button>
+        <div className={`flex flex-col gap-2 ${dimensions.isMobile ? '' : 'sm:flex-row sm:justify-center sm:gap-3'}`}>
+          <button
+            onClick={renderCanvas}
+            className={`rounded-lg font-medium border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)]/10 transition-colors ${
+              dimensions.isMobile ? 'px-3 py-2 text-xs min-h-[40px]' : 'px-4 py-2 text-sm'
+            }`}
+            style={{ minHeight: dimensions.isMobile ? '40px' : 'auto' }}
+          >
+            Try Again
+          </button>
+          <button
+            onClick={handleContactSupport}
+            className={`rounded-lg font-medium bg-[var(--accent-color)] text-[#1f1a13] hover:bg-[var(--accent-color-hover)] transition-colors ${
+              dimensions.isMobile ? 'px-3 py-2 text-xs min-h-[40px]' : 'px-4 py-2 text-sm'
+            }`}
+            style={{ minHeight: dimensions.isMobile ? '40px' : 'auto' }}
+          >
+            Contact Support
+          </button>
+        </div>
+        {supportCopied && (
+          <p className={`mt-3 text-[var(--text-muted)] ${dimensions.isMobile ? 'text-[11px]' : 'text-xs'}`}>
+            Error details copied to clipboard. Paste them into the email so we can debug faster.
+          </p>
+        )}
       </div>
     </div>
   ) : isRendering ? (

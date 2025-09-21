@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { IPaperTextureManager, PaperTemplate, PaperTexture } from '../types/core';
 import { preloadTemplateImage } from '../services/paperTemplateUtils';
-import { handleAsyncError } from '../services/errorHandler';
+import { globalErrorHandler } from '../services/errorHandler';
 import { 
   responsiveCanvasManager, 
   CanvasScalingConfig,
@@ -13,6 +13,7 @@ import {
 } from '../services/canvasFallbackSystem';
 import { RoseSpinner } from './Spinner';
 import { computeHandwritingLayoutMetrics } from '../services/layoutMetrics';
+import { SUPPORT_EMAIL } from './SupportCTA';
 
 interface DistortionProfileProps {
   baselineJitterRange: number;
@@ -33,6 +34,7 @@ interface HandwritingPreviewProps {
   distortionProfile: DistortionProfileProps;
   distortionLevel: number;
   className?: string;
+  refreshToken?: number;
 }
 
 const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
@@ -46,7 +48,8 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   distortionProfile,
   distortionLevel,
   isTemplateLoading = false,
-  className = ''
+  className = '',
+  refreshToken
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,9 +57,48 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const [isRendering, setIsRendering] = useState(false);
   const [renderError, setRenderError] = useState<string | null>(null);
+  const [renderErrorDetails, setRenderErrorDetails] = useState<string | null>(null);
+  const [supportCopied, setSupportCopied] = useState(false);
   const renderTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const textureCacheRef = useRef<Record<string, PaperTexture>>({});
   const [, setCanvasMetrics] = useState<CanvasRenderingMetrics | null>(null);
+  const refreshTokenInitializedRef = useRef(false);
+
+  const USER_FRIENDLY_CANVAS_ERROR = 'Your canvas failed to load and we\'re actively working on fixing it.';
+
+  const composeErrorDetails = (message: string, error?: unknown): string => {
+    const timestamp = new Date().toISOString();
+    const location = typeof window !== 'undefined' ? window.location.href : 'unknown environment';
+    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown user agent';
+    const lines = [
+      `Message: ${message}`,
+      `Timestamp: ${timestamp}`,
+      `URL: ${location}`,
+      `User Agent: ${userAgent}`,
+      `Selected template: ${paperTemplate?.id ?? 'none'}`,
+      `Font family: ${fontFamily}`,
+      `Font size: ${fontSize}`,
+      `Ink color: ${inkColor}`,
+      `Distortion level: ${distortionLevel}`
+    ];
+
+    if (error instanceof Error) {
+      lines.push(`Error message: ${error.message}`);
+      if (error.stack) {
+        lines.push(`Stack trace: ${error.stack}`);
+      }
+    } else if (typeof error !== 'undefined') {
+      lines.push(`Error details: ${String(error)}`);
+    }
+
+    return lines.join('\n');
+  };
+
+  const updateRenderErrorState = (message: string, error?: unknown): void => {
+    setRenderError(message);
+    setRenderErrorDetails(composeErrorDetails(message, error));
+    setSupportCopied(false);
+  };
 
   useEffect(() => {
     if (!paperTemplate) {
@@ -117,6 +159,17 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
     };
   }, [text, fontFamily, fontSize, inkColor, resolvedInkColor, paperTemplate, distortionProfile, distortionLevel]);
 
+  useEffect(() => {
+    if (refreshToken === undefined) {
+      return;
+    }
+    if (!refreshTokenInitializedRef.current) {
+      refreshTokenInitializedRef.current = true;
+      return;
+    }
+    renderPreview();
+  }, [refreshToken]);
+
   /**
    * Initialize responsive canvas system with fallback support
    * Requirements: 8.1, 8.2, 8.4 - Canvas initialization, resizing, and fallback handling
@@ -142,7 +195,9 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       
       if (!canvasSupported) {
         console.warn('Canvas not supported, using fallback mode');
-        setRenderError('Limited canvas support - using fallback mode');
+        const supportError = new Error('Canvas support validation failed; switching to fallback mode');
+        globalErrorHandler.handleError(supportError, 'handwriting-preview-compatibility', 'medium');
+        updateRenderErrorState(USER_FRIENDLY_CANVAS_ERROR, supportError);
       }
 
       // Canvas scaling configuration for preview
@@ -251,7 +306,12 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         if (canvasHostRef.current && !canvasHostRef.current.contains(recoveryResult.canvas)) {
           canvasHostRef.current.appendChild(recoveryResult.canvas);
         }
-        setRenderError(`Fallback mode active (${recoveryResult.recoveryMethod})`);
+        const fallbackError = new Error(`Fallback mode active (${recoveryResult.recoveryMethod})`);
+        globalErrorHandler.handleError(fallbackError, 'handwriting-preview-recovery', 'medium');
+        updateRenderErrorState(
+          USER_FRIENDLY_CANVAS_ERROR,
+          fallbackError
+        );
         
         // Apply fallback rendering
         const fallbackOptions: FallbackRenderingOptions = {
@@ -263,11 +323,18 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         
         canvasFallbackSystem.applyFallbackRendering(recoveryResult.canvas, fallbackOptions);
       } else {
-        setRenderError('Canvas recovery failed - please refresh the page');
+        const recoveryFailure = new Error('Canvas recovery failed - please refresh the page');
+        globalErrorHandler.handleError(recoveryFailure, 'handwriting-preview-recovery-failed', 'medium');
+        updateRenderErrorState(
+          USER_FRIENDLY_CANVAS_ERROR,
+          recoveryFailure
+        );
       }
     } catch (recoveryError) {
       console.error('Canvas recovery failed:', recoveryError);
-      setRenderError('Canvas system unavailable');
+      const errorObject = recoveryError instanceof Error ? recoveryError : new Error(String(recoveryError));
+      globalErrorHandler.handleError(errorObject, 'handwriting-preview-recovery-exception', 'medium');
+      updateRenderErrorState(USER_FRIENDLY_CANVAS_ERROR, errorObject);
     }
   }, []);
 
@@ -321,12 +388,14 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
     // Always render fallback if services aren't available
     setIsRendering(true);
     setRenderError(null);
+    setRenderErrorDetails(null);
+    setSupportCopied(false);
 
-    const result = await handleAsyncError(async () => {
+    try {
       if (!canvasRef.current) {
         throw new Error('Canvas not available');
       }
-      
+
       const metrics = responsiveCanvasManager.getCanvasMetrics(canvasRef.current);
       if (!metrics) {
         throw new Error('Failed to get canvas metrics');
@@ -339,16 +408,21 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       }
 
       await renderAuthenticPreview(ctx, metrics);
-
-      return true;
-    }, 'handwriting-preview-render');
-
-    if (!result) {
-      setRenderError('Preview unavailable');
+    } catch (error) {
+      console.error('Handwriting preview rendering failed:', error);
+      const errorObject = error instanceof Error ? error : new Error(String(error));
+      globalErrorHandler.handleError(errorObject, 'handwriting-preview-render', 'medium', {
+        templateId: paperTemplate?.id,
+        fontFamily,
+        fontSize,
+        inkColor,
+        distortionLevel
+      });
+      updateRenderErrorState(USER_FRIENDLY_CANVAS_ERROR, errorObject);
       renderFallbackPreview();
+    } finally {
+      setIsRendering(false);
     }
-
-    setIsRendering(false);
   };
 
   const renderAuthenticPreview = async (
@@ -727,6 +801,44 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
     }
   };
 
+  const copyErrorDetailsToClipboard = async (details: string): Promise<boolean> => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard && 'writeText' in navigator.clipboard) {
+        await navigator.clipboard.writeText(details);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = details;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      return true;
+    } catch (error) {
+      console.warn('Failed to copy preview error details:', error);
+      return false;
+    }
+  };
+
+  const handleContactSupport = async () => {
+    const summary = renderErrorDetails ?? 'Handwriting preview error occurred.';
+    const copied = await copyErrorDetailsToClipboard(summary);
+    if (copied) {
+      setSupportCopied(true);
+      setTimeout(() => setSupportCopied(false), 2500);
+    }
+
+    const emailSubject = encodeURIComponent('Handwriting preview failed to load');
+    const emailBody = encodeURIComponent(
+      `Hi txttohandwriting team,%0D%0A%0D%0AMy handwriting preview failed to load.%0D%0AThe error report has been copied to my clipboard:%0D%0A%0D%0A${summary}%0D%0A%0D%0AAdditional notes:%0D%0A`
+    );
+
+    window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+  };
+
   const wrapText = (ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] => {
     const lines: string[] = [];
     const paragraphs = (text || '').split(/\r?\n/);
@@ -788,17 +900,49 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       </div>
 
       {(isRendering || isTemplateLoading) && (
-        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center rounded-lg z-10">
-          <div className="flex items-center gap-3 text-gray-600">
+        <div className="absolute inset-0 bg-[var(--overlay-color)] flex items-center justify-center rounded-lg z-10">
+          <div className="flex items-center gap-3 text-[var(--overlay-message-color)]">
             <RoseSpinner size={32} announce={false} label={isTemplateLoading ? 'Loading template' : 'Rendering preview'} />
             <span className="text-sm">{isTemplateLoading ? 'Loading template...' : 'Rendering preview...'}</span>
           </div>
         </div>
       )}
-      
+
       {renderError && (
-        <div className="absolute top-2 right-2 bg-red-100 text-red-700 px-2 py-1 rounded text-xs z-10">
-          {renderError}
+        <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
+          <div className="w-full max-w-md rounded-xl border border-[var(--panel-border)] bg-[var(--panel-bg)]/95 shadow-lg p-5 text-center">
+            <div className="mx-auto mb-3 text-red-400">
+              <svg className="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+            <h3 className="text-base font-semibold text-[var(--text-color)] mb-2">Canvas Failed to Load</h3>
+            <p className="text-sm text-[var(--text-muted)] mb-4 leading-relaxed">
+              {renderError}
+            </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:justify-center sm:gap-3 mb-1">
+              <button
+                type="button"
+                onClick={renderPreview}
+                className="px-4 py-2 text-sm font-medium rounded-lg border border-[var(--accent-color)] text-[var(--accent-color)] hover:bg-[var(--accent-color)]/10 transition-colors"
+              >
+                Try Again
+              </button>
+              <button
+                type="button"
+                onClick={handleContactSupport}
+                className="px-4 py-2 text-sm font-semibold rounded-lg text-[#1f1a13] transition-colors"
+                style={{ backgroundColor: 'var(--accent-color)' }}
+              >
+                Contact Support
+              </button>
+            </div>
+            {supportCopied && (
+              <p className="text-xs text-[var(--text-muted)]">
+                Error details copied. Paste them into the email so we can troubleshoot faster.
+              </p>
+            )}
+          </div>
         </div>
       )}
       

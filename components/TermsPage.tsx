@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import React from 'react';
+import SupportCTA from './SupportCTA';
 
 interface PageProps {
   onGoBack: () => void;
@@ -13,7 +14,7 @@ const TermsPage: React.FC<PageProps> = ({ onGoBack }) => {
     <div className="w-full max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8 animate-fade-in">
       <div className="bg-[var(--panel-bg)] backdrop-blur-lg border border-[var(--panel-border)] rounded-xl shadow-lg p-6 md:p-10">
         <div className="flex justify-between items-center border-b border-[var(--panel-border)] pb-4 mb-6">
-          <h1 className="text-3xl font-bold text-[var(--accent-color)]">Terms and Conditions</h1>
+          <h1 id="terms" className="text-3xl font-bold text-[var(--accent-color)]">Terms and Conditions</h1>
           <button
             onClick={onGoBack}
             className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors"
@@ -50,7 +51,22 @@ const TermsPage: React.FC<PageProps> = ({ onGoBack }) => {
           <p>
             We reserve the right to revise these terms and conditions at any time. By using this website, you are expected to review these terms on a regular basis to ensure you understand all terms and conditions governing the use of this website.
           </p>
+          <h2 className="text-xl font-semibold text-[var(--text-color)] pt-4">7. Analytics & Cookies</h2>
+          <p>
+            We use Google Analytics with Consent Mode to understand how txttohandwriting.org is used and to keep improving the experience. Analytics cookies remain disabled until you explicitly grant consent through the banner shown when you first visit the site. If you decline, no analytics data is sent to Google and the site continues to function normally.
+          </p>
+          <p>
+            The consent settings cover the following Google parameters: <strong>ad_storage</strong>, <strong>ad_personalization</strong>, <strong>ad_user_data</strong>, and <strong>analytics_storage</strong>. Until you opt in, each of these values stays in the “denied” state, preventing cookies from being written and events from being sent. When you accept, we update those settings to “granted” and store your preference in your browser.
+          </p>
+          <h2 className="text-xl font-semibold text-[var(--text-color)] pt-4">8. Managing Your Consent</h2>
+          <p>
+            You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at <a href="mailto:support@txttohandwriting.org" className="text-[var(--accent-color)] hover:underline">support@txttohandwriting.org</a>.
+          </p>
         </div>
+        <SupportCTA
+          headline="Questions about these terms?"
+          description="We're happy to clarify anything legal-ish or help you keep your assignments in line."
+        />
       </div>
     </div>
   );

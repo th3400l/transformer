@@ -30,15 +30,15 @@ export class FontManager implements IFontManager {
       { id: 'marker-felt', name: 'Marker Felt', family: "'Shadows Into Light', cursive", loaded: false, fallback: 'cursive' },
       
       // Custom handwriting fonts (1-9 are available, 10+ need to be loaded)
-      { id: 'handwriting-1', name: 'Handwriting Style 1', family: "'Handwriting-1', cursive", file: './fonts/Handwriting-1.ttf', loaded: false, fallback: 'cursive', index: 1 },
-      { id: 'handwriting-2', name: 'Handwriting Style 2', family: "'Handwriting-2', cursive", file: './fonts/Handwriting-2.ttf', loaded: false, fallback: 'cursive', index: 2 },
-      { id: 'handwriting-3', name: 'Handwriting Style 3', family: "'Handwriting-3', cursive", file: './fonts/Handwriting-3.ttf', loaded: false, fallback: 'cursive', index: 3 },
-      { id: 'handwriting-4', name: 'Handwriting Style 4', family: "'Handwriting-4', cursive", file: './fonts/Handwriting-4.ttf', loaded: false, fallback: 'cursive', index: 4 },
-      { id: 'handwriting-5', name: 'Handwriting Style 5', family: "'Handwriting-5', cursive", file: './fonts/Handwriting-5.ttf', loaded: false, fallback: 'cursive', index: 5 },
-      { id: 'handwriting-6', name: 'Handwriting Style 6', family: "'Handwriting-6', cursive", file: './fonts/Handwriting-6.ttf', loaded: false, fallback: 'cursive', index: 6 },
-      { id: 'handwriting-7', name: 'Handwriting Style 7', family: "'Handwriting-7', cursive", file: './fonts/Handwriting-7.ttf', loaded: false, fallback: 'cursive', index: 7 },
-      { id: 'handwriting-8', name: 'Handwriting Style 8', family: "'Handwriting-8', cursive", file: './fonts/Handwriting-8.ttf', loaded: false, fallback: 'cursive', index: 8 },
-      { id: 'handwriting-9', name: 'Handwriting Style 9', family: "'Handwriting-9', cursive", file: './fonts/Handwriting-9.ttf', loaded: false, fallback: 'cursive', index: 9 },
+      { id: 'handwriting-1', name: 'Handwriting Style 1', family: "'Handwriting-1', cursive", file: '/fonts/Handwriting-1.ttf', loaded: false, fallback: 'cursive', index: 1 },
+      { id: 'handwriting-2', name: 'Handwriting Style 2', family: "'Handwriting-2', cursive", file: '/fonts/Handwriting-2.ttf', loaded: false, fallback: 'cursive', index: 2 },
+      { id: 'handwriting-3', name: 'Handwriting Style 3', family: "'Handwriting-3', cursive", file: '/fonts/Handwriting-3.ttf', loaded: false, fallback: 'cursive', index: 3 },
+      { id: 'handwriting-4', name: 'Handwriting Style 4', family: "'Handwriting-4', cursive", file: '/fonts/Handwriting-4.ttf', loaded: false, fallback: 'cursive', index: 4 },
+      { id: 'handwriting-5', name: 'Handwriting Style 5', family: "'Handwriting-5', cursive", file: '/fonts/Handwriting-5.ttf', loaded: false, fallback: 'cursive', index: 5 },
+      { id: 'handwriting-6', name: 'Handwriting Style 6', family: "'Handwriting-6', cursive", file: '/fonts/Handwriting-6.ttf', loaded: false, fallback: 'cursive', index: 6 },
+      { id: 'handwriting-7', name: 'Handwriting Style 7', family: "'Handwriting-7', cursive", file: '/fonts/Handwriting-7.ttf', loaded: false, fallback: 'cursive', index: 7 },
+      { id: 'handwriting-8', name: 'Handwriting Style 8', family: "'Handwriting-8', cursive", file: '/fonts/Handwriting-8.ttf', loaded: false, fallback: 'cursive', index: 8 },
+      { id: 'handwriting-9', name: 'Handwriting Style 9', family: "'Handwriting-9', cursive", file: '/fonts/Handwriting-9.ttf', loaded: false, fallback: 'cursive', index: 9 },
       
       // Additional fonts that should be available (using web font fallbacks for now)
       { id: 'handwriting-10', name: 'Handwriting Style 10', family: "'Over the Rainbow', cursive", loaded: false, fallback: 'cursive', index: 10 },

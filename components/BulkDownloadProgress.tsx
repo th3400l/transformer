@@ -7,19 +7,13 @@
  * Requirements: 2.3, 2.4
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BulkDownloadProgress, BulkDownloadResult, FailedDownload } from '../services/bulkDownloadManager';
 
 // Progress Icons
 const DownloadIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-  </svg>
-);
-
-const CheckIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
   </svg>
 );
 
@@ -89,6 +83,78 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
   };
 
+  const shareUrl = 'https://txttohandwriting.org';
+  const shareMessage = 'I just turned my notes into gorgeous handwriting with txttohandwriting.org.';
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedMessage = encodeURIComponent(shareMessage);
+  const [rawLinkCopied, setRawLinkCopied] = useState(false);
+  const [discordHint, setDiscordHint] = useState(false);
+
+  const copyToClipboard = async (value: string): Promise<boolean> => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard && 'writeText' in navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      return true;
+    } catch (error) {
+      console.warn('Clipboard copy failed:', error);
+      return false;
+    }
+  };
+
+  const handleRawLinkCopy = async () => {
+    const didCopy = await copyToClipboard(shareUrl);
+    if (didCopy) {
+      setRawLinkCopied(true);
+      setTimeout(() => setRawLinkCopied(false), 2500);
+    }
+  };
+
+  const handleDiscordShare = async () => {
+    const didCopy = await copyToClipboard(`${shareMessage} ${shareUrl}`);
+    if (didCopy) {
+      setDiscordHint(true);
+      setTimeout(() => setDiscordHint(false), 2500);
+    }
+    window.open('https://discord.com/app', '_blank', 'noopener,noreferrer');
+  };
+
+  const ShareButton: React.FC<{ label: string; href?: string; onClick?: () => void }>
+    = ({ label, href, onClick }) => {
+      const baseClasses = 'px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-[var(--accent-color)] hover:text-[var(--accent-color)] transition-colors';
+      if (href) {
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={baseClasses}
+          >
+            {label}
+          </a>
+        );
+      }
+      return (
+        <button
+          type="button"
+          onClick={onClick}
+          className={baseClasses}
+        >
+          {label}
+        </button>
+      );
+    };
+
   return (
     <div className={`bg-white border border-gray-200 rounded-lg shadow-lg p-4 ${className}`}>
       {/* Header */}
@@ -101,10 +167,7 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
             </>
           )}
           {status === 'completed' && (
-            <>
-              <CheckIcon className="w-5 h-5 text-green-600" />
-              <span className="font-medium text-gray-900">Download Report</span>
-            </>
+            <span className="font-medium text-gray-900">Download Report</span>
           )}
           {status === 'error' && (
             <>
@@ -202,11 +265,38 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
           {/* Success Message */}
           {result.failedDownloads.length === 0 && (
             <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <div className="flex items-center gap-2">
-                <CheckIcon className="w-4 h-4 text-green-600" />
-                <span className="text-sm font-medium text-green-800">
-                  All images downloaded successfully!
-                </span>
+              <span className="text-sm font-medium text-green-800">
+                All images downloaded successfully!
+              </span>
+            </div>
+          )}
+
+          {status === 'completed' && (
+            <div className="pt-4 border-t border-gray-100">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
+                Share the vibe
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <ShareButton
+                  label="Twitter"
+                  href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedMessage}`}
+                />
+                <ShareButton
+                  label="Instagram"
+                  href={`https://www.instagram.com/?url=${encodedUrl}`}
+                />
+                <ShareButton
+                  label="WhatsApp"
+                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareMessage} ${shareUrl}`)}`}
+                />
+                <ShareButton
+                  label={discordHint ? 'Copied for Discord!' : 'Discord'}
+                  onClick={handleDiscordShare}
+                />
+                <ShareButton
+                  label={rawLinkCopied ? 'Link Copied!' : 'Raw Link'}
+                  onClick={handleRawLinkCopy}
+                />
               </div>
             </div>
           )}

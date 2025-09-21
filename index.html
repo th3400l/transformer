@@ -73,6 +73,24 @@
     }
     </script>
 
+    <!-- Consent mode defaults (denied until user grants) and Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9RJ0SZY62"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-M9RJ0SZY62');
+    </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Kalam:wght@400;700&family=Patrick+Hand&family=Indie+Flower&family=Shadows+Into+Light&family=Over+the+Rainbow&display=swap" rel="stylesheet">

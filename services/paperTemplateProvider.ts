@@ -173,7 +173,7 @@ export class TemplateProvider implements ITemplateProvider {
     }
 
     try {
-      const templateUrl = `template/${template.filename}`;
+      const templateUrl = `/template/${template.filename}`;
       const isValid = await this.validateTemplateUrl(templateUrl);
       
       // Cache the result

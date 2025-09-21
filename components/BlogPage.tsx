@@ -4,6 +4,7 @@
 */
 import React from 'react';
 import { blogPosts } from '../services/blogPosts';
+import SupportCTA from './SupportCTA';
 
 interface BlogPageProps {
   onGoBack: () => void;
@@ -36,6 +37,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ onGoBack, onSelectPost }) => {
             </div>
           ))}
         </div>
+        <SupportCTA
+          headline="Got story ideas or feedback on our hot takes?"
+          description="Share what you'd like to see on the blog or send over your own handwriting hacks."
+        />
       </div>
     </div>
   );

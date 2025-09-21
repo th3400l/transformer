@@ -192,9 +192,6 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
               <p className="text-sm text-gray-300">
                 {image.metadata.width} × {image.metadata.height} • {Math.round(image.metadata.size / 1024)}KB
               </p>
-              {image.metadata.digitalId && (
-                <p className="text-xs text-gray-400">Digital ID: {image.metadata.digitalId}</p>
-              )}
             </div>
             
             <div className="flex items-center gap-2">

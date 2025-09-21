@@ -14,7 +14,7 @@ export class TemplateMetadataLoader implements ITemplateMetadataLoader {
   private metadataCache: Map<string, TemplateMetadata> = new Map();
   private readonly baseUrl: string;
 
-  constructor(baseUrl: string = 'template/') {
+  constructor(baseUrl: string = '/template/') {
     this.baseUrl = baseUrl;
   }
 

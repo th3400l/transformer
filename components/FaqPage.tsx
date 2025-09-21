@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import React from 'react';
+import SupportCTA from './SupportCTA';
 
 interface PageProps {
   onGoBack: () => void;
@@ -86,6 +87,10 @@ const FaqPage: React.FC<PageProps> = ({ onGoBack }) => {
             </p>
           </details>
         </div>
+        <SupportCTA
+          headline="Still confused or want to roast a bug?"
+          description="Drop the team a note and we'll get back faster than you can say cursive."
+        />
       </div>
     </div>
   );
