@@ -331,7 +331,7 @@ export const PaperTemplateSelector: React.FC<PaperTemplateSelectorProps> = ({
   return (
     <div 
       ref={containerRef}
-      className={`paper-template-selector ${className} ${highContrastMode ? 'high-contrast' : ''}`}
+      className={`paper-template-selector ${className} ${highContrastMode ? 'high-contrast' : ''} pb-4`}
       role="group"
       aria-labelledby="template-selector-heading"
     >
@@ -411,7 +411,7 @@ export const PaperTemplateSelector: React.FC<PaperTemplateSelectorProps> = ({
               </div>
             </div>
 
-            {/* Gear-2 Overlay for Lined Templates */}
+            {/* Version 2 Overlay for Lined Templates */}
             {template.type === 'lined' && (
               <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center rounded-lg">
                 <div className="text-center text-white">
@@ -496,11 +496,11 @@ export const PaperTemplateSelector: React.FC<PaperTemplateSelectorProps> = ({
                 </div>
               </div>
 
-              {/* Gear-2 Overlay for Lined Templates (Mobile) */}
+              {/* Version 2 Overlay for Lined Templates (Mobile) */}
               {template.type === 'lined' && (
                 <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center rounded-lg">
                   <div className="text-center text-white">
-                    <div className="text-sm font-bold mb-1">Gear-2</div>
+                    <div className="text-sm font-bold mb-1">Version 2</div>
                     <div className="text-xs opacity-80">Soon</div>
                   </div>
                 </div>
@@ -524,8 +524,8 @@ export const PaperTemplateSelector: React.FC<PaperTemplateSelectorProps> = ({
       </div>
 
       {/* Template count indicator */}
-      <div className="mt-4 text-center" role="status" aria-live="polite">
-        <span className="text-xs text-[var(--text-muted)]">
+      <div className="mt-5 text-center" role="status" aria-live="polite">
+        <span className="text-sm leading-relaxed text-[var(--text-muted)]">
           {templates.length} template{templates.length !== 1 ? 's' : ''} available
         </span>
       </div>

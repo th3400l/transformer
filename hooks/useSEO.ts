@@ -81,9 +81,14 @@ export function useSEO(options: UseSEOOptions = {}) {
 
     // Generate and inject structured data
     const defaultStructuredData = seoOptimizer.createStructuredData();
+    const organizationData = seoOptimizer.createOrganizationStructuredData();
+    const websiteData = seoOptimizer.createWebsiteStructuredData();
+    
+    const baseStructuredData = [defaultStructuredData, organizationData, websiteData];
+    
     const structuredDataPayload = options.structuredData
-      ? [defaultStructuredData, ...(Array.isArray(options.structuredData) ? options.structuredData : [options.structuredData])]
-      : defaultStructuredData;
+      ? [...baseStructuredData, ...(Array.isArray(options.structuredData) ? options.structuredData : [options.structuredData])]
+      : baseStructuredData;
 
     seoOptimizer.injectStructuredData(structuredDataPayload);
     

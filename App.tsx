@@ -12,306 +12,71 @@ import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
 import { blogPosts } from './services/blogPosts';
 import AboutPage from './components/AboutPage';
-import PaperTemplateSelector from './components/PaperTemplateSelector';
+import BottomControlDock from './components/BottomControlDock';
+import { GENERATION_TIPS } from './components/GenerationTips';
 
 import ErrorNotificationPanel from './components/ErrorNotificationPanel';
-import HandwritingPreview from './components/HandwritingPreview';
 import { initializeServiceContainer } from './services/ServiceConfiguration';
 import { SERVICE_TOKENS, DEFAULT_RENDERING_CONFIG } from './types/index';
-import { ICanvasRenderer, ITemplateProvider, IImageExportSystem, IPaperTextureManager, PaperTemplate, ExportOptions, IPageSplitter } from './types/core';
+import { ICanvasRenderer, ITemplateProvider, IImageExportSystem, IPaperTextureManager, PaperTemplate, IPageSplitter } from './types/core';
 import { IFontManager } from './types/fonts';
+import { ICustomFontUploadManager, FontErrorType } from './types/customFontUpload';
 import { GeneratedImage, ImageMetadata } from './types/gallery';
-import { FontSelector } from './components/FontSelector';
-import ImageGallery from './components/ImageGallery';
-import FullscreenViewer from './components/FullscreenViewer';
 import { useBulkDownload } from './hooks/useBulkDownload';
 import { BulkDownloadModal } from './components/BulkDownloadProgress';
+import FullscreenViewer from './components/FullscreenViewer';
+import { CustomFontUploadDialog } from './components/CustomFontUploadDialog';
 import { useSEO } from './hooks/useSEO';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { globalErrorHandler } from './services/errorHandler';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 import { LoadingOverlay } from './components/LoadingOverlay';
 import { RoseSpinner } from './components/Spinner';
-import Testimonials from './components/Testimonials';
-import { getQualityManager, QualitySettings } from './services/qualityManager';
+import { getQualityManager } from './services/qualityManager';
 import { computeHandwritingLayoutMetrics } from './services/layoutMetrics';
 import { embedDigitalSignature } from './services/imageSignature';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import { SUPPORT_EMAIL } from './components/SupportCTA';
-import { StructuredData, MetaTag } from './services/seoOptimizer';
+import { MetaTag, StructuredData } from './services/seoOptimizer';
+import { MainPage } from './components/app/MainPage';
+import { FeedbackDialog } from './components/app/FeedbackDialog';
+import { DownloadIntentDialog } from './components/app/DownloadIntentDialog';
+import { GenerationLimitDialog } from './components/app/GenerationLimitDialog';
+import { AppFooter } from './components/app/AppFooter';
+import ChangeLogPage from './components/ChangeLogPage';
+import {
+  inkColors,
+  DISTORTION_PROFILES,
+  PAPER_QUALITY_OVERRIDES,
+  MAX_PAGES_PER_RUN,
+  MAX_TOTAL_PAGES,
+  FEEDBACK_DIALOG_DELAY_MS,
+  DEFAULT_SITE_URL,
+  DEFAULT_KEYWORDS,
+  INK_HEX_MAP,
+  Page,
+  Theme,
+  DownloadIntent,
+  GenerationLimitDialogState,
+  DistortionLevel,
+  THEME_STORAGE_KEY
+} from './app/constants';
+import {
+  stripHtmlTags,
+  createFaqStructuredData,
+  createTermsStructuredData,
+  createAboutStructuredData,
+  createBlogStructuredData,
+  createBlogPostStructuredData,
+  createChangelogStructuredData,
+  getPathForPage
+} from './app/seo';
+
+const MANDATORY_FONT_UPLOAD_DELAY_MS = 3000;
 
 // import { getSystemIntegrationManager, SystemIntegrationManager } from './services/systemIntegration';
 
-// Footer Icons
-const AboutIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-  </svg>
-);
-
-const BlogIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-  </svg>
-);
-
-const TermsIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-  </svg>
-);
-
-const FaqIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-  </svg>
-);
-
-
-
 // Font management is now handled by FontManager service
-
-const inkColors = [
-  { name: 'Black', value: 'var(--ink-black)' },
-  { name: 'Blue', value: 'var(--ink-blue)' },
-  { name: 'Red', value: 'var(--ink-red)' },
-  { name: 'Green', value: 'var(--ink-green)' },
-];
-
-type DistortionLevel = 1 | 2 | 3;
-
-interface DistortionProfile {
-  baselineJitterRange: number;
-  slantJitterRange: number;
-  colorVariationIntensity: number;
-  microTiltRange: number;
-  description: string;
-}
-
-type DownloadIntentMode = 'bulk' | 'single';
-
-interface DownloadIntent {
-  id: string;
-  mode: DownloadIntentMode;
-  label: string;
-  start: () => Promise<void> | void;
-}
-
-const DISTORTION_PROFILES: Record<DistortionLevel, DistortionProfile> = {
-  1: {
-    baselineJitterRange: 0.46,
-    slantJitterRange: 0.32,
-    colorVariationIntensity: 0.085,
-    microTiltRange: 0.24,
-    description: 'High realism – pronounced grain, softer contrast, and analog imperfections across the page.'
-  },
-  2: {
-    baselineJitterRange: 0.24,
-    slantJitterRange: 0.18,
-    colorVariationIntensity: 0.055,
-    microTiltRange: 0.13,
-    description: 'Medium realism – balanced ink-to-paper blend with gentle texture and subtle wear.'
-  },
-  3: {
-    baselineJitterRange: 0.16,
-    slantJitterRange: 0.12,
-    colorVariationIntensity: 0.042,
-    microTiltRange: 0.09,
-    description: 'Low realism – clean finish with restrained texture and a polished digital look.'
-  }
-};
-
-const PAPER_QUALITY_OVERRIDES: Record<DistortionLevel, Partial<QualitySettings>> = {
-  1: {
-    renderingQuality: 0.88,
-    textureQuality: 0.78,
-    compressionLevel: 0.88,
-    enableAntialiasing: true,
-    enableBlending: true,
-    enableProgressiveLoading: true,
-    enableCanvasPooling: true
-  },
-  2: {
-    renderingQuality: 0.96,
-    textureQuality: 0.9,
-    compressionLevel: 0.93,
-    enableAntialiasing: true,
-    enableBlending: true,
-    enableProgressiveLoading: true,
-    enableCanvasPooling: true
-  },
-  3: {
-    renderingQuality: 1,
-    textureQuality: 1,
-    compressionLevel: 0.97,
-    enableAntialiasing: true,
-    enableBlending: true,
-    enableProgressiveLoading: true,
-    enableCanvasPooling: true
-  }
-};
-
-const GENERATION_TIPS = [
-  'High realism loads the toughest paper grain and jitter—great for single-page hero shots.',
-  'Medium realism balances ink blend and paper wear for everyday notebook vibes.',
-  'Low realism keeps things clean and digital-friendly while preserving handwriting personality.',
-  'Gear 2 is in development—expect advanced stroke physics, smarter spacing, and richer paper sets.',
-  'Switch inks freely: blue, red, and green all embed into the export along with a digital ID signature.',
-  'Remember to skim the Terms & Conditions before submitting generated work anywhere official.',
-  'Feel free to switch between all the available fonts -- for the users convenience we have 15+ fonts stacked',
-  'Bulk download pushes all the generated pages at once into user\'s memory, easy option for assignments or journaling sessions.',
-  'For any support or feedback please reach out to support@txttohandwriting.org'
-];
-
-const MAX_PAGES_PER_RUN = 2;
-const MAX_TOTAL_PAGES = 6;
-const FEEDBACK_DIALOG_DELAY_MS = 90000;
-const DEFAULT_SITE_URL = 'https://txttohandwriting.org';
-const DEFAULT_SOCIAL_IMAGE = `${DEFAULT_SITE_URL}/app-screenshot.jpg`;
-const DEFAULT_KEYWORDS = 'handwriting generator, text to handwriting, custom fonts, realistic handwriting, handwritten text, paper templates, ink colors, study notes';
-
-const FAQ_ENTRIES = [
-  {
-    question: 'Is this actually free?',
-    answer: "Fr fr, it's free. No cap. We're not about that subscription life. Go wild (just don't break anything)."
-  },
-  {
-    question: 'Can I use this for my side hustle?',
-    answer: 'Totally. Make your memes, brand your Depop, whatever. Go get that bread. No credit needed, but a shoutout would be iconic.'
-  },
-  {
-    question: 'Are you reading my unhinged thoughts?',
-    answer: "Nah, we can't see a thing. We don't need your data. Our servers are like stones anyway. Your secrets are safe with us, bestie."
-  },
-  {
-    question: "What's the deal with downloads?",
-    answer: "Right now it's just PNGs. It's giving high quality. We'll add more formats later if the vibes are right."
-  },
-  {
-    question: 'Why does the font look kinda off?',
-    answer: "It's probably your browser. Try updating it. If it's still looking sus, it might just be your OS doing its thing."
-  },
-  {
-    question: 'My faculty asks for hardcopies, what should I do?',
-    answer: 'We linked a video walkthrough that keeps things on the low — check the FAQ link for the exact steps.'
-  }
-];
-
-type GenerationLimitDialogState =
-  | { type: 'per-run'; attempted: number; allowed: number }
-  | { type: 'total'; attempted: number; allowed: number }
-  | { type: 'gallery'; attempted: number; allowed: number; remove: number };
-
-const INK_HEX_MAP: Record<string, string> = {
-  'var(--ink-black)': '#2a2620',
-  'var(--ink-blue)': '#2f4a92',
-  'var(--ink-red)': '#b13535',
-  'var(--ink-green)': '#2f6a52'
-};
-
-type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about';
-export type Theme = 'nightlight' | 'dark' | 'feminine';
-
-const stripHtmlTags = (input: string): string =>
-  input
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/gi, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-const createFaqStructuredData = (): StructuredData => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQ_ENTRIES.map(entry => ({
-    '@type': 'Question',
-    name: entry.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: entry.answer
-    }
-  }))
-});
-
-const createTermsStructuredData = (url: string): StructuredData => ({
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: 'Terms and Conditions - txttohandwriting.org',
-  url,
-  description: 'Terms of service, data use, and consent information for txttohandwriting.org.',
-  inLanguage: 'en-US'
-});
-
-const createAboutStructuredData = (url: string): StructuredData => ({
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'About txttohandwriting.org',
-  url,
-  description: 'Story, mission, and team behind txttohandwriting.org — the handwriting generator crafted for students and creators.'
-});
-
-const createBlogStructuredData = (baseUrl: string): StructuredData => ({
-  '@context': 'https://schema.org',
-  '@type': 'Blog',
-  name: 'txttohandwriting.org Blog',
-  description: 'Guides and ideas for turning typed text into aesthetic handwriting for study notes, planners, and content.',
-  url: `${baseUrl}/blog`,
-  blogPost: blogPosts.map(post => ({
-    '@type': 'BlogPosting',
-    headline: post.title,
-    url: `${baseUrl}/blog/${post.slug}`,
-    datePublished: (() => {
-      const parsed = new Date(post.date);
-      return isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
-    })(),
-    author: {
-      '@type': 'Person',
-      name: post.author
-    }
-  }))
-});
-
-const createBlogPostStructuredData = (baseUrl: string, post: typeof blogPosts[number], socialImage: string): StructuredData => {
-  const parsed = new Date(post.date);
-  const isoDate = isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
-  const articleBody = stripHtmlTags(post.content);
-  const description = articleBody.slice(0, 220);
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description,
-    articleBody,
-    datePublished: isoDate,
-    dateModified: isoDate,
-    url: `${baseUrl}/blog/${post.slug}`,
-    image: socialImage,
-    author: {
-      '@type': 'Person',
-      name: post.author
-    }
-  };
-};
-
-const getPathForPage = (page: Page, slug: string | null): string => {
-  switch (page) {
-    case 'terms':
-      return '/terms';
-    case 'faq':
-      return '/faq';
-    case 'about':
-      return '/about';
-    case 'blog':
-      return '/blog';
-    case 'blogPost':
-      return slug ? `/blog/${slug}` : '/blog';
-    case 'main':
-    default:
-      return '/';
-  }
-};
 
 const App: React.FC = () => {
   // Initialize service container
@@ -324,7 +89,6 @@ const App: React.FC = () => {
       const container = initializeServiceContainer();
       setServiceContainer(container);
       setServicesInitialized(true);
-      console.log('Service container initialized successfully');
     } catch (error) {
       console.error('Failed to initialize service container:', error);
       setInitializationError('Failed to initialize services. Please refresh the page.');
@@ -346,20 +110,37 @@ const App: React.FC = () => {
   const [fontSize, setFontSize] = useState<number>(24);
 
   const [inkColor, setInkColor] = useState<string>(inkColors[0].value);
-  const [theme, setTheme] = useState<Theme>('nightlight');
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+      if (storedTheme === 'nightlight' || storedTheme === 'dark' || storedTheme === 'feminine') {
+        return storedTheme;
+      }
+    }
+    return 'nightlight';
+  });
   const [paperDistortionLevel, setPaperDistortionLevel] = useState<DistortionLevel>(3);
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [page, setPage] = useState<Page>('main');
   const [currentPostSlug, setCurrentPostSlug] = useState<string | null>(null);
-  const [isPaperVibeOpen, setIsPaperVibeOpen] = useState(true);
+  const [isPaperVibeOpen, setIsPaperVibeOpen] = useState(false);
+  const [isControlDockOpen, setIsControlDockOpen] = useState(false);
+  const [isControlDockVisible, setIsControlDockVisible] = useState(true);
+  const [isInkMenuOpen, setIsInkMenuOpen] = useState(false);
 
   const [canvasRenderer, setCanvasRenderer] = useState<ICanvasRenderer | null>(null);
   const [templateProvider, setTemplateProvider] = useState<ITemplateProvider | null>(null);
   const [imageExportSystem, setImageExportSystem] = useState<IImageExportSystem | null>(null);
   const [textureManager, setTextureManager] = useState<IPaperTextureManager | null>(null);
   const [fontManager, setFontManager] = useState<IFontManager | null>(null);
+  const [customFontUploadManager, setCustomFontUploadManager] = useState<ICustomFontUploadManager | null>(null);
   const [pageSplitter, setPageSplitter] = useState<IPageSplitter | null>(null);
   const [previewRefreshToken, setPreviewRefreshToken] = useState(0);
+  const [paperVibeHeight, setPaperVibeHeight] = useState(0);
+  const paperVibeInnerRef = useRef<HTMLDivElement>(null);
+  const hasClearedFontsRef = useRef(false);
+  const inkMenuRef = useRef<HTMLDivElement>(null);
+  const presentRoseRef = useRef<HTMLAnchorElement | null>(null);
 
   const distortionProfile = useMemo(
     () => DISTORTION_PROFILES[paperDistortionLevel],
@@ -400,6 +181,14 @@ const App: React.FC = () => {
         setImageExportSystem(serviceContainer.resolve(SERVICE_TOKENS.IMAGE_EXPORT_SYSTEM));
         setTextureManager(serviceContainer.resolve(SERVICE_TOKENS.PAPER_TEXTURE_MANAGER));
         setFontManager(serviceContainer.resolve(SERVICE_TOKENS.FONT_MANAGER));
+        
+        try {
+          setCustomFontUploadManager(serviceContainer.resolve(SERVICE_TOKENS.CUSTOM_FONT_UPLOAD_MANAGER));
+        } catch (error) {
+          console.error('Failed to initialize custom font upload manager:', error);
+          setCustomFontUploadManager(null);
+        }
+        
         setPageSplitter(serviceContainer.resolve(SERVICE_TOKENS.PAGE_SPLITTER));
       } catch (error) {
         console.error('Failed to resolve services:', error);
@@ -407,6 +196,57 @@ const App: React.FC = () => {
       }
     }
   }, [servicesInitialized, serviceContainer]);
+
+  useEffect(() => {
+    if (!fontManager || !customFontUploadManager) {
+      return;
+    }
+    if (hasClearedFontsRef.current) {
+      return;
+    }
+
+    hasClearedFontsRef.current = true;
+
+    const clearFonts = async () => {
+      try {
+        const existingCustomFonts = fontManager.getCustomFonts();
+        await Promise.all(existingCustomFonts.map(async (font) => {
+          try {
+            await fontManager.removeCustomFont(font.id);
+          } catch (error) {
+            console.warn(`Failed to remove custom font ${font.id} from font manager:`, error);
+          }
+        }));
+
+        await customFontUploadManager.clearAllCustomFonts();
+        await customFontUploadManager.refreshCustomFonts();
+      } catch (error) {
+        console.warn('Failed to clear custom fonts on refresh:', error);
+      } finally {
+        setPreviewRefreshToken(prev => prev + 1);
+      }
+    };
+
+    clearFonts();
+  }, [fontManager, customFontUploadManager]);
+
+  // Listen for custom font events to refresh the preview
+  useEffect(() => {
+    const handleCustomFontEvent = () => {
+      // Force refresh the preview when custom fonts change
+      setPreviewRefreshToken(prev => prev + 1);
+    };
+
+    window.addEventListener('customFontUploaded', handleCustomFontEvent);
+    window.addEventListener('customFontAdded', handleCustomFontEvent);
+    window.addEventListener('customFontRemoved', handleCustomFontEvent);
+
+    return () => {
+      window.removeEventListener('customFontUploaded', handleCustomFontEvent);
+      window.removeEventListener('customFontAdded', handleCustomFontEvent);
+      window.removeEventListener('customFontRemoved', handleCustomFontEvent);
+    };
+  }, []);
 
   // Paper template state
   const [selectedTemplate, setSelectedTemplate] = useState<string>('blank-1');
@@ -445,6 +285,7 @@ const App: React.FC = () => {
   const [hasStartedUsing, setHasStartedUsing] = useState<boolean>(false);
   const [showFeedbackDialog, setShowFeedbackDialog] = useState<boolean>(false);
   const [feedbackDismissed, setFeedbackDismissed] = useState<boolean>(false);
+  const [showCustomFontDialog, setShowCustomFontDialog] = useState<boolean>(false);
   const normalizedCanonicalBase = useMemo(() => canonicalBase.replace(/\/+$/, ''), [canonicalBase]);
   const socialImageUrl = useMemo(() => `${normalizedCanonicalBase}/app-screenshot.jpg`, [normalizedCanonicalBase]);
 
@@ -495,7 +336,7 @@ const App: React.FC = () => {
         title = 'Handwriting Inspiration Blog | txttohandwriting.org';
         description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
         keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
-        structuredData.push(createBlogStructuredData(normalizedCanonicalBase));
+        structuredData.push(createBlogStructuredData(normalizedCanonicalBase, blogPosts));
         break;
       case 'blogPost':
         if (activeBlogPost) {
@@ -510,8 +351,14 @@ const App: React.FC = () => {
           title = 'Handwriting Inspiration Blog | txttohandwriting.org';
           description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
           keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
-          structuredData.push(createBlogStructuredData(normalizedCanonicalBase));
+          structuredData.push(createBlogStructuredData(normalizedCanonicalBase, blogPosts));
         }
+        break;
+      case 'changelog':
+        title = 'Changelog | txttohandwriting.org';
+        description = 'Follow every release of txttohandwriting.org, from launch day to the latest glow-up.';
+        keywords = `${DEFAULT_KEYWORDS}, product updates, txttohandwriting changelog`;
+        structuredData.push(createChangelogStructuredData(canonicalUrl));
         break;
       default:
         title = defaultTitle;
@@ -541,7 +388,7 @@ const App: React.FC = () => {
   useSEO(seoOptions);
 
   useEffect(() => {
-    console.log('ErrorBoundary resetKeys:', { page, selectedTemplate, selectedFontId });
+    // Reset error boundary when key dependencies change
   }, [page, selectedTemplate, selectedFontId]);
 
   useEffect(() => {
@@ -567,6 +414,11 @@ const App: React.FC = () => {
 
     if (rawPath === '/about') {
       setPage('about');
+      return;
+    }
+
+    if (rawPath === '/changelog') {
+      setPage('changelog');
       return;
     }
 
@@ -673,6 +525,174 @@ const App: React.FC = () => {
       document.documentElement.classList.add('nightlight');
     }
   }, [theme]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, [page]);
+
+  useEffect(() => {
+    const element = paperVibeInnerRef.current;
+
+    if (!isPaperVibeOpen) {
+      setPaperVibeHeight(0);
+      return;
+    }
+
+    if (!element) {
+      return;
+    }
+
+    const updateHeight = () => {
+      const measuredHeight = element.scrollHeight + 24;
+      setPaperVibeHeight(measuredHeight);
+    };
+
+    const raf = requestAnimationFrame(updateHeight);
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const observer = new ResizeObserver(updateHeight);
+      observer.observe(element);
+      return () => {
+        cancelAnimationFrame(raf);
+        observer.disconnect();
+      };
+    }
+
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, [isPaperVibeOpen, selectedTemplate]);
+
+  useEffect(() => {
+    setIsControlDockOpen(false);
+  }, [page]);
+
+  // Ensure Paper Vibe menu is open after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPaperVibeOpen(true);
+    }, 100); // Small delay to ensure DOM is ready
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const ensureDefaultTemplateSelection = async () => {
+      if (!templateProvider) {
+        return;
+      }
+
+      try {
+        const templates = await templateProvider.getAvailableTemplates();
+        if (!isMounted || templates.length === 0) {
+          return;
+        }
+
+        // Always select the first template when the page loads
+        const [firstTemplate] = templates;
+        if (!firstTemplate) {
+          return;
+        }
+
+        setSelectedTemplate(firstTemplate.id);
+        setCurrentPaperTemplate(firstTemplate);
+      } catch (error) {
+        console.warn('Failed to ensure default paper template selection:', error);
+      }
+    };
+
+    void ensureDefaultTemplateSelection();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [templateProvider]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!inkMenuRef.current) return;
+      if (!inkMenuRef.current.contains(event.target as Node)) {
+        setIsInkMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsInkMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (page !== 'main') {
+      setIsControlDockVisible(false);
+      return;
+    }
+
+    let frameId: number | null = null;
+
+    const evaluateDockVisibility = () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+        frameId = null;
+      }
+
+      if (!presentRoseRef.current) {
+        setIsControlDockVisible(prev => (prev === true ? prev : true));
+        return;
+      }
+
+      const { bottom } = presentRoseRef.current.getBoundingClientRect();
+      const shouldShowDock = bottom >= 0;
+
+      setIsControlDockVisible(prev => (prev === shouldShowDock ? prev : shouldShowDock));
+
+      if (!shouldShowDock) {
+        setIsControlDockOpen(false);
+      }
+    };
+
+    const scheduleEvaluation = () => {
+      if (frameId !== null) {
+        return;
+      }
+      frameId = window.requestAnimationFrame(evaluateDockVisibility);
+    };
+
+    evaluateDockVisibility();
+
+    window.addEventListener('scroll', scheduleEvaluation, { passive: true });
+    window.addEventListener('resize', scheduleEvaluation);
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener('scroll', scheduleEvaluation);
+      window.removeEventListener('resize', scheduleEvaluation);
+    };
+  }, [page]);
 
   useEffect(() => {
     if (typeof document === 'undefined') {
@@ -1201,6 +1221,27 @@ const App: React.FC = () => {
     setSelectedTemplate(templateId);
   };
 
+  // Custom font upload handlers
+  const handleCustomFontUpload = async (result: any) => {
+    if (result.success && result.font && fontManager) {
+      try {
+        // Add the font to the font manager
+        await fontManager.addCustomFont(result.font);
+        
+        // Optionally switch to the newly uploaded font
+        setSelectedFontId(result.font.id);
+        setFontFamily(result.font.family);
+        
+        // Force refresh the preview
+        setPreviewRefreshToken(prev => prev + 1);
+      } catch (error) {
+        console.error('Failed to add custom font to font manager:', error);
+      }
+    } else {
+      console.error('Custom font upload failed:', result.error);
+    }
+  };
+
   const generateMultiplePages = async (
     sourceText: string,
     limit: number
@@ -1327,244 +1368,68 @@ const App: React.FC = () => {
           return null;
         }
         return <BlogPostPage post={post} onGoBack={() => setPage('blog')} />;
+      case 'changelog':
+        return <ChangeLogPage onGoBack={() => {
+          setPage('main');
+          setPreviewRefreshToken(token => token + 1);
+        }} />;
       case 'main':
       default:
-
-
         return (
-          <main className="flex-grow w-full max-w-7xl mx-auto p-4 md:p-8" role="main" aria-label="Handwriting generator application">
-            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 md:items-start md:h-full">
-              {/* Controls Panel */}
-              <section className="lg:col-span-1 md:col-span-1 bg-[var(--panel-bg)] backdrop-blur-lg border border-[var(--panel-border)] rounded-xl shadow-lg p-4 md:p-6 flex flex-col gap-4 md:gap-6" role="form" aria-labelledby="controls-heading">
-                <div className="flex justify-between items-center border-b border-[var(--panel-border)] pb-3">
-                  <h2 id="controls-heading" className="text-2xl font-bold text-[var(--text-color)]">The Lab</h2>
-                  <div className="flex items-center gap-2" role="status" aria-label="Application status">
-                    <div className="blinking-dot" aria-hidden="true"></div>
-                    <span className="text-sm font-medium text-[var(--text-muted)]">Gear 1</span>
-                  </div>
-                </div>
-
-                {/* Text Input */}
-                <div>
-                  <label htmlFor="text-input" className="block text-sm font-medium text-[var(--text-muted)] mb-2">Spill the tea here...</label>
-                  <textarea
-                    id="text-input"
-                    value={text}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value)}
-                    placeholder="Type your text here..."
-                    className="w-full h-48 bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg p-3 focus:ring-2 focus:ring-[var(--accent-color)] focus:outline-none transition resize-none"
-                    aria-label="Text input for handwriting conversion"
-                  />
-                </div>
-
-                {/* Font Selector */}
-                <FontSelector
+          <>
+            <MainPage
+              text={text}
+              onTextChange={setText}
                   fontManager={fontManager}
                   selectedFontId={selectedFontId}
                   onFontChange={handleFontChange}
-                />
-
-                {/* Ink Color Selector */}
-                <div>
-                  <label htmlFor="ink-select" className="block text-sm font-medium text-[var(--text-muted)] mb-2">Ink Color</label>
-                  <select
-                    id="ink-select"
-                    value={inkColor}
-                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setInkColor(e.target.value)}
-                    className="w-full bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg p-3 focus:ring-2 focus:ring-[var(--accent-color)] focus:outline-none transition appearance-none"
-                    style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
-                    aria-label="Select ink color"
-                  >
-                    {inkColors.map(color => (
-                      <option key={color.name} value={color.value}>
-                        {color.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Paper Quality Distortion Meter */}
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <label htmlFor="paper-distortion" className="block text-sm font-medium text-[var(--text-muted)]">
-                      Paper Distortion Level
-                    </label>
-                    <span className="text-xs text-[var(--text-muted)] uppercase tracking-wide">
-                      Lv. {paperDistortionLevel}
-                    </span>
-                  </div>
-                  <input
-                    id="paper-distortion"
-                    type="range"
-                    min={1}
-                    max={3}
-                    step={1}
-                    value={paperDistortionLevel}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPaperDistortionLevel(Number(e.target.value) as DistortionLevel)}
-                    className="w-full cursor-pointer"
-                    aria-label="Adjust paper distortion level"
-                  />
-                  <div className="flex items-center justify-between mt-2 text-xs text-[var(--text-muted)]">
-                    {[1, 2, 3].map(level => (
-                      <span
-                        key={level}
-                        className={`px-2 py-1 rounded-full border ${paperDistortionLevel === level
-                          ? 'border-[var(--accent-color)] text-[var(--accent-color)] bg-[var(--control-bg)]'
-                          : 'border-transparent text-[var(--text-muted)] opacity-70'} transition-colors`}
-                      >
-                        {level === 1 ? 'High realism' : level === 2 ? 'Medium realism' : 'Low realism'}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">
-                    {distortionProfile.description}
-                  </p>
-                </div>
-
-                {/* Font Size Adjuster */}
-                <div>
-                  <label htmlFor="font-size-slider" className="block text-sm font-medium text-[var(--text-muted)] mb-2">
-                    Font Size <span className="font-bold text-[var(--accent-color)]">{fontSize}px</span>
-                  </label>
-                  <input
-                    id="font-size-slider"
-                    type="range"
-                    min="12"
-                    max="48"
-                    step="1"
-                    value={fontSize}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFontSize(Number(e.target.value))}
-                    className="w-full cursor-pointer"
-                    aria-label="Adjust font size"
-                  />
-                </div>
-
-                {/* Paper Template Selector */}
-                <div className="relative">
-                  <button
-                    className="flex items-center justify-between w-full text-left text-sm font-medium text-[var(--text-muted)] mb-2 focus:outline-none"
-                    onClick={() => setIsPaperVibeOpen(!isPaperVibeOpen)}
-                    aria-expanded={isPaperVibeOpen}
-                    aria-controls="paper-vibe-content"
-                  >
-                    Paper Vibe
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${isPaperVibeOpen ? 'rotate-180' : ''}`}
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </button>
-                  {isPaperVibeOpen && (
-                    <div id="paper-vibe-content" className="mt-2">
-                      <PaperTemplateSelector
+              inkColors={inkColors}
+              inkColor={inkColor}
+              setInkColor={setInkColor}
+              isInkMenuOpen={isInkMenuOpen}
+              setIsInkMenuOpen={setIsInkMenuOpen}
+              inkMenuRef={inkMenuRef}
                         templateProvider={templateProvider}
                         selectedTemplate={selectedTemplate}
                         onTemplateChange={handleTemplateChange}
-                        className="mt-2"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div className="border-t border-[var(--panel-border)] pt-6 flex flex-col gap-3">
-                  <button onClick={handleCopy} className="w-full text-center bg-transparent border-2 border-[var(--accent-color)] text-[var(--accent-color)] font-semibold py-2 px-4 rounded-lg transition-colors duration-300 hover:bg-[var(--accent-color)] hover:text-white">
-                    {isCopied ? 'Copied!' : 'Copy Text'}
-                  </button>
-                  <button
-                    onClick={handleGenerateImages}
-                    disabled={isGenerating}
-                    className={`w-full text-center font-semibold py-2 px-4 rounded-lg transition-colors duration-300 ${isGenerating
-                      ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                      : 'bg-[var(--accent-color)] text-white hover:bg-[var(--accent-color-hover)]'
-                      }`}
-                  >
-                    {isGenerating ? 'Generating...' : 'Generate Images'}
-                  </button>
-
-                  {/* Export Progress */}
-                  {exportProgress && (
-                    <div className={`text-sm text-center p-2 rounded-lg ${showPageLimitWarning
-                      ? 'bg-yellow-100 text-yellow-800 border border-yellow-300'
-                      : 'bg-blue-100 text-blue-800 border border-blue-300'
-                      }`}>
-                      {exportProgress}
-                    </div>
-                  )}
-
-                </div>
-              </section>
-
-              {/* Output Panel */}
-              <section className="lg:col-span-2 md:col-span-1 flex flex-col gap-4 h-full" role="region" aria-labelledby="output-heading">
-                <h2 id="output-heading" className="sr-only">Handwriting Preview and Gallery</h2>
-                
-                {/* Handwriting Preview */}
-                <div className="w-full flex-1 overflow-auto max-h-[75vh] md:max-h-[70vh] lg:max-h-[75vh] rounded-xl shadow-2xl shadow-[var(--shadow-color)] border border-[var(--panel-border)] transition-all duration-300" role="img" aria-label="Generated handwriting preview">
-                  <HandwritingPreview
-                    text={text}
+              isPaperVibeOpen={isPaperVibeOpen}
+              togglePaperVibe={() => setIsPaperVibeOpen(prev => !prev)}
+              paperVibeInnerRef={paperVibeInnerRef}
+              paperVibeHeight={paperVibeHeight}
+                    customFontUploadManager={customFontUploadManager}
+              currentCustomFontsCount={fontManager?.getCustomFonts()?.length || 0}
+              onOpenCustomFontDialog={() => setShowCustomFontDialog(true)}
+              onGenerateImages={handleGenerateImages}
+              isGenerating={isGenerating}
+              exportProgress={exportProgress}
+              showPageLimitWarning={showPageLimitWarning}
                     fontFamily={fontFamily}
                     fontSize={fontSize}
-                    inkColor={inkColor}
-                    resolvedInkColor={resolvedInkColor}
-                    paperTemplate={currentPaperTemplate}
+              inkColorResolved={resolvedInkColor}
+              currentPaperTemplate={currentPaperTemplate}
                     textureManager={textureManager}
                     distortionProfile={distortionProfile}
-                    distortionLevel={paperDistortionLevel}
+              paperDistortionLevel={paperDistortionLevel}
                     isTemplateLoading={isTemplateLoading}
-                    className="w-full h-full min-h-[460px] md:min-h-[520px] p-6"
-                    refreshToken={previewRefreshToken}
-                  />
-                </div>
-
-                {/* Image Gallery - Requirements 1.1, 1.2, 1.3, 1.4, 1.5 */}
-                <div className="w-full">
-                  <ImageGallery
-                    images={generatedImages}
+              previewRefreshToken={previewRefreshToken}
+              generatedImages={generatedImages}
                     onFullscreenView={handleFullscreenView}
                     onRemoveImage={handleRemoveImage}
                     onBulkDownload={handleBulkDownload}
-                    className="shadow-lg"
-                  />
-                </div>
-                <div className="pb-2 px-8 md:px-12">
-                  <a
-                    href="https://www.buymeacoffee.com/th3f00l"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-transparent border-2 border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 text-sm flex items-center justify-center gap-2"
-                  >
-                    Present rose
-                  </a>
-                </div>
-              </section>
-            </div>
-
-            {/* The Tea Section */}
-            <section className="w-full max-w-4xl mx-auto mt-12">
-              <div className="bg-[var(--panel-bg)] backdrop-blur-lg border border-[var(--panel-border)] rounded-xl shadow-lg p-8 md:p-12 text-center">
-                  <div className="mb-6">
-                    <button className="px-6 py-2 border border-[var(--accent-color)] rounded-full text-sm font-medium text-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-white transition-colors duration-300">
-                      A Word
-                    </button>
-                  </div>
-                
-                <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-6 leading-tight">
-                  What is the motivation behind this?<br />
-                </h2>
-                
-                <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
-                  We believe in a future where students can focus on their ideas instead of getting hand cramps from writing assignments. No cap, it's time to embrace the digital age while keeping that authentic handwritten vibe.
-                </p>
-              </div>
-            </section>
-
-            <Testimonials />
-          </main>
+              presentRoseRef={presentRoseRef}
+            />
+            {!showGenerationOverlay && !isFullscreenOpen && !showCustomFontDialog && isControlDockVisible && (
+              <BottomControlDock
+                isOpen={isControlDockOpen}
+                onToggle={() => setIsControlDockOpen(prev => !prev)}
+                fontSize={fontSize}
+                onFontSizeChange={setFontSize}
+                paperDistortionLevel={paperDistortionLevel}
+                onPaperDistortionChange={(value: DistortionLevel) => setPaperDistortionLevel(value)}
+                distortionProfile={{ description: distortionProfile.description }}
+              />
+            )}
+          </>
         );
     }
   };
@@ -1624,7 +1489,7 @@ const App: React.FC = () => {
       <ErrorNotificationPanel
         position="top-right"
         maxNotifications={3}
-        className="z-50"
+        className="z-[100]"
       />
 
       {/* Fullscreen Viewer - Requirement 1.5 */}
@@ -1648,185 +1513,109 @@ const App: React.FC = () => {
 
       <CookieConsentBanner onOpenTerms={() => setPage('terms')} />
 
-      {showFeedbackDialog && (
-        <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="feedback-dialog-title"
-        >
-          <div className="relative w-full max-w-lg space-y-6 rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 text-left shadow-2xl">
-            <button
-              type="button"
-              onClick={closeFeedbackDialog}
-              className="absolute right-4 top-4 text-[var(--text-muted)] transition-colors hover:text-[var(--text-color)] focus:outline-none"
-              aria-label="Close feedback message"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+      <FeedbackDialog
+        isOpen={showFeedbackDialog}
+        supportEmail={SUPPORT_EMAIL}
+        onClose={closeFeedbackDialog}
+        onEmail={handleFeedbackEmail}
+        onShare={handleFeedbackShare}
+      />
 
-            <div className="space-y-3 text-[var(--text-color)]">
-              <h3 id="feedback-dialog-title" className="text-2xl font-semibold">
-                Loving the handwritten vibes?
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-                We'd love to hear how it's working for you. Drop us a note at <span className="text-[var(--accent-color)]">{SUPPORT_EMAIL}</span> or pass the link to a friend who could use prettier notes.
-              </p>
+      <DownloadIntentDialog
+        intent={downloadIntent}
+        countdown={downloadCountdown}
+        onDismiss={handleDownloadIntentDismiss}
+        onShare={handleShareSite}
+        onPresentRose={handlePresentRose}
+      />
+
+      <GenerationLimitDialog
+        dialog={generationLimitDialog}
+        onClose={() => setGenerationLimitDialog(null)}
+      />
+
+      <AppFooter
+        onAbout={() => setPage('about')}
+        onBlog={() => setPage('blog')}
+        onChangelog={() => setPage('changelog')}
+        onTerms={() => setPage('terms')}
+        onFaq={() => setPage('faq')}
+      />
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={handleFeedbackEmail}
-                className="flex-1 min-w-[140px] rounded-lg bg-[var(--accent-color)] px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--accent-color-hover)] hover:shadow-lg"
-              >
-                Email support
-              </button>
-              <button
-                type="button"
-                onClick={handleFeedbackShare}
-                className="flex-1 min-w-[140px] rounded-lg border border-[var(--accent-color)] bg-transparent px-4 py-2 text-sm font-semibold text-[var(--accent-color)] shadow-md transition-all hover:bg-[var(--accent-color)]/10"
-              >
-                Share with friends
-              </button>
-              <button
-                type="button"
-                onClick={closeFeedbackDialog}
-                className="min-w-[120px] rounded-lg border border-[var(--panel-border)] bg-[var(--control-bg)] px-4 py-2 text-sm font-medium text-[var(--text-muted)] transition-all hover:text-[var(--text-color)]"
-              >
-                Maybe later
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Custom Font Upload Dialog */}
+      <CustomFontUploadDialog
+        isOpen={showCustomFontDialog}
+        onClose={() => setShowCustomFontDialog(false)}
+        onUpload={async (file: File) => {
+          if (!customFontUploadManager) {
+            return {
+              success: false,
+              error: {
+                type: FontErrorType.FEATURE_UNAVAILABLE,
+                message: 'Font upload manager not available',
+                code: 'MANAGER_NOT_AVAILABLE',
+                recoverable: false,
+                severity: 'high' as const
+              }
+            };
+          }
 
-      {downloadIntent && (
-        <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="download-intent-heading"
-        >
-          <div
-            className="relative w-full max-w-xl space-y-5 rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 text-left shadow-2xl"
-          >
-            <button
-              type="button"
-              onClick={handleDownloadIntentDismiss}
-              className="absolute right-4 top-4 text-[var(--text-muted)] transition-colors hover:text-[var(--text-color)] focus:outline-none"
-              aria-label="Close download message"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div>
-              <h3 id="download-intent-heading" className="text-2xl font-semibold text-[var(--text-color)]">
-                One Little Favor?
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
-                We pour hours (and plenty of caffeine) into keeping these handwritten vibes Ad-free. As you know, nothing's truly free in this cursed world, making & maintaining a site is seriously resource-intensive (both money and time). So if this {downloadIntent.mode === 'bulk' ? 'bundle' : 'page'} helps you out, consider sharing the love or gifting a rose while we spin up your download.
-              </p>
-              <p className="mt-3 text-xs uppercase tracking-wide text-[var(--accent-color)]">
-                Preparing {downloadIntent.label}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-xl bg-[var(--control-bg)] px-4 py-3 text-sm">
-              <span className="font-medium text-[var(--text-muted)]">Download begins in</span>
-              <span className="text-3xl font-semibold text-[var(--accent-color)]">{downloadCountdown}s</span>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={handleShareSite}
-                className="flex-1 min-w-[140px] rounded-lg bg-[var(--accent-color)] px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg"
-              >
-                Share
-              </button>
-              <button
-                type="button"
-                onClick={handlePresentRose}
-                className="flex-1 min-w-[140px] rounded-lg bg-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-rose-600 hover:shadow-lg"
-              >
-                Present rose
-              </button>
-              <button
-                type="button"
-                onClick={handleDownloadIntentDismiss}
-                className="min-w-[120px] rounded-lg border border-[var(--panel-border)] bg-[var(--control-bg)] px-4 py-2 text-sm font-medium text-[var(--text-muted)] transition-all hover:text-[var(--text-color)]"
-              >
-                Maybe later
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {generationLimitDialog && (
-        <div
-          className="fixed inset-0 z-[75] flex items-center justify-center bg-black/65 backdrop-blur-md px-4"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="w-full max-w-lg space-y-5 rounded-2xl border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 shadow-2xl">
-            <div className="space-y-3 text-[var(--text-color)]">
-              <h3 className="text-2xl font-semibold">
-                {generationLimitDialog.type === 'total'
-                  ? 'Whoa there, that’s too much text'
-                  : generationLimitDialog.type === 'per-run'
-                    ? 'Two pages per run keeps it tidy'
-                    : 'Gallery limit reached'}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--text-muted)]">
-                {generationLimitDialog.type === 'total'
-                  ? `txttohandwriting.org can only render up to ${generationLimitDialog.allowed} pages from a single block of text. Your input would spill into ${generationLimitDialog.attempted} pages. Please trim the content or split it into smaller batches, then generate them one after another.`
-                  : generationLimitDialog.type === 'per-run'
-                    ? `We only generate ${generationLimitDialog.allowed} pages per pass, We are actively working to increase the limit. Your text would create ${generationLimitDialog.attempted} pages. Cut it down to the first two pages’ worth, generate, then paste the next chunk and repeat.`
-                    : `You can only keep at most ${generationLimitDialog.allowed} pages in the gallery. Remove at least ${generationLimitDialog.remove} page${generationLimitDialog.remove > 1 ? 's' : ''} before generating again. We are doing this to optimize your experience, Kindly consider.`}
-              </p>
-            </div>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={() => setGenerationLimitDialog(null)}
-                className="rounded-lg bg-[var(--accent-color)] px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--accent-color-hover)]"
-              >
-                Got it
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-      <footer className="w-full max-w-7xl mx-auto py-6 px-4 sm:px-8 text-center text-sm">
-        <div className="flex justify-center items-center flex-col sm:flex-row gap-2 sm:gap-6 border-t border-[var(--panel-border)] pt-6">
-          <button onClick={() => setPage('about')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
-            <AboutIcon className="w-4 h-4" />
-            About
-          </button>
-          <button onClick={() => setPage('blog')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
-            <BlogIcon className="w-4 h-4" />
-            The Tea
-          </button>
-          <button onClick={() => setPage('terms')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
-            <TermsIcon className="w-4 h-4" />
-            Terms and Conditions
-          </button>
-          <button onClick={() => setPage('faq')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
-            <FaqIcon className="w-4 h-4" />
-            Frequently Asked Questions
-          </button>
-        </div>
-        <div className="mt-4 pt-4 border-t border-[var(--panel-border)] text-[var(--text-muted)]">
-          <p>&copy; 2025 txttohandwriting.org. All rights reserved.</p>
-        </div>
-      </footer>
-      </div>
+          const result = await customFontUploadManager.uploadFont(file);
+          
+          if (result.success) {
+            await new Promise(resolve => setTimeout(resolve, MANDATORY_FONT_UPLOAD_DELAY_MS));
+            await handleCustomFontUpload(result);
+          }
+          
+          return result;
+        }}
+        onRemoveFont={async (fontId: string) => {
+          if (!fontManager || !customFontUploadManager) {
+            throw new Error('Font managers not available');
+          }
+          
+          try {
+            // Remove from upload manager first (this handles storage cleanup)
+            await customFontUploadManager.removeCustomFont(fontId);
+            
+            // Remove from font manager (this handles UI state)
+            await fontManager.removeCustomFont(fontId);
+            
+            // Force refresh the upload manager's font list to ensure duplicate detection works
+            await customFontUploadManager.refreshCustomFonts();
+            
+            // Force refresh the preview
+            setPreviewRefreshToken(prev => prev + 1);
+            
+            // Dispatch event to notify other components
+            window.dispatchEvent(new CustomEvent('customFontRemoved', {
+              detail: { fontId }
+            }));
+          } catch (error) {
+            console.error('Failed to remove custom font:', error);
+            throw error;
+          }
+        }}
+        onReplaceFont={async (fontId: string, newFile: File) => {
+          if (!customFontUploadManager) {
+            throw new Error('Font upload manager not available');
+          }
+          
+          const result = await customFontUploadManager.replaceFont(fontId, newFile);
+          
+          if (result.success) {
+            await new Promise(resolve => setTimeout(resolve, MANDATORY_FONT_UPLOAD_DELAY_MS));
+            await handleCustomFontUpload(result);
+          } else {
+            throw new Error(result.error?.message || 'Failed to replace font');
+          }
+        }}
+        maxCustomFonts={2}
+        currentCount={fontManager?.getCustomFonts()?.length || 0}
+        customFonts={fontManager?.getCustomFonts() || []}
+        disabled={!customFontUploadManager}
+      />
     </ErrorBoundary>
   );
 };

@@ -94,10 +94,10 @@ export class ResponsiveCanvasManager implements IResponsiveCanvasManager {
       
       // Get container dimensions and calculate optimal canvas size
       const containerDims = this.getOptimalDimensions(container, finalConfig);
-      console.log('Container dimensions:', containerDims);
+
       
       const metrics = this.calculateScalingMetrics(containerDims, finalConfig);
-      console.log('Canvas metrics:', metrics);
+
       
       // Apply initial sizing
       this.applyCanvasScaling(canvas, metrics);

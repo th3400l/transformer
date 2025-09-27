@@ -1,5 +1,5 @@
-// Main export file for Gear-1 handwriting system types
-// Provides centralized access to all interfaces, types, and error classes
+// Main export file for Gear-1 handwriting system types and constants
+// Provides centralized access for commonly used interfaces
 
 // Core types and interfaces
 export * from './core';
@@ -9,14 +9,6 @@ export * from './errors';
 
 // Line alignment types and interfaces
 export * from './lineAlignment';
-
-// Font management types and interfaces
-export * from './fonts';
-
-// Image gallery types and interfaces
-export * from './gallery';
-
-// Paper templates are now defined in services/paperTemplateProvider.ts
 
 // Default rendering configuration (Requirements 1.1, 1.2, 1.3, 1.4, 1.5, 3.1, 6.1)
 export const DEFAULT_RENDERING_CONFIG = {
@@ -58,5 +50,12 @@ export const SERVICE_TOKENS = {
   DOWNLOAD_MANAGER: 'IDownloadManager',
   BULK_DOWNLOAD_MANAGER: 'IBulkDownloadManager',
   VARIATION_STRATEGY: 'IVariationStrategy',
-  FONT_MANAGER: 'IFontManager'
+  FONT_MANAGER: 'IFontManager',
+  FONT_STORAGE_SERVICE: 'IFontStorageService',
+  BROWSER_COMPATIBILITY_LAYER: 'IBrowserCompatibilityLayer',
+  FONT_VALIDATION_ENGINE: 'IFontValidationEngine',
+  CUSTOM_FONT_UPLOAD_MANAGER: 'ICustomFontUploadManager',
+  FONT_ERROR_HANDLER: 'IFontErrorHandler',
+  FONT_PROGRESS_TRACKER: 'IFontProgressTracker',
+  FONT_ERROR_NOTIFICATION_SERVICE: 'IFontErrorNotificationService'
 } as const;

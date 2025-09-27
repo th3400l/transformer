@@ -1,7 +1,31 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { usePerformanceMonitoring, useRenderPerformance } from '../hooks/usePerformanceMonitoring';
 
-const testimonials = [
+type TestimonialVariant = 'fool';
+
+interface ThemeState {
+  isMidnightMode: boolean;
+  isRoseTheme: boolean;
+  currentTheme: 'nightlight' | 'dark' | 'feminine';
+}
+
+interface Testimonial {
+  name: string;
+  message: string;
+  avatar: string;
+  variant?: TestimonialVariant;
+}
+
+interface TestimonialConfig {
+  name: string;
+  message: string;
+  avatar: string;
+  variant: TestimonialVariant;
+  visibilityCondition: (theme: ThemeState) => boolean;
+}
+
+const testimonials: Testimonial[] = [
   {
     name: 'Baddie Brown',
     message: 'Whenever I had to write stuff down, it looked like a total mess. This site seriously changed the game — now my notes look super cute, and the font styles? Absolute slay.',
@@ -46,7 +70,8 @@ const testimonials = [
   name: 'L',
   message: "I used to write assignments and get low grades — that’s why everyone calls me L. But I tasted a W using this site. My notes have never looked this precise.",
   avatar: '/avatars/L.png'
-}
+},
+
 
 
 
@@ -59,30 +84,147 @@ const Testimonials: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [themeState, setThemeState] = useState<ThemeState>({
+    isMidnightMode: false,
+    isRoseTheme: false,
+    currentTheme: 'nightlight'
+  });
   const trackRef = useRef<HTMLDivElement | null>(null);
+
+  // Performance monitoring
+  const { trackRender, checkPerformance } = usePerformanceMonitoring({
+    enableAutoReporting: true,
+    reportInterval: 30000,
+    memoryThreshold: 75,
+    onHighMemoryUsage: (usage) => {
+      console.warn(`High memory usage detected in Testimonials: ${usage.toFixed(1)}%`);
+      // Force cleanup of unused resources
+      if (trackRef.current) {
+        const unusedElements = trackRef.current.querySelectorAll('[data-cleanup="true"]');
+        unusedElements.forEach(el => el.remove());
+      }
+    },
+    onPerformanceIssue: (suggestions) => {
+      console.warn('Performance issues detected in Testimonials:', suggestions);
+    }
+  });
+
+  const { endRenderTracking } = useRenderPerformance('Testimonials');
 
   useEffect(() => {
     if (typeof window === 'undefined') {
       return;
     }
 
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
+    let mediaQuery: MediaQueryList | null = null;
+    let cleanup: (() => void) | null = null;
 
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
+    try {
+      mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const handleChange = (event: MediaQueryListEvent) => {
+        setPrefersReducedMotion(event.matches);
       };
+
+      setPrefersReducedMotion(mediaQuery.matches);
+
+      if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', handleChange);
+        cleanup = () => {
+          if (mediaQuery) {
+            mediaQuery.removeEventListener('change', handleChange);
+          }
+        };
+      } else {
+        // Fallback for older browsers
+        mediaQuery.addListener(handleChange);
+        cleanup = () => {
+          if (mediaQuery) {
+            mediaQuery.removeListener(handleChange);
+          }
+        };
+      }
+    } catch (error) {
+      console.warn('Failed to setup reduced motion detection:', error);
+      // Fallback to assuming no reduced motion preference
+      setPrefersReducedMotion(false);
     }
 
-    mediaQuery.addListener(handleChange);
+    return cleanup || (() => {});
+  }, []);
+
+  useEffect(() => {
+    const updateThemeState = () => {
+      try {
+        const classList = Array.from(document.documentElement.classList);
+        const isMidnightMode = classList.includes('dark');
+        const isRoseTheme = classList.includes('feminine');
+
+        
+        let currentTheme: 'nightlight' | 'dark' | 'feminine' = 'nightlight';
+        if (isMidnightMode) {
+          currentTheme = 'dark';
+        } else if (isRoseTheme) {
+          currentTheme = 'feminine';
+        }
+
+        setThemeState(prevState => {
+          // Only update if theme actually changed to prevent unnecessary re-renders
+          if (prevState.currentTheme !== currentTheme || 
+              prevState.isMidnightMode !== isMidnightMode || 
+              prevState.isRoseTheme !== isRoseTheme) {
+            return {
+              isMidnightMode,
+              isRoseTheme,
+              currentTheme
+            };
+          }
+          return prevState;
+        });
+      } catch (error) {
+        console.warn('Theme detection failed:', error);
+        // Fallback to default theme
+        setThemeState({
+          isMidnightMode: false,
+          isRoseTheme: false,
+          currentTheme: 'nightlight'
+        });
+      }
+    };
+
+    let observer: MutationObserver | null = null;
+    
+    try {
+      observer = new MutationObserver((mutations) => {
+        // Debounce theme updates to prevent excessive re-renders
+        const hasClassChange = mutations.some(mutation => 
+          mutation.type === 'attributes' && mutation.attributeName === 'class'
+        );
+        
+        if (hasClassChange) {
+          // Use requestAnimationFrame to ensure DOM is updated
+          requestAnimationFrame(updateThemeState);
+        }
+      });
+      
+      observer.observe(document.documentElement, { 
+        attributes: true, 
+        attributeFilter: ['class'],
+        attributeOldValue: true
+      });
+
+      // Initial theme detection with slight delay to ensure DOM is ready
+      requestAnimationFrame(updateThemeState);
+    } catch (error) {
+      console.warn('Failed to setup theme observer:', error);
+      // Fallback to polling for theme changes
+      const pollInterval = setInterval(updateThemeState, 1000);
+      return () => clearInterval(pollInterval);
+    }
+
     return () => {
-      mediaQuery.removeListener(handleChange);
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, []);
 
@@ -104,13 +246,18 @@ const Testimonials: React.FC = () => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
+  const filteredTestimonials = useMemo(() => {
+    // Show all testimonials in all themes
+    return testimonials;
+  }, []);
+
   const clonesNeeded = itemsPerView; // Number of items to clone from each end
   const displayTestimonials = useMemo(() => {
-    if (testimonials.length === 0) return [];
-    const clonedStart = testimonials.slice(testimonials.length - clonesNeeded);
-    const clonedEnd = testimonials.slice(0, clonesNeeded);
-    return [...clonedStart, ...testimonials, ...clonedEnd];
-  }, [testimonials, clonesNeeded]);
+    if (filteredTestimonials.length === 0) return [];
+    const clonedStart = filteredTestimonials.slice(filteredTestimonials.length - clonesNeeded);
+    const clonedEnd = filteredTestimonials.slice(0, clonesNeeded);
+    return [...clonedStart, ...filteredTestimonials, ...clonedEnd];
+  }, [filteredTestimonials, clonesNeeded]);
 
   // Adjust initial currentIndex after cloning
   useEffect(() => {
@@ -122,12 +269,28 @@ const Testimonials: React.FC = () => {
       return;
     }
 
-    const interval = window.setInterval(() => {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-    }, 8000);
+    let interval: NodeJS.Timeout | null = null;
+    
+    try {
+      const scheduleNext = () => {
+        const delay = 8000; // 8s for all testimonials
+        
+        interval = setTimeout(() => {
+          setCurrentIndex((prevIndex) => prevIndex + 1);
+          scheduleNext(); // Schedule the next transition
+        }, delay);
+      };
+      
+      scheduleNext();
+    } catch (error) {
+      console.warn('Failed to setup testimonial carousel interval:', error);
+    }
 
     return () => {
-      window.clearInterval(interval);
+      if (interval) {
+        clearTimeout(interval);
+        interval = null;
+      }
     };
   }, [prefersReducedMotion, isPaused, isTransitioning, displayTestimonials.length]);
 
@@ -137,55 +300,117 @@ const Testimonials: React.FC = () => {
       return;
     }
 
-    const handleTransitionEnd = () => {
-      if (isTransitioning) {
+    const handleTransitionEnd = (event: TransitionEvent) => {
+      // Only handle transitions on the track element itself
+      if (event.target !== trackElement || isTransitioning) {
         return;
       }
 
-      if (currentIndex >= testimonials.length + clonesNeeded) {
-        setIsTransitioning(true);
+      try {
+        if (currentIndex >= filteredTestimonials.length + clonesNeeded) {
+          setIsTransitioning(true);
+          setCurrentIndex(clonesNeeded);
+        } else if (currentIndex < clonesNeeded) {
+          setIsTransitioning(true);
+          setCurrentIndex(filteredTestimonials.length + clonesNeeded - itemsPerView);
+        }
+      } catch (error) {
+        console.warn('Testimonial transition handling failed:', error);
+        // Reset to safe state
+        setIsTransitioning(false);
         setCurrentIndex(clonesNeeded);
-      } else if (currentIndex < clonesNeeded) {
-        setIsTransitioning(true);
-        setCurrentIndex(testimonials.length + clonesNeeded - itemsPerView);
       }
     };
 
-    trackElement.addEventListener('transitionend', handleTransitionEnd);
-    return () => {
-      trackElement.removeEventListener('transitionend', handleTransitionEnd);
-    };
-  }, [currentIndex, clonesNeeded, itemsPerView, isTransitioning]);
+    let cleanup: (() => void) | null = null;
+    
+    try {
+      trackElement.addEventListener('transitionend', handleTransitionEnd, { passive: true });
+      cleanup = () => {
+        trackElement.removeEventListener('transitionend', handleTransitionEnd);
+      };
+    } catch (error) {
+      console.warn('Failed to setup transition event listener:', error);
+    }
 
-  // Disable transition during snap back
+    return cleanup || (() => {});
+  }, [currentIndex, clonesNeeded, itemsPerView, isTransitioning, filteredTestimonials]);
+
+  // Disable transition during snap back with proper cleanup
   useEffect(() => {
     if (!isTransitioning) {
       return;
     }
 
+    let firstFrame: number | null = null;
     let secondFrame: number | null = null;
-    const frame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(() => {
-        setIsTransitioning(false);
-      });
-    });
+    let cleanup: (() => void) | null = null;
 
-    return () => {
-      cancelAnimationFrame(frame);
-      if (secondFrame !== null) {
-        cancelAnimationFrame(secondFrame);
-      }
-    };
+    try {
+      firstFrame = requestAnimationFrame(() => {
+        secondFrame = requestAnimationFrame(() => {
+          try {
+            setIsTransitioning(false);
+          } catch (error) {
+            console.warn('Failed to reset transition state:', error);
+          }
+        });
+      });
+
+      cleanup = () => {
+        if (firstFrame !== null) {
+          cancelAnimationFrame(firstFrame);
+          firstFrame = null;
+        }
+        if (secondFrame !== null) {
+          cancelAnimationFrame(secondFrame);
+          secondFrame = null;
+        }
+      };
+    } catch (error) {
+      console.warn('Failed to setup animation frames:', error);
+      // Fallback to immediate state reset
+      setIsTransitioning(false);
+    }
+
+    return cleanup || (() => {});
   }, [isTransitioning]);
 
   const cardWidth = useMemo(() => `${100 / itemsPerView}%`, [itemsPerView]);
+  
   const trackStyle = useMemo(
     () => ({
       transform: `translateX(-${(currentIndex * 100) / itemsPerView}%)`,
-      transition: isTransitioning ? 'none' : 'transform 0.5s ease-out', // Control transition
+      transition: isTransitioning ? 'none' : 'transform 0.5s ease-out',
     }),
     [currentIndex, itemsPerView, isTransitioning]
   );
+
+  // Performance monitoring and cleanup effect
+  useEffect(() => {
+    const renderTime = endRenderTracking();
+    trackRender('testimonials-render', renderTime);
+
+    // Periodic performance check and cleanup
+    const performanceCheckInterval = setInterval(() => {
+      const report = checkPerformance();
+      
+      // If memory usage is high, trigger cleanup
+      if (report.memoryUsage.percentage > 70) {
+        // Clean up any detached DOM nodes
+        const detachedNodes = document.querySelectorAll('[data-testimonial-cleanup]');
+        detachedNodes.forEach(node => {
+          if (!document.body.contains(node)) {
+            node.remove();
+          }
+        });
+      }
+    }, 15000); // Check every 15 seconds
+
+    return () => {
+      clearInterval(performanceCheckInterval);
+    };
+  }, [endRenderTracking, trackRender, checkPerformance]);
   return (
     <section className="w-full max-w-4xl mx-auto mt-12">
       <div className="bg-[var(--panel-bg)] backdrop-blur-lg border border-[var(--panel-border)] rounded-xl shadow-lg p-8 md:p-12 text-center">
@@ -228,6 +453,9 @@ const Testimonials: React.FC = () => {
                     : relativePosition === 1
                       ? '-0.4deg'
                       : '1.8deg';
+                const isFool = testimonial.variant === 'fool';
+                
+
                 const noteTone = isPrimary ? 'var(--testimonial-note-primary)' : 'var(--testimonial-note-secondary)';
 
                 const wrapperStyle: React.CSSProperties = {
@@ -238,11 +466,26 @@ const Testimonials: React.FC = () => {
                   boxSizing: 'border-box'
                 };
 
-                const noteStyle: React.CSSProperties = {
-                  background: `linear-gradient(150deg, ${noteTone}, var(--testimonial-note-base, var(--paper-bg)))`,
-                  boxShadow: isPrimary ? 'var(--testimonial-shadow-primary, 0 26px 36px rgba(0,0,0,0.24))' : 'var(--testimonial-shadow-secondary, 0 16px 26px rgba(0,0,0,0.16))',
-                  transform: `rotate(${rotation})`
-                };
+                const noteStyle: React.CSSProperties = isFool
+                  ? {
+                    background: 'linear-gradient(160deg, rgba(255,126,184,0.9), rgba(255,186,212,0.95))',
+                    border: '2px solid rgba(255,126,184,0.85)',
+                    boxShadow: '0 26px 42px rgba(255,126,184,0.45)',
+                    transform: `rotate(${rotation})`
+                  }
+                  : {
+                    background: `linear-gradient(150deg, ${noteTone}, var(--testimonial-note-base, var(--paper-bg)))`,
+                    boxShadow: isPrimary ? 'var(--testimonial-shadow-primary, 0 26px 36px rgba(0,0,0,0.24))' : 'var(--testimonial-shadow-secondary, 0 16px 26px rgba(0,0,0,0.16))',
+                    transform: `rotate(${rotation})`
+                  };
+
+                const haloStyle: React.CSSProperties | undefined = isFool
+                  ? {
+                    backgroundColor: '#ff7eb8',
+                    boxShadow: '0 0 18px rgba(255,126,184,0.6)',
+                    opacity: 0.95
+                  }
+                  : undefined;
 
                 return (
                   <div
@@ -254,29 +497,39 @@ const Testimonials: React.FC = () => {
                       className="relative h-full flex flex-col items-center text-center p-6 border border-[var(--panel-border)] rounded-xl shadow-lg transition-transform duration-500"
                       role="listitem"
                       style={noteStyle}
+                      data-testimonial-cleanup="true"
                     >
-                      <span className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-2 bg-[var(--accent-color)] rounded-full opacity-70 shadow-md"></span>
+                      <span
+                        className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-2 bg-[var(--accent-color)] rounded-full opacity-70 shadow-md"
+                        style={haloStyle}
+                      ></span>
                       <div className="mb-4 relative">
                         <img
                           src={testimonial.avatar}
                           alt={testimonial.name}
-                          className="w-20 h-20 rounded-full border-2 border-[var(--panel-border)] shadow-lg"
+                          className={isFool
+                            ? 'w-28 h-40 rounded-2xl border-[3px] border-white/80 shadow-[0_18px_32px_rgba(13,26,45,0.45)] object-cover'
+                            : 'w-20 h-20 rounded-full border-2 border-[var(--panel-border)] shadow-lg object-cover'}
                           loading="lazy"
                           decoding="async"
                         />
                       </div>
-                    <p
-                      className="mb-4 leading-relaxed"
-                      style={{ color: 'var(--testimonial-text-muted, var(--text-muted))' }}
-                    >
-                      “{testimonial.message}”
-                    </p>
-                    <h3
-                      className="font-semibold tracking-wide text-sm uppercase"
-                      style={{ color: 'var(--testimonial-text-color, var(--text-color))' }}
-                    >
-                      {testimonial.name}
-                    </h3>
+                      <p
+                        className="mb-4 leading-relaxed"
+                        style={isFool
+                          ? { color: '#4d1533', fontWeight: 500 }
+                          : { color: 'var(--testimonial-text-muted, var(--text-muted))' }}
+                      >
+                        “{testimonial.message}”
+                      </p>
+                      <h3
+                        className={`font-semibold tracking-wide text-sm uppercase ${isFool ? 'text-fool-pink' : ''}`}
+                        style={isFool 
+                          ? { letterSpacing: '0.28em' } 
+                          : { color: 'var(--testimonial-text-color, var(--text-color))' }}
+                      >
+                        {testimonial.name}
+                      </h3>
                     </article>
                   </div>
                 );

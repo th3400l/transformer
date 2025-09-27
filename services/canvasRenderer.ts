@@ -469,7 +469,7 @@ export class CanvasRenderer extends BaseCanvasRenderer {
    * Requirements: 6.1, 6.2, 6.3, 6.5 - Graceful degradation when canvas operations fail
    */
   private async renderWithFallback(config: RenderingConfig, originalError: Error): Promise<HTMLCanvasElement> {
-    console.log('Attempting fallback render with reduced features');
+
     
     // Create fallback configuration with reduced requirements
     const fallbackConfig = this.createFallbackConfig(config, originalError);
@@ -528,13 +528,13 @@ export class CanvasRenderer extends BaseCanvasRenderer {
     if (error.message.includes('memory') || error.message.includes('Memory')) {
       fallbackConfig.canvasWidth = Math.min(config.canvasWidth, 800);
       fallbackConfig.canvasHeight = Math.min(config.canvasHeight, 600);
-      console.log(`Reduced canvas size to ${fallbackConfig.canvasWidth}x${fallbackConfig.canvasHeight} due to memory constraints`);
+
     }
     
     // Reduce text length if too large
     if (config.text && config.text.length > 1000) {
       fallbackConfig.text = config.text.substring(0, 1000) + '...';
-      console.log('Truncated text due to rendering constraints');
+
     }
     
     // Disable advanced features

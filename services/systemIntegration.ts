@@ -85,7 +85,7 @@ export class SystemIntegrationManager {
       this.systemHealth.componentsReady = true;
       this.systemHealth.status = 'ready';
       
-      console.log('Gear-1 handwriting system initialized successfully');
+
     } catch (error) {
       console.error('Failed to initialize system components:', error);
       this.systemHealth.status = 'error';
@@ -441,7 +441,7 @@ export class SystemIntegrationManager {
       // Clear texture cache if memory pressure
       if (this.systemHealth.memoryPressure && this.textureManager && 'clearCache' in this.textureManager) {
         (this.textureManager as any).clearCache();
-        console.log('Cleared texture cache due to memory pressure');
+
       }
       
       // Release canvas pool resources
@@ -506,7 +506,7 @@ export class SystemIntegrationManager {
    */
   private attemptSystemRecovery(): void {
     try {
-      console.log('Attempting system recovery...');
+
       
       // Clear caches
       if (this.textureManager && 'clearCache' in this.textureManager) {
@@ -524,7 +524,7 @@ export class SystemIntegrationManager {
         canvasPool.initialize();
       }
       
-      console.log('System recovery completed');
+
       
     } catch (recoveryError) {
       console.error('System recovery failed:', recoveryError);
@@ -600,7 +600,7 @@ export class SystemIntegrationManager {
       this.systemHealth.status = 'disposed';
       this.systemHealth.componentsReady = false;
       
-      console.log('System disposed successfully');
+
       
     } catch (error) {
       console.error('Error during system disposal:', error);

@@ -22,6 +22,17 @@ interface DistortionProfileProps {
   microTiltRange: number;
 }
 
+interface CanvasMessageConfig {
+  message: string;
+  fontSize: number;
+  fontFamily: string;
+  color: string;
+  position: {
+    horizontal: 'left' | 'center' | 'right';
+    vertical: 'top' | 'center' | 'bottom';
+  };
+}
+
 interface HandwritingPreviewProps {
   text: string;
   fontFamily: string;
@@ -63,6 +74,19 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   const textureCacheRef = useRef<Record<string, PaperTexture>>({});
   const [, setCanvasMetrics] = useState<CanvasRenderingMetrics | null>(null);
   const refreshTokenInitializedRef = useRef(false);
+  
+  // Template selection state detection
+  const [showTemplateMessage, setShowTemplateMessage] = useState(false);
+  const templateMessageConfig: CanvasMessageConfig = {
+    message: 'Pick a paper vibe to see your handwriting here.',
+    fontSize: 20,
+    fontFamily: "'Inter', 'Segoe UI', sans-serif",
+    color: '#6c625d',
+    position: {
+      horizontal: 'center',
+      vertical: 'center'
+    }
+  };
 
   const USER_FRIENDLY_CANVAS_ERROR = 'Your canvas failed to load and we\'re actively working on fixing it.';
 
@@ -79,7 +103,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       `Font family: ${fontFamily}`,
       `Font size: ${fontSize}`,
       `Ink color: ${inkColor}`,
-      `Distortion level: ${distortionLevel}`
+      `Realism level: ${distortionLevel}`
     ];
 
     if (error instanceof Error) {
@@ -113,13 +137,13 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
     });
   }, [paperTemplate?.id]);
 
-  const isDev = ((typeof import.meta !== 'undefined' && (import.meta as any)?.env?.DEV) ||
-    (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production')) as boolean;
-  const debugLog = (...args: unknown[]) => {
-    if (isDev) {
-      console.log(...args);
-    }
-  };
+  // Template selection state detection effect
+  useEffect(() => {
+    const hasTemplate = paperTemplate !== null && paperTemplate !== undefined;
+    setShowTemplateMessage(!hasTemplate);
+  }, [paperTemplate]);
+
+  // Debug logging removed for production
 
   const getCssColor = (variable: string, fallback: string): string => {
     if (typeof window === 'undefined') {
@@ -131,11 +155,9 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
 
   // Initialize responsive canvas on mount
   useEffect(() => {
-    debugLog('HandwritingPreview mounted, initializing canvas');
     initializeResponsiveCanvas();
     
     return () => {
-      debugLog('HandwritingPreview unmounting, cleaning up canvas');
       setTimeout(() => {
         cleanupCanvas();
       }, 100); // 100ms delay
@@ -175,23 +197,13 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
    * Requirements: 8.1, 8.2, 8.4 - Canvas initialization, resizing, and fallback handling
    */
   const initializeResponsiveCanvas = useCallback(() => {
-    debugLog('initializeResponsiveCanvas called');
     if (!canvasHostRef.current || !containerRef.current) {
-      debugLog('No container ref available');
       return;
     }
-
-    debugLog('Container dimensions:', {
-      width: canvasHostRef.current.offsetWidth,
-      height: canvasHostRef.current.offsetHeight,
-      clientWidth: canvasHostRef.current.clientWidth,
-      clientHeight: canvasHostRef.current.clientHeight
-    });
 
     try {
       // Validate canvas support first
       const canvasSupported = canvasFallbackSystem.validateCanvasSupport();
-      debugLog('Canvas support validation:', canvasSupported);
       
       if (!canvasSupported) {
         console.warn('Canvas not supported, using fallback mode');
@@ -230,7 +242,6 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
           }
           canvas = responsiveCanvasManager.initializeCanvas(canvasHostRef.current, scalingConfig);
           canvasRef.current = canvas;
-          debugLog('Responsive canvas created successfully');
         } catch (error) {
           console.warn('Responsive canvas failed, creating simple canvas:', error);
           // Fallback to simple canvas creation
@@ -356,16 +367,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   }, []);
 
   const renderPreview = async () => {
-    debugLog('renderPreview called', { 
-      hasCanvas: !!canvasRef.current, 
-      hasContainer: !!containerRef.current,
-      hasText: !!text.trim(),
-      hasTextureManager: !!textureManager,
-      hasPaperTemplate: !!paperTemplate
-    });
-
     if (!canvasHostRef.current) {
-      debugLog('Canvas host missing, aborting render');
       return;
     }
 
@@ -374,14 +376,12 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       if (existingCanvas instanceof HTMLCanvasElement) {
         canvasRef.current = existingCanvas;
       } else {
-        debugLog('No canvas found in host, reinitializing');
         initializeResponsiveCanvas();
         return;
       }
     }
 
     if (!canvasRef.current) {
-      debugLog('Canvas still unavailable after reinit attempt');
       return;
     }
 
@@ -446,6 +446,13 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       }
     } else {
       drawFlatPaper(ctx, canvas.width, canvas.height, paperTemplate);
+    }
+
+    // Show template selection message if no template is selected
+    if (showTemplateMessage) {
+      renderCanvasMessage(ctx, templateMessageConfig);
+      ctx.restore();
+      return;
     }
 
     ctx.globalCompositeOperation = 'multiply';
@@ -690,20 +697,15 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   };
 
   const renderFallbackPreview = () => {
-    debugLog('renderFallbackPreview called');
     if (!canvasRef.current) {
-      debugLog('No canvas available for fallback preview');
       return;
     }
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     if (!ctx) {
-      debugLog('No canvas context available for fallback preview');
       return;
     }
-
-    debugLog('Canvas dimensions:', canvas.width, 'x', canvas.height);
 
     // Get current canvas dimensions (responsive)
     const canvasWidth = Math.max(canvas.width / (window.devicePixelRatio || 1), 300);
@@ -727,6 +729,12 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         ctx.lineTo(canvas.width - 20, y);
         ctx.stroke();
       }
+    }
+
+    // Show template selection message if no template is selected
+    if (showTemplateMessage) {
+      renderCanvasMessage(ctx, templateMessageConfig);
+      return;
     }
 
     // Show message if services aren't available
@@ -837,6 +845,75 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
     );
 
     window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+  };
+
+  const renderCanvasMessage = (ctx: CanvasRenderingContext2D, config: CanvasMessageConfig) => {
+    if (!canvasRef.current) return;
+    
+    const canvas = canvasRef.current;
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    
+    ctx.save();
+    
+    const resolvedColor = getCssColor('--text-muted', config.color);
+
+    // Set font and styling
+    ctx.font = `${config.fontSize}px ${config.fontFamily}`;
+    ctx.fillStyle = resolvedColor;
+    
+    // Calculate responsive font size based on canvas dimensions
+    const responsiveFontSize = Math.max(14, Math.min(config.fontSize, canvasWidth * 0.03));
+    
+    // Set up text styling
+    ctx.save();
+    ctx.font = `${responsiveFontSize}px ${config.fontFamily}`;
+    ctx.fillStyle = resolvedColor;
+    ctx.textAlign = config.position.horizontal;
+    ctx.textBaseline = config.position.vertical === 'center' ? 'middle' : config.position.vertical;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.7;
+    
+    // Calculate position based on configuration
+    let x: number;
+    let y: number;
+    
+    switch (config.position.horizontal) {
+      case 'left':
+        x = canvasWidth * 0.1;
+        break;
+      case 'right':
+        x = canvasWidth * 0.9;
+        break;
+      case 'center':
+      default:
+        x = canvasWidth / 2;
+        break;
+    }
+    
+    switch (config.position.vertical) {
+      case 'top':
+        y = canvasHeight * 0.1;
+        break;
+      case 'bottom':
+        y = canvasHeight * 0.9;
+        break;
+      case 'center':
+      default:
+        y = canvasHeight / 2;
+        break;
+    }
+    
+    // Add subtle shadow for better readability
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+    ctx.shadowBlur = 2;
+    ctx.shadowOffsetX = 1;
+    ctx.shadowOffsetY = 1;
+    
+    // Render the message
+    ctx.fillText(config.message, x, y);
+    
+    ctx.restore();
   };
 
   const wrapText = (ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] => {

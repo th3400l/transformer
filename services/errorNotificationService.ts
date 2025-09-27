@@ -18,7 +18,7 @@ import {
 
 export interface ErrorNotification {
   id: string;
-  type: 'error' | 'warning' | 'info';
+  type: 'error' | 'warning' | 'info' | 'success';
   title: string;
   message: string;
   actions?: ErrorAction[];
@@ -340,52 +340,52 @@ export class ErrorNotificationService implements IErrorNotificationService {
   // Action handlers - these would be connected to actual app functionality
   private triggerTemplateSelection(): void {
     // This would trigger the template selector to open
-    console.log('Triggering template selection');
+
   }
 
   private triggerRetry(templateId: string): void {
     // This would retry loading the specific template
-    console.log(`Retrying template load: ${templateId}`);
+
   }
 
   private triggerTextReduction(): void {
     // This would suggest or automatically reduce text size
-    console.log('Triggering text size reduction');
+
   }
 
   private triggerPageSplit(): void {
     // This would split content into multiple pages
-    console.log('Triggering page split');
+
   }
 
   private triggerFontRetry(fontFamily: string): void {
     // This would retry loading the font
-    console.log(`Retrying font load: ${fontFamily}`);
+
   }
 
   private triggerRenderRetry(): void {
     // This would retry the rendering process
-    console.log('Triggering render retry');
+
   }
 
   private triggerQualityReduction(): void {
     // This would reduce rendering quality
-    console.log('Triggering quality reduction');
+
   }
 
   private triggerBatchExport(): void {
     // This would split export into multiple batches
-    console.log('Triggering batch export');
+
   }
 
   private triggerExportRetry(): void {
     // This would retry the export process
-    console.log('Triggering export retry');
+
   }
 
   private triggerGenericRetry(): void {
     // This would trigger a generic retry action
-    console.log('Triggering generic retry');
+
   }
 }
 

@@ -77,6 +77,14 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
   onRenderComplete,
   onRenderError
 }) => {
+  if (!paperTemplate) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+        <p className="text-gray-500 dark:text-gray-400">Select a template from paper vibe</p>
+      </div>
+    );
+  }
+
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasViewportRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);

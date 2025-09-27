@@ -339,7 +339,7 @@ export class CanvasPool {
     if (this.config.enablePooling && !this.cleanupInterval) {
       this.startCleanupInterval();
     }
-    console.log('Canvas pool initialized');
+
   }
 
   /**

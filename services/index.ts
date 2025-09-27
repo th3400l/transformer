@@ -32,3 +32,9 @@ export {
   StandardExportSystem, 
   createStandardExportSystem 
 } from './imageExportSystem';
+
+// Error handling and browser support services
+export { FallbackFontService } from './fallbackFontService';
+export { BrowserSupportService } from './browserSupportService';
+export { ErrorLoggingService } from './errorLoggingService';
+export { BrowserCompatibilityLayer } from './browserCompatibilityLayer';

@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /test-*
 
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://txttohandwriting.org/sitemap.xml
+
+# Additional sitemaps
+Sitemap: https://txttohandwriting.org/sitemap-images.xml

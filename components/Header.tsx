@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import React, { useState, useRef, useEffect } from 'react';
-import { Theme } from '../App';
+import { Theme } from '../app/constants';
 import RoseLogo from './RoseLogo';
 
 
@@ -104,11 +104,11 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onGoHome, onGoToBlog }
                             <div className="absolute right-0 mt-2 w-48 bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-lg shadow-xl py-1 z-10 backdrop-blur-xl">
                                 <div className="px-3 py-1.5 text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">GEN ENGINE</div>
                                 <div className="flex items-center justify-between px-3 py-2 text-[var(--text-color)] bg-[var(--control-bg)] border-y border-[var(--panel-border)]">
-                                    <span className="font-medium">Gear 1</span>
+                                    <span className="font-medium">Version 1.2</span>
                                     <CheckIcon className="w-5 h-5 text-[var(--accent-color)]" />
                                 </div>
                                 <div className="flex items-center justify-between px-3 py-2 text-[var(--text-muted)] opacity-60 cursor-not-allowed">
-                                    <span className="font-medium">Gear 2</span>
+                                    <span className="font-medium">Version 2</span>
                                     <span className="text-xs font-bold bg-[var(--control-border)] text-[var(--text-muted)] rounded-full px-2 py-0.5">Soon</span>
                                 </div>
                             </div>

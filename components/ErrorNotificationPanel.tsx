@@ -1,42 +1,193 @@
 /**
  * Error Notification Panel Component
  * Displays user-friendly error notifications with actions
- * Requirements: 6.5 - User-friendly error messages for template issues
+ * Enhanced for toast-style notifications with font upload error support
+ * Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 6.5 - User-friendly error messages and notifications
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ErrorNotification, getErrorNotificationService } from '../services/errorNotificationService';
+import { getFontErrorNotificationService } from '../services/fontErrorNotificationService';
 
 interface ErrorNotificationPanelProps {
   className?: string;
   maxNotifications?: number;
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  enableFontNotifications?: boolean;
+  stackNotifications?: boolean;
+  autoStackLimit?: number;
 }
 
 export const ErrorNotificationPanel: React.FC<ErrorNotificationPanelProps> = ({
   className = '',
   maxNotifications = 5,
-  position = 'top-right'
+  position = 'top-right',
+  enableFontNotifications = true,
+  stackNotifications = true,
+  autoStackLimit = 3
 }) => {
   const [notifications, setNotifications] = useState<ErrorNotification[]>([]);
+  const [stackedNotifications, setStackedNotifications] = useState<Map<string, ErrorNotification[]>>(new Map());
   const errorService = getErrorNotificationService();
+  const fontErrorService = getFontErrorNotificationService();
+
+  const updateNotifications = useCallback(() => {
+    const combinedNotifications = [
+      ...errorService.getActiveNotifications(),
+      ...(enableFontNotifications ? fontErrorService.getActiveNotifications() : [])
+    ];
+
+    if (stackNotifications) {
+      // Group similar notifications for stacking
+      const grouped = groupSimilarNotifications(combinedNotifications);
+      setStackedNotifications(grouped);
+      
+      // Convert stacked notifications to display format
+      const displayNotifications = convertStackedToDisplay(grouped);
+      setNotifications(displayNotifications.slice(0, maxNotifications));
+    } else {
+      // Simple limit without stacking
+      setStackedNotifications(new Map());
+      setNotifications(combinedNotifications.slice(0, maxNotifications));
+    }
+  }, [
+    enableFontNotifications,
+    errorService,
+    fontErrorService,
+    maxNotifications,
+    stackNotifications,
+    autoStackLimit
+  ]);
 
   useEffect(() => {
-    // Subscribe to notification changes
-    const unsubscribe = errorService.subscribe((newNotifications) => {
-      // Limit the number of displayed notifications
-      const limitedNotifications = newNotifications.slice(0, maxNotifications);
-      setNotifications(limitedNotifications);
+    const subscriptions: (() => void)[] = [];
+
+    // Subscribe to general error notifications
+    const unsubscribeGeneral = errorService.subscribe(() => {
+      updateNotifications();
     });
+    subscriptions.push(unsubscribeGeneral);
 
-    // Get initial notifications
-    setNotifications(errorService.getActiveNotifications().slice(0, maxNotifications));
+    // Subscribe to font error notifications if enabled
+    if (enableFontNotifications) {
+      const unsubscribeFont = fontErrorService.subscribe(() => {
+        updateNotifications();
+      });
+      subscriptions.push(unsubscribeFont);
+    }
 
-    return unsubscribe;
-  }, [errorService, maxNotifications]);
+    // Prime with current notifications
+    updateNotifications();
+
+    return () => {
+      subscriptions.forEach(unsub => {
+        if (typeof unsub === 'function') {
+          unsub();
+        }
+      });
+    };
+  }, [errorService, fontErrorService, enableFontNotifications, updateNotifications]);
+
+  const groupSimilarNotifications = (notifications: ErrorNotification[]): Map<string, ErrorNotification[]> => {
+    const grouped = new Map<string, ErrorNotification[]>();
+    
+    notifications.forEach(notification => {
+      // Group by title and type for similar notifications
+      const groupKey = `${notification.type}-${notification.title}`;
+      
+      if (!grouped.has(groupKey)) {
+        grouped.set(groupKey, []);
+      }
+      
+      const group = grouped.get(groupKey)!;
+      group.push(notification);
+      
+      // Limit stack size
+      if (group.length > autoStackLimit) {
+        group.shift(); // Remove oldest
+      }
+    });
+    
+    return grouped;
+  };
+
+  const convertStackedToDisplay = (stacked: Map<string, ErrorNotification[]>): ErrorNotification[] => {
+    const display: ErrorNotification[] = [];
+    
+    stacked.forEach((group, groupKey) => {
+      if (group.length === 1) {
+        // Single notification, display as-is
+        display.push(group[0]);
+      } else {
+        // Multiple notifications, create stacked notification
+        const latest = group[group.length - 1];
+        const stackedNotification: ErrorNotification = {
+          ...latest,
+          id: `stacked-${groupKey}-${Date.now()}`,
+          title: `${latest.title} (${group.length})`,
+          message: group.length > 1 
+            ? `${latest.message} (and ${group.length - 1} similar ${group.length === 2 ? 'notification' : 'notifications'})`
+            : latest.message,
+          actions: [
+            ...(latest.actions || []),
+            {
+              label: 'View All',
+              action: () => expandStackedNotifications(groupKey, group)
+            }
+          ]
+        };
+        display.push(stackedNotification);
+      }
+    });
+    
+    // Sort by timestamp (newest first)
+    return display.sort((a, b) => {
+      const aTime = parseInt(a.id.split('-').pop() || '0');
+      const bTime = parseInt(b.id.split('-').pop() || '0');
+      return bTime - aTime;
+    });
+  };
+
+  const expandStackedNotifications = (groupKey: string, group: ErrorNotification[]) => {
+    // Show all notifications in the stack individually
+    group.forEach(notification => {
+      const expandedNotification = {
+        ...notification,
+        id: `expanded-${notification.id}-${Date.now()}`,
+        title: `${notification.title} (Expanded)`,
+        autoHide: false // Prevent auto-hide for expanded notifications
+      };
+      
+      // Add to both services to ensure proper tracking
+      if (notification.title.toLowerCase().includes('font')) {
+        fontErrorService.showNotification(expandedNotification);
+      } else {
+        errorService.showNotification(expandedNotification);
+      }
+    });
+  };
 
   const handleDismiss = (id: string) => {
+    // Try to dismiss from both services
     errorService.dismissNotification(id);
+    if (enableFontNotifications) {
+      fontErrorService.dismissNotification(id);
+    }
+    
+    // Handle stacked notification dismissal
+    if (id.startsWith('stacked-')) {
+      const groupKey = id.replace('stacked-', '').split('-').slice(0, -1).join('-');
+      const group = stackedNotifications.get(groupKey);
+      if (group) {
+        // Dismiss all notifications in the stack
+        group.forEach(notification => {
+          errorService.dismissNotification(notification.id);
+          if (enableFontNotifications) {
+            fontErrorService.dismissNotification(notification.id);
+          }
+        });
+      }
+    }
   };
 
   const handleAction = async (action: () => void | Promise<void>, notificationId: string) => {
@@ -94,43 +245,64 @@ const ErrorNotificationCard: React.FC<ErrorNotificationCardProps> = ({
     switch (type) {
       case 'error':
         return {
-          container: 'bg-red-50 border-red-200 text-red-800',
-          icon: '⚠️',
-          iconBg: 'bg-red-100'
+          container: 'bg-red-50 border-red-200 text-red-800 shadow-lg',
+          badgeBg: 'bg-red-100 border border-red-200',
+          badgeText: 'text-red-700',
+          label: 'Error'
         };
       case 'warning':
         return {
-          container: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-          icon: '⚠️',
-          iconBg: 'bg-yellow-100'
+          container: 'bg-yellow-50 border-yellow-200 text-yellow-800 shadow-lg',
+          badgeBg: 'bg-yellow-100 border border-yellow-200',
+          badgeText: 'text-yellow-700',
+          label: 'Alert'
+        };
+      case 'success':
+        return {
+          container: 'bg-green-50 border-green-200 text-green-800 shadow-lg',
+          badgeBg: 'bg-green-100 border border-green-200',
+          badgeText: 'text-green-700',
+          label: 'Done'
         };
       case 'info':
-        return {
-          container: 'bg-blue-50 border-blue-200 text-blue-800',
-          icon: 'ℹ️',
-          iconBg: 'bg-blue-100'
-        };
       default:
         return {
-          container: 'bg-gray-50 border-gray-200 text-gray-800',
-          icon: 'ℹ️',
-          iconBg: 'bg-gray-100'
+          container: 'bg-blue-50 border-blue-200 text-blue-800 shadow-lg',
+          badgeBg: 'bg-blue-100 border border-blue-200',
+          badgeText: 'text-blue-700',
+          label: 'Info'
         };
     }
   };
 
   const styles = getTypeStyles(notification.type);
 
+  // Auto-dismiss functionality
+  useEffect(() => {
+    if (notification.autoHide && notification.duration) {
+      const timer = setTimeout(() => {
+        onDismiss(notification.id);
+      }, notification.duration);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [notification.autoHide, notification.duration, notification.id, onDismiss]);
+
   return (
     <div
-      className={`border rounded-lg shadow-lg p-4 ${styles.container} animate-slide-in`}
+      className={`border rounded-lg p-4 ${styles.container} animate-slide-in toast-notification`}
       role="alert"
       aria-live="assertive"
+      data-notification-type={notification.type}
+      data-notification-id={notification.id}
     >
       <div className="flex items-start">
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full ${styles.iconBg} flex items-center justify-center mr-3`}>
-          <span role="img" aria-label={`${notification.type} icon`}>
-            {styles.icon}
+        <div
+          className={`flex-shrink-0 h-8 min-w-[2.5rem] px-3 rounded-full mr-3 flex items-center justify-center ${styles.badgeBg}`}
+          aria-hidden="true"
+        >
+          <span className={`text-[0.65rem] font-semibold uppercase tracking-wide ${styles.badgeText}`}>
+            {styles.label}
           </span>
         </div>
         
@@ -178,7 +350,7 @@ const ErrorNotificationCard: React.FC<ErrorNotificationCardProps> = ({
   );
 };
 
-// CSS for animations (would typically be in a CSS file)
+// CSS for toast-style animations and stacking
 const notificationStyles = `
   @keyframes slide-in {
     from {
@@ -191,8 +363,74 @@ const notificationStyles = `
     }
   }
   
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
   .animate-slide-in {
     animation: slide-in 0.3s ease-out;
+  }
+  
+  .animate-slide-out {
+    animation: slide-out 0.3s ease-in;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+  
+  .toast-notification {
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+  
+  .toast-notification:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .notification-stack {
+    position: relative;
+  }
+  
+  .notification-stack::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: -1;
+  }
+  
+  .notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent-color);
+    border-radius: 0 0 8px 8px;
+    transition: width 0.1s linear;
   }
 `;
 

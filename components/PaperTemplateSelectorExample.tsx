@@ -16,7 +16,7 @@ export const PaperTemplateSelectorExample: React.FC = () => {
 
   const handleTemplateChange = (templateId: string) => {
     setSelectedTemplate(templateId);
-    console.log('Selected template:', templateId);
+
   };
 
   return (

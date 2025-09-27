@@ -5,6 +5,17 @@
 import { ServiceContainer } from './ServiceContainer';
 import { SERVICE_TOKENS } from '../types/index';
 import { 
+  IBrowserCompatibilityLayer,
+  IFontStorageService
+} from '../types/fontStorage';
+import { 
+  IFontValidationEngine
+} from '../types/fontValidation';
+import {
+  ICustomFontUploadManager,
+  IFontErrorHandler
+} from '../types/customFontUpload';
+import { 
   ITextureLoader, 
   ITextureCache, 
   ITextureProcessor, 
@@ -30,6 +41,14 @@ import { DownloadManager } from './downloadManager';
 import { BulkDownloadManager } from './bulkDownloadManager';
 import { StandardExportSystem } from './imageExportSystem';
 import { FontManager } from './fontManager';
+import { FontStorageService } from './fontStorageService';
+import { BrowserCompatibilityLayer } from './browserCompatibilityLayer';
+import { OptimizedFontStorageService } from './fontStorageOptimizer';
+import { FontValidationEngine } from './fontValidationEngine';
+import { CustomFontUploadManager } from './customFontUploadManager';
+import { FontErrorHandler } from './fontErrorHandler';
+import { FontProgressTracker, getFontProgressTracker } from './fontProgressTracker';
+import { FontErrorNotificationService, IFontErrorNotificationService } from './fontErrorNotificationService';
 
 /**
  * Configure all services in the dependency injection container
@@ -40,7 +59,45 @@ import { FontManager } from './fontManager';
 export function configureServices(container: ServiceContainer): void {
   // Font Management Services
   container.register(SERVICE_TOKENS.FONT_MANAGER, () => {
-    return new FontManager();
+    const fontStorageService = container.resolve<IFontStorageService>(SERVICE_TOKENS.FONT_STORAGE_SERVICE);
+    return new FontManager(fontStorageService);
+  });
+
+  // Browser Compatibility Layer
+  container.register(SERVICE_TOKENS.BROWSER_COMPATIBILITY_LAYER, () => {
+    return new BrowserCompatibilityLayer();
+  });
+
+  // Font Storage Services
+  container.register(SERVICE_TOKENS.FONT_STORAGE_SERVICE, () => {
+    const compatibilityLayer = container.resolve<IBrowserCompatibilityLayer>(SERVICE_TOKENS.BROWSER_COMPATIBILITY_LAYER);
+    const baseStorage = new FontStorageService(compatibilityLayer);
+    return new OptimizedFontStorageService(baseStorage, compatibilityLayer);
+  });
+
+  // Font Validation Engine
+  container.register(SERVICE_TOKENS.FONT_VALIDATION_ENGINE, () => {
+    return new FontValidationEngine();
+  });
+
+  // Font Error Handling Services
+  container.register(SERVICE_TOKENS.FONT_ERROR_HANDLER, () => {
+    return new FontErrorHandler();
+  });
+
+  container.register(SERVICE_TOKENS.FONT_PROGRESS_TRACKER, () => {
+    return getFontProgressTracker(); // Use singleton
+  });
+
+  container.register(SERVICE_TOKENS.FONT_ERROR_NOTIFICATION_SERVICE, () => {
+    return new FontErrorNotificationService();
+  });
+
+  // Custom Font Upload Manager
+  container.register(SERVICE_TOKENS.CUSTOM_FONT_UPLOAD_MANAGER, () => {
+    const fontValidationEngine = container.resolve<IFontValidationEngine>(SERVICE_TOKENS.FONT_VALIDATION_ENGINE);
+    const fontStorageService = container.resolve<IFontStorageService>(SERVICE_TOKENS.FONT_STORAGE_SERVICE);
+    return new CustomFontUploadManager(fontValidationEngine, fontStorageService);
   });
 
   // Text Variation Services

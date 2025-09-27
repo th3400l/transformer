@@ -287,7 +287,7 @@ export class QualityManager {
    */
   enableAdaptiveQuality(): void {
     // This method enables adaptive quality - already enabled by default
-    console.log('Adaptive quality management enabled');
+
   }
 
   /**

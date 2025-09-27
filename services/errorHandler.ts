@@ -127,16 +127,14 @@ export class GlobalErrorHandler {
     
     console.group(`🚨 Error Report [${errorReport.severity.toUpperCase()}]`);
     console[logMethod]('Message:', errorReport.message);
-    console.log('Context:', errorReport.context);
-    console.log('Error ID:', errorReport.id);
-    console.log('Timestamp:', errorReport.timestamp);
+
     
     if (errorReport.stack) {
-      console.log('Stack trace:', errorReport.stack);
+
     }
     
     if (errorReport.additionalData) {
-      console.log('Additional data:', errorReport.additionalData);
+
     }
     
     console.groupEnd();

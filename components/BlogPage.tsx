@@ -32,7 +32,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ onGoBack, onSelectPost }) => {
               className="p-6 border border-[var(--panel-border)] rounded-lg hover:bg-[var(--control-bg)] cursor-pointer transition-colors"
             >
               <h2 className="text-xl font-bold text-[var(--accent-color)] mb-1">{post.title}</h2>
-              <p className="text-sm text-[var(--text-muted)] mb-3">{post.date} &bull; By {post.author}</p>
+              <p className="text-sm text-[var(--text-muted)] mb-3">
+                {post.date} &bull; By{' '}
+                <span className="text-[var(--accent-color)]">{post.author}</span>
+              </p>
               <p className="text-[var(--text-muted)] text-sm">Click to read more &rarr;</p>
             </div>
           ))}
