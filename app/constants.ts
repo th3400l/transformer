@@ -163,7 +163,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   }
 ];
 
-export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog';
+export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog' | 'notFound';
 export type Theme = 'nightlight' | 'dark' | 'feminine';
 export const THEME_STORAGE_KEY = 'texttohandwriting-theme';
 

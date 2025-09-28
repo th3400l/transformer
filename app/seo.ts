@@ -116,6 +116,8 @@ export const getPathForPage = (page: Page, slug: string | null): string => {
       return slug ? `/blog/${slug}` : '/blog';
     case 'changelog':
       return '/changelog';
+    case 'notFound':
+      return '/';
     case 'main':
     default:
       return '/';

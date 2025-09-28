@@ -32,6 +32,7 @@ import { globalErrorHandler } from './services/errorHandler';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 import { LoadingOverlay } from './components/LoadingOverlay';
 import { RoseSpinner } from './components/Spinner';
+import NotFoundPage from './components/NotFoundPage';
 import { getQualityManager } from './services/qualityManager';
 import { computeHandwritingLayoutMetrics } from './services/layoutMetrics';
 import { embedDigitalSignature } from './services/imageSignature';
@@ -123,6 +124,7 @@ const App: React.FC = () => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [page, setPage] = useState<Page>('main');
   const [currentPostSlug, setCurrentPostSlug] = useState<string | null>(null);
+  const [missingPath, setMissingPath] = useState<string | null>(null);
   const [isPaperVibeOpen, setIsPaperVibeOpen] = useState(false);
   const [isControlDockOpen, setIsControlDockOpen] = useState(false);
   const [isControlDockVisible, setIsControlDockVisible] = useState(true);
@@ -295,7 +297,9 @@ const App: React.FC = () => {
   const seoOptions = useMemo(() => {
     const defaultTitle = 'Handwriting Generator - Convert Text to Realistic Handwriting';
     const defaultDescription = 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates.';
-    const canonicalPath = getPathForPage(page, currentPostSlug);
+    const canonicalPath = page === 'notFound' && missingPath
+      ? missingPath
+      : getPathForPage(page, currentPostSlug);
     const canonicalUrl = `${normalizedCanonicalBase}${canonicalPath === '/' ? '' : canonicalPath}`;
     const alternateLocales = [
       { hrefLang: 'x-default', url: canonicalUrl },
@@ -360,6 +364,13 @@ const App: React.FC = () => {
         keywords = `${DEFAULT_KEYWORDS}, product updates, txttohandwriting changelog`;
         structuredData.push(createChangelogStructuredData(canonicalUrl));
         break;
+      case 'notFound':
+        title = 'Page Not Found | txttohandwriting.org';
+        description = 'We could not find the page you were looking for. Head back to the handwriting lab to keep creating.';
+        keywords = `${DEFAULT_KEYWORDS}, handwriting generator 404`;
+        twitterCard = 'summary';
+        noindex = true;
+        break;
       default:
         title = defaultTitle;
         description = defaultDescription;
@@ -382,7 +393,7 @@ const App: React.FC = () => {
       customMetaTags,
       structuredData: structuredData.length ? structuredData : undefined
     };
-  }, [page, currentPostSlug, normalizedCanonicalBase, socialImageUrl]);
+  }, [page, currentPostSlug, normalizedCanonicalBase, socialImageUrl, missingPath]);
 
   // SEO optimization - Requirements 7.1, 7.2
   useSEO(seoOptions);
@@ -399,43 +410,58 @@ const App: React.FC = () => {
     const rawPath = window.location.pathname.replace(/\/+$/, '') || '/';
 
     if (rawPath === '/' || rawPath === '') {
+      setMissingPath(null);
       return;
     }
 
+    const setPageAndClear = (nextPage: Page) => {
+      setMissingPath(null);
+      setPage(nextPage);
+    };
+
     if (rawPath === '/terms') {
-      setPage('terms');
+      setPageAndClear('terms');
       return;
     }
 
     if (rawPath === '/faq') {
-      setPage('faq');
+      setPageAndClear('faq');
       return;
     }
 
     if (rawPath === '/about') {
-      setPage('about');
+      setPageAndClear('about');
       return;
     }
 
     if (rawPath === '/changelog') {
-      setPage('changelog');
+      setPageAndClear('changelog');
       return;
     }
 
     if (rawPath === '/blog') {
-      setPage('blog');
+      setCurrentPostSlug(null);
+      setPageAndClear('blog');
       return;
     }
 
     if (rawPath.startsWith('/blog/')) {
       const slug = rawPath.split('/').filter(Boolean).pop() || null;
       if (slug && blogPosts.some(post => post.slug === slug)) {
+        setMissingPath(null);
         setCurrentPostSlug(slug);
         setPage('blogPost');
         return;
       }
-      setPage('blog');
+      setCurrentPostSlug(null);
+      setMissingPath(rawPath);
+      setPage('notFound');
+      return;
     }
+
+    setCurrentPostSlug(null);
+    setMissingPath(rawPath);
+    setPage('notFound');
   }, []);
 
   useEffect(() => {
@@ -449,11 +475,21 @@ const App: React.FC = () => {
       return;
     }
 
+    if (page === 'notFound') {
+      return;
+    }
+
     const targetPath = getPathForPage(page, currentPostSlug);
     if (window.location.pathname !== targetPath) {
       window.history.replaceState({}, '', targetPath);
     }
   }, [page, currentPostSlug]);
+
+  useEffect(() => {
+    if (page !== 'notFound' && missingPath !== null) {
+      setMissingPath(null);
+    }
+  }, [page, missingPath]);
 
   useEffect(() => {
     if (!hasStartedUsing || feedbackDismissed || showFeedbackDialog) {
@@ -1361,18 +1397,34 @@ const App: React.FC = () => {
             setPage('blogPost');
           }}
         />;
-      case 'blogPost':
+      case 'blogPost': {
         const post = blogPosts.find(p => p.slug === currentPostSlug);
         if (!post) {
-          setPage('blog'); // or a 404 page
+          if (currentPostSlug) {
+            setMissingPath(`/blog/${currentPostSlug}`);
+          }
+          setPage('notFound');
           return null;
         }
         return <BlogPostPage post={post} onGoBack={() => setPage('blog')} />;
+      }
       case 'changelog':
         return <ChangeLogPage onGoBack={() => {
           setPage('main');
           setPreviewRefreshToken(token => token + 1);
         }} />;
+      case 'notFound':
+        return (
+          <NotFoundPage
+            requestedPath={missingPath || undefined}
+            onGoHome={() => {
+              setMissingPath(null);
+              setCurrentPostSlug(null);
+              setPage('main');
+              setPreviewRefreshToken(token => token + 1);
+            }}
+          />
+        );
       case 'main':
       default:
         return (
