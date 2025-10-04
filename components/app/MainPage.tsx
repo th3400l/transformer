@@ -18,16 +18,13 @@ interface MainPageProps {
   inkColors: InkColorOption[];
   inkColor: string;
   setInkColor: (color: string) => void;
+  inkBoldness: number;
   isInkMenuOpen: boolean;
   setIsInkMenuOpen: (open: boolean) => void;
   inkMenuRef: React.RefObject<HTMLDivElement>;
   templateProvider: ITemplateProvider | null;
   selectedTemplate: string;
   onTemplateChange: (templateId: string) => void;
-  isPaperVibeOpen: boolean;
-  togglePaperVibe: () => void;
-  paperVibeInnerRef: React.RefObject<HTMLDivElement>;
-  paperVibeHeight: number;
   customFontUploadManager: ICustomFontUploadManager | null;
   currentCustomFontsCount: number;
   onOpenCustomFontDialog: () => void;
@@ -48,6 +45,9 @@ interface MainPageProps {
   onFullscreenView: (image: GeneratedImage) => void;
   onRemoveImage: (imageId: string) => void;
   onBulkDownload: () => void;
+  onDownloadPdf?: () => void;
+  downloadQuality?: 'high' | 'medium' | 'low';
+  onDownloadQualityChange?: (q: 'high' | 'medium' | 'low') => void;
   presentRoseRef: React.RefObject<HTMLAnchorElement>;
 }
 
@@ -60,16 +60,13 @@ export const MainPage: React.FC<MainPageProps> = ({
   inkColors,
   inkColor,
   setInkColor,
+  inkBoldness,
   isInkMenuOpen,
   setIsInkMenuOpen,
   inkMenuRef,
   templateProvider,
   selectedTemplate,
   onTemplateChange,
-  isPaperVibeOpen,
-  togglePaperVibe,
-  paperVibeInnerRef,
-  paperVibeHeight,
   customFontUploadManager,
   currentCustomFontsCount,
   onOpenCustomFontDialog,
@@ -90,6 +87,9 @@ export const MainPage: React.FC<MainPageProps> = ({
   onFullscreenView,
   onRemoveImage,
   onBulkDownload,
+  onDownloadPdf,
+  downloadQuality,
+  onDownloadQualityChange,
   presentRoseRef
 }) => (
   <main className="flex-grow w-full max-w-7xl mx-auto p-4 md:p-8" role="main" aria-label="Handwriting generator application">
@@ -109,10 +109,6 @@ export const MainPage: React.FC<MainPageProps> = ({
         templateProvider={templateProvider}
         selectedTemplate={selectedTemplate}
         onTemplateChange={onTemplateChange}
-        isPaperVibeOpen={isPaperVibeOpen}
-        togglePaperVibe={togglePaperVibe}
-        paperVibeInnerRef={paperVibeInnerRef}
-        paperVibeHeight={paperVibeHeight}
         customFontUploadManager={customFontUploadManager}
         currentCustomFontsCount={currentCustomFontsCount}
         onOpenCustomFontDialog={onOpenCustomFontDialog}
@@ -130,6 +126,7 @@ export const MainPage: React.FC<MainPageProps> = ({
         fontSize={fontSize}
         inkColor={inkColor}
         resolvedInkColor={inkColorResolved}
+        inkBoldness={inkBoldness}
         currentPaperTemplate={currentPaperTemplate}
         textureManager={textureManager}
         distortionProfile={distortionProfile}
@@ -140,6 +137,9 @@ export const MainPage: React.FC<MainPageProps> = ({
         onFullscreenView={onFullscreenView as any}
         onRemoveImage={onRemoveImage}
         onBulkDownload={onBulkDownload}
+        onDownloadPdf={onDownloadPdf}
+        downloadQuality={downloadQuality}
+        onDownloadQualityChange={onDownloadQualityChange}
         presentRoseRef={presentRoseRef}
       />
     </div>

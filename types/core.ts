@@ -42,6 +42,8 @@ export interface RenderingConfig {
   // Ink properties (Requirements 1.3, 1.4)
   baseInkColor: string;         // '#1A1A2E'
   blendMode: string;           // 'multiply'
+  // Adjustable ink boldness/thickness (0.0 - 1.0)
+  inkBoldness?: number;        // Controls perceived stroke thickness
   distortionLevel?: number;    // Optional paper distortion dial position
   
   // Page settings (Requirements 3.1, 3.2, 3.3)
@@ -189,6 +191,7 @@ export interface IBlendModeController {
 export interface PageSplitOptions {
   wordsPerPage?: number;
   maxPages?: number;
+  shouldTruncate?: boolean;
 }
 
 export interface PageSplitResult {

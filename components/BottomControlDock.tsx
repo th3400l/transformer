@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 type DistortionLevel = 1 | 2 | 3;
 
@@ -11,6 +11,8 @@ interface BottomControlDockProps {
   onToggle: () => void;
   fontSize: number;
   onFontSizeChange: (size: number) => void;
+  inkBoldness: number;
+  onInkBoldnessChange: (value: number) => void;
   paperDistortionLevel: DistortionLevel;
   onPaperDistortionChange: (level: DistortionLevel) => void;
   distortionProfile: DockDistortionProfile;
@@ -21,13 +23,15 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
   onToggle,
   fontSize,
   onFontSizeChange,
+  inkBoldness,
+  onInkBoldnessChange,
   paperDistortionLevel,
   onPaperDistortionChange,
   distortionProfile
 }) => {
-  const [expandedSection, setExpandedSection] = useState<'font' | 'paper' | null>('font');
+  const [expandedSection, setExpandedSection] = useState<'font' | 'ink' | 'paper' | null>('font');
 
-  const toggleSection = (section: 'font' | 'paper') => {
+  const toggleSection = (section: 'font' | 'ink' | 'paper') => {
     setExpandedSection(prev => (prev === section ? null : section));
   };
 
@@ -45,8 +49,56 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
     </svg>
   );
 
+  // Horizontal drag position for the dock trigger (in pixels from left)
+  const [dockX, setDockX] = useState<number>(() => (typeof window !== 'undefined' ? window.innerWidth / 2 : 240));
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const draggingRef = useRef<{ startX: number; startDockX: number; moved: boolean } | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    // Initialize to center on mount
+    setDockX(window.innerWidth / 2);
+    const onResize = () => setDockX((prev) => Math.max(40, Math.min(window.innerWidth - 40, prev)));
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const beginDrag = (clientX: number) => {
+    draggingRef.current = { startX: clientX, startDockX: dockX, moved: false };
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', endDrag, { once: true });
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    beginDrag(e.clientX);
+  };
+
+  const onPointerMove = (e: PointerEvent) => {
+    const s = draggingRef.current;
+    if (!s) return;
+    const dx = e.clientX - s.startX;
+    if (Math.abs(dx) > 6) s.moved = true;
+    const vw = typeof window !== 'undefined' ? window.innerWidth : 480;
+    const next = Math.max(40, Math.min(vw - 40, s.startDockX + dx));
+    setDockX(next);
+  };
+
+  const endDrag = (e: PointerEvent) => {
+    const s = draggingRef.current;
+    draggingRef.current = null;
+    document.removeEventListener('pointermove', onPointerMove);
+    // If not moved significantly, treat as a click to toggle
+    if (!s || !s.moved) onToggle();
+  };
+
+  const containerStyle: React.CSSProperties = {
+    left: dockX,
+    transform: 'translateX(-50%)',
+  };
+
   return (
-    <div className="fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+1.5rem)] z-[90] pointer-events-none px-4 flex flex-col items-center">
+    <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] z-[90] pointer-events-none flex flex-col items-center" style={containerStyle}>
       <div
         id="control-dock-panel"
         className={`pointer-events-auto mb-3 w-full max-w-md transition-all duration-300 ease-out origin-bottom ${
@@ -100,12 +152,54 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
             <div className="border border-[var(--panel-border)]/70 rounded-lg overflow-hidden">
               <button
                 type="button"
+                onClick={() => toggleSection('ink')}
+                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--text-color)] bg-[var(--control-bg)]/60 hover:bg-[var(--control-bg)]/80 transition"
+                aria-expanded={expandedSection === 'ink'}
+                aria-controls="dock-ink-weight"
+              >
+                <div className="flex items-center">
+                  <span>Ink Weight</span>
+                  <span className="ml-2 px-1.5 py-0.5 text-xs font-semibold rounded-full bg-[var(--accent-color)] text-white">
+                    Beta
+                  </span>
+                </div>
+                {renderCaret(expandedSection === 'ink')}
+              </button>
+              <div
+                id="dock-ink-weight"
+                className={`px-4 transition-all duration-300 ease-out overflow-hidden ${expandedSection === 'ink' ? 'max-h-60 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
+              >
+                <label htmlFor="dock-ink-weight-slider" className="block text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">
+                  {Math.round(inkBoldness * 100)}% • {inkBoldness < 0.5 ? 'Lighter' : inkBoldness > 0.5 ? 'Bolder' : 'Baseline'}
+                </label>
+                <input
+                  id="dock-ink-weight-slider"
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={1}
+                  value={Math.round(inkBoldness * 100)}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => onInkBoldnessChange((Number(event.target.value) || 0) / 100)}
+                  className="w-full cursor-pointer"
+                  aria-label="Adjust ink weight (light ↔ bold)"
+                />
+                <div className="mt-3 flex justify-between text-xs text-[var(--text-muted)]">
+                  <span>Lighter</span>
+                  <span>Baseline</span>
+                  <span>Bolder</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-[var(--panel-border)]/70 rounded-lg overflow-hidden">
+              <button
+                type="button"
                 onClick={() => toggleSection('paper')}
                 className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--text-color)] bg-[var(--control-bg)]/60 hover:bg-[var(--control-bg)]/80 transition"
                 aria-expanded={expandedSection === 'paper'}
                 aria-controls="dock-paper-distortion"
               >
-                <span>Paper Texture</span>
+                <span>Paper Realism</span>
                 {renderCaret(expandedSection === 'paper')}
               </button>
               <div
@@ -151,9 +245,11 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
       </div>
 
       <button
+        data-tour-id="controls-button"
         type="button"
-        onClick={onToggle}
-        className="pointer-events-auto bg-[var(--panel-bg)] border border-[var(--panel-border)] text-[var(--text-color)] shadow-lg rounded-full px-4 py-2 flex items-center gap-2 transition hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+        ref={btnRef}
+        onPointerDown={onPointerDown}
+        className="pointer-events-auto bg-[var(--panel-bg)] border border-[var(--panel-border)] text-[var(--text-color)] shadow-lg rounded-full px-4 py-2 flex items-center gap-2 transition hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
         aria-expanded={isOpen}
         aria-controls="control-dock-panel"
       >
@@ -178,5 +274,3 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
 };
 
 export default BottomControlDock;
-
-

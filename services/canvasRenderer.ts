@@ -850,7 +850,36 @@ export class CanvasRenderer extends BaseCanvasRenderer {
       
       // Apply character transformation and render
       this.applyCharacterTransformation(ctx, metrics);
-      ctx.fillText(char, 0, 0); // Render at origin due to transformation
+      // Adjustable ink weight: 0..1 where 0.5 is baseline
+      const fontSize = config.fontSize || this.defaultFontSize;
+      const b = Math.max(0, Math.min(1, config.inkBoldness ?? 0.5));
+      const t = (b - 0.5) * 2; // -1..+1
+      if (t > 0.001) {
+        // Bolder: multi-pass fills with small, smoothly increasing radius and subtle alpha boost
+        const baseScale = fontSize * 0.006; // gentler scaling
+        const radius = Math.min(1.6, Math.max(0, baseScale * (0.2 + 2.0 * t)));
+        const s = radius / Math.SQRT2;
+        const prevAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = prevAlpha * (1 + 0.12 * t);
+        ctx.fillText(char, 0, 0);
+        ctx.fillText(char, radius, 0);
+        ctx.fillText(char, -radius, 0);
+        ctx.fillText(char, 0, radius);
+        ctx.fillText(char, 0, -radius);
+        ctx.fillText(char, s, s);
+        ctx.fillText(char, -s, s);
+        ctx.fillText(char, s, -s);
+        ctx.fillText(char, -s, -s);
+      } else if (t < -0.001) {
+        // Lighter: reduce alpha slightly based on magnitude
+        const lighten = Math.min(1, Math.abs(t));
+        const alphaFactor = 1 - 0.45 * Math.pow(lighten, 1.2);
+        const prevAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = prevAlpha * alphaFactor;
+        ctx.fillText(char, 0, 0);
+      } else {
+        ctx.fillText(char, 0, 0); // Baseline rendering
+      }
       this.restoreCharacterTransformation(ctx);
       
       // Advance to next character position

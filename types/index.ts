@@ -25,6 +25,7 @@ export const DEFAULT_RENDERING_CONFIG = {
   // Ink properties
   baseInkColor: '#1A1A2E',       // Off-black color (Requirement 1.3)
   blendMode: 'multiply',         // Paper integration (Requirement 2.4)
+  inkBoldness: 0,                // Default no extra boldness
   
   // Page settings
   maxPagesPerGeneration: 10,     // Page limit (Requirement 3.2)

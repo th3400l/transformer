@@ -30,6 +30,9 @@ export interface ImageGalleryProps {
   onFullscreenView: (image: GeneratedImage) => void;
   onRemoveImage: (imageId: string) => void;
   onBulkDownload?: () => void;
+  onDownloadPdf?: () => void;
+  downloadQuality?: 'high' | 'medium' | 'low';
+  onDownloadQualityChange?: (q: 'high' | 'medium' | 'low') => void;
   className?: string;
 }
 

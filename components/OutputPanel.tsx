@@ -10,6 +10,7 @@ interface OutputPanelProps {
   fontSize: number;
   inkColor: string;
   resolvedInkColor: string;
+  inkBoldness: number;
   currentPaperTemplate: PaperTemplate | null;
   textureManager: any;
   distortionProfile: any;
@@ -20,6 +21,9 @@ interface OutputPanelProps {
   onFullscreenView: (image: any) => void;
   onRemoveImage: (imageId: string) => void;
   onBulkDownload: () => void;
+  onDownloadPdf?: () => void;
+  downloadQuality?: 'high' | 'medium' | 'low';
+  onDownloadQualityChange?: (q: 'high' | 'medium' | 'low') => void;
   presentRoseRef: React.RefObject<HTMLAnchorElement>;
 }
 
@@ -29,6 +33,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
   fontSize,
   inkColor,
   resolvedInkColor,
+  inkBoldness,
   currentPaperTemplate,
   textureManager,
   distortionProfile,
@@ -39,6 +44,9 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
   onFullscreenView,
   onRemoveImage,
   onBulkDownload,
+  onDownloadPdf,
+  downloadQuality,
+  onDownloadQualityChange,
   presentRoseRef
 }) => {
   return (
@@ -51,6 +59,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
           fontSize={fontSize}
           inkColor={inkColor}
           resolvedInkColor={resolvedInkColor}
+          inkBoldness={inkBoldness}
           paperTemplate={currentPaperTemplate}
           textureManager={textureManager}
           distortionProfile={distortionProfile}
@@ -66,6 +75,9 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
           onFullscreenView={onFullscreenView}
           onRemoveImage={onRemoveImage}
           onBulkDownload={onBulkDownload}
+          onDownloadPdf={onDownloadPdf}
+          downloadQuality={downloadQuality}
+          onDownloadQualityChange={onDownloadQualityChange}
           className="shadow-lg"
         />
       </div>
@@ -75,7 +87,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
           href="https://www.buymeacoffee.com/th3f00l"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full bg-transparent border-2 border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 text-sm flex items-center justify-center gap-2"
+          className="relative z-10 w-full bg-transparent border-2 border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 text-sm flex items-center justify-center gap-2"
         >
           Present rose
         </a>
@@ -85,4 +97,3 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
 };
 
 export default OutputPanel;
-

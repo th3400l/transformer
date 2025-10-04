@@ -8,7 +8,7 @@
  * Requirements: 1.1, 1.2, 1.3, 1.4, 1.5
  */
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { GeneratedImage, ImageGalleryProps } from '../types/gallery';
 import { RoseSpinner } from './Spinner';
 
@@ -226,10 +226,35 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   onFullscreenView,
   onRemoveImage,
   onBulkDownload,
+  onDownloadPdf,
+  downloadQuality = 'high',
+  onDownloadQualityChange,
   className = ''
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const imagesPerPage = 3; // Requirement 1.1: exactly 3 images at a time
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onDocClick = (e: MouseEvent) => {
+      if (!showMenu) return;
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowMenu(false);
+    };
+    if (showMenu) {
+      document.addEventListener('mousedown', onDocClick);
+      document.addEventListener('keydown', onEsc);
+    }
+    return () => {
+      document.removeEventListener('mousedown', onDocClick);
+      document.removeEventListener('keydown', onEsc);
+    };
+  }, [showMenu]);
 
   // Calculate pagination - Requirement 1.2: navigation controls
   const totalPages = Math.ceil(images.length / imagesPerPage);
@@ -287,21 +312,72 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             </span>
           </div>
         </div>
-        {onBulkDownload && (
-          <button
-            onClick={onBulkDownload}
-            disabled={images.length === 0}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg ${
-              images.length > 0
-                ? 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
-            aria-label={images.length > 0 ? "Download all images" : "No images to download"}
-          >
-            <DownloadIcon className="w-4 h-4" />
-            <span className="hidden sm:inline">Download All</span>
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          {/* Quality Switch */}
+          <div className="hidden sm:flex items-center text-xs text-[var(--text-muted)] gap-2" aria-label="Download Quality">
+            <span>Quality:</span>
+            {(['high','medium','low'] as const).map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => onDownloadQualityChange && onDownloadQualityChange(q)}
+                className={`px-2.5 py-1 rounded-full border text-xs transition ${downloadQuality === q ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)]' : 'border-[var(--panel-border)] text-[var(--text-muted)] hover:bg-[var(--control-bg)]'}`}
+                aria-pressed={downloadQuality === q}
+              >
+                {q === 'high' ? 'High' : q === 'medium' ? 'Med' : 'Low'}
+              </button>
+            ))}
+          </div>
+          {onBulkDownload && (
+          <div className="relative" ref={menuRef}>
+            <button
+              data-tour-id="download-button"
+              onClick={() => setShowMenu(prev => !prev)}
+              disabled={images.length === 0}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg ${
+                images.length > 0
+                  ? 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+              aria-haspopup="menu"
+              aria-expanded={showMenu}
+              aria-label={images.length > 0 ? 'Download options' : 'No images to download'}
+            >
+              <DownloadIcon className="w-4 h-4" />
+              <span className="hidden sm:inline">Download</span>
+              <svg className={`w-4 h-4 transition-transform ${showMenu ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" />
+              </svg>
+            </button>
+            {showMenu && images.length > 0 && (
+              <div className="absolute right-0 mt-2 w-48 z-30">
+                <div className="origin-top-right transform transition ease-out duration-150 scale-100 opacity-100">
+                  <div className="rounded-lg border border-[var(--panel-border)] bg-[var(--panel-bg)] shadow-2xl overflow-hidden">
+                    <div className="py-1" role="menu" aria-orientation="vertical">
+                      <button
+                        className="w-full text-left px-4 py-2 text-sm text-[var(--text-color)] hover:bg-[var(--control-bg)]"
+                        role="menuitem"
+                        onClick={() => { setShowMenu(false); onBulkDownload?.(); }}
+                      >
+                        Download All Images (PNG)
+                      </button>
+                      {onDownloadPdf && (
+                        <button
+                          className="w-full text-left px-4 py-2 text-sm text-[var(--text-color)] hover:bg-[var(--control-bg)]"
+                          role="menuitem"
+                          onClick={() => { setShowMenu(false); onDownloadPdf(); }}
+                        >
+                          Download All Pages (PDF)
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          )}
+        </div>
       </div>
 
       {images.length === 0 ? (

@@ -55,7 +55,7 @@ export function computeHandwritingLayoutMetrics(input: LayoutMetricsInput): Layo
   }
 
   const approxWordsPerLine = Math.max(3, Math.floor(approxCharsPerLine / 4.6));
-  const wordsPerPage = Math.max(120, Math.round(approxWordsPerLine * linesPerPage * 1.18));
+  const wordsPerPage = Math.max(120, Math.round(approxWordsPerLine * linesPerPage * 0.9));
 
   return {
     topMargin,

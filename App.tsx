@@ -45,6 +45,7 @@ import { DownloadIntentDialog } from './components/app/DownloadIntentDialog';
 import { GenerationLimitDialog } from './components/app/GenerationLimitDialog';
 import { AppFooter } from './components/app/AppFooter';
 import ChangeLogPage from './components/ChangeLogPage';
+import Tour, { TourStep } from './components/Tour';
 import {
   inkColors,
   DISTORTION_PROFILES,
@@ -111,6 +112,8 @@ const App: React.FC = () => {
   const [fontSize, setFontSize] = useState<number>(24);
 
   const [inkColor, setInkColor] = useState<string>(inkColors[0].value);
+  // 0..1 where 0.5 is baseline (lighter < 0.5, bolder > 0.5)
+  const [inkBoldness, setInkBoldness] = useState<number>(0.5);
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -125,9 +128,9 @@ const App: React.FC = () => {
   const [page, setPage] = useState<Page>('main');
   const [currentPostSlug, setCurrentPostSlug] = useState<string | null>(null);
   const [missingPath, setMissingPath] = useState<string | null>(null);
-  const [isPaperVibeOpen, setIsPaperVibeOpen] = useState(false);
   const [isControlDockOpen, setIsControlDockOpen] = useState(false);
   const [isControlDockVisible, setIsControlDockVisible] = useState(true);
+  const [downloadQuality, setDownloadQuality] = useState<'high' | 'medium' | 'low'>('high');
   const [isInkMenuOpen, setIsInkMenuOpen] = useState(false);
 
   const [canvasRenderer, setCanvasRenderer] = useState<ICanvasRenderer | null>(null);
@@ -138,11 +141,59 @@ const App: React.FC = () => {
   const [customFontUploadManager, setCustomFontUploadManager] = useState<ICustomFontUploadManager | null>(null);
   const [pageSplitter, setPageSplitter] = useState<IPageSplitter | null>(null);
   const [previewRefreshToken, setPreviewRefreshToken] = useState(0);
-  const [paperVibeHeight, setPaperVibeHeight] = useState(0);
-  const paperVibeInnerRef = useRef<HTMLDivElement>(null);
   const hasClearedFontsRef = useRef(false);
   const inkMenuRef = useRef<HTMLDivElement>(null);
   const presentRoseRef = useRef<HTMLAnchorElement | null>(null);
+
+  // Onboarding tour state
+  const [showTour, setShowTour] = useState<boolean>(false);
+  const [tourIndex, setTourIndex] = useState<number>(0);
+  const tourSteps: TourStep[] = useMemo(() => ([
+    {
+      selector: '[data-tour-id="font-selector"]',
+      title: 'Choose Your Font',
+      content: 'Pick a handwriting font that fits your vibe.'
+    },
+    {
+      selector: '[data-tour-id="ink-selector"]',
+      title: 'Select Ink Color',
+      content: 'Black, blue, red, or green — all with paper-friendly blending.'
+    },
+    {
+      selector: '[data-tour-id="template-selector"]',
+      title: 'Paper Vibe',
+      content: 'Choose the paper style. More lined templates are coming soon.'
+    },
+    {
+      selector: '[data-tour-id="controls-button"]',
+      title: 'Controls',
+      content: 'Open Controls to adjust size, ink weight, and paper realism. You can drag this button side-to-side.'
+    },
+    {
+      selector: '[data-tour-id="generate-button"]',
+      title: 'Generate Images',
+      content: 'Turn your text into realistic handwritten pages.'
+    },
+    {
+      selector: '[data-tour-id="download-button"]',
+      title: 'Download Options',
+      content: 'Download all as PNG images or compile them into a single PDF.'
+    }
+  ]), []);
+
+  useEffect(() => {
+    // Show tour only on first visit to main page
+    if (page !== 'main') return;
+    if (typeof window === 'undefined') return;
+    const seen = window.localStorage.getItem('tth-tour-seen');
+    if (!seen) {
+      // Small delay to ensure layout is ready
+      const t = window.setTimeout(() => setShowTour(true), 400);
+      return () => window.clearTimeout(t);
+    }
+  }, [page]);
+
+  // Dev console hooks removed per request
 
   const distortionProfile = useMemo(
     () => DISTORTION_PROFILES[paperDistortionLevel],
@@ -171,9 +222,10 @@ const App: React.FC = () => {
     colorVariationIntensity: distortionProfile.colorVariationIntensity,
     microTiltRange: distortionProfile.microTiltRange,
     baseInkColor: resolvedInkColor,
+    inkBoldness,
     wordsPerPage: layoutMetrics.wordsPerPage,
     distortionLevel: paperDistortionLevel
-  }), [distortionProfile, resolvedInkColor, layoutMetrics.wordsPerPage, paperDistortionLevel]);
+  }), [distortionProfile, resolvedInkColor, inkBoldness, layoutMetrics.wordsPerPage, paperDistortionLevel]);
 
   useEffect(() => {
     if (servicesInitialized && serviceContainer) {
@@ -577,52 +629,8 @@ const App: React.FC = () => {
   }, [page]);
 
   useEffect(() => {
-    const element = paperVibeInnerRef.current;
-
-    if (!isPaperVibeOpen) {
-      setPaperVibeHeight(0);
-      return;
-    }
-
-    if (!element) {
-      return;
-    }
-
-    const updateHeight = () => {
-      const measuredHeight = element.scrollHeight + 24;
-      setPaperVibeHeight(measuredHeight);
-    };
-
-    const raf = requestAnimationFrame(updateHeight);
-
-    if (typeof ResizeObserver !== 'undefined') {
-      const observer = new ResizeObserver(updateHeight);
-      observer.observe(element);
-      return () => {
-        cancelAnimationFrame(raf);
-        observer.disconnect();
-      };
-    }
-
-    window.addEventListener('resize', updateHeight);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', updateHeight);
-    };
-  }, [isPaperVibeOpen, selectedTemplate]);
-
-  useEffect(() => {
     setIsControlDockOpen(false);
   }, [page]);
-
-  // Ensure Paper Vibe menu is open after component mounts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPaperVibeOpen(true);
-    }, 100); // Small delay to ensure DOM is ready
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -848,6 +856,13 @@ const App: React.FC = () => {
     setSelectedFontId(fontId);
     setFontFamily(fontFamily);
   };
+  // Ink boldness change handler
+  const handleBoldnessChange = (value: number) => {
+    const clamped = Math.max(0, Math.min(1, value));
+    setInkBoldness(clamped);
+    // Refresh preview to reflect changes
+    setPreviewRefreshToken(prev => prev + 1);
+  };
 
   // Image gallery handlers - Requirement 1.3: connect to existing image generation
   const addGeneratedImage = async (blob: Blob, metadata: Partial<ImageMetadata> = {}): Promise<void> => {
@@ -1012,6 +1027,29 @@ const App: React.FC = () => {
     window.open('https://www.buymeacoffee.com/th3f00l', '_blank', 'noopener,noreferrer');
   };
 
+  const handleDownloadAllPdf = async () => {
+    try {
+      if (generatedImages.length === 0) return;
+      const { createPdfFromImages } = await import('./services/pdfExporter');
+      const items = generatedImages
+        .slice() // in current gallery order
+        .sort((a, b) => a.sequenceNumber - b.sequenceNumber)
+        .map(img => ({ blob: img.blob, width: img.metadata.width, height: img.metadata.height }));
+      const pdfBlob = await createPdfFromImages(items, downloadQuality);
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'handwritten-pages.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('PDF export failed:', error);
+      alert('Sorry, failed to export PDF. Try downloading images instead.');
+    }
+  };
+
   const closeFeedbackDialog = () => {
     if (typeof window !== 'undefined' && feedbackTimerRef.current !== null) {
       window.clearTimeout(feedbackTimerRef.current);
@@ -1059,7 +1097,10 @@ const App: React.FC = () => {
       start: async () => {
         try {
           setShowDownloadModal(true);
-          await bulkDownload.startDownload(generatedImages, 'handwritten-image');
+          // Apply quality before downloading
+          const { applyDownloadQuality } = await import('./services/imageCompression');
+          const processed = await applyDownloadQuality(generatedImages, downloadQuality);
+          await bulkDownload.startDownload(processed as any, 'handwritten-image');
         } catch (error) {
           console.error('Bulk download failed:', error);
           alert('Download failed. Please try again.');
@@ -1129,8 +1170,26 @@ const App: React.FC = () => {
       return;
     }
 
-    const wordCount = normalizedText.trim().split(/\s+/).length;
-    const estimatedPages = Math.max(1, Math.ceil(wordCount / layoutMetrics.wordsPerPage));
+    // Use the page splitter to estimate pages more accurately than raw word count
+    let estimatedPages = 1;
+    try {
+      if (pageSplitter) {
+        const split = pageSplitter.splitTextIntoPages(normalizedText, {
+          wordsPerPage: layoutMetrics.wordsPerPage,
+          shouldTruncate: false,
+        });
+        estimatedPages = Math.max(1, split.totalPages || split.pages.length || 1);
+      } else {
+        // Fallback estimate using words if splitter isn't ready
+        const wordCount = normalizedText.trim().split(/\s+/).length;
+        estimatedPages = Math.max(1, Math.ceil(wordCount / layoutMetrics.wordsPerPage));
+      }
+    } catch {
+      // Absolute fallback to conservative single-page estimate
+      const wordCount = normalizedText.trim().split(/\s+/).length;
+      estimatedPages = Math.max(1, Math.ceil(wordCount / layoutMetrics.wordsPerPage));
+    }
+
 
     if (estimatedPages > MAX_TOTAL_PAGES) {
       setGenerationLimitDialog({ type: 'total', attempted: estimatedPages, allowed: MAX_TOTAL_PAGES });
@@ -1163,62 +1222,36 @@ const App: React.FC = () => {
       try {
         setShowPageLimitWarning(false);
 
-        if (estimatedPages <= 1) {
-          setExportProgress('Generating single page...');
-          const renderConfig = {
-            ...baseRenderConfig,
-            text: normalizedText,
-            paperTemplate: currentPaperTemplate,
-            canvasWidth: 800,
-            canvasHeight: 1000,
-            fontFamily: fontFamily,
-            fontSize: fontSize,
-            baseInkColor: resolvedInkColor,
-            wordsPerPage: layoutMetrics.wordsPerPage,
-            distortionLevel: paperDistortionLevel
-          };
-          const handwrittenCanvas = await canvasRenderer.render(renderConfig);
-          const blob = await imageExportSystem.exportSinglePage(handwrittenCanvas, { format: 'png', quality: 0.9 });
-          await addGeneratedImage(blob, {
-            width: renderConfig.canvasWidth,
-            height: renderConfig.canvasHeight,
-            format: 'png',
-            textContent: normalizedText,
-            label: normalizedText.replace(/\s+/g, ' ').trim().slice(0, 40)
-          });
-          setExportProgress('Image generated successfully!');
-        } else {
-          setExportProgress('Generating multiple pages...');
-          const pageResults = await generateMultiplePages(normalizedText, pagesToAdd);
-          if (pageResults.length === 0) {
-            throw new Error('Failed to generate pages');
-          }
-          setExportProgress(`Exporting ${pageResults.length} pages...`);
-          const canvases = pageResults.map(result => result.canvas);
-          const result = await imageExportSystem.exportMultiplePages(canvases, {
-            format: 'png',
-            quality: 0.9,
-            maxPages: pageResults.length,
-            shouldDownload: false
-          });
-          if (!result.success) {
-            throw new Error(result.error || 'Export failed');
-          }
-          if (result.images && result.images.length > 0) {
-            for (let i = 0; i < result.images.length; i++) {
-              const blob = result.images[i];
-              const pageText = pageResults[i]?.text || '';
-              await addGeneratedImage(blob, {
-                width: 800,
-                height: 1000,
-                format: 'png',
-                textContent: pageText,
-                label: `Page ${i + 1}${pageText ? ` • ${pageText.replace(/\s+/g, ' ').trim().slice(0, 24)}${pageText.length > 24 ? '…' : ''}` : ''}`
-              });
-            }
-          }
-          setExportProgress(`Successfully generated ${result.totalPages} pages!`);
+        // Always split and render pages; handles single/multi uniformly
+        setExportProgress(estimatedPages > 1 ? 'Generating multiple pages...' : 'Generating single page...');
+        const pageResults = await generateMultiplePages(normalizedText, estimatedPages);
+        if (pageResults.length === 0) {
+          throw new Error('Failed to generate pages');
         }
+        setExportProgress(`Exporting ${pageResults.length} page${pageResults.length > 1 ? 's' : ''}...`);
+        const canvases = pageResults.map(result => result.canvas);
+        const exportResult = await imageExportSystem.exportMultiplePages(canvases, {
+          format: 'png',
+          quality: 0.9,
+          maxPages: pageResults.length,
+          shouldDownload: false
+        });
+        if (!exportResult.success && (!exportResult.images || exportResult.images.length === 0)) {
+          throw new Error(exportResult.error || 'Export failed');
+        }
+        const images = exportResult.images || [];
+        for (let i = 0; i < images.length; i++) {
+          const blob = images[i];
+          const pageText = pageResults[i]?.text || '';
+          await addGeneratedImage(blob, {
+            width: 800,
+            height: 1000,
+            format: 'png',
+            textContent: pageText,
+            label: `Page ${i + 1}${pageText ? ` • ${pageText.replace(/\s+/g, ' ').trim().slice(0, 24)}${pageText.length > 24 ? '…' : ''}` : ''}`
+          });
+        }
+        setExportProgress(`Successfully generated ${images.length} page${images.length !== 1 ? 's' : ''}!`);
 
         setTimeout(() => {
           setExportProgress('');
@@ -1293,10 +1326,12 @@ const App: React.FC = () => {
     if (pageSplitter) {
       const splitResult = pageSplitter.splitTextIntoPages(sourceText, {
         wordsPerPage: layoutMetrics.wordsPerPage,
-        maxPages
+        maxPages,
+        shouldTruncate: false // Allow generating all pages
       });
       pages = splitResult.pages.length ? splitResult.pages.slice(0, maxPages) : [sourceText];
     } else {
+      // Fallback logic if pageSplitter is not available
       const wordsPerPage = layoutMetrics.wordsPerPage;
       const tokens = sourceText.match(/[^\s]+\s*/g) || [];
       const tempPages: string[] = [];
@@ -1305,20 +1340,19 @@ const App: React.FC = () => {
 
       for (const token of tokens) {
         currentPage += token;
-        if (/[^\s]/.test(token)) {
+        if (/[^\s]/.test(token)) { // Count actual words, not just whitespace
           wordCount++;
         }
-        if (wordCount >= wordsPerPage) {
+        // If current page exceeds word limit, or if it's the last token and there's content
+        if (wordCount >= wordsPerPage && tempPages.length < maxPages) {
           tempPages.push(currentPage);
           currentPage = '';
           wordCount = 0;
-          if (tempPages.length >= maxPages) {
-            break;
-          }
         }
       }
 
-      if (currentPage && tempPages.length < maxPages) {
+      // Push any remaining content in currentPage as the last page
+      if (currentPage.trim() !== '' && tempPages.length < maxPages) {
         tempPages.push(currentPage);
       }
       pages = tempPages.length ? tempPages.slice(0, maxPages) : [sourceText];
@@ -1438,16 +1472,13 @@ const App: React.FC = () => {
               inkColors={inkColors}
               inkColor={inkColor}
               setInkColor={setInkColor}
+              inkBoldness={inkBoldness}
               isInkMenuOpen={isInkMenuOpen}
               setIsInkMenuOpen={setIsInkMenuOpen}
               inkMenuRef={inkMenuRef}
                         templateProvider={templateProvider}
                         selectedTemplate={selectedTemplate}
                         onTemplateChange={handleTemplateChange}
-              isPaperVibeOpen={isPaperVibeOpen}
-              togglePaperVibe={() => setIsPaperVibeOpen(prev => !prev)}
-              paperVibeInnerRef={paperVibeInnerRef}
-              paperVibeHeight={paperVibeHeight}
                     customFontUploadManager={customFontUploadManager}
               currentCustomFontsCount={fontManager?.getCustomFonts()?.length || 0}
               onOpenCustomFontDialog={() => setShowCustomFontDialog(true)}
@@ -1462,12 +1493,15 @@ const App: React.FC = () => {
                     textureManager={textureManager}
                     distortionProfile={distortionProfile}
               paperDistortionLevel={paperDistortionLevel}
-                    isTemplateLoading={isTemplateLoading}
+              isTemplateLoading={isTemplateLoading}
               previewRefreshToken={previewRefreshToken}
               generatedImages={generatedImages}
-                    onFullscreenView={handleFullscreenView}
-                    onRemoveImage={handleRemoveImage}
-                    onBulkDownload={handleBulkDownload}
+              onFullscreenView={handleFullscreenView}
+              onRemoveImage={handleRemoveImage}
+              onBulkDownload={handleBulkDownload}
+              onDownloadPdf={handleDownloadAllPdf}
+              downloadQuality={downloadQuality}
+              onDownloadQualityChange={setDownloadQuality}
               presentRoseRef={presentRoseRef}
             />
             {!showGenerationOverlay && !isFullscreenOpen && !showCustomFontDialog && isControlDockVisible && (
@@ -1476,6 +1510,8 @@ const App: React.FC = () => {
                 onToggle={() => setIsControlDockOpen(prev => !prev)}
                 fontSize={fontSize}
                 onFontSizeChange={setFontSize}
+                inkBoldness={inkBoldness}
+                onInkBoldnessChange={handleBoldnessChange}
                 paperDistortionLevel={paperDistortionLevel}
                 onPaperDistortionChange={(value: DistortionLevel) => setPaperDistortionLevel(value)}
                 distortionProfile={{ description: distortionProfile.description }}
@@ -1543,6 +1579,17 @@ const App: React.FC = () => {
         maxNotifications={3}
         className="z-[100]"
       />
+
+      {showTour && (
+        <Tour
+          steps={tourSteps}
+          current={tourIndex}
+          onNext={() => setTourIndex((i) => Math.min(i + 1, tourSteps.length - 1))}
+          onPrev={() => setTourIndex((i) => Math.max(i - 1, 0))}
+          onSkip={() => { setShowTour(false); if (typeof window !== 'undefined') window.localStorage.setItem('tth-tour-seen', '1'); }}
+          onFinish={() => { setShowTour(false); if (typeof window !== 'undefined') window.localStorage.setItem('tth-tour-seen', '1'); }}
+        />
+      )}
 
       {/* Fullscreen Viewer - Requirement 1.5 */}
       <FullscreenViewer

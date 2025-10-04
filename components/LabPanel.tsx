@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FontSelector from './FontSelector';
-import PaperTemplateSelector from './PaperTemplateSelector';
+import EnhancedPaperTemplateSelector from './EnhancedPaperTemplateSelector';
 
 interface LabPanelProps {
   text: string;
@@ -23,10 +23,6 @@ interface LabPanelProps {
   templateProvider: any;
   selectedTemplate: string | null;
   onTemplateChange: (templateId: string) => void;
-  isPaperVibeOpen: boolean;
-  togglePaperVibe: () => void;
-  paperVibeInnerRef: React.RefObject<HTMLDivElement>;
-  paperVibeHeight: number;
 
   // Custom fonts & actions
   customFontUploadManager: any;
@@ -57,10 +53,6 @@ const LabPanel: React.FC<LabPanelProps> = ({
   templateProvider,
   selectedTemplate,
   onTemplateChange,
-  isPaperVibeOpen,
-  togglePaperVibe,
-  paperVibeInnerRef,
-  paperVibeHeight,
   customFontUploadManager,
   currentCustomFontsCount,
   onOpenCustomFontDialog,
@@ -69,13 +61,36 @@ const LabPanel: React.FC<LabPanelProps> = ({
   exportProgress,
   showPageLimitWarning
 }) => {
+  // Close the ink color dropdown on outside click/scroll to prevent invisible overlays blocking clicks
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (!isInkMenuOpen) return;
+      if (inkMenuRef.current && !inkMenuRef.current.contains(e.target as Node)) {
+        setIsInkMenuOpen(false);
+      }
+    };
+    const handleClose = () => {
+      if (isInkMenuOpen) setIsInkMenuOpen(false);
+    };
+    if (isInkMenuOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+      window.addEventListener('scroll', handleClose, true);
+      window.addEventListener('resize', handleClose);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      window.removeEventListener('scroll', handleClose, true);
+      window.removeEventListener('resize', handleClose);
+    };
+  }, [isInkMenuOpen, inkMenuRef, setIsInkMenuOpen]);
+
   return (
     <section className="lg:col-span-1 md:col-span-1 bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-xl shadow-lg p-4 md:p-6 flex flex-col gap-4 md:gap-6" role="form" aria-labelledby="controls-heading">
       <div className="flex justify-between items-center border-b border-[var(--panel-border)] pb-3">
         <h2 id="controls-heading" className="text-2xl font-bold text-[var(--text-color)]">The Lab</h2>
         <div className="flex items-center gap-2" role="status" aria-label="Application status">
           <div className="blinking-dot" aria-hidden="true"></div>
-          <span className="text-sm font-medium text-[var(--text-muted)]">Version 1.2</span>
+          <span className="text-sm font-medium text-[var(--text-muted)]">Version 1.3</span>
         </div>
       </div>
 
@@ -93,17 +108,20 @@ const LabPanel: React.FC<LabPanelProps> = ({
       </div>
 
       {/* Font Selector */}
+      <div data-tour-id="font-selector">
       <FontSelector
         fontManager={fontManager}
         selectedFontId={selectedFontId}
         onFontChange={onFontChange}
       />
+      </div>
 
       {/* Ink Color Selector */}
       <div ref={inkMenuRef} className="relative">
         <label htmlFor="ink-menu-trigger" className="block text-sm font-medium text-[var(--text-muted)] mb-2">Ink Color</label>
         <button
           id="ink-menu-trigger"
+          data-tour-id="ink-selector"
           type="button"
           onClick={() => setIsInkMenuOpen(!isInkMenuOpen)}
           className={`relative w-full bg-[var(--panel-bg)] border border-[var(--panel-border)]/80 text-[var(--text-color)] rounded-lg px-3 py-3 pr-12 text-left flex items-center focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition ${isInkMenuOpen ? 'shadow-lg' : 'shadow-sm'}`}
@@ -157,46 +175,18 @@ const LabPanel: React.FC<LabPanelProps> = ({
         )}
       </div>
 
+      {/* Ink Boldness is now in the Controls dock */}
+
       {/* Paper Template Selector */}
-      <div className="relative">
-        <button
-          className="flex items-center justify-between w-full text-left text-sm font-medium text-[var(--text-muted)] mb-2 focus:outline-none"
-          onClick={togglePaperVibe}
-          aria-expanded={isPaperVibeOpen}
-          aria-controls="paper-vibe-content"
-        >
+      <div data-tour-id="template-selector">
+        <label className="block text-sm font-medium text-[var(--text-muted)] mb-2">
           Paper Vibe
-          <svg
-            className={`w-4 h-4 transition-transform duration-200 ${isPaperVibeOpen ? 'rotate-180' : ''}`}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </button>
-        <div
-          id="paper-vibe-content"
-          className={`transition-all duration-300 ease-out overflow-hidden ${isPaperVibeOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          style={{
-            maxHeight: isPaperVibeOpen && paperVibeInnerRef.current ? `${paperVibeHeight}px` : '0px',
-            marginTop: isPaperVibeOpen ? '0.75rem' : '0rem'
-          }}
-          aria-hidden={!isPaperVibeOpen}
-        >
-          <div ref={paperVibeInnerRef} className="mt-1">
-            {isPaperVibeOpen && (
-              <PaperTemplateSelector
-                templateProvider={templateProvider}
-                selectedTemplate={selectedTemplate}
-                onTemplateChange={onTemplateChange}
-                className="mt-2"
-              />
-            )}
-          </div>
-        </div>
+        </label>
+        <EnhancedPaperTemplateSelector
+          templateProvider={templateProvider}
+          selectedTemplate={selectedTemplate}
+          onTemplateChange={onTemplateChange}
+        />
       </div>
 
       <div className="border-t border-[var(--panel-border)] pt-6 flex flex-col gap-3">
@@ -213,6 +203,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
             : 'Manage Custom Fonts'}
         </button>
         <button
+          data-tour-id="generate-button"
           onClick={onGenerateImages}
           disabled={isGenerating}
           className={`w-full text-center font-semibold py-2 px-4 rounded-lg transition-colors duration-300 ${isGenerating
@@ -238,4 +229,3 @@ const LabPanel: React.FC<LabPanelProps> = ({
 };
 
 export default LabPanel;
-

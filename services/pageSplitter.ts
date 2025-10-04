@@ -17,6 +17,7 @@ export class PageSplitter implements IPageSplitter {
   splitTextIntoPages(text: string, options?: PageSplitOptions): PageSplitResult {
     const wordsPerPage = options?.wordsPerPage || this.defaultWordsPerPage;
     const maxPages = options?.maxPages || this.maxPages;
+    const shouldTruncate = options?.shouldTruncate !== false; // Default to true
 
     if (!text || text.trim().length === 0) {
       return {
@@ -46,7 +47,7 @@ export class PageSplitter implements IPageSplitter {
         wordCount = 0;
 
         // Check if we've reached max pages
-        if (pages.length >= maxPages) {
+        if (shouldTruncate && pages.length >= maxPages) {
           // Count remaining actual words
           const remainingTokens = words.slice(i);
           const remainingWords = remainingTokens.filter(token => this.isWord(token)).length;
@@ -79,7 +80,7 @@ export class PageSplitter implements IPageSplitter {
       pages,
       totalPages: pages.length,
       wordsPerPage,
-      maxPagesReached: pages.length >= maxPages,
+      maxPagesReached: shouldTruncate && pages.length >= maxPages,
       truncated: false
     };
   }

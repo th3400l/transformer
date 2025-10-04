@@ -140,6 +140,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   {
+    version: '1.3',
+    date: 'October 2025',
+    tagline: 'More control, higher quality, and a smoother experience.',
+    highlights: [
+      'UI design revisit for a more intuitive and aesthetically pleasing experience.',
+      'Added Ink weight control option for finer control over the handwriting appearance.',
+      'Added the option to download all generated images as a single PDF file.',
+      'Added image quality option (High, Medium, Low) to balance quality and file size.',
+      'Fixed various known bugs to improve stability and performance.'
+    ],
+    mood: 'Feeling powerful and polished.'
+  },
+  {
     version: '1.2',
     date: 'Septemeber 2025',
     tagline: 'A fresh glow-up with new creative freedom.',

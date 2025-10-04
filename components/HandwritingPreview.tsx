@@ -39,6 +39,7 @@ interface HandwritingPreviewProps {
   fontSize: number;
   inkColor: string;
   resolvedInkColor: string;
+  inkBoldness: number;
   paperTemplate: PaperTemplate | null;
   textureManager: IPaperTextureManager | null;
   isTemplateLoading?: boolean;
@@ -54,6 +55,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   fontSize,
   inkColor,
   resolvedInkColor,
+  inkBoldness,
   paperTemplate,
   textureManager,
   distortionProfile,
@@ -179,7 +181,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         clearTimeout(renderTimeoutRef.current);
       }
     };
-  }, [text, fontFamily, fontSize, inkColor, resolvedInkColor, paperTemplate, distortionProfile, distortionLevel]);
+  }, [text, fontFamily, fontSize, inkColor, resolvedInkColor, inkBoldness, paperTemplate, distortionProfile, distortionLevel]);
 
   useEffect(() => {
     if (refreshToken === undefined) {
@@ -645,7 +647,33 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       ctx.translate(currentX + jitterX, baselineY + jitterY);
       ctx.rotate(slant + microTilt);
       ctx.fillStyle = shiftInkTone(resolvedInkColor, colorDrift);
-      ctx.fillText(char, 0, 0);
+      // Adjustable ink weight: 0..1 where 0.5 is baseline
+      const b = Math.max(0, Math.min(1, inkBoldness ?? 0.5));
+      const t = (b - 0.5) * 2; // -1..+1
+      if (t > 0.001) {
+        const baseScale = fontSizePx * 0.006; // gentler scaling
+        const r = Math.min(1.6, Math.max(0, baseScale * (0.2 + 2.0 * t)));
+        const s = r / Math.SQRT2;
+        const prevAlpha = ctx.globalAlpha;
+        ctx.globalAlpha = prevAlpha * (1 + 0.12 * t);
+        ctx.fillText(char, 0, 0);
+        ctx.fillText(char, r, 0);
+        ctx.fillText(char, -r, 0);
+        ctx.fillText(char, 0, r);
+        ctx.fillText(char, 0, -r);
+        ctx.fillText(char, s, s);
+        ctx.fillText(char, -s, s);
+        ctx.fillText(char, s, -s);
+        ctx.fillText(char, -s, -s);
+      } else if (t < -0.001) {
+        const lighten = Math.min(1, Math.abs(t));
+        const prevAlpha = ctx.globalAlpha;
+        const alphaFactor = 1 - 0.45 * Math.pow(lighten, 1.2);
+        ctx.globalAlpha = prevAlpha * alphaFactor;
+        ctx.fillText(char, 0, 0);
+      } else {
+        ctx.fillText(char, 0, 0);
+      }
       ctx.restore();
 
       const glyphWidth = ctx.measureText(char).width;
@@ -980,7 +1008,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         <div className="absolute inset-0 bg-[var(--overlay-color)] flex items-center justify-center rounded-lg z-10">
           <div className="flex items-center gap-3 text-[var(--overlay-message-color)]">
             <RoseSpinner size={32} announce={false} label={isTemplateLoading ? 'Loading template' : 'Rendering preview'} />
-            <span className="text-sm">{isTemplateLoading ? 'Loading template...' : 'Rendering preview...'}</span>
+            <span className="text-sm">{isTemplateLoading ? '' : 'Rendering preview...'}</span>
           </div>
         </div>
       )}
