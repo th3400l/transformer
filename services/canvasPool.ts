@@ -267,6 +267,8 @@ export class CanvasPool {
 
   /**
    * Clean up unused canvases to free memory
+   * Enhanced with memory threshold monitoring
+   * Requirements: 5.1, 5.2, 5.3, 5.4, 5.5 - Memory management
    */
   private cleanupUnusedCanvases(): void {
     const maxIdleTime = 60000; // 1 minute
@@ -281,6 +283,14 @@ export class CanvasPool {
       return true;
     });
 
+    // Check memory usage and cleanup if needed
+    const memoryUsage = this.estimatePoolMemoryUsage();
+    const memoryThreshold = this.getMemoryThreshold();
+    
+    if (memoryUsage > memoryThreshold) {
+      this.aggressiveCleanup();
+    }
+
     // Ensure we don't exceed memory limits on mobile
     if (this.isLowEndDevice() && this.pool.length > 2) {
       const excessCanvases = this.pool
@@ -291,6 +301,67 @@ export class CanvasPool {
       excessCanvases.forEach(canvas => {
         this.disposeCanvas(canvas);
       });
+    }
+  }
+
+  /**
+   * Estimate memory usage of canvas pool
+   * Requirements: 5.3, 5.4 - Memory monitoring
+   */
+  private estimatePoolMemoryUsage(): number {
+    let totalMemory = 0;
+    
+    for (const pooledCanvas of this.pool) {
+      // Estimate memory: width * height * 4 bytes per pixel (RGBA)
+      const canvasMemory = pooledCanvas.size.width * pooledCanvas.size.height * 4;
+      totalMemory += canvasMemory;
+    }
+    
+    return totalMemory;
+  }
+
+  /**
+   * Get memory threshold based on device capabilities
+   * Requirements: 5.3, 5.4 - Adaptive memory thresholds
+   */
+  private getMemoryThreshold(): number {
+    const isMobile = window.innerWidth < 768;
+    const isLowEnd = this.isLowEndDevice();
+    
+    if (isLowEnd) {
+      return 25 * 1024 * 1024; // 25MB for low-end devices
+    } else if (isMobile) {
+      return 50 * 1024 * 1024; // 50MB for mobile
+    } else {
+      return 100 * 1024 * 1024; // 100MB for desktop
+    }
+  }
+
+  /**
+   * Aggressive cleanup when memory threshold is exceeded
+   * Requirements: 5.3, 5.4, 5.5 - Memory pressure handling
+   */
+  private aggressiveCleanup(): void {
+    // Remove all unused canvases
+    const unusedCanvases = this.pool.filter(canvas => !canvas.inUse);
+    
+    // Sort by size (largest first) and last used time
+    unusedCanvases.sort((a, b) => {
+      const sizeA = a.size.width * a.size.height;
+      const sizeB = b.size.width * b.size.height;
+      
+      if (sizeA !== sizeB) {
+        return sizeB - sizeA; // Larger canvases first
+      }
+      
+      return a.lastUsed - b.lastUsed; // Older canvases first
+    });
+    
+    // Remove at least half of unused canvases
+    const toRemove = Math.ceil(unusedCanvases.length / 2);
+    
+    for (let i = 0; i < toRemove && i < unusedCanvases.length; i++) {
+      this.disposeCanvas(unusedCanvases[i]);
     }
   }
 
@@ -347,6 +418,44 @@ export class CanvasPool {
    */
   cleanup(): void {
     this.cleanupUnusedCanvases();
+  }
+
+  /**
+   * Force immediate cleanup of all unused canvases
+   * Requirements: 5.3, 5.4, 5.5 - Emergency memory cleanup
+   */
+  forceCleanup(): void {
+    const unusedCanvases = this.pool.filter(canvas => !canvas.inUse);
+    
+    unusedCanvases.forEach(canvas => {
+      this.disposeCanvas(canvas);
+    });
+  }
+
+  /**
+   * Get memory usage statistics
+   * Requirements: 5.3, 5.4 - Memory monitoring
+   */
+  getMemoryStats(): {
+    estimatedMemoryUsage: number;
+    estimatedMemoryUsageMB: number;
+    memoryThreshold: number;
+    memoryThresholdMB: number;
+    memoryPressure: number;
+    isUnderPressure: boolean;
+  } {
+    const memoryUsage = this.estimatePoolMemoryUsage();
+    const threshold = this.getMemoryThreshold();
+    const pressure = memoryUsage / threshold;
+    
+    return {
+      estimatedMemoryUsage: memoryUsage,
+      estimatedMemoryUsageMB: memoryUsage / (1024 * 1024),
+      memoryThreshold: threshold,
+      memoryThresholdMB: threshold / (1024 * 1024),
+      memoryPressure: pressure,
+      isUnderPressure: pressure > 0.8
+    };
   }
 
   /**

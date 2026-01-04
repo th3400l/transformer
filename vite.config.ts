@@ -94,15 +94,76 @@ export default defineConfig(({ mode }) => {
         sourcemap: !isProduction,
         rollupOptions: {
           output: {
-            // Code splitting for better caching
-            manualChunks: {
-              vendor: ['react', 'react-dom'],
-              utils: ['html-to-image', 'react-image-crop'],
-              services: [
-                './services/canvasRenderer',
-                './services/fontManager',
-                './services/customFontUploadManager'
-              ]
+            // Advanced code splitting for better caching and smaller initial bundle
+            manualChunks: (id) => {
+              // Core React libraries
+              if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+                return 'vendor-react';
+              }
+              
+              // Image processing libraries
+              if (id.includes('html-to-image') || id.includes('react-image-crop')) {
+                return 'vendor-image';
+              }
+              
+              // Canvas rendering system (split into separate chunk)
+              if (id.includes('/services/canvasRenderer') || 
+                  id.includes('/services/enhancedCanvasRenderer') ||
+                  id.includes('/services/progressiveCanvasRenderer')) {
+                return 'canvas-renderer';
+              }
+              
+              // Font management system
+              if (id.includes('/services/font') || 
+                  id.includes('/services/customFontUploadManager')) {
+                return 'font-system';
+              }
+              
+              // Texture and image processing
+              if (id.includes('/services/texture') || 
+                  id.includes('/services/paperTexture') ||
+                  id.includes('/services/imageExport') ||
+                  id.includes('/services/imageCompression')) {
+                return 'texture-system';
+              }
+              
+              // PDF export (lazy loaded)
+              if (id.includes('/services/pdfExporter')) {
+                return 'pdf-export';
+              }
+              
+              // Page components (each gets its own chunk via lazy loading)
+              if (id.includes('/components/AboutPage') || 
+                  id.includes('/components/TermsPage') ||
+                  id.includes('/components/FaqPage') ||
+                  id.includes('/components/BlogPage') ||
+                  id.includes('/components/BlogPostPage') ||
+                  id.includes('/components/ChangeLogPage') ||
+                  id.includes('/components/NotFoundPage')) {
+                return 'pages';
+              }
+              
+              // Homepage content sections (lazy loaded)
+              if (id.includes('/components/homepage/')) {
+                return 'homepage-sections';
+              }
+              
+              // Heavy components
+              if (id.includes('/components/HandwritingPreview') ||
+                  id.includes('/components/CanvasOutput') ||
+                  id.includes('/components/CustomFontUploader')) {
+                return 'heavy-components';
+              }
+              
+              // Other services
+              if (id.includes('/services/') && !id.includes('node_modules')) {
+                return 'services';
+              }
+              
+              // Other node_modules
+              if (id.includes('node_modules')) {
+                return 'vendor-other';
+              }
             }
           }
         },

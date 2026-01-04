@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Button } from './Button';
 
 type Placement = 'top' | 'bottom' | 'left' | 'right' | 'auto';
 
@@ -103,7 +104,7 @@ export const Tour: React.FC<TourProps> = ({ steps, current, onNext, onPrev, onSk
       {/* Highlight ring */}
       {rect && (
         <div
-          className="pointer-events-none fixed border-2 border-[var(--accent-color)] rounded-lg"
+          className="pointer-events-none fixed border-2 border-accent rounded-lg"
           style={{
             top: Math.max(rect.top - 6, 0),
             left: Math.max(rect.left - 6, 0),
@@ -115,17 +116,17 @@ export const Tour: React.FC<TourProps> = ({ steps, current, onNext, onPrev, onSk
       )}
 
       {/* Popover */}
-      <div className="rounded-lg border border-[var(--panel-border)] bg-[var(--panel-bg)] shadow-2xl p-4 text-[var(--text-color)]" style={style} role="dialog" aria-live="polite">
+      <div className="rounded-lg border border-panel-border bg-panel-bg shadow-2xl p-4 text-text" style={style} role="dialog" aria-live="polite">
         {step.title && <div className="text-sm font-semibold mb-1">{step.title}</div>}
         <div className="text-sm leading-relaxed">{step.content}</div>
         <div className="mt-3 flex items-center justify-between text-sm">
-          <button onClick={onSkip} className="px-3 py-1 rounded border border-[var(--panel-border)] text-[var(--text-muted)] hover:bg-[var(--control-bg)]">Skip</button>
+          <Button onClick={onSkip} variant="ghost" size="sm">Skip</Button>
           <div className="flex items-center gap-2">
-            <button onClick={onPrev} disabled={current === 0} className={`px-3 py-1 rounded border border-[var(--panel-border)] ${current === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--control-bg)]'}`}>Back</button>
+            <Button onClick={onPrev} disabled={current === 0} variant="secondary" size="sm">Back</Button>
             {current < steps.length - 1 ? (
-              <button onClick={onNext} className="px-3 py-1 rounded bg-[var(--accent-color)] text-white">Next</button>
+              <Button onClick={onNext} variant="primary" size="sm">Next</Button>
             ) : (
-              <button onClick={onFinish} className="px-3 py-1 rounded bg-[var(--accent-color)] text-white">Done</button>
+              <Button onClick={onFinish} variant="primary" size="sm">Done</Button>
             )}
           </div>
         </div>

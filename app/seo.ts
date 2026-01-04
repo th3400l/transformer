@@ -23,6 +23,19 @@ export const createFaqStructuredData = (): StructuredData => ({
   }))
 });
 
+export const createTipsFaqStructuredData = (tips: Array<{ title: string; description: string }>): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: tips.map(tip => ({
+    '@type': 'Question',
+    name: tip.title,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: tip.description
+    }
+  }))
+});
+
 export const createTermsStructuredData = (url: string): StructuredData => ({
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -101,6 +114,101 @@ export const createChangelogStructuredData = (url: string): StructuredData => ({
     url: `${url}#v${entry.version.replace(/\./g, '-')}`
   }))
 });
+
+export const createBreadcrumbStructuredData = (
+  baseUrl: string,
+  items: Array<{ name: string; path: string }>
+): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: `${baseUrl}${item.path}`
+  }))
+});
+
+export const validateStructuredData = (data: StructuredData): boolean => {
+  try {
+    // Check if data is an object
+    if (!data || typeof data !== 'object') {
+      console.warn('Structured data validation failed: data is not an object');
+      return false;
+    }
+
+    // Check for required @context
+    if (!data['@context']) {
+      console.warn('Structured data validation failed: missing @context');
+      return false;
+    }
+
+    // Check for required @type
+    if (!data['@type']) {
+      console.warn('Structured data validation failed: missing @type');
+      return false;
+    }
+
+    // Validate @context is a valid URL or schema.org
+    const context = data['@context'] as string;
+    if (!context.includes('schema.org') && !context.startsWith('http')) {
+      console.warn('Structured data validation failed: invalid @context');
+      return false;
+    }
+
+    // Type-specific validation
+    const type = data['@type'] as string;
+    
+    switch (type) {
+      case 'FAQPage':
+        if (!Array.isArray(data.mainEntity) || data.mainEntity.length === 0) {
+          console.warn('FAQPage validation failed: mainEntity must be a non-empty array');
+          return false;
+        }
+        break;
+      
+      case 'BlogPosting':
+        if (!data.headline || !data.datePublished) {
+          console.warn('BlogPosting validation failed: missing required fields (headline, datePublished)');
+          return false;
+        }
+        break;
+      
+      case 'BreadcrumbList':
+        if (!Array.isArray(data.itemListElement) || data.itemListElement.length === 0) {
+          console.warn('BreadcrumbList validation failed: itemListElement must be a non-empty array');
+          return false;
+        }
+        break;
+      
+      case 'WebApplication':
+        if (!data.name || !data.url) {
+          console.warn('WebApplication validation failed: missing required fields (name, url)');
+          return false;
+        }
+        break;
+      
+      case 'Blog':
+        if (!data.name || !data.url) {
+          console.warn('Blog validation failed: missing required fields (name, url)');
+          return false;
+        }
+        break;
+      
+      case 'ItemList':
+        if (!Array.isArray(data.itemListElement)) {
+          console.warn('ItemList validation failed: itemListElement must be an array');
+          return false;
+        }
+        break;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Structured data validation error:', error);
+    return false;
+  }
+};
 
 export const getPathForPage = (page: Page, slug: string | null): string => {
   switch (page) {

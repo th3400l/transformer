@@ -60,7 +60,7 @@ const TermsPage: React.FC<PageProps> = ({ onGoBack }) => {
           </p>
           <h2 className="text-xl font-semibold text-[var(--text-color)] pt-4">8. Managing Your Consent</h2>
           <p>
-            You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at <a href="mailto:support@txttohandwriting.org" className="text-[var(--accent-color)] hover:underline">support@txttohandwriting.org</a>.
+            You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at <span className="text-[var(--accent-color)]">coming soon</span>.
           </p>
         </div>
         <SupportCTA

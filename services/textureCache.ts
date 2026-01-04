@@ -16,6 +16,9 @@ export class TextureCache implements ITextureCache {
   private readonly options: TextureCacheOptions;
   private accessCounter = 0;
   private currentMemoryUsage = 0;
+  private hitCount = 0;
+  private missCount = 0;
+  private evictionCount = 0;
 
   constructor(options: Partial<TextureCacheOptions> = {}) {
     this.options = {
@@ -33,8 +36,11 @@ export class TextureCache implements ITextureCache {
     const entry = this.cache.get(key);
     
     if (!entry) {
+      this.missCount++;
       return null;
     }
+
+    this.hitCount++;
 
     // Update access time for LRU
     if (this.options.enableLRU) {
@@ -87,6 +93,68 @@ export class TextureCache implements ITextureCache {
     this.accessOrder.clear();
     this.currentMemoryUsage = 0;
     this.accessCounter = 0;
+    this.hitCount = 0;
+    this.missCount = 0;
+    this.evictionCount = 0;
+  }
+
+  /**
+   * Clear old textures based on age threshold
+   * Requirements: 5.3, 5.4, 5.5 - Automatic cache management
+   */
+  clearOldTextures(maxAgeMs: number = 300000): number {
+    const now = Date.now();
+    let clearedCount = 0;
+    
+    for (const [key, entry] of this.cache.entries()) {
+      if (now - entry.timestamp > maxAgeMs) {
+        this.remove(key);
+        clearedCount++;
+      }
+    }
+    
+    return clearedCount;
+  }
+
+  /**
+   * Clear textures to meet memory target
+   * Requirements: 5.3, 5.4, 5.5 - Memory pressure handling
+   */
+  clearToMemoryTarget(targetMemoryMB: number): number {
+    const targetBytes = targetMemoryMB * 1024 * 1024;
+    let clearedCount = 0;
+    
+    while (this.currentMemoryUsage > targetBytes && this.cache.size > 0) {
+      const keyToEvict = this.selectEvictionCandidate();
+      if (keyToEvict) {
+        this.remove(keyToEvict);
+        clearedCount++;
+      } else {
+        break;
+      }
+    }
+    
+    return clearedCount;
+  }
+
+  /**
+   * Check if cache is under memory pressure
+   * Requirements: 5.3, 5.4 - Memory monitoring
+   */
+  isUnderMemoryPressure(): boolean {
+    const maxMemoryBytes = this.options.maxMemoryMB * 1024 * 1024;
+    const pressureThreshold = 0.8; // 80% of max memory
+    
+    return this.currentMemoryUsage > (maxMemoryBytes * pressureThreshold);
+  }
+
+  /**
+   * Get memory pressure level (0-1)
+   * Requirements: 5.3, 5.4 - Memory monitoring
+   */
+  getMemoryPressure(): number {
+    const maxMemoryBytes = this.options.maxMemoryMB * 1024 * 1024;
+    return Math.min(1, this.currentMemoryUsage / maxMemoryBytes);
   }
 
   /**
@@ -102,6 +170,7 @@ export class TextureCache implements ITextureCache {
     this.cache.delete(key);
     this.accessOrder.delete(key);
     this.currentMemoryUsage -= entry.memorySize;
+    this.evictionCount++;
     
     return true;
   }
@@ -118,7 +187,11 @@ export class TextureCache implements ITextureCache {
       maxMemoryMB: this.options.maxMemoryMB,
       hitRate: this.calculateHitRate(),
       oldestEntry: this.getOldestEntryAge(),
-      newestEntry: this.getNewestEntryAge()
+      newestEntry: this.getNewestEntryAge(),
+      hitCount: this.hitCount,
+      missCount: this.missCount,
+      evictionCount: this.evictionCount,
+      memoryPressure: this.getMemoryPressure()
     };
   }
 
@@ -226,12 +299,15 @@ export class TextureCache implements ITextureCache {
   }
 
   /**
-   * Calculate cache hit rate (placeholder - would need hit/miss tracking)
+   * Calculate cache hit rate
+   * Requirements: 6.2 (performance monitoring)
    */
   private calculateHitRate(): number {
-    // This would require tracking hits and misses over time
-    // For now, return a placeholder value
-    return 0;
+    const totalAccesses = this.hitCount + this.missCount;
+    if (totalAccesses === 0) {
+      return 0;
+    }
+    return this.hitCount / totalAccesses;
   }
 
   /**
@@ -287,4 +363,8 @@ export interface CacheStats {
   hitRate: number;
   oldestEntry: number;
   newestEntry: number;
+  hitCount: number;
+  missCount: number;
+  evictionCount: number;
+  memoryPressure: number;
 }

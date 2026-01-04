@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-export const SUPPORT_EMAIL = 'support@txttohandwriting.org';
+export const SUPPORT_EMAIL = 'coming soon';
 
 interface SupportCTAProps {
   headline?: string;

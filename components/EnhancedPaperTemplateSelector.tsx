@@ -16,23 +16,18 @@ export interface EnhancedPaperTemplateSelectorProps {
   selectedTemplate: string;
   onTemplateChange: (templateId: string) => void;
   className?: string;
+  variant?: 'standard' | 'minimal';
 }
 
 /**
  * Enhanced PaperTemplateSelector Component with dropdown and arrow navigation
- * 
- * Features:
- * - Dropdown menu for template selection
- * - Arrow buttons for cycling through templates
- * - "Coming Soon" tag for lined templates
- * - Responsive design for all devices
- * - Accessibility support
  */
 export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelectorProps> = ({
   templateProvider,
   selectedTemplate,
   onTemplateChange,
-  className = ''
+  className = '',
+  variant = 'standard'
 }) => {
   const [templates, setTemplates] = useState<EnhancedPaperTemplate[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,15 +35,15 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   const [previewImages, setPreviewImages] = useState<Map<string, string>>(new Map());
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [highContrastMode, setHighContrastMode] = useState<boolean>(false);
-  
+
   // Template naming service for simplified names
   const namingService = useRef(new TemplateNamingService()).current;
-  
+
   // Refs for dropdown functionality
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Touch gesture state
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -60,30 +55,20 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
     try {
       setLoading(true);
       setError(null);
-      
+
       let availableTemplates: PaperTemplate[] = [];
-      
+
       if (!templateProvider) {
         throw new Error('Template provider not available');
       }
       const rawTemplates = await templateProvider.getAvailableTemplates();
-      
+
       // Validate templates if provider supports it
       if ('prevalidateTemplates' in templateProvider) {
         try {
           const validation = await (templateProvider as any).prevalidateTemplates();
           if (validation.invalid.length > 0) {
             console.warn(`${validation.invalid.length} templates failed validation:`, validation.invalid);
-            const errorService = getErrorNotificationService();
-            errorService.showNotification({
-              id: 'template-validation-warning',
-              type: 'warning',
-              title: 'Some Templates Unavailable',
-              message: `${validation.invalid.length} paper templates couldn't be loaded. Using available templates.`,
-              dismissible: true,
-              autoHide: true,
-              duration: 5000
-            });
           }
           availableTemplates = validation.valid;
         } catch (validationError) {
@@ -93,18 +78,20 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
       } else {
         availableTemplates = rawTemplates;
       }
-      
+
       // Apply simplified naming to templates
       const enhancedTemplates = namingService.mapLegacyNames(availableTemplates);
-      setTemplates(enhancedTemplates);
-      
+      setTemplates(prev => {
+        if (JSON.stringify(prev) === JSON.stringify(enhancedTemplates)) {
+          return prev;
+        }
+        return enhancedTemplates;
+      });
+
       // Preload template preview images
       await loadPreviewImages(enhancedTemplates);
     } catch (err) {
       console.error('Failed to load paper templates:', err);
-      const errorService = getErrorNotificationService();
-      errorService.showError(err as Error, 'loading paper templates');
-      
       // Try to provide emergency fallback templates
       const emergencyTemplates: PaperTemplate[] = [
         {
@@ -114,10 +101,10 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
           type: 'blank'
         }
       ];
-      
+
       const enhancedEmergencyTemplates = namingService.mapLegacyNames(emergencyTemplates);
       setTemplates(enhancedEmergencyTemplates);
-      setError('Some templates may be unavailable. Using default templates.');
+      setError('Using default templates.');
     } finally {
       setLoading(false);
     }
@@ -128,17 +115,16 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
    */
   const loadPreviewImages = async (templateList: EnhancedPaperTemplate[]) => {
     const imageMap = new Map<string, string>();
-    
+
     for (const template of templateList) {
       try {
         const previewUrl = `/template/${template.filename}`;
         imageMap.set(template.id, previewUrl);
       } catch (err) {
-        console.warn(`Failed to load preview for template ${template.id}:`, err);
         imageMap.set(template.id, '/template/blank-1.jpeg');
       }
     }
-    
+
     setPreviewImages(imageMap);
   };
 
@@ -177,24 +163,10 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   const navigateToNext = useCallback(() => {
     const availableTemplates = templates.filter(t => t.type === 'blank');
     if (availableTemplates.length === 0) return;
-    
+
     const currentIndex = availableTemplates.findIndex(t => t.id === selectedTemplate);
     const nextIndex = (currentIndex + 1) % availableTemplates.length;
     handleTemplateSelect(availableTemplates[nextIndex].id);
-    
-    // Announce template change for screen readers
-    const nextTemplate = availableTemplates[nextIndex];
-    if (nextTemplate) {
-      const announcement = `Selected ${nextTemplate.displayName || nextTemplate.name}`;
-      // Create a temporary element for screen reader announcement
-      const announcer = document.createElement('div');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
-      announcer.className = 'sr-only';
-      announcer.textContent = announcement;
-      document.body.appendChild(announcer);
-      setTimeout(() => document.body.removeChild(announcer), 1000);
-    }
   }, [templates, selectedTemplate]);
 
   /**
@@ -203,24 +175,10 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   const navigateToPrevious = useCallback(() => {
     const availableTemplates = templates.filter(t => t.type === 'blank');
     if (availableTemplates.length === 0) return;
-    
+
     const currentIndex = availableTemplates.findIndex(t => t.id === selectedTemplate);
     const prevIndex = currentIndex <= 0 ? availableTemplates.length - 1 : currentIndex - 1;
     handleTemplateSelect(availableTemplates[prevIndex].id);
-    
-    // Announce template change for screen readers
-    const prevTemplate = availableTemplates[prevIndex];
-    if (prevTemplate) {
-      const announcement = `Selected ${prevTemplate.displayName || prevTemplate.name}`;
-      // Create a temporary element for screen reader announcement
-      const announcer = document.createElement('div');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
-      announcer.className = 'sr-only';
-      announcer.textContent = announcement;
-      document.body.appendChild(announcer);
-      setTimeout(() => document.body.removeChild(announcer), 1000);
-    }
   }, [templates, selectedTemplate]);
 
   /**
@@ -258,11 +216,11 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   const detectHighContrastMode = useCallback(() => {
     const highContrastQuery = window.matchMedia('(prefers-contrast: high)');
     setHighContrastMode(highContrastQuery.matches);
-    
+
     const handleContrastChange = (e: MediaQueryListEvent) => {
       setHighContrastMode(e.matches);
     };
-    
+
     highContrastQuery.addEventListener('change', handleContrastChange);
     return () => highContrastQuery.removeEventListener('change', handleContrastChange);
   }, []);
@@ -283,7 +241,7 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
 
   const handleTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd || isDropdownOpen) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -337,9 +295,8 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   if (loading) {
     return (
       <div className={`enhanced-paper-template-selector ${className}`} role="status" aria-live="polite">
-        <div className="flex items-center justify-center p-4">
-          <RoseSpinner size={24} className="mr-2" label="Loading templates" />
-          <span className="text-[var(--text-muted)] text-sm">Loading templates...</span>
+        <div className="flex items-center justify-center p-2">
+          <RoseSpinner size={16} className="mr-2" label="Loading templates" />
         </div>
       </div>
     );
@@ -349,20 +306,10 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   if (error) {
     return (
       <div className={`enhanced-paper-template-selector ${className}`} role="alert" aria-live="assertive">
-        <div className="text-center p-4">
-          <div className="text-red-500 mb-2" role="img" aria-label="Error icon">
-            <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
-          </div>
-          <p className="text-[var(--text-color)] text-sm mb-3">{error}</p>
-          <button
-            onClick={loadTemplates}
-            className="px-3 py-1 bg-[var(--accent-color)] text-white rounded text-sm hover:bg-[var(--accent-color-hover)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2"
-            aria-label="Retry loading paper templates"
-          >
-            Retry
-          </button>
+        <div className="text-[var(--text-muted)] text-xs flex items-center justify-center gap-2">
+          <span>⚠️</span>
+          <span>{error}</span>
+          <button onClick={loadTemplates} className="underline text-[var(--accent-color)]">Retry</button>
         </div>
       </div>
     );
@@ -371,8 +318,19 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
   const currentTemplate = getCurrentTemplate();
   const availableBlankTemplates = templates.filter(t => t.type === 'blank');
 
+  // Styles based on variant
+  const isMinimal = variant === 'minimal';
+
+  const arrowButtonClass = isMinimal
+    ? "flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-[var(--text-muted)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-color)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+    : "flex-shrink-0 w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg border border-[var(--control-border)] bg-[var(--control-bg)] text-[var(--text-color)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2 active:scale-95";
+
+  const dropdownButtonClass = isMinimal
+    ? `w-full text-[var(--text-color)] rounded-lg px-3 py-1.5 text-center flex items-center justify-center relative focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition hover:bg-[var(--bg-secondary)] ${isDropdownOpen ? 'bg-[var(--bg-secondary)]' : 'bg-transparent'}`
+    : `w-full bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg pl-2 pr-8 py-2 sm:py-1.5 text-center flex items-center justify-center relative focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition active:scale-98 ${isDropdownOpen ? 'shadow-lg border-[var(--accent-color)]' : 'shadow-sm'}`;
+
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`enhanced-paper-template-selector ${className} ${highContrastMode ? 'high-contrast' : ''}`}
       role="group"
@@ -382,14 +340,14 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
       onTouchEnd={handleTouchEnd}
     >
       <h3 id="enhanced-template-selector-heading" className="sr-only">Paper Template Selection</h3>
-      
+
       {/* Template Selection Controls */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 justify-center">
         {/* Previous Arrow Button */}
         <button
           onClick={navigateToPrevious}
           disabled={availableBlankTemplates.length <= 1}
-          className="flex-shrink-0 w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg border border-[var(--control-border)] bg-[var(--control-bg)] text-[var(--text-color)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2 active:scale-95"
+          className={arrowButtonClass}
           aria-label="Previous template"
           title="Previous template"
         >
@@ -399,21 +357,22 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
         </button>
 
         {/* Dropdown Menu */}
-        <div ref={dropdownRef} className="relative flex-grow">
+        <div ref={dropdownRef} className="relative flex-grow max-w-[240px]">
           <button
             ref={triggerRef}
             type="button"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             onKeyDown={handleKeyDown}
-            className={`w-full bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg px-3 py-3 sm:py-2 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition active:scale-98 ${isDropdownOpen ? 'shadow-lg border-[var(--accent-color)]' : 'shadow-sm'}`}
+            className={dropdownButtonClass}
             aria-haspopup="listbox"
             aria-expanded={isDropdownOpen}
             aria-label={`Paper template selector. Current: ${currentTemplate?.displayName || 'None selected'}`}
           >
-            <div className="flex items-center gap-2 min-w-0">
-              {/* Template Preview Thumbnail */}
-              {currentTemplate && previewImages.has(currentTemplate.id) && (
-                <div className="flex-shrink-0 w-6 h-8 rounded border border-[var(--control-border)] overflow-hidden bg-white">
+            <div className="flex items-center gap-2 min-w-0 justify-center">
+              {/* Template Preview Thumbnail - Hide in minimal mode if space is tight? Let's keep small or hide */}
+              {/* Actually, let's keep it but maybe smaller in minimal, or just same size */}
+              {currentTemplate && previewImages.has(currentTemplate.id) && !isMinimal && (
+                <div className="flex-shrink-0 w-5 h-7 rounded border border-[var(--control-border)] overflow-hidden bg-white">
                   <img
                     src={previewImages.get(currentTemplate.id)}
                     alt=""
@@ -422,35 +381,34 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
                   />
                 </div>
               )}
-              
+
               {/* Template Name */}
-              <div className="min-w-0 flex-grow">
-                <span className="block text-sm font-medium truncate">
+              <div className="min-w-0 truncate">
+                <span className={`block font-medium truncate ${isMinimal ? 'text-sm' : 'text-sm'}`}>
                   {currentTemplate?.displayName || 'Select Template'}
                 </span>
-                <span className="block text-xs text-[var(--text-muted)] truncate">
-                  {currentTemplate?.type === 'blank' ? 'Blank' : 'Lined'}
-                  {currentTemplate?.type === 'lined' && (
-                    <span className="ml-1 px-1 py-0.5 bg-[var(--accent-color)] text-white text-xs rounded">
-                      Coming Soon
-                    </span>
-                  )}
-                </span>
               </div>
+
+              {/* Dropdown Arrow for minimal mode (inline) */}
+              {isMinimal && (
+                <svg className={`w-3 h-3 text-[var(--text-muted)] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              )}
             </div>
-            
-            {/* Dropdown Arrow */}
-            <svg
-              className={`flex-shrink-0 w-4 h-4 text-[var(--text-muted)] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
-            </svg>
+
+            {/* Dropdown Arrow for standard mode (absolute right) */}
+            {!isMinimal && (
+              <svg
+                className={`absolute right-3 w-4 h-4 text-[var(--text-muted)] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+              </svg>
+            )}
           </button>
 
           {/* Dropdown Menu */}
@@ -458,54 +416,60 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
             <div
               role="listbox"
               aria-label="Paper templates"
-              className="absolute z-50 mt-1 w-full rounded-lg border border-[var(--panel-border)] bg-[var(--panel-bg)] shadow-2xl overflow-hidden max-h-64 overflow-y-auto"
+              className="absolute z-50 mt-1 left-1/2 -translate-x-1/2 w-64 rounded-xl border border-[var(--panel-border)] bg-[var(--panel-bg)] shadow-2xl overflow-hidden max-h-80 overflow-y-auto ring-1 ring-black ring-opacity-5"
             >
-              {templates.map((template) => (
-                <button
-                  key={template.id}
-                  type="button"
-                  role="option"
-                  aria-selected={selectedTemplate === template.id}
-                  onClick={() => handleTemplateSelect(template.id)}
-                  disabled={template.type === 'lined'}
-                  className={`w-full flex items-center gap-3 px-3 py-3 sm:py-2 text-left transition-colors active:scale-98 ${
-                    selectedTemplate === template.id
+              <div className="p-1">
+                {templates.map((template) => (
+                  <button
+                    key={template.id}
+                    type="button"
+                    role="option"
+                    aria-selected={selectedTemplate === template.id}
+                    onClick={() => handleTemplateSelect(template.id)}
+                    disabled={template.type === 'lined'}
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors ${selectedTemplate === template.id
                       ? 'bg-[var(--accent-color)] text-white'
                       : template.type === 'lined'
-                      ? 'text-[var(--text-muted)] cursor-not-allowed opacity-60'
-                      : 'text-[var(--text-color)] hover:bg-[var(--control-bg)] active:bg-[var(--control-bg)]'
-                  }`}
-                >
-                  {/* Template Preview Thumbnail */}
-                  {previewImages.has(template.id) && (
-                    <div className="flex-shrink-0 w-8 h-10 rounded border border-[var(--control-border)] overflow-hidden bg-white">
-                      <img
-                        src={previewImages.get(template.id)}
-                        alt=""
-                        className="w-full h-full object-cover"
-                        onError={() => handleImageError(template.id)}
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Template Info */}
-                  <div className="min-w-0 flex-grow">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium truncate">
-                        {template.displayName}
-                      </span>
-                      {template.type === 'lined' && (
-                        <span className="flex-shrink-0 px-1.5 py-0.5 bg-[var(--accent-color)] text-white text-xs rounded">
-                          Coming Soon
+                        ? 'text-[var(--text-muted)] cursor-not-allowed opacity-60'
+                        : 'text-[var(--text-color)] hover:bg-[var(--control-bg)]'
+                      }`}
+                  >
+                    {/* Template Preview Thumbnail */}
+                    {previewImages.has(template.id) && (
+                      <div className="flex-shrink-0 w-8 h-10 rounded-md border border-[var(--control-border)] overflow-hidden bg-white shadow-sm">
+                        <img
+                          src={previewImages.get(template.id)}
+                          alt=""
+                          className="w-full h-full object-cover"
+                          onError={() => handleImageError(template.id)}
+                        />
+                      </div>
+                    )}
+
+                    {/* Template Info */}
+                    <div className="min-w-0 flex-grow">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium truncate block">
+                          {template.displayName}
                         </span>
-                      )}
+                        {template.type === 'lined' && (
+                          <span className="flex-shrink-0 text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-gray-100 text-gray-500 rounded border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                            Soon
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-xs text-[var(--text-muted)] opacity-80 capitalize">
+                        {template.type}
+                      </span>
                     </div>
-                    <span className="text-xs text-[var(--text-muted)] capitalize">
-                      {template.type}
-                    </span>
-                  </div>
-                </button>
-              ))}
+
+                    {/* Selected checkmark */}
+                    {selectedTemplate === template.id && (
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -514,7 +478,7 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
         <button
           onClick={navigateToNext}
           disabled={availableBlankTemplates.length <= 1}
-          className="flex-shrink-0 w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg border border-[var(--control-border)] bg-[var(--control-bg)] text-[var(--text-color)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2 active:scale-95"
+          className={arrowButtonClass}
           aria-label="Next template"
           title="Next template"
         >
@@ -524,46 +488,7 @@ export const EnhancedPaperTemplateSelector: React.FC<EnhancedPaperTemplateSelect
         </button>
       </div>
 
-      {/* Template count and position indicator */}
-      <div className="mt-2 text-center" role="status" aria-live="polite">
-        <div className="flex items-center justify-center gap-2 text-xs text-[var(--text-muted)]">
-          <span>
-            {availableBlankTemplates.length > 1 && (
-              <>
-                {availableBlankTemplates.findIndex(t => t.id === selectedTemplate) + 1} of {availableBlankTemplates.length}
-                <span className="mx-1">•</span>
-              </>
-            )}
-            {availableBlankTemplates.length} template{availableBlankTemplates.length !== 1 ? 's' : ''} available
-          </span>
-          {templates.some(t => t.type === 'lined') && (
-            <span className="hidden sm:inline">• Lined templates coming soon</span>
-          )}
-        </div>
-        
-        {/* Visual dots indicator for template position */}
-        {availableBlankTemplates.length > 1 && availableBlankTemplates.length <= 5 && (
-          <div className="flex items-center justify-center gap-1 mt-1" aria-hidden="true">
-            {availableBlankTemplates.map((template, index) => (
-              <div
-                key={template.id}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                  template.id === selectedTemplate
-                    ? 'bg-[var(--accent-color)]'
-                    : 'bg-[var(--text-muted)] opacity-30'
-                }`}
-              />
-            ))}
-          </div>
-        )}
-        
-        {/* Swipe hint for mobile */}
-        {availableBlankTemplates.length > 1 && (
-          <div className="sm:hidden mt-1 text-xs text-[var(--text-muted)] opacity-60">
-            Swipe left/right to change templates
-          </div>
-        )}
-      </div>
+
     </div>
   );
 };

@@ -1,11 +1,9 @@
 import React from 'react';
+import { Page } from '../../app/constants';
 
 interface AppFooterProps {
-  onAbout: () => void;
-  onBlog: () => void;
-  onChangelog: () => void;
-  onTerms: () => void;
-  onFaq: () => void;
+  onNavigate: (page: Page) => void;
+  onPresentRose: () => void;
 }
 
 const AboutIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -38,32 +36,32 @@ const ChangelogIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-export const AppFooter: React.FC<AppFooterProps> = ({ onAbout, onBlog, onChangelog, onTerms, onFaq }) => (
+export const AppFooter: React.FC<AppFooterProps> = ({ onNavigate, onPresentRose }) => (
   <footer className="w-full max-w-7xl mx-auto py-6 px-4 sm:px-8 text-center text-sm">
     <div className="flex justify-center items-center flex-col sm:flex-row gap-2 sm:gap-6 border-t border-[var(--panel-border)] pt-6">
-      <button onClick={onAbout} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
+      <button onClick={() => onNavigate('about')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
         <AboutIcon className="w-4 h-4" />
         About
       </button>
-      <button onClick={onBlog} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
+      <button onClick={() => onNavigate('blog')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
         <BlogIcon className="w-4 h-4" />
         The Tea
       </button>
-      <button onClick={onChangelog} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
+      <button onClick={() => onNavigate('changelog')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
         <ChangelogIcon className="w-4 h-4" />
         Changelog
       </button>
-      <button onClick={onTerms} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
+      <button onClick={() => onNavigate('terms')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
         <TermsIcon className="w-4 h-4" />
         Terms and Conditions
       </button>
-      <button onClick={onFaq} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
+      <button onClick={() => onNavigate('faq')} className="text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors flex items-center gap-2">
         <FaqIcon className="w-4 h-4" />
         Frequently Asked Questions
       </button>
     </div>
     <div className="mt-4 pt-4 border-t border-[var(--panel-border)] text-[var(--text-muted)]">
-      <p>&copy; 2025 txttohandwriting.org. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} txttohandwriting.org. All rights reserved.</p>
     </div>
   </footer>
 );

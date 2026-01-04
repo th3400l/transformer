@@ -10,7 +10,7 @@ export const inkColors: InkColorOption[] = [
   { name: 'Green', value: 'var(--ink-green)' }
 ];
 
-export type DistortionLevel = 1 | 2 | 3;
+export type DistortionLevel = 1 | 2 | 3 | 4 | 5;
 
 export interface DistortionProfile {
   baselineJitterRange: number;
@@ -32,30 +32,62 @@ export interface QualityOverride {
 
 export const DISTORTION_PROFILES: Record<DistortionLevel, DistortionProfile> = {
   1: {
+    baselineJitterRange: 0.65,
+    slantJitterRange: 0.42,
+    colorVariationIntensity: 0.11,
+    microTiltRange: 0.32,
+    description: 'Ultra Realism – Heavy ink bleed and maximum analog noise for a raw, imperfect look.'
+  },
+  2: {
+    baselineJitterRange: 0.65,
+    slantJitterRange: 0.42,
+    colorVariationIntensity: 0.11,
+    microTiltRange: 0.32,
+    description: 'Extreme Realism – Pronounced texture depth and natural ink pooling.'
+  },
+  3: {
     baselineJitterRange: 0.46,
     slantJitterRange: 0.32,
     colorVariationIntensity: 0.085,
     microTiltRange: 0.24,
-    description: 'High realism – pronounced grain, softer contrast, and analog imperfections across the page.'
+    description: 'High Realism – Pronounced grain, softer contrast, and natural analog imperfections.'
   },
-  2: {
+  4: {
     baselineJitterRange: 0.24,
     slantJitterRange: 0.18,
     colorVariationIntensity: 0.055,
     microTiltRange: 0.13,
-    description: 'Medium realism – balanced ink-to-paper blend with gentle texture and subtle wear.'
+    description: 'Medium Realism – Balanced ink-to-paper blend with gentle texture and subtle wear.'
   },
-  3: {
+  5: {
     baselineJitterRange: 0.16,
     slantJitterRange: 0.12,
     colorVariationIntensity: 0.042,
     microTiltRange: 0.09,
-    description: 'Low realism – clean finish with restrained texture and a polished digital look.'
+    description: 'Low Realism – Clean finish with restrained texture and a polished digital look.'
   }
 };
 
 export const PAPER_QUALITY_OVERRIDES: Record<DistortionLevel, Partial<QualityOverride>> = {
   1: {
+    renderingQuality: 0.72,
+    textureQuality: 0.62,
+    compressionLevel: 0.75,
+    enableAntialiasing: false,
+    enableBlending: true,
+    enableProgressiveLoading: true,
+    enableCanvasPooling: true
+  },
+  2: {
+    renderingQuality: 0.80,
+    textureQuality: 0.70,
+    compressionLevel: 0.82,
+    enableAntialiasing: true,
+    enableBlending: true,
+    enableProgressiveLoading: true,
+    enableCanvasPooling: true
+  },
+  3: {
     renderingQuality: 0.88,
     textureQuality: 0.78,
     compressionLevel: 0.88,
@@ -64,7 +96,7 @@ export const PAPER_QUALITY_OVERRIDES: Record<DistortionLevel, Partial<QualityOve
     enableProgressiveLoading: true,
     enableCanvasPooling: true
   },
-  2: {
+  4: {
     renderingQuality: 0.96,
     textureQuality: 0.9,
     compressionLevel: 0.93,
@@ -73,7 +105,7 @@ export const PAPER_QUALITY_OVERRIDES: Record<DistortionLevel, Partial<QualityOve
     enableProgressiveLoading: true,
     enableCanvasPooling: true
   },
-  3: {
+  5: {
     renderingQuality: 1,
     textureQuality: 1,
     compressionLevel: 0.97,
@@ -136,9 +168,23 @@ export interface ChangelogEntry {
   tagline: string;
   highlights: string[];
   mood?: string;
+  changeType?: 'new-year' | 'major' | 'minor'; // Added for custom styling
 }
 
 export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
+  {
+    version: '1.4',
+    date: 'January 2026',
+    tagline: 'Next level realism and performance.',
+    highlights: [
+      'New UI overhaul with a cleaner, modern design system.',
+      'Improved generation of images with higher fidelity and better ink textures.',
+      'Improved live image rendering to the next level for instant feedback.',
+      'Optimized the engine for faster processing and smoother interactions.'
+    ],
+    mood: 'Fresh start, new year, new notes.',
+    changeType: 'new-year'
+  },
   {
     version: '1.3',
     date: 'October 2025',

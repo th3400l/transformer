@@ -14,6 +14,7 @@ import {
 import { RoseSpinner } from './Spinner';
 import { computeHandwritingLayoutMetrics } from '../services/layoutMetrics';
 import { SUPPORT_EMAIL } from './SupportCTA';
+import { usePreCalculatedCanvasDimensions } from '../hooks/usePreCalculatedCanvasDimensions';
 
 interface DistortionProfileProps {
   baselineJitterRange: number;
@@ -76,6 +77,17 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
   const textureCacheRef = useRef<Record<string, PaperTexture>>({});
   const [, setCanvasMetrics] = useState<CanvasRenderingMetrics | null>(null);
   const refreshTokenInitializedRef = useRef(false);
+  
+  // Pre-calculate canvas dimensions before first render (Requirements: 1.1, 1.3, 7.1, 7.2, 7.3, 7.4, 7.5)
+  const preCalculatedDimensions = usePreCalculatedCanvasDimensions({
+    containerRef,
+    aspectRatio: 8.5 / 11,
+    minWidth: 300,
+    maxWidth: 1200,
+    minHeight: 400,
+    maxHeight: 1600,
+    padding: 20
+  });
   
   // Template selection state detection
   const [showTemplateMessage, setShowTemplateMessage] = useState(false);
@@ -196,7 +208,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
 
   /**
    * Initialize responsive canvas system with fallback support
-   * Requirements: 8.1, 8.2, 8.4 - Canvas initialization, resizing, and fallback handling
+   * Requirements: 1.1, 1.3, 7.1, 7.2, 7.3, 7.4, 7.5, 8.1, 8.2, 8.4 - Canvas initialization with pre-calculated dimensions
    */
   const initializeResponsiveCanvas = useCallback(() => {
     if (!canvasHostRef.current || !containerRef.current) {
@@ -214,17 +226,6 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
         updateRenderErrorState(USER_FRIENDLY_CANVAS_ERROR, supportError);
       }
 
-      // Canvas scaling configuration for preview
-      const scalingConfig: CanvasScalingConfig = {
-        maintainAspectRatio: true,
-        fillContainer: true,
-        scalingFactor: 1.0,
-        maxWidth: 1200,
-        maxHeight: 800,
-        minWidth: 300,
-        minHeight: 200
-      };
-
       // Create responsive canvas if it doesn't exist
       if (!canvasRef.current) {
         // Clear any existing canvas nodes in the host first
@@ -236,62 +237,63 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
           });
         }
 
-        // Try responsive canvas manager first
-        let canvas: HTMLCanvasElement;
-        try {
-          if (!canvasHostRef.current) {
-            throw new Error('Canvas host unavailable');
-          }
-          canvas = responsiveCanvasManager.initializeCanvas(canvasHostRef.current, scalingConfig);
-          canvasRef.current = canvas;
-        } catch (error) {
-          console.warn('Responsive canvas failed, creating simple canvas:', error);
-          // Fallback to simple canvas creation
-          canvas = document.createElement('canvas');
+        // Create canvas with pre-calculated dimensions to avoid expansion animation
+        const canvas = document.createElement('canvas');
+        
+        // Use pre-calculated dimensions if available, otherwise use defaults
+        if (preCalculatedDimensions) {
+          // Set canvas internal dimensions (Requirements: 7.1, 7.2, 7.3)
+          canvas.width = preCalculatedDimensions.width * preCalculatedDimensions.scale;
+          canvas.height = preCalculatedDimensions.height * preCalculatedDimensions.scale;
+          
+          // Set canvas display dimensions immediately (Requirements: 7.4, 7.5)
+          canvas.style.width = `${preCalculatedDimensions.width}px`;
+          canvas.style.height = `${preCalculatedDimensions.height}px`;
+        } else {
+          // Fallback dimensions
           canvas.width = 600;
           canvas.height = 400;
           canvas.style.width = '100%';
           canvas.style.height = '100%';
-          canvas.style.display = 'block';
-          canvas.style.border = '1px solid #e5e7eb';
-          canvas.style.borderRadius = '8px';
-          canvas.style.backgroundColor = '#ffffff';
-          
-          // Draw initial content
-          const ctx = canvas.getContext('2d');
-          if (ctx) {
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#666';
-            ctx.font = '16px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('Canvas Ready - Simple Mode', canvas.width / 2, canvas.height / 2);
-          }
-          
-          canvasHostRef.current?.appendChild(canvas);
-          canvasRef.current = canvas;
         }
+        
+        // Set canvas styles to prevent animations (Requirements: 1.1, 1.3, 7.3, 7.4)
+        canvas.style.display = 'block';
+        canvas.style.border = '1px solid #e5e7eb';
+        canvas.style.borderRadius = '8px';
+        canvas.style.backgroundColor = '#ffffff';
+        canvas.style.transition = 'none'; // Remove all transitions
+        canvas.style.animation = 'none'; // Remove all animations
+        canvas.style.transform = 'none'; // No transforms
+        
+        canvasHostRef.current?.appendChild(canvas);
+        canvasRef.current = canvas;
         
         // Get initial metrics
-        if (canvas) {
-          const metrics = responsiveCanvasManager.getCanvasMetrics(canvas);
-          setCanvasMetrics(metrics);
+        const metrics = responsiveCanvasManager.getCanvasMetrics(canvas);
+        setCanvasMetrics(metrics);
+        
+        // Setup resize observer for automatic resizing
+        if (!resizeObserverRef.current && containerRef.current) {
+          const scalingConfig: CanvasScalingConfig = {
+            maintainAspectRatio: true,
+            fillContainer: true,
+            scalingFactor: 1.0,
+            maxWidth: 1200,
+            maxHeight: 800,
+            minWidth: 300,
+            minHeight: 200
+          };
           
-          // Setup resize observer for automatic resizing
-          if (!resizeObserverRef.current) {
-            resizeObserverRef.current = responsiveCanvasManager.setupResizeObserver(
-              canvas,
-              containerRef.current,
-              scalingConfig
-            );
-          }
+          resizeObserverRef.current = responsiveCanvasManager.setupResizeObserver(
+            canvas,
+            containerRef.current,
+            scalingConfig
+          );
         }
         
-        // Trigger initial render
-        setTimeout(() => {
-          renderPreview();
-        }, 100);
+        // Trigger initial render immediately (no delay)
+        renderPreview();
       }
     } catch (error) {
       console.error('Failed to initialize responsive canvas:', error);
@@ -299,7 +301,7 @@ const HandwritingPreview: React.FC<HandwritingPreviewProps> = ({
       // Attempt recovery with fallback system
       recoverFromCanvasError(error as Error);
     }
-  }, []);
+  }, [preCalculatedDimensions]);
 
   /**
    * Recover from canvas errors using fallback system

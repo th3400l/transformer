@@ -106,21 +106,15 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
 
     // Available space accounting for padding
     const availableWidth = containerRect.width - (padding * 2);
-    const availableHeight = containerRect.height - (padding * 2);
 
     // Calculate dimensions based on aspect ratio and constraints
     let canvasWidth: number;
     let canvasHeight: number;
 
-    // Try width-constrained first
+    // Prioritize width-based scaling for all devices
+    // This allows the canvas to be larger and scroll vertically if needed
     canvasWidth = Math.min(Math.max(availableWidth, minWidth), maxWidth);
     canvasHeight = canvasWidth / aspectRatio;
-
-    // Check if height fits, otherwise constrain by height
-    if (canvasHeight > availableHeight || canvasHeight > maxHeight) {
-      canvasHeight = Math.min(Math.max(availableHeight, minHeight), maxHeight);
-      canvasWidth = canvasHeight * aspectRatio;
-    }
 
     // Ensure minimum dimensions
     canvasWidth = Math.max(canvasWidth, minWidth);
@@ -128,14 +122,17 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
 
     // Device-specific adjustments
     if (deviceInfo.isMobile) {
-      // On mobile, prioritize width and allow scrolling for height
+      // On mobile, use full available width and calculate height
       canvasWidth = Math.min(canvasWidth, availableWidth);
       canvasHeight = canvasWidth / aspectRatio;
     } else if (deviceInfo.isTablet) {
-      // On tablet, balance width and height
-      const maxDimension = Math.min(availableWidth, availableHeight * aspectRatio);
-      canvasWidth = maxDimension;
-      canvasHeight = maxDimension / aspectRatio;
+      // On tablet, use most of available width
+      canvasWidth = Math.min(canvasWidth, availableWidth);
+      canvasHeight = canvasWidth / aspectRatio;
+    } else {
+      // On desktop, use full available width up to maxWidth (1200px)
+      canvasWidth = Math.min(availableWidth, maxWidth);
+      canvasHeight = canvasWidth / aspectRatio;
     }
 
     // Calculate scale factor for high-DPI displays
@@ -156,14 +153,51 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
 
   /**
    * Handle window resize with debouncing
-   * Requirements: 5.5 - responsive scaling on resize
+   * Requirements: 5.5 - responsive scaling on resize, 3.4 - orientation change handling
    */
   const handleResize = useCallback(() => {
     const newDimensions = calculateCanvasDimensions();
     const newTouchOptimizations = detectDeviceType().touchOptimizations;
 
-    setDimensions(newDimensions);
-    setTouchOptimizations(newTouchOptimizations);
+    setDimensions(prev => {
+      if (
+        prev.width === newDimensions.width &&
+        prev.height === newDimensions.height &&
+        prev.scale === newDimensions.scale &&
+        prev.isMobile === newDimensions.isMobile &&
+        prev.isTablet === newDimensions.isTablet &&
+        prev.isDesktop === newDimensions.isDesktop
+      ) {
+        return prev;
+      }
+      return newDimensions;
+    });
+
+    setTouchOptimizations(prev => {
+      if (
+        prev.touchTargetSize === newTouchOptimizations.touchTargetSize &&
+        prev.gestureEnabled === newTouchOptimizations.gestureEnabled &&
+        prev.scrollBehavior === newTouchOptimizations.scrollBehavior
+      ) {
+        return prev;
+      }
+      return newTouchOptimizations;
+    });
+  }, [calculateCanvasDimensions, detectDeviceType]);
+
+  /**
+   * Handle orientation change specifically
+   * Requirements: 3.4 - smooth orientation change handling
+   */
+  const handleOrientationChange = useCallback(() => {
+    // Wait for layout to stabilize after orientation change
+    setTimeout(() => {
+      const newDimensions = calculateCanvasDimensions();
+      const newTouchOptimizations = detectDeviceType().touchOptimizations;
+
+      setDimensions(newDimensions);
+      setTouchOptimizations(newTouchOptimizations);
+    }, 100);
   }, [calculateCanvasDimensions, detectDeviceType]);
 
   /**
@@ -171,7 +205,7 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
    */
   const debouncedResize = useCallback(() => {
     let timeoutId: NodeJS.Timeout;
-    
+
     const debounced = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(handleResize, 150);
@@ -188,26 +222,26 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
     return {
       // Grid layout adjustments
       gridColumns: dimensions.isMobile ? 1 : dimensions.isTablet ? 2 : 3,
-      
+
       // Control panel sizing
       controlPanelWidth: dimensions.isMobile ? '100%' : dimensions.isTablet ? '40%' : '33%',
-      
+
       // Canvas container sizing
       canvasContainerWidth: dimensions.isMobile ? '100%' : dimensions.isTablet ? '60%' : '67%',
-      
+
       // Font size adjustments
       baseFontSize: dimensions.isMobile ? 14 : dimensions.isTablet ? 16 : 16,
-      
+
       // Spacing adjustments
       spacing: {
         small: dimensions.isMobile ? 8 : 12,
         medium: dimensions.isMobile ? 12 : 16,
         large: dimensions.isMobile ? 16 : 24
       },
-      
+
       // Touch target sizes
       touchTargetSize: touchOptimizations.touchTargetSize,
-      
+
       // Interaction modes
       gestureEnabled: touchOptimizations.gestureEnabled,
       scrollBehavior: touchOptimizations.scrollBehavior
@@ -223,25 +257,25 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
       // Canvas dimensions
       width: dimensions.width,
       height: dimensions.height,
-      
+
       // Rendering quality
       pixelRatio: dimensions.scale,
-      
+
       // Performance optimizations
       renderingQuality: dimensions.isMobile ? 0.8 : dimensions.isTablet ? 1.0 : 1.2,
-      
+
       // Memory management
       maxTextureSize: dimensions.isMobile ? 1024 : dimensions.isTablet ? 2048 : 4096,
-      
+
       // Canvas pooling
       enableCanvasPooling: dimensions.isMobile || dimensions.isTablet,
-      
+
       // Progressive loading
       enableProgressiveLoading: dimensions.isMobile,
-      
+
       // Touch interaction
       touchEnabled: touchOptimizations.gestureEnabled,
-      
+
       // Scroll behavior
       scrollBehavior: touchOptimizations.scrollBehavior
     };
@@ -255,14 +289,26 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
     // Set up resize listener
     const debouncedHandler = debouncedResize();
     window.addEventListener('resize', debouncedHandler);
-    window.addEventListener('orientationchange', debouncedHandler);
+
+    // Set up orientation change listener with specific handler
+    // Requirements: 3.4 - proper orientation change handling
+    window.addEventListener('orientationchange', handleOrientationChange);
+
+    // Also listen to screen orientation API if available
+    if (window.screen?.orientation) {
+      window.screen.orientation.addEventListener('change', handleOrientationChange);
+    }
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', debouncedHandler);
-      window.removeEventListener('orientationchange', debouncedHandler);
+      window.removeEventListener('orientationchange', handleOrientationChange);
+
+      if (window.screen?.orientation) {
+        window.screen.orientation.removeEventListener('change', handleOrientationChange);
+      }
     };
-  }, [handleResize, debouncedResize]);
+  }, [handleResize, debouncedResize, handleOrientationChange]);
 
   // Recalculate when container ref changes
   useEffect(() => {
@@ -291,19 +337,19 @@ export const useResponsiveCanvasContainer = () => {
     const styles: React.CSSProperties = {
       width: '100%',
       height: dimensions.isMobile ? 'auto' : '100%',
-      minHeight: dimensions.isMobile ? `${dimensions.height}px` : 'auto',
-      maxHeight: dimensions.isMobile ? 'none' : '75vh',
+      minHeight: dimensions.isMobile ? `${dimensions.height}px` : '600px', // Increased from 'auto'
+      maxHeight: dimensions.isMobile ? 'none' : '90vh', // Much larger viewport height
       overflow: dimensions.isMobile ? 'visible' : 'auto',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: dimensions.isMobile ? 'flex-start' : 'center',
       padding: dimensions.isMobile ? '10px' : '20px',
-      
+
       // Touch optimizations
       touchAction: dimensions.isMobile || dimensions.isTablet ? 'pan-y' : 'auto',
       WebkitOverflowScrolling: 'touch',
-      
+
       // Smooth scrolling
       scrollBehavior: 'smooth'
     };

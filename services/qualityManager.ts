@@ -344,6 +344,99 @@ export class QualityManager {
   }
 
   /**
+   * Gracefully degrade quality based on memory pressure
+   * Requirements: 5.3, 5.4, 5.5 - Graceful quality degradation
+   */
+  degradeQualityForMemoryPressure(memoryPressure: number): {
+    degraded: boolean;
+    changes: string[];
+  } {
+    const settings = this.currentProfile.settings;
+    const changes: string[] = [];
+    let degraded = false;
+
+    // Level 1: Moderate pressure (60-75%)
+    if (memoryPressure > 0.6 && memoryPressure <= 0.75) {
+      if (settings.enableAntialiasing) {
+        settings.enableAntialiasing = false;
+        changes.push('Disabled antialiasing');
+        degraded = true;
+      }
+      
+      if (settings.maxTextureSize > 2048) {
+        settings.maxTextureSize = 2048;
+        changes.push('Reduced max texture size to 2048');
+        degraded = true;
+      }
+    }
+
+    // Level 2: High pressure (75-90%)
+    if (memoryPressure > 0.75 && memoryPressure <= 0.9) {
+      if (settings.renderingQuality > 0.8) {
+        settings.renderingQuality = 0.8;
+        changes.push('Reduced rendering quality to 0.8');
+        degraded = true;
+      }
+      
+      if (settings.textureQuality > 0.7) {
+        settings.textureQuality = 0.7;
+        changes.push('Reduced texture quality to 0.7');
+        degraded = true;
+      }
+      
+      if (!settings.enableMemoryOptimizations) {
+        settings.enableMemoryOptimizations = true;
+        changes.push('Enabled memory optimizations');
+        degraded = true;
+      }
+      
+      if (!settings.enableCanvasPooling) {
+        settings.enableCanvasPooling = true;
+        changes.push('Enabled canvas pooling');
+        degraded = true;
+      }
+    }
+
+    // Level 3: Critical pressure (>90%)
+    if (memoryPressure > 0.9) {
+      if (settings.renderingQuality > 0.6) {
+        settings.renderingQuality = 0.6;
+        changes.push('Reduced rendering quality to 0.6 (critical)');
+        degraded = true;
+      }
+      
+      if (settings.textureQuality > 0.5) {
+        settings.textureQuality = 0.5;
+        changes.push('Reduced texture quality to 0.5 (critical)');
+        degraded = true;
+      }
+      
+      if (settings.maxTextureSize > 1024) {
+        settings.maxTextureSize = 1024;
+        changes.push('Reduced max texture size to 1024 (critical)');
+        degraded = true;
+      }
+      
+      if (settings.maxConcurrentOperations > 1) {
+        settings.maxConcurrentOperations = 1;
+        changes.push('Limited concurrent operations to 1 (critical)');
+        degraded = true;
+      }
+    }
+
+    return { degraded, changes };
+  }
+
+  /**
+   * Restore quality after memory pressure is relieved
+   * Requirements: 5.3, 5.4, 5.5 - Quality restoration
+   */
+  restoreQualityAfterMemoryRelief(): void {
+    // Reset to optimal profile for current device
+    this.currentProfile = this.selectOptimalProfile();
+  }
+
+  /**
    * Get recommended canvas configuration
    * Requirements: 5.1, 5.2 - Canvas optimization recommendations
    */

@@ -42,23 +42,24 @@ export class SEOOptimizer implements ISEOOptimizer {
 
   constructor() {
     this.baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://txttohandwriting.org';
-    this.appName = 'Handwriting Generator';
-    this.appDescription = 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples.';
+    this.appName = 'Handwriting Generator - Convert Text to Handwriting Online';
+    this.appDescription = 'Transform typed text into realistic handwriting with our free online handwriting generator. Create authentic handwritten notes, assignments, and designs with multiple fonts, paper templates, and ink colors. No signup required, 100% private and secure. Perfect for students, content creators, and professionals.';
   }
 
   generateMetaTags(): MetaTag[] {
     return [
       // Basic meta tags
       { name: 'description', content: this.appDescription },
-      { name: 'keywords', content: 'handwriting generator, handwritten text, custom fonts, realistic handwriting, text to handwriting, online handwriting converter, free handwriting tool, studygram, aesthetic notes, digital handwriting' },
+      { name: 'keywords', content: 'handwriting generator, text to handwriting, convert text to handwriting, handwritten text, custom fonts, realistic handwriting, text to handwriting converter, online handwriting generator, free handwriting tool, handwriting font generator, studygram, aesthetic notes, digital handwriting, handwritten notes generator, handwriting maker' },
       { name: 'author', content: 'txttohandwriting.org Team' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       { name: 'language', content: 'en' },
-      { name: 'revisit-after', content: '7 days' },
+      { name: 'language', content: 'en' },
+      { name: 'revisit-after', content: '1 day' },
       { name: 'distribution', content: 'global' },
       { name: 'rating', content: 'general' },
-      
-      // Open Graph meta tags
+
+      // Open Graph meta tags (Enhanced for social sharing)
       { property: 'og:title', content: this.appName },
       { property: 'og:description', content: this.appDescription },
       { property: 'og:type', content: 'website' },
@@ -66,11 +67,13 @@ export class SEOOptimizer implements ISEOOptimizer {
       { property: 'og:site_name', content: 'txttohandwriting.org' },
       { property: 'og:locale', content: 'en_US' },
       { property: 'og:image', content: `${this.baseUrl}/app-screenshot.jpg` },
+      { property: 'og:image:secure_url', content: `${this.baseUrl}/app-screenshot.jpg` },
+      { property: 'og:image:type', content: 'image/jpeg' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
       { property: 'og:image:alt', content: 'Handwriting Generator - Convert Text to Realistic Handwriting' },
-      
-      // Twitter Card meta tags
+
+      // Twitter Card meta tags (Enhanced for Twitter sharing)
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: this.appName },
       { name: 'twitter:description', content: this.appDescription },
@@ -78,21 +81,23 @@ export class SEOOptimizer implements ISEOOptimizer {
       { name: 'twitter:image:alt', content: 'Handwriting Generator - Convert Text to Realistic Handwriting' },
       { name: 'twitter:site', content: '@txttohandwriting' },
       { name: 'twitter:creator', content: '@txttohandwriting' },
-      
+      { name: 'twitter:domain', content: 'txttohandwriting.org' },
+      { name: 'twitter:url', content: this.baseUrl },
+
       // Additional SEO meta tags
       { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
       { name: 'googlebot', content: 'index, follow' },
       { name: 'bingbot', content: 'index, follow' },
       { name: 'theme-color', content: '#ffffff' },
       { name: 'msapplication-TileColor', content: '#ffffff' },
-      
+
       // App-specific meta tags
       { name: 'application-name', content: this.appName },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
       { name: 'apple-mobile-web-app-title', content: this.appName },
       { name: 'mobile-web-app-capable', content: 'yes' },
-      
+
       // Additional structured markup hints
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'HandheldFriendly', content: 'true' },
@@ -111,8 +116,8 @@ export class SEOOptimizer implements ISEOOptimizer {
       operatingSystem: 'Web Browser',
       browserRequirements: 'Requires JavaScript. Requires HTML5.',
       softwareVersion: '2.0',
-      datePublished: '2024-01-01',
-      dateModified: '2025-09-25',
+      datePublished: '2025-01-01',
+      dateModified: '2025-12-28',
       author: {
         '@type': 'Organization',
         name: 'txttohandwriting.org',
@@ -130,12 +135,16 @@ export class SEOOptimizer implements ISEOOptimizer {
         availability: 'https://schema.org/InStock'
       },
       featureList: [
-        'Custom handwriting fonts',
-        'Multiple paper templates',
-        'Various ink colors',
-        'Realistic handwriting generation',
-        'PNG export functionality',
-        'Bulk download support'
+        'Realistic handwriting variations with natural baseline jitter and slant',
+        'Multiple paper templates including blank, lined, and dotted options',
+        'Upload your own handwriting fonts (TTF, OTF, WOFF formats)',
+        'Custom ink colors and boldness control',
+        'Instant live preview while typing',
+        'Bulk download and PDF export functionality',
+        '100% free and private - all processing happens in your browser',
+        'No signup required - start creating immediately',
+        'Multi-page document generation (up to 6 pages)',
+        'High-quality PNG and PDF output'
       ],
       screenshot: `${this.baseUrl}/app-screenshot.jpg`,
       aggregateRating: {
@@ -144,6 +153,17 @@ export class SEOOptimizer implements ISEOOptimizer {
         ratingCount: '1250',
         bestRating: '5',
         worstRating: '1'
+      },
+      mainEntity: {
+        '@type': 'SoftwareApplication',
+        name: 'Text to Handwriting Converter',
+        applicationCategory: 'UtilityApplication',
+        operatingSystem: 'Any (Web-based)',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD'
+        }
       }
     };
   }
@@ -152,13 +172,13 @@ export class SEOOptimizer implements ISEOOptimizer {
     const { metadata } = image;
     const textPreview = metadata.textContent?.substring(0, 50) || 'handwritten text';
     const timestamp = new Date(image.timestamp).toLocaleDateString();
-    
+
     return `Handwritten text "${textPreview}" generated on ${timestamp} using custom handwriting font`;
   }
 
   generateSitemap(): SitemapEntry[] {
     const currentDate = new Date().toISOString();
-    
+
     return [
       {
         url: this.baseUrl,
@@ -211,14 +231,14 @@ export class SEOOptimizer implements ISEOOptimizer {
     metaTags.forEach(tag => {
       const selector = tag.name ? `meta[name="${tag.name}"]` : `meta[property="${tag.property}"]`;
       let element = document.querySelector(selector) as HTMLMetaElement;
-      
+
       if (!element) {
         element = document.createElement('meta');
         if (tag.name) element.name = tag.name;
         if (tag.property) element.setAttribute('property', tag.property);
         document.head.appendChild(element);
       }
-      
+
       element.content = tag.content;
     });
   }
@@ -307,8 +327,8 @@ export class SEOOptimizer implements ISEOOptimizer {
       name: 'txttohandwriting.org',
       url: this.baseUrl,
       logo: `${this.baseUrl}/site.svg`,
-      description: 'Free online handwriting generator for creating realistic handwritten text with custom fonts and templates.',
-      foundingDate: '2024',
+      description: 'The premier online handwriting generator. Convert text to realistic handwritten notes with custom fonts, ink styles, and paper templates. Free and privacy-focused.',
+      foundingDate: '2025',
       sameAs: [
         `${this.baseUrl}/about`,
         `${this.baseUrl}/blog`
@@ -316,7 +336,7 @@ export class SEOOptimizer implements ISEOOptimizer {
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        email: 'support@txttohandwriting.org',
+        email: 'coming soon',
         availableLanguage: 'English'
       }
     };

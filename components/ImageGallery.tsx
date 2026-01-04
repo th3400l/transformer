@@ -1,422 +1,216 @@
-/**
- * ImageGallery Component
- * 
- * Displays generated images in a gallery with navigation controls.
- * Shows exactly 3 images at a time with left/right arrow navigation.
- * Includes fullscreen icon overlays and smooth transitions.
- * 
- * Requirements: 1.1, 1.2, 1.3, 1.4, 1.5
- */
+import React from 'react';
+import { GeneratedImage } from '../types/gallery';
+import { Button } from './Button';
+import { DownloadIcon, PDFIcon, XMarkIcon } from './icons';
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { GeneratedImage, ImageGalleryProps } from '../types/gallery';
-import { RoseSpinner } from './Spinner';
-
-// Navigation Icons
-const ChevronLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-  </svg>
-);
-
-const ChevronRightIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-  </svg>
-);
-
-const ExpandIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15" />
-  </svg>
-);
-
-const DownloadIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-  </svg>
-);
-
-// Close Icon
-const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
-
-// Individual Image Card Component
-interface ImageCardProps {
-  image: GeneratedImage;
+interface ImageGalleryProps {
+  images: GeneratedImage[];
   onFullscreenView: (image: GeneratedImage) => void;
-  onImageSelect?: (image: GeneratedImage) => void;
-  onRemoveImage: (imageId: string) => void; // New prop for removing an image
+  onRemoveImage: (imageId: string) => void;
+  onBulkDownload: () => void;
+  onDownloadPdf?: () => void;
+  downloadQuality?: 'high' | 'medium' | 'low';
+  onDownloadQualityChange?: (q: 'high' | 'medium' | 'low') => void;
   className?: string;
 }
 
-const ImageCard: React.FC<ImageCardProps> = ({ 
-  image, 
-  onFullscreenView, 
-  onImageSelect, 
-  onRemoveImage,
-  className = ''
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const handleClick = () => {
-    if (onImageSelect) {
-      onImageSelect(image);
-    }
-  };
-
-  const handleFullscreenClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onFullscreenView(image);
-  };
-
-  const handleRemoveClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onRemoveImage(image.id);
-  };
-
-  const summaryText = image.metadata.textContent
-    ? image.metadata.textContent.replace(/\s+/g, ' ').trim()
-    : '';
-
+// Internal ImageCard component for cleaner code
+const ImageCard: React.FC<{
+  image: GeneratedImage;
+  onFullscreenView: (image: GeneratedImage) => void;
+  onImageSelect: (image: GeneratedImage) => void;
+  onRemoveImage: (imageId: string) => void;
+  className?: string;
+}> = ({ image, onFullscreenView, onImageSelect, onRemoveImage, className }) => {
   return (
-    <div 
-      className={`relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
-      role="button"
-      tabIndex={0}
-      aria-label={`Generated image ${image.metadata.label || image.sequenceNumber}`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick();
-        }
-      }}
-    >
-      {/* Image */}
-      <div className="aspect-[4/5] relative overflow-hidden">
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-gray-200 bg-opacity-70 backdrop-blur-sm flex items-center justify-center">
-            <RoseSpinner size={32} announce={false} label={`Loading ${image.metadata.label || `image ${image.sequenceNumber}`}`} />
-          </div>
-        )}
+    <div className={`group relative bg-paper-bg rounded-lg shadow-md overflow-hidden border border-panel-border hover:shadow-xl transition-all duration-300 ${className}`}>
+      {/* Image Preview */}
+      <div
+        className="aspect-[3/4] w-full overflow-hidden cursor-pointer relative"
+        onClick={() => onFullscreenView(image)}
+      >
         <img
           src={image.url}
-          alt={`Generated handwriting image ${image.metadata.label || image.sequenceNumber}`}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          alt={`Handwriting Sample ${image.sequenceNumber + 1} - ${image.metadata.textContent?.substring(0, 30) || 'Converted Text'}`}
+          className="w-full h-full object-contain bg-white transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
-          decoding="async"
-          onLoad={() => setImageLoaded(true)}
-          onError={() => setImageLoaded(true)}
         />
-        
-        {/* Close Icon Overlay */}
-        <button
-          onClick={handleRemoveClick}
-          className={`absolute top-2 left-2 p-2 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 ${
-            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-          }`}
-          aria-label="Remove image"
-        >
-          <CloseIcon className="w-4 h-4" />
-        </button>
-        
-        {/* Fullscreen Icon Overlay - Requirement 1.4 */}
-        <button
-          onClick={handleFullscreenClick}
-          className={`absolute top-2 right-2 p-2 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 ${
-            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-          }`}
-          aria-label="View in fullscreen"
-        >
-          <ExpandIcon className="w-4 h-4" />
-        </button>
+
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 z-10">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onFullscreenView(image);
+            }}
+            className="p-2 bg-white/90 rounded-full text-gray-800 hover:bg-white hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-white/50"
+            title="View Fullscreen"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      {/* Image Info */}
-      <div className="p-3">
-        <div
-          className="text-sm text-gray-600 mb-1 truncate"
-          title={image.metadata.label || `Image ${image.sequenceNumber}`}
+      {/* Card Footer */}
+      <div className="p-3 bg-control-bg border-t border-panel-border flex justify-between items-center">
+        <div className="flex flex-col">
+          <span className="text-xs font-medium text-text truncate max-w-[120px]">
+            Image {image.sequenceNumber + 1}
+          </span>
+          <span className="text-[10px] text-text-muted">
+            {image.metadata.width}x{image.metadata.height} • {(image.metadata.size / 1024).toFixed(0)}KB
+          </span>
+        </div>
+        <Button
+          variant="icon"
+          size="sm"
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemoveImage(image.id);
+          }}
+          className="text-text-muted hover:text-red-500 hover:bg-red-500/10 border-transparent"
+          title="Remove Image"
         >
-          {image.metadata.label || `Image ${image.sequenceNumber}`}
-        </div>
-        <div className="text-xs text-gray-400 truncate" title={summaryText}>
-          {summaryText.substring(0, 50)}
-          {summaryText.length > 50 ? '...' : ''}
-        </div>
-        <div className="text-xs text-gray-400 mt-1">
-          {Math.round(image.metadata.size / 1024)}KB • {image.metadata.format.toUpperCase()}
-        </div>
+          <XMarkIcon className="w-4 h-4" />
+        </Button>
       </div>
     </div>
   );
 };
 
-// Gallery Navigation Component
-interface GalleryNavigationProps {
-  currentPage: number;
-  totalPages: number;
-  onPrevious: () => void;
-  onNext: () => void;
-  canGoPrevious: boolean;
-  canGoNext: boolean;
-}
-
-const GalleryNavigation: React.FC<GalleryNavigationProps> = ({
-  currentPage,
-  totalPages,
-  onPrevious,
-  onNext,
-  canGoPrevious,
-  canGoNext
-}) => {
-  return (
-    <div className="flex items-center justify-between">
-      <button
-        onClick={onPrevious}
-        disabled={!canGoPrevious}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-          canGoPrevious
-            ? 'bg-[var(--accent-color)] text-white hover:bg-[var(--accent-color-hover)] shadow-md hover:shadow-lg'
-            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-        }`}
-        aria-label="Previous images"
-      >
-        <ChevronLeftIcon className="w-4 h-4" />
-        <span className="hidden sm:inline">Previous</span>
-      </button>
-
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-600">
-          Page {currentPage} of {totalPages}
-        </span>
-      </div>
-
-      <button
-        onClick={onNext}
-        disabled={!canGoNext}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-          canGoNext
-            ? 'bg-[var(--accent-color)] text-white hover:bg-[var(--accent-color-hover)] shadow-md hover:shadow-lg'
-            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-        }`}
-        aria-label="Next images"
-      >
-        <span className="hidden sm:inline">Next</span>
-        <ChevronRightIcon className="w-4 h-4" />
-      </button>
-    </div>
-  );
-};
-
-// Main ImageGallery Component
-
-export const ImageGallery: React.FC<ImageGalleryProps> = ({
+const ImageGallery: React.FC<ImageGalleryProps> = ({
   images,
-  onImageSelect,
   onFullscreenView,
   onRemoveImage,
   onBulkDownload,
   onDownloadPdf,
   downloadQuality = 'high',
   onDownloadQualityChange,
-  className = ''
+  className
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const imagesPerPage = 3; // Requirement 1.1: exactly 3 images at a time
-  const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [page, setPage] = React.useState(0);
+  const IMAGES_PER_PAGE = 3;
+  const totalPages = Math.ceil(images.length / IMAGES_PER_PAGE);
 
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (!showMenu) return;
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setShowMenu(false);
-      }
-    };
-    const onEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowMenu(false);
-    };
-    if (showMenu) {
-      document.addEventListener('mousedown', onDocClick);
-      document.addEventListener('keydown', onEsc);
-    }
-    return () => {
-      document.removeEventListener('mousedown', onDocClick);
-      document.removeEventListener('keydown', onEsc);
-    };
-  }, [showMenu]);
+  const currentImages = images.slice(
+    page * IMAGES_PER_PAGE,
+    (page + 1) * IMAGES_PER_PAGE
+  );
 
-  // Calculate pagination - Requirement 1.2: navigation controls
-  const totalPages = Math.ceil(images.length / imagesPerPage);
-  const startIndex = (currentPage - 1) * imagesPerPage;
-  const endIndex = startIndex + imagesPerPage;
-  const currentImages = images.slice(startIndex, endIndex);
-
-  const canGoPrevious = currentPage > 1;
-  const canGoNext = currentPage < totalPages;
-
-  // Navigation handlers - Requirement 1.3: smooth transitions
-  const handlePrevious = () => {
-    if (canGoPrevious) {
-      setCurrentPage(prev => prev - 1);
-    }
+  const onImageSelect = (image: GeneratedImage) => {
+    // Placeholder for future selection logic
+    console.log('Selected', image.id);
   };
 
-  const handleNext = () => {
-    if (canGoNext) {
-      setCurrentPage(prev => prev + 1);
-    }
-  };
-
-  // Reset to first page when images change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [images.length]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft' && canGoPrevious) {
-        handlePrevious();
-      } else if (e.key === 'ArrowRight' && canGoNext) {
-        handleNext();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [canGoPrevious, canGoNext]);
+  if (images.length === 0) {
+    return null;
+  }
 
   return (
-    <div className={`bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-xl p-6 ${className}`}>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <h3 className="text-lg font-semibold text-[var(--text-color)] tracking-tight">
-            Gallery
-          </h3>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-color)] opacity-60"></div>
-            <span className="text-sm font-medium text-[var(--text-muted)]">
-              {images.length} {images.length === 1 ? 'image' : 'images'}
-            </span>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          {/* Quality Switch */}
-          <div className="hidden sm:flex items-center text-xs text-[var(--text-muted)] gap-2" aria-label="Download Quality">
-            <span>Quality:</span>
-            {(['high','medium','low'] as const).map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => onDownloadQualityChange && onDownloadQualityChange(q)}
-                className={`px-2.5 py-1 rounded-full border text-xs transition ${downloadQuality === q ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)]' : 'border-[var(--panel-border)] text-[var(--text-muted)] hover:bg-[var(--control-bg)]'}`}
-                aria-pressed={downloadQuality === q}
+    <div className={`w-full ${className}`}>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-5 px-2 gap-4">
+        <h3 className="text-lg font-bold text-text flex items-center gap-3">
+          Gallery
+          <span className="text-xs font-semibold text-text-muted bg-control-bg px-2.5 py-1 rounded-full border border-panel-border">
+            {images.length}
+          </span>
+        </h3>
+
+        <div className="flex items-center gap-2 bg-control-bg p-1.5 rounded-xl border border-panel-border shadow-sm self-start sm:self-auto">
+          {/* Quality Selector */}
+          {onDownloadQualityChange && (
+            <div className="relative px-1">
+              <select
+                value={downloadQuality}
+                onChange={(e) => onDownloadQualityChange(e.target.value as any)}
+                className="text-xs font-medium bg-transparent text-text hover:text-accent focus:text-accent border-none outline-none cursor-pointer pr-6 py-1 appearance-none"
+                style={{ backgroundImage: 'none' }}
               >
-                {q === 'high' ? 'High' : q === 'medium' ? 'Med' : 'Low'}
-              </button>
-            ))}
-          </div>
-          {onBulkDownload && (
-          <div className="relative" ref={menuRef}>
-            <button
-              data-tour-id="download-button"
-              onClick={() => setShowMenu(prev => !prev)}
-              disabled={images.length === 0}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg ${
-                images.length > 0
-                  ? 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
-              aria-haspopup="menu"
-              aria-expanded={showMenu}
-              aria-label={images.length > 0 ? 'Download options' : 'No images to download'}
+                <option value="high" className="bg-control-bg text-text">High Quality</option>
+                <option value="medium" className="bg-control-bg text-text">Medium</option>
+                <option value="low" className="bg-control-bg text-text">Low Quality</option>
+              </select>
+              {/* Custom caret */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+            </div>
+          )}
+
+          <div className="w-px h-5 bg-panel-border mx-1" />
+
+          {/* Download Actions */}
+          <div className="flex gap-1">
+            {onDownloadPdf && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onDownloadPdf}
+                className="gap-1.5 px-3 text-text-muted hover:text-text hover:bg-panel-bg"
+                title="Download all as PDF"
+              >
+                <PDFIcon className="w-4 h-4" />
+                <span className="hidden sm:inline">PDF</span>
+              </Button>
+            )}
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={onBulkDownload}
+              className="gap-1.5 px-3 shadow-sm"
             >
               <DownloadIcon className="w-4 h-4" />
-              <span className="hidden sm:inline">Download</span>
-              <svg className={`w-4 h-4 transition-transform ${showMenu ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" />
-              </svg>
-            </button>
-            {showMenu && images.length > 0 && (
-              <div className="absolute right-0 mt-2 w-48 z-30">
-                <div className="origin-top-right transform transition ease-out duration-150 scale-100 opacity-100">
-                  <div className="rounded-lg border border-[var(--panel-border)] bg-[var(--panel-bg)] shadow-2xl overflow-hidden">
-                    <div className="py-1" role="menu" aria-orientation="vertical">
-                      <button
-                        className="w-full text-left px-4 py-2 text-sm text-[var(--text-color)] hover:bg-[var(--control-bg)]"
-                        role="menuitem"
-                        onClick={() => { setShowMenu(false); onBulkDownload?.(); }}
-                      >
-                        Download All Images (PNG)
-                      </button>
-                      {onDownloadPdf && (
-                        <button
-                          className="w-full text-left px-4 py-2 text-sm text-[var(--text-color)] hover:bg-[var(--control-bg)]"
-                          role="menuitem"
-                          onClick={() => { setShowMenu(false); onDownloadPdf(); }}
-                        >
-                          Download All Pages (PDF)
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+              <span className="hidden sm:inline">Download All</span>
+              <span className="sm:hidden">All</span>
+            </Button>
           </div>
-          )}
         </div>
       </div>
 
-      {images.length === 0 ? (
-        /* Empty State - Show message when no images */
-        <div className="flex items-center justify-center py-20 min-h-[300px]">
-          <div className="text-center">
-            <h2 className="text-sm font-medium text-[var(--text-muted)] mb-2 tracking-wide">
-              Click "Generate Images" to see the magic.
-            </h2>
-          </div>
-        </div>
-      ) : (
-        <>
-          {/* Image Grid - Requirement 1.1: exactly 3 images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {currentImages.map((image) => (
-              <ImageCard
-                key={image.id}
-                image={image}
-                onFullscreenView={onFullscreenView}
-                onImageSelect={onImageSelect}
-                onRemoveImage={onRemoveImage}
-                className="transform transition-all duration-300"
-              />
-            ))}
-          </div>
-
-          {/* Navigation - Requirement 1.2: left/right arrow navigation */}
-          {totalPages > 1 && (
-            <GalleryNavigation
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPrevious={handlePrevious}
-              onNext={handleNext}
-              canGoPrevious={canGoPrevious}
-              canGoNext={canGoNext}
+      {/* Image Grid - Requirement 1.1: exactly 3 images, centered showcase layout */}
+      <div className="flex flex-wrap justify-center gap-6 mb-6">
+        {currentImages.map((image) => (
+          <div key={image.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm animate-fade-in">
+            <ImageCard
+              image={image}
+              onFullscreenView={onFullscreenView}
+              onImageSelect={onImageSelect}
+              onRemoveImage={onRemoveImage}
+              className="transform transition-all duration-300 w-full h-full"
             />
-          )}
-        </>
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-4 mt-6">
+          <button
+            onClick={() => setPage(p => Math.max(0, p - 1))}
+            disabled={page === 0}
+            className="p-2 rounded-full hover:bg-control-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-text"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <span className="text-sm font-medium text-text-muted">
+            Page {page + 1} of {totalPages}
+          </span>
+          <button
+            onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+            disabled={page === totalPages - 1}
+            className="p-2 rounded-full hover:bg-control-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-text"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
       )}
     </div>
   );

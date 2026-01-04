@@ -217,8 +217,15 @@ export class ProgressiveTemplateLoader {
     try {
       baseImage = await this.loadImageWithTimeout(lowQualityUrl);
     } catch (error) {
+      // Fallback to full quality if low quality not available
       console.warn(`Low quality template load failed for ${template.id}, using full quality asset instead`, error);
-      baseImage = await this.loadImageWithTimeout(fallbackUrl);
+      try {
+        baseImage = await this.loadImageWithTimeout(fallbackUrl);
+      } catch (fallbackError) {
+        // If both fail, create emergency placeholder
+        console.error(`Both low and full quality failed for ${template.id}, creating placeholder`, fallbackError);
+        baseImage = await this.createPlaceholderImage();
+      }
     }
     
     // Apply additional compression if needed
@@ -474,6 +481,63 @@ export class ProgressiveTemplateLoader {
    */
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  /**
+   * Create placeholder image for emergency fallback
+   * Requirements: 5.5 - Ultimate fallback mechanism
+   */
+  private async createPlaceholderImage(): Promise<HTMLImageElement> {
+    const canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 600;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      throw new Error('Failed to create placeholder: no canvas context');
+    }
+    
+    // Fill with white background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Add subtle grid pattern
+    ctx.strokeStyle = '#f0f0f0';
+    ctx.lineWidth = 1;
+    
+    for (let x = 0; x < canvas.width; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvas.height);
+      ctx.stroke();
+    }
+    
+    for (let y = 0; y < canvas.height; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvas.width, y);
+      ctx.stroke();
+    }
+    
+    // Convert to image
+    return new Promise((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          reject(new Error('Failed to create placeholder blob'));
+          return;
+        }
+        
+        const img = new Image();
+        img.onload = () => {
+          URL.revokeObjectURL(img.src);
+          resolve(img);
+        };
+        img.onerror = () => {
+          reject(new Error('Failed to load placeholder image'));
+        };
+        img.src = URL.createObjectURL(blob);
+      });
+    });
   }
 
   /**

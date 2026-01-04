@@ -1,7 +1,7 @@
 {
   "name": "txt-to-handwriting",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,10 @@
     "typecheck:components": "tsc -p tsconfig.components.json --noEmit",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "benchmark": "tsx scripts/runBenchmark.ts",
+    "validate:filesize": "tsx scripts/validateFileSize.ts",
+    "test:performance": "npm run validate:filesize && npm test -- performanceBenchmark.test.ts"
   },
   "dependencies": {
     "html-to-image": "^1.11.11",
@@ -29,6 +32,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/ui": "^3.2.4",
     "autoprefixer": "^10.4.21",
+    "baseline-browser-mapping": "^2.9.11",
     "canvas": "^3.2.0",
     "jsdom": "^27.0.0",
     "postcss": "^8.5.6",

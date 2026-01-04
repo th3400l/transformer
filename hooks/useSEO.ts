@@ -52,11 +52,20 @@ export function useSEO(options: UseSEOOptions = {}) {
 
     if (options.ogImage) {
       metaTags.push({ property: 'og:image', content: options.ogImage });
+      metaTags.push({ property: 'og:image:secure_url', content: options.ogImage });
+      metaTags.push({ property: 'og:image:type', content: 'image/jpeg' });
+      metaTags.push({ property: 'og:image:width', content: '1200' });
+      metaTags.push({ property: 'og:image:height', content: '630' });
       metaTags.push({ name: 'twitter:image', content: options.ogImage });
     }
 
     if (options.twitterCard) {
       metaTags.push({ name: 'twitter:card', content: options.twitterCard });
+    }
+
+    if (options.canonicalUrl) {
+      metaTags.push({ name: 'twitter:url', content: options.canonicalUrl });
+      metaTags.push({ name: 'twitter:domain', content: new URL(options.canonicalUrl).hostname });
     }
 
     if (typeof options.noindex === 'boolean') {

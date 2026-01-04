@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { CustomFont } from '../types/fonts';
 import { FontUploadError, FontErrorType } from '../types/customFontUpload';
 import { RoseSpinner } from './Spinner';
+import { Button } from './Button';
 
 interface CustomFontManagementPanelProps {
   customFonts: CustomFont[];
@@ -122,8 +123,8 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
       <article
         key={font.id}
         className={`
-          border border-[var(--control-border)] rounded-lg p-3 sm:p-4 transition-all duration-200
-          ${isProcessing ? 'opacity-50' : 'hover:border-[var(--accent-color)]'}
+          border border-control-border rounded-lg p-3 sm:p-4 transition-all duration-200
+          ${isProcessing ? 'opacity-50' : 'hover:border-accent'}
           ${showConfirm ? 'border-red-300 bg-red-50/50' : ''}
         `}
         aria-labelledby={`font-name-${font.id}`}
@@ -134,7 +135,7 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
           <div className="flex-1 min-w-0">
             <h4 
               id={`font-name-${font.id}`}
-              className="text-lg font-medium text-[var(--text-color)] mb-1 truncate"
+              className="text-lg font-medium text-text mb-1 truncate"
               style={{ fontFamily: font.loaded ? font.family : 'inherit' }}
               title={displayName}
             >
@@ -142,10 +143,10 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
             </h4>
             <div 
               id={`font-details-${font.id}`}
-              className="text-sm text-[var(--text-muted)] space-y-1"
+              className="text-sm text-text-muted space-y-1"
             >
               <div className="flex items-center gap-2">
-                <span className="px-2 py-1 text-xs bg-[var(--accent-color)] text-white rounded-full">
+                <span className="px-2 py-1 text-xs bg-accent text-white rounded-full">
                   Custom
                 </span>
                 <span>{font.format.toUpperCase()}</span>
@@ -177,7 +178,7 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
               </span>
             )}
             {font.usageCount > 0 && (
-              <span className="text-xs text-[var(--text-muted)]" title="Usage count">
+              <span className="text-xs text-text-muted" title="Usage count">
                 Used {font.usageCount} time{font.usageCount !== 1 ? 's' : ''}
               </span>
             )}
@@ -187,19 +188,19 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
         {/* Font Sample */}
         <div 
           id={`font-sample-${font.id}`}
-          className="mb-3 p-2 sm:p-3 bg-[var(--control-bg)] rounded border"
+          className="mb-3 p-2 sm:p-3 bg-control-bg rounded border"
           role="img"
           aria-label={`Font sample showing ${font.name} with pangram and alphabet`}
         >
           <div 
-            className="text-base sm:text-lg text-[var(--text-color)] break-words"
+            className="text-base sm:text-lg text-text break-words"
             style={{ fontFamily: font.loaded ? font.family : 'inherit' }}
             aria-label="Pangram sample text"
           >
             The quick brown fox jumps over the lazy dog
           </div>
           <div 
-            className="text-xs sm:text-sm text-[var(--text-muted)] mt-1 break-all"
+            className="text-xs sm:text-sm text-text-muted mt-1 break-all"
             style={{ fontFamily: font.loaded ? font.family : 'inherit' }}
             aria-label="Alphabet and numbers sample"
           >
@@ -214,22 +215,25 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
               Remove "{font.name}"? This action cannot be undone.
             </span>
             <div className="flex gap-2">
-            <button
+            <Button
               onClick={() => handleRemoveFont(font.id)}
               disabled={isProcessing}
-              className="px-3 py-1 text-sm bg-red-600 text-white rounded hover:bg-red-700 disabled:opacity-50 transition-colors"
+              isLoading={isRemoving}
+              size="sm"
+              className="bg-red-600 hover:bg-red-700 text-white"
               aria-label={`Confirm remove ${font.name}`}
             >
-              {isRemoving ? <RoseSpinner size={16} announce={false} /> : 'Remove'}
-            </button>
-            <button
+              Remove
+            </Button>
+            <Button
               onClick={() => setConfirmRemove(null)}
               disabled={isProcessing}
-              className="px-3 py-1 text-sm border border-[var(--panel-border)] text-[var(--text-muted)] rounded hover:bg-[var(--control-bg)] disabled:opacity-50 transition-colors"
+              variant="secondary"
+              size="sm"
               aria-label="Cancel removal"
             >
               Cancel
-            </button>
+            </Button>
             </div>
           </div>
         ) : (
@@ -249,11 +253,11 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
                 <label
                   htmlFor={`replace-${font.id}`}
                   className={`
-                    px-3 py-2 text-sm border border-[var(--control-border)] rounded cursor-pointer
+                    px-3 py-2 text-sm border border-control-border rounded cursor-pointer
                     transition-colors flex items-center gap-2
                     ${isComponentDisabled || isProcessing 
                       ? 'opacity-50 cursor-not-allowed' 
-                      : 'hover:border-[var(--accent-color)] hover:bg-[var(--accent-color)]/5'
+                      : 'hover:border-accent hover:bg-accent/5'
                     }
                   `}
                   tabIndex={isComponentDisabled || isProcessing ? -1 : 0}
@@ -279,20 +283,16 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
             )}
 
             {/* Remove Font */}
-            <button
+            <Button
               onClick={() => setConfirmRemove(font.id)}
               disabled={isComponentDisabled || isProcessing}
-              className={`
-                px-3 py-2 text-sm border border-red-300 text-red-600 rounded transition-colors
-                ${isComponentDisabled || isProcessing 
-                  ? 'opacity-50 cursor-not-allowed' 
-                  : 'hover:bg-red-50 hover:border-red-400'
-                }
-              `}
+              variant="outline"
+              size="sm"
+              className="border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400"
               aria-label={`Remove ${font.name}`}
             >
               Remove
-            </button>
+            </Button>
           </div>
         )}
 
@@ -321,12 +321,12 @@ export const CustomFontManagementPanel: React.FC<CustomFontManagementPanelProps>
       <header className="flex items-center justify-between mb-4">
         <h3 
           id="custom-fonts-heading" 
-          className="text-lg font-medium text-[var(--text-color)]"
+          className="text-lg font-medium text-text"
         >
           Custom Fonts ({customFonts.length}/{maxFonts})
         </h3>
         <div 
-          className="text-sm text-[var(--text-muted)]"
+          className="text-sm text-text-muted"
           aria-label={`Font usage: ${customFonts.length} of ${maxFonts} slots used`}
         >
           {customFonts.length === maxFonts ? 'At limit' : `${maxFonts - customFonts.length} remaining`}

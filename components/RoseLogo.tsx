@@ -17,19 +17,19 @@ const RoseLogo: React.FC<RoseLogoProps> = ({ size = 36, className = '' }) => (
   >
     <defs>
       <radialGradient id="roseLogoGlow" cx="50%" cy="50%" r="60%">
-        <stop offset="0%" stopColor="#fde6f1" stopOpacity="0.9" />
-        <stop offset="70%" stopColor="#f195b7" stopOpacity="0.24" />
-        <stop offset="100%" stopColor="#f195b7" stopOpacity="0" />
+        <stop offset="0%" stopColor="var(--spinner-color-highlight)" stopOpacity="0.9" />
+        <stop offset="70%" stopColor="var(--spinner-color-primary)" stopOpacity="0.24" />
+        <stop offset="100%" stopColor="var(--spinner-color-primary)" stopOpacity="0" />
       </radialGradient>
       <linearGradient id="rosePetalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fbd6e6" />
-        <stop offset="45%" stopColor="#f195b7" />
-        <stop offset="100%" stopColor="#de6e9c" />
+        <stop offset="0%" stopColor="var(--spinner-color-highlight)" />
+        <stop offset="45%" stopColor="var(--spinner-color-primary)" />
+        <stop offset="100%" stopColor="var(--spinner-color-secondary)" />
       </linearGradient>
       <radialGradient id="roseBudGradient" cx="40%" cy="40%" r="60%">
-        <stop offset="0%" stopColor="#fff7fb" />
-        <stop offset="55%" stopColor="#f8bbd8" />
-        <stop offset="100%" stopColor="#de6e9c" />
+        <stop offset="0%" stopColor="#fff" stopOpacity="0.9" />
+        <stop offset="55%" stopColor="var(--spinner-color-highlight)" />
+        <stop offset="100%" stopColor="var(--spinner-color-secondary)" />
       </radialGradient>
     </defs>
 
@@ -45,7 +45,7 @@ const RoseLogo: React.FC<RoseLogoProps> = ({ size = 36, className = '' }) => (
     </g>
 
     <circle cx="60" cy="60" r="22" fill="url(#roseBudGradient)" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" />
-    <circle cx="60" cy="60" r="36" fill="none" stroke="rgba(222,110,156,0.38)" strokeWidth="2" />
+    <circle cx="60" cy="60" r="36" fill="none" stroke="var(--spinner-color-secondary)" strokeOpacity="0.38" strokeWidth="2" />
   </svg>
 );
 

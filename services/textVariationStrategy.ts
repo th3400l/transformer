@@ -12,14 +12,18 @@ import { IVariationStrategy } from '../types';
  * - 1.5: Random micro-tilts for individual letters
  */
 export class RealisticVariationStrategy implements IVariationStrategy {
+  private noiseOffset: number = Math.random() * 1000;
+
   /**
-   * Generates random jitter within specified range
+   * Generates random jitter within specified range using pseudo-random noise for natural flow
    * @param range - Maximum jitter range (e.g., 0.5 for +/- 0.5 pixels)
    * @returns Random value between -range/2 and +range/2
    */
   generateJitter(range: number): number {
-    // Generate random value between -0.5 and +0.5, then scale by range
-    return (Math.random() - 0.5) * range;
+    // Use simple sine-based pseudo-noise for more organic variation
+    this.noiseOffset += 0.1;
+    const noise = Math.sin(this.noiseOffset) * Math.cos(this.noiseOffset * 0.5);
+    return noise * range * 0.8 + (Math.random() - 0.5) * range * 0.4;
   }
 
   /**
@@ -35,19 +39,22 @@ export class RealisticVariationStrategy implements IVariationStrategy {
     const g = parseInt(hex.substr(2, 2), 16);
     const b = parseInt(hex.substr(4, 2), 16);
 
-    // Generate subtle variations (±5% by default with intensity scaling)
-    const variation = intensity * 0.05;
-    const rVariation = Math.floor((Math.random() - 0.5) * 2 * variation * 255);
-    const gVariation = Math.floor((Math.random() - 0.5) * 2 * variation * 255);
-    const bVariation = Math.floor((Math.random() - 0.5) * 2 * variation * 255);
+    // Generate subtle variations (±8% by default with intensity scaling)
+    // Increased variation for more visible texture
+    const variation = intensity * 0.08;
+
+    // Use noise for consistent ink flow color changes
+    const flowNoise = Math.sin(this.noiseOffset * 0.2);
+    const randomVar = (Math.random() - 0.5) * 0.5;
+    const totalVar = (flowNoise * 0.7 + randomVar) * variation * 255;
 
     // Apply variations while keeping values in valid range
-    const newR = Math.max(0, Math.min(255, r + rVariation));
-    const newG = Math.max(0, Math.min(255, g + gVariation));
-    const newB = Math.max(0, Math.min(255, b + bVariation));
+    const newR = Math.max(0, Math.min(255, r + totalVar));
+    const newG = Math.max(0, Math.min(255, g + totalVar));
+    const newB = Math.max(0, Math.min(255, b + totalVar));
 
     // Convert back to hex
-    const toHex = (n: number) => n.toString(16).padStart(2, '0');
+    const toHex = (n: number) => Math.round(n).toString(16).padStart(2, '0');
     return `#${toHex(newR)}${toHex(newG)}${toHex(newB)}`;
   }
 
@@ -58,7 +65,9 @@ export class RealisticVariationStrategy implements IVariationStrategy {
    */
   generateRotation(range: number): number {
     // Generate random rotation in degrees, then convert to radians
-    const degrees = (Math.random() - 0.5) * range;
+    // Mix noise and random for natural handwriting slant variations
+    const noise = Math.cos(this.noiseOffset * 0.8);
+    const degrees = (noise * 0.6 + (Math.random() - 0.5) * 0.8) * range;
     return degrees * (Math.PI / 180);
   }
 }

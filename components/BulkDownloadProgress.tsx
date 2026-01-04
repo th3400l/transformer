@@ -8,26 +8,10 @@
  */
 
 import React, { useState } from 'react';
-import { BulkDownloadProgress, BulkDownloadResult, FailedDownload } from '../services/bulkDownloadManager';
-
-// Progress Icons
-const DownloadIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-  </svg>
-);
-
-const ExclamationIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-  </svg>
-);
-
-const XMarkIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
+import { BulkDownloadProgress, BulkDownloadResult } from '../services/bulkDownloadManager';
+import { Button } from './Button';
+import RoseLogo from './RoseLogo';
+import { DownloadIcon, ExclamationIcon, XMarkIcon, ShareIcon } from './icons';
 
 // Progress Bar Component
 interface ProgressBarProps {
@@ -37,9 +21,9 @@ interface ProgressBarProps {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ percentage, className = '' }) => {
   return (
-    <div className={`w-full bg-gray-200 rounded-full h-2 overflow-hidden ${className}`}>
+    <div className={`w-full bg-control-bg rounded-full h-2 overflow-hidden ${className}`}>
       <div 
-        className="h-full bg-blue-600 transition-all duration-300 ease-out"
+        className="h-full bg-accent transition-all duration-300 ease-out"
         style={{ width: `${Math.min(100, Math.max(0, percentage))}%` }}
       />
     </div>
@@ -129,16 +113,15 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
     window.open('https://discord.com/app', '_blank', 'noopener,noreferrer');
   };
 
-  const ShareButton: React.FC<{ label: string; href?: string; onClick?: () => void }>
+  const ShareAction: React.FC<{ label: string; href?: string; onClick?: () => void }>
     = ({ label, href, onClick }) => {
-      const baseClasses = 'px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-[var(--accent-color)] hover:text-[var(--accent-color)] transition-colors';
       if (href) {
         return (
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={baseClasses}
+            className="px-3 py-1.5 text-xs font-medium rounded-full border border-control-border text-text-muted hover:border-accent hover:text-accent hover:bg-accent/5 transition-colors"
           >
             {label}
           </a>
@@ -148,7 +131,7 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
         <button
           type="button"
           onClick={onClick}
-          className={baseClasses}
+          className="px-3 py-1.5 text-xs font-medium rounded-full border border-control-border text-text-muted hover:border-accent hover:text-accent hover:bg-accent/5 transition-colors"
         >
           {label}
         </button>
@@ -156,61 +139,80 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
     };
 
   return (
-    <div className={`bg-white border border-gray-200 rounded-lg shadow-lg p-4 ${className}`}>
+    <div className={`relative bg-panel-bg border border-panel-border rounded-2xl shadow-2xl p-6 overflow-hidden ${className}`}>
+      {/* Decorative background gradient */}
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-accent/10 to-transparent pointer-events-none" />
+
       {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
+      <div className="relative flex items-center justify-between mb-5 z-10">
+        <div className="flex items-center gap-3">
           {status === 'downloading' && (
-            <>
-              <DownloadIcon className="w-5 h-5 text-blue-600 animate-pulse" />
-              <span className="font-medium text-gray-900">Downloading Images...</span>
-            </>
+            <div className="p-2 rounded-full bg-accent/10">
+              <DownloadIcon className="w-5 h-5 text-accent animate-pulse" />
+            </div>
           )}
           {status === 'completed' && (
-            <span className="font-medium text-gray-900">Download Report</span>
+            <RoseLogo size={32} />
           )}
           {status === 'error' && (
-            <>
-              <ExclamationIcon className="w-5 h-5 text-red-600" />
-              <span className="font-medium text-gray-900">Download Issues</span>
-            </>
+            <div className="p-2 rounded-full bg-red-100 dark:bg-red-900/30">
+              <ExclamationIcon className="w-5 h-5 text-red-600 dark:text-red-400" />
+            </div>
           )}
+          
+          <div>
+            <h3 className="font-bold text-lg text-text leading-none">
+              {status === 'downloading' && 'Downloading Images...'}
+              {status === 'completed' && 'Download Report'}
+              {status === 'error' && 'Download Issues'}
+            </h3>
+            {status === 'completed' && (
+               <p className="text-xs text-text-muted mt-1">Your files are ready!</p>
+            )}
+          </div>
         </div>
+        
         {onClose && status !== 'downloading' && (
           <button
             onClick={onClose}
-            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+            className="p-2 rounded-full text-text-muted hover:text-text hover:bg-control-bg transition-colors"
             aria-label="Close"
           >
-            <XMarkIcon className="w-4 h-4" />
+            <XMarkIcon className="w-5 h-5" />
           </button>
         )}
       </div>
 
       {/* Progress Information */}
       {status === 'downloading' && progress && (
-        <div className="space-y-3">
+        <div className="space-y-4 relative z-10">
           {/* Progress Bar */}
-          <ProgressBar percentage={progress.percentage} />
-          
-          {/* Progress Details */}
-          <div className="flex justify-between text-sm text-gray-600">
-            <span>{progress.current} of {progress.total} images</span>
-            <span>{progress.percentage}%</span>
+          <div className="space-y-2">
+            <div className="flex justify-between text-xs font-medium text-text-muted">
+              <span>Progress</span>
+              <span>{progress.percentage}%</span>
+            </div>
+            <ProgressBar percentage={progress.percentage} />
           </div>
           
           {/* Current File */}
-          <div className="text-sm text-gray-500">
-            <span className="font-medium">Current:</span> {progress.currentFilename}
+          <div className="bg-control-bg border border-panel-border rounded-lg p-3">
+            <div className="flex justify-between items-center mb-1">
+               <span className="text-xs font-semibold text-text uppercase tracking-wider">Processing</span>
+               <span className="text-xs text-text-muted">{progress.current} of {progress.total}</span>
+            </div>
+            <div className="text-sm text-text-muted truncate font-mono">
+              {progress.currentFilename}
+            </div>
           </div>
           
           {/* Time and Size Information */}
-          <div className="flex justify-between text-xs text-gray-500">
+          <div className="flex justify-between text-xs text-text-muted px-1">
             <span>
               {formatBytes(progress.bytesDownloaded)} / {formatBytes(progress.totalBytes)}
             </span>
             {progress.estimatedTimeRemaining > 0 && (
-              <span>
+              <span className="font-medium text-accent">
                 ~{formatTime(progress.estimatedTimeRemaining)} remaining
               </span>
             )}
@@ -220,42 +222,37 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
 
       {/* Completion Results */}
       {(status === 'completed' || status === 'error') && result && (
-        <div className="space-y-3">
-          {/* Summary */}
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Downloaded:</span>
-            <span className="font-medium text-gray-900">
-              {result.downloadedCount} of {result.totalCount} images
-            </span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Total Size:</span>
-            <span className="font-medium text-gray-900">
-              {formatBytes(result.downloadedBytes)}
-            </span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Time:</span>
-            <span className="font-medium text-gray-900">
-              {formatTime(result.estimatedTime)}
-            </span>
+        <div className="space-y-5 relative z-10">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-control-bg border border-panel-border rounded-xl p-3 text-center">
+              <div className="text-2xl font-bold text-accent">{result.downloadedCount}</div>
+              <div className="text-[10px] uppercase tracking-wider text-text-muted font-medium">Files</div>
+            </div>
+            <div className="bg-control-bg border border-panel-border rounded-xl p-3 text-center">
+              <div className="text-xl font-bold text-text">{formatBytes(result.downloadedBytes)}</div>
+              <div className="text-[10px] uppercase tracking-wider text-text-muted font-medium">Size</div>
+            </div>
+            <div className="bg-control-bg border border-panel-border rounded-xl p-3 text-center">
+              <div className="text-xl font-bold text-text">{formatTime(result.estimatedTime)}</div>
+              <div className="text-[10px] uppercase tracking-wider text-text-muted font-medium">Time</div>
+            </div>
           </div>
 
           {/* Error Details */}
           {result.failedDownloads.length > 0 && (
-            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
               <div className="flex items-center gap-2 mb-2">
-                <ExclamationIcon className="w-4 h-4 text-red-600" />
-                <span className="text-sm font-medium text-red-800">
+                <ExclamationIcon className="w-4 h-4 text-red-600 dark:text-red-400" />
+                <span className="text-sm font-bold text-red-800 dark:text-red-300">
                   {result.failedDownloads.length} download(s) failed
                 </span>
               </div>
-              <div className="space-y-1 max-h-32 overflow-y-auto">
+              <div className="space-y-1.5 max-h-32 overflow-y-auto custom-scrollbar pr-2">
                 {result.failedDownloads.map((failed, index) => (
-                  <div key={index} className="text-xs text-red-700">
-                    <span className="font-medium">{failed.filename}:</span> {failed.error}
+                  <div key={index} className="text-xs text-red-700 dark:text-red-400 flex justify-between gap-2">
+                    <span className="font-medium truncate">{failed.filename}:</span> 
+                    <span className="opacity-80">{failed.error}</span>
                   </div>
                 ))}
               </div>
@@ -264,42 +261,54 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
 
           {/* Success Message */}
           {result.failedDownloads.length === 0 && (
-            <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <span className="text-sm font-medium text-green-800">
+            <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl flex items-center justify-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              <span className="text-sm font-medium text-green-800 dark:text-green-300">
                 All images downloaded successfully!
               </span>
             </div>
           )}
 
           {status === 'completed' && (
-            <div className="pt-4 border-t border-gray-100">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
-                Share the vibe
-              </p>
+            <div className="pt-4 border-t border-panel-border">
+              <div className="flex items-center gap-2 mb-3 text-text-muted">
+                <ShareIcon className="w-4 h-4" />
+                <span className="text-xs font-bold uppercase tracking-wide">Share the vibe</span>
+              </div>
               <div className="flex flex-wrap gap-2">
-                <ShareButton
+                <ShareAction
                   label="Twitter"
                   href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedMessage}`}
                 />
-                <ShareButton
+                <ShareAction
                   label="Instagram"
                   href={`https://www.instagram.com/?url=${encodedUrl}`}
                 />
-                <ShareButton
+                <ShareAction
                   label="WhatsApp"
                   href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareMessage} ${shareUrl}`)}`}
                 />
-                <ShareButton
-                  label={discordHint ? 'Copied for Discord!' : 'Discord'}
+                <ShareAction
+                  label={discordHint ? 'Copied!' : 'Discord'}
                   onClick={handleDiscordShare}
                 />
-                <ShareButton
-                  label={rawLinkCopied ? 'Link Copied!' : 'Raw Link'}
+                <ShareAction
+                  label={rawLinkCopied ? 'Copied!' : 'Copy Link'}
                   onClick={handleRawLinkCopy}
                 />
               </div>
             </div>
           )}
+          
+          <div className="flex justify-end">
+            <Button 
+              onClick={onClose} 
+              variant="primary"
+              className="w-full sm:w-auto"
+            >
+              Done
+            </Button>
+          </div>
         </div>
       )}
     </div>
@@ -332,16 +341,16 @@ export const BulkDownloadModal: React.FC<BulkDownloadModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+      <div className="w-full max-w-md animate-fade-in">
         <DownloadStatus
           status={status}
           progress={progress}
           result={result}
           onClose={status !== 'downloading' ? onClose : undefined}
-          className="border-0 shadow-none"
+          className="border border-white/10 shadow-2xl"
         />
       </div>
     </div>
@@ -359,15 +368,15 @@ export const CompactProgress: React.FC<CompactProgressProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <DownloadIcon className="w-4 h-4 text-blue-600 animate-pulse" />
+    <div className={`flex items-center gap-3 bg-control-bg border border-panel-border rounded-lg p-2 ${className}`}>
+      <DownloadIcon className="w-4 h-4 text-accent animate-pulse" />
       <div className="flex-1 min-w-0">
-        <ProgressBar percentage={progress.percentage} className="mb-1" />
-        <div className="text-xs text-gray-500 truncate">
-          {progress.current}/{progress.total} - {progress.currentFilename}
+        <ProgressBar percentage={progress.percentage} className="mb-1 h-1.5" />
+        <div className="text-[10px] text-text-muted truncate font-mono">
+          {progress.current}/{progress.total} • {progress.currentFilename}
         </div>
       </div>
-      <div className="text-sm font-medium text-gray-900">
+      <div className="text-xs font-bold text-text tabular-nums">
         {progress.percentage}%
       </div>
     </div>

@@ -7,7 +7,7 @@ export const GENERATION_TIPS = [
   'Remember to skim the Terms & Conditions before submitting generated work anywhere official.',
   'Feel free to switch between all the available fonts -- for the users convenience we have 15+ fonts stacked',
   "Bulk download pushes all the generated pages at once into user's memory, easy option for assignments or journaling sessions.",
-  'For any support or feedback please reach out to support@txttohandwriting.org'
+  'For any support or feedback please reach out to our team (support coming soon)'
 ];
 
 

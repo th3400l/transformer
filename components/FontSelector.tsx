@@ -70,13 +70,22 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         const availableFonts = fontManager.getAvailableFonts();
         const customFonts = fontManager.getCustomFonts();
         const defaultFonts = availableFonts.filter(font => !fontManager.isCustomFont(font.id));
-        
-        setState(prev => ({
-          ...prev,
-          fonts: defaultFonts,
-          customFonts: customFonts,
-          isInitializing: false
-        }));
+
+        setState(prev => {
+          const fontsChanged = JSON.stringify(prev.fonts) !== JSON.stringify(defaultFonts);
+          const customFontsChanged = JSON.stringify(prev.customFonts) !== JSON.stringify(customFonts);
+
+          if (!fontsChanged && !customFontsChanged && !prev.isInitializing) {
+            return prev;
+          }
+
+          return {
+            ...prev,
+            fonts: defaultFonts,
+            customFonts: customFonts,
+            isInitializing: false
+          };
+        });
 
         // Start loading fonts in the background
         loadFontsInBackground([...defaultFonts, ...customFonts]);
@@ -114,10 +123,10 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         setState(prev => ({
           ...prev,
           loadingFonts: new Set([...prev.loadingFonts].filter(id => id !== font.id)),
-          loadedFonts: result.success 
+          loadedFonts: result.success
             ? new Set([...prev.loadedFonts, font.id])
             : prev.loadedFonts,
-          failedFonts: result.success 
+          failedFonts: result.success
             ? prev.failedFonts
             : new Set([...prev.failedFonts, font.id])
         }));
@@ -155,7 +164,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
 
         // Validate the font is available
         const validation = await fontManager.validateFontAvailability(font);
-        
+
         resolve({
           font: { ...font, loaded: validation.isAvailable },
           success: validation.isAvailable,
@@ -187,8 +196,8 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
     };
   }, []);
 
-  const selectedFont = state.fonts.find(f => f.id === selectedFontId) || 
-                      state.customFonts.find(f => f.id === selectedFontId);
+  const selectedFont = state.fonts.find(f => f.id === selectedFontId) ||
+    state.customFonts.find(f => f.id === selectedFontId);
   const displayName = selectedFont?.name || 'Select Font';
 
   const handleFontSelect = (font: HandwritingFont) => {
@@ -208,7 +217,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
 
     const allFonts = [...state.fonts, ...state.customFonts];
     const currentIndex = allFonts.findIndex(font => font.id === selectedFontId);
-    
+
     switch (event.key) {
       case 'Enter':
       case ' ':
@@ -272,7 +281,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
     const interval = setInterval(() => {
       refreshCustomFonts();
     }, 2000); // Check every 2 seconds for new custom fonts (reduced frequency)
-    
+
     return () => clearInterval(interval);
   }, [fontManager]);
 
@@ -288,7 +297,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
     // Listen for custom font events
     window.addEventListener('customFontUploaded', handleCustomFontUpload);
     window.addEventListener('customFontRemoved', handleCustomFontUpload);
-    
+
     return () => {
       window.removeEventListener('customFontUploaded', handleCustomFontUpload);
       window.removeEventListener('customFontRemoved', handleCustomFontUpload);
@@ -298,20 +307,20 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
   // Refresh custom fonts when they change externally
   const refreshCustomFonts = () => {
     if (!fontManager) return;
-    
+
     const customFonts = fontManager.getCustomFonts();
     setState(prev => {
       // Only update if the custom fonts have actually changed
       const currentIds = prev.customFonts.map(f => f.id).sort();
       const newIds = customFonts.map(f => f.id).sort();
-      
+
       if (JSON.stringify(currentIds) !== JSON.stringify(newIds)) {
         return {
           ...prev,
           customFonts: customFonts
         };
       }
-      
+
       return prev;
     });
   };
@@ -330,9 +339,9 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
     const isTablet = state.browserCapabilities?.mobile?.useTouch && !isMobile;
 
     // Mobile-optimized styling
-    const mobileClasses = isMobile 
+    const mobileClasses = isMobile
       ? 'px-4 py-4 min-h-[56px]' // Larger touch targets for mobile
-      : isTablet 
+      : isTablet
         ? 'px-4 py-3 min-h-[48px]' // Medium touch targets for tablet
         : 'px-3 py-2 sm:px-4'; // Default desktop
 
@@ -361,10 +370,9 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
       <li
         key={font.id}
         onClick={() => handleFontSelect(font)}
-        className={`${mobileClasses} cursor-pointer text-[var(--text-color)] hover:bg-[var(--accent-color)] hover:text-white flex items-center justify-between ${
-          isSelected ? 'bg-[var(--accent-color)] text-white' : ''
-        }`}
-        style={{ 
+        className={`${mobileClasses} cursor-pointer text-[var(--text-color)] hover:bg-[var(--accent-color)] hover:text-white flex items-center justify-between ${isSelected ? 'bg-[var(--accent-color)] text-white' : ''
+          }`}
+        style={{
           fontFamily: status === 'loaded' || status === 'available' ? font.family : 'inherit',
           fontSize: fontSize
         }}
@@ -384,11 +392,11 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         </div>
         <div className="flex items-center gap-2">
           {status === 'loading' && (
-            <RoseSpinner 
-              size={isMobile ? 24 : 20} 
-              className="ml-2" 
-              label={`Loading ${displayName}`} 
-              announce={false} 
+            <RoseSpinner
+              size={isMobile ? 24 : 20}
+              className="ml-2"
+              label={`Loading ${displayName}`}
+              announce={false}
             />
           )}
           {status === 'failed' && (
@@ -419,7 +427,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
 
   return (
     <div ref={menuRef} className={`relative ${className}`}>
-      <label htmlFor="font-select" className="block text-sm font-medium text-[var(--text-muted)] mb-2">
+      <label htmlFor="font-select" className="block text-sm font-medium text-[var(--text-muted)] mb-1">
         Font Aesthetic
       </label>
       <button
@@ -427,65 +435,60 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         onClick={toggleMenu}
         onKeyDown={handleKeyDown}
         disabled={disabled}
-        className={`w-full bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg ${
-          state.browserCapabilities?.mobile?.isMobile 
-            ? 'p-4 min-h-[56px]' // Larger touch target for mobile
-            : state.browserCapabilities?.mobile?.useTouch 
-              ? 'p-3.5 min-h-[48px]' // Medium touch target for tablet
-              : 'p-3' // Default desktop
-        } focus:ring-2 focus:ring-[var(--accent-color)] focus:outline-none transition appearance-none text-left flex justify-between items-center ${
-          disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-        }`}
+        className={`w-full bg-[var(--control-bg)] border border-[var(--control-border)] text-[var(--text-color)] rounded-lg ${state.browserCapabilities?.mobile?.isMobile
+          ? 'p-4 min-h-[56px]' // Larger touch target for mobile
+          : state.browserCapabilities?.mobile?.useTouch
+            ? 'p-3.5 min-h-[48px]' // Medium touch target for tablet
+            : 'p-3' // Default desktop
+          } focus:ring-2 focus:ring-[var(--accent-color)] focus:outline-none transition appearance-none text-left flex justify-between items-center ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+          }`}
         aria-haspopup="listbox"
         aria-expanded={state.isOpen}
         aria-label={`Select font. Current selection: ${displayName}. ${state.fonts.length + state.customFonts.length} fonts available.`}
         aria-describedby="font-selector-help"
       >
-        <span 
-          style={{ 
+        <span
+          style={{
             fontFamily: selectedFont && getFontStatus(selectedFont) !== 'failed' ? selectedFont.family : 'inherit',
             fontSize: state.browserCapabilities?.mobile?.isMobile ? '20px' : '18px'
           }}
         >
           {displayName}
         </span>
-        <svg 
-          className={`${state.browserCapabilities?.mobile?.isMobile ? 'w-6 h-6' : 'w-5 h-5'} text-gray-500 ${
-            state.browserCapabilities?.mobile?.reducedAnimations ? '' : 'transition-transform'
-          } ${state.isOpen ? 'rotate-180' : ''}`} 
-          xmlns="http://www.w3.org/2000/svg" 
-          fill="none" 
+        <svg
+          className={`${state.browserCapabilities?.mobile?.isMobile ? 'w-6 h-6' : 'w-5 h-5'} text-gray-500 ${state.browserCapabilities?.mobile?.reducedAnimations ? '' : 'transition-transform'
+            } ${state.isOpen ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
           viewBox="0 0 20 20"
         >
-          <path 
-            stroke="currentColor" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="1.5" 
-            d="M6 8l4 4 4-4" 
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            d="M6 8l4 4 4-4"
           />
         </svg>
       </button>
-      
+
       {state.isOpen && (
-        <div className={`custom-dropdown-menu absolute w-full mt-1 bg-[var(--control-bg)] border border-[var(--control-border)] rounded-lg shadow-lg z-10 overflow-y-auto ${
-          state.browserCapabilities?.mobile?.isMobile 
-            ? 'max-h-[60vh]' // Mobile: use viewport height for better mobile experience
-            : state.browserCapabilities?.mobile?.useTouch 
-              ? 'max-h-60' // Tablet: allow roughly four options in view
-              : 'max-h-56 sm:max-h-60' // Desktop: limit to four visible fonts with scroll for the rest
-        }`}>
+        <div className={`custom-dropdown-menu absolute w-full mt-1 bg-[var(--control-bg)] border border-[var(--control-border)] rounded-lg shadow-lg z-10 overflow-y-auto ${state.browserCapabilities?.mobile?.isMobile
+          ? 'max-h-[60vh]' // Mobile: use viewport height for better mobile experience
+          : state.browserCapabilities?.mobile?.useTouch
+            ? 'max-h-60' // Tablet: allow roughly four options in view
+            : 'max-h-56 sm:max-h-60' // Desktop: limit to four visible fonts with scroll for the rest
+          }`}>
           {/* Default Fonts Section */}
           <div className="border-b border-[var(--control-border)]">
-            <div className={`${
-              state.browserCapabilities?.mobile?.isMobile 
-                ? 'px-4 py-3 text-base' 
-                : 'px-3 py-2 sm:px-4 text-sm'
-            } font-medium text-[var(--text-muted)] bg-[var(--control-bg)] sticky top-0`}>
+            <div className={`${state.browserCapabilities?.mobile?.isMobile
+              ? 'px-4 py-3 text-base'
+              : 'px-3 py-2 sm:px-4 text-sm'
+              } font-medium text-[var(--text-muted)] bg-[var(--control-bg)] sticky top-0`}>
               Default Fonts
             </div>
-            <ul 
-              role="listbox" 
+            <ul
+              role="listbox"
               aria-label={`Default font options. ${state.fonts.length} fonts available.`}
               aria-activedescendant={selectedFontId}
             >
@@ -496,16 +499,15 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
           {/* Custom Fonts Section */}
           {state.customFonts.length > 0 && (
             <div>
-              <div className={`${
-                state.browserCapabilities?.mobile?.isMobile 
-                  ? 'px-4 py-3 text-base' 
-                  : 'px-3 py-2 sm:px-4 text-sm'
-              } font-medium text-[var(--text-muted)] bg-[var(--control-bg)] sticky top-0`}>
+              <div className={`${state.browserCapabilities?.mobile?.isMobile
+                ? 'px-4 py-3 text-base'
+                : 'px-3 py-2 sm:px-4 text-sm'
+                } font-medium text-[var(--text-muted)] bg-[var(--control-bg)] sticky top-0`}>
                 <span className="truncate">Custom Fonts ({state.customFonts.length})</span>
               </div>
-              
-              <ul 
-                role="listbox" 
+
+              <ul
+                role="listbox"
                 aria-label={`Custom font options. ${state.customFonts.length} custom fonts available.`}
                 aria-activedescendant={selectedFontId}
               >
@@ -515,7 +517,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
           )}
         </div>
       )}
-      
+
       {/* Loading indicator for background font loading */}
       {state.loadingFonts.size > 0 && (
         <div className="absolute top-0 right-0 -mt-3 -mr-3">
@@ -535,9 +537,9 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
       </div>
 
       {/* Enhanced screen reader announcements for font changes */}
-      <div 
-        className="sr-only" 
-        aria-live="polite" 
+      <div
+        className="sr-only"
+        aria-live="polite"
         aria-atomic="true"
         role="status"
         aria-label="Font selector status updates"
@@ -548,7 +550,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
       </div>
 
       {/* SEO-friendly structured data for font features */}
-      <script 
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

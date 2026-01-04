@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useMobileTouchOptimization } from '../hooks/useMobileTouchOptimization';
+import { Button } from './Button';
 
-type DistortionLevel = 1 | 2 | 3;
+type DistortionLevel = 1 | 2 | 3 | 4 | 5;
 
 interface DockDistortionProfile {
   description: string;
@@ -30,6 +32,19 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
   distortionProfile
 }) => {
   const [expandedSection, setExpandedSection] = useState<'font' | 'ink' | 'paper' | null>('font');
+  const dockButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Apply mobile touch optimizations
+  useMobileTouchOptimization(dockButtonRef, {
+    enableFeedback: true,
+    feedbackOptions: { ripple: true, scale: 0.95 }
+  });
+
+  useMobileTouchOptimization(panelRef, {
+    enableFeedback: false,
+    optimizeChildren: true
+  });
 
   const toggleSection = (section: 'font' | 'ink' | 'paper') => {
     setExpandedSection(prev => (prev === section ? null : section));
@@ -51,7 +66,6 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
 
   // Horizontal drag position for the dock trigger (in pixels from left)
   const [dockX, setDockX] = useState<number>(() => (typeof window !== 'undefined' ? window.innerWidth / 2 : 240));
-  const btnRef = useRef<HTMLButtonElement>(null);
   const draggingRef = useRef<{ startX: number; startDockX: number; moved: boolean } | null>(null);
 
   useEffect(() => {
@@ -101,23 +115,23 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
     <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] z-[90] pointer-events-none flex flex-col items-center" style={containerStyle}>
       <div
         id="control-dock-panel"
-        className={`pointer-events-auto mb-3 w-full max-w-md transition-all duration-300 ease-out origin-bottom ${
-          isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
-        }`}
+        ref={panelRef}
+        className={`pointer-events-auto mb-3 w-full max-w-md transition-all duration-300 ease-out origin-bottom ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
+          }`}
         aria-hidden={!isOpen}
       >
-        <div className="bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-xl shadow-2xl p-4 space-y-3 text-[var(--text-color)]">
-          <div className="flex items-center justify-between text-xs uppercase tracking-wide text-[var(--text-muted)]">
+        <div className="bg-panel-bg border border-panel-border rounded-xl shadow-2xl p-4 space-y-3 text-text">
+          <div className="flex items-center justify-between text-xs uppercase tracking-wide text-text-muted">
             <span>Advanced Controls</span>
             <span>Tap to expand</span>
           </div>
 
           <div className="space-y-2">
-            <div className="border border-[var(--panel-border)]/70 rounded-lg overflow-hidden">
+            <div className="border border-panel-border/70 rounded-lg overflow-hidden">
               <button
                 type="button"
                 onClick={() => toggleSection('font')}
-                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--text-color)] bg-[var(--control-bg)]/60 hover:bg-[var(--control-bg)]/80 transition"
+                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-text bg-control-bg/60 hover:bg-control-bg/80 transition"
                 aria-expanded={expandedSection === 'font'}
                 aria-controls="dock-font-size"
               >
@@ -128,8 +142,8 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                 id="dock-font-size"
                 className={`px-4 transition-all duration-300 ease-out overflow-hidden ${expandedSection === 'font' ? 'max-h-60 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
               >
-                <label htmlFor="dock-font-size-slider" className="block text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">
-                  Active Size: <span className="text-[var(--accent-color)] font-semibold">{fontSize}px</span>
+                <label htmlFor="dock-font-size-slider" className="block text-xs text-text-muted mb-3 uppercase tracking-wide">
+                  Active Size: <span className="text-accent font-semibold">{fontSize}px</span>
                 </label>
                 <input
                   id="dock-font-size-slider"
@@ -142,24 +156,24 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                   className="w-full cursor-pointer"
                   aria-label="Adjust handwriting font size"
                 />
-                <div className="mt-3 flex justify-between text-xs text-[var(--text-muted)]">
+                <div className="mt-3 flex justify-between text-xs text-text-muted">
                   <span>12 px</span>
                   <span>48 px</span>
                 </div>
               </div>
             </div>
 
-            <div className="border border-[var(--panel-border)]/70 rounded-lg overflow-hidden">
+            <div className="border border-panel-border/70 rounded-lg overflow-hidden">
               <button
                 type="button"
                 onClick={() => toggleSection('ink')}
-                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--text-color)] bg-[var(--control-bg)]/60 hover:bg-[var(--control-bg)]/80 transition"
+                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-text bg-control-bg/60 hover:bg-control-bg/80 transition"
                 aria-expanded={expandedSection === 'ink'}
                 aria-controls="dock-ink-weight"
               >
                 <div className="flex items-center">
                   <span>Ink Weight</span>
-                  <span className="ml-2 px-1.5 py-0.5 text-xs font-semibold rounded-full bg-[var(--accent-color)] text-white">
+                  <span className="ml-2 px-1.5 py-0.5 text-xs font-semibold rounded-full bg-accent text-white">
                     Beta
                   </span>
                 </div>
@@ -169,7 +183,7 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                 id="dock-ink-weight"
                 className={`px-4 transition-all duration-300 ease-out overflow-hidden ${expandedSection === 'ink' ? 'max-h-60 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
               >
-                <label htmlFor="dock-ink-weight-slider" className="block text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">
+                <label htmlFor="dock-ink-weight-slider" className="block text-xs text-text-muted mb-3 uppercase tracking-wide">
                   {Math.round(inkBoldness * 100)}% • {inkBoldness < 0.5 ? 'Lighter' : inkBoldness > 0.5 ? 'Bolder' : 'Baseline'}
                 </label>
                 <input
@@ -183,7 +197,7 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                   className="w-full cursor-pointer"
                   aria-label="Adjust ink weight (light ↔ bold)"
                 />
-                <div className="mt-3 flex justify-between text-xs text-[var(--text-muted)]">
+                <div className="mt-3 flex justify-between text-xs text-text-muted">
                   <span>Lighter</span>
                   <span>Baseline</span>
                   <span>Bolder</span>
@@ -191,11 +205,11 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
               </div>
             </div>
 
-            <div className="border border-[var(--panel-border)]/70 rounded-lg overflow-hidden">
+            <div className="border border-panel-border/70 rounded-lg overflow-hidden">
               <button
                 type="button"
                 onClick={() => toggleSection('paper')}
-                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--text-color)] bg-[var(--control-bg)]/60 hover:bg-[var(--control-bg)]/80 transition"
+                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-text bg-control-bg/60 hover:bg-control-bg/80 transition"
                 aria-expanded={expandedSection === 'paper'}
                 aria-controls="dock-paper-distortion"
               >
@@ -206,7 +220,7 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                 id="dock-paper-distortion"
                 className={`px-4 transition-all duration-300 ease-out overflow-hidden ${expandedSection === 'paper' ? 'max-h-72 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
               >
-                <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-wide text-[var(--text-muted)]">
+                <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-wide text-text-muted">
                   <span>Distortion Level</span>
                   <span>Lv. {paperDistortionLevel}</span>
                 </div>
@@ -214,28 +228,27 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
                   id="dock-paper-distortion-slider"
                   type="range"
                   min={1}
-                  max={3}
+                  max={5}
                   step={1}
                   value={paperDistortionLevel}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => onPaperDistortionChange(Number(event.target.value) as DistortionLevel)}
                   className="w-full cursor-pointer"
                   aria-label="Adjust paper distortion level"
                 />
-                <div className="flex items-center justify-between mt-3 text-xs text-[var(--text-muted)] gap-1">
-                  {[1, 2, 3].map(level => (
+                <div className="flex items-center justify-between mt-3 text-[10px] text-text-muted gap-1">
+                  {[1, 2, 3, 4, 5].map(level => (
                     <span
                       key={level}
-                      className={`flex-1 text-center px-2 py-1 rounded-full border transition-colors ${
-                        paperDistortionLevel === level
-                          ? 'border-[var(--accent-color)] text-[var(--accent-color)] bg-[var(--control-bg)]/80'
-                          : 'border-transparent text-[var(--text-muted)] opacity-70'
-                      }`}
+                      className={`flex-1 text-center px-1 py-1 rounded-full border transition-colors ${paperDistortionLevel === level
+                          ? 'border-accent text-accent bg-control-bg/80'
+                          : 'border-transparent text-text-muted opacity-70'
+                        }`}
                     >
-                      {level === 1 ? 'High realism' : level === 2 ? 'Medium' : 'Low'}
+                      {level === 1 ? 'Ultra' : level === 2 ? 'Extreme' : level === 3 ? 'High' : level === 4 ? 'Med' : 'Low'}
                     </span>
                   ))}
                 </div>
-                <p className="mt-4 text-xs text-[var(--text-muted)] leading-relaxed">
+                <p className="mt-4 text-xs text-text-muted leading-relaxed">
                   {distortionProfile.description}
                 </p>
               </div>
@@ -244,12 +257,16 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
         </div>
       </div>
 
-      <button
+      <Button
+        variant="secondary"
         data-tour-id="controls-button"
         type="button"
-        ref={btnRef}
+        ref={(el) => {
+          // Handle both refs
+          (dockButtonRef as any).current = el;
+        }}
         onPointerDown={onPointerDown}
-        className="pointer-events-auto bg-[var(--panel-bg)] border border-[var(--panel-border)] text-[var(--text-color)] shadow-lg rounded-full px-4 py-2 flex items-center gap-2 transition hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+        className="pointer-events-auto shadow-lg hover:shadow-xl rounded-full px-4 py-2 gap-2 active:scale-95 min-h-[44px]"
         aria-expanded={isOpen}
         aria-controls="control-dock-panel"
       >
@@ -268,7 +285,7 @@ const BottomControlDock: React.FC<BottomControlDockProps> = ({
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 8.25l7.5 7.5 7.5-7.5" />
           )}
         </svg>
-      </button>
+      </Button>
     </div>
   );
 };
