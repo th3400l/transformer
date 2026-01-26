@@ -1,0 +1,442 @@
+{
+  "common": {
+    "startCreating": "Mulai Membuat",
+    "learnMore": "Pelajari selengkapnya",
+    "viewFaq": "Lihat FAQ",
+    "readBlog": "Baca Blog",
+    "loading": "Memuat...",
+    "generating": "Menghasilkan...",
+    "download": "Unduh",
+    "preview": "Pratinjau",
+    "backToLab": "Kembali ke laboratorium",
+    "customFont": "Unggah Font",
+    "manageFonts": "Kelola Font",
+    "inkColor": "Warna Tinta",
+    "colors": {
+      "black": "Hitam",
+      "blue": "Biru",
+      "red": "Merah",
+      "green": "Hijau"
+    },
+    "selectInk": "Pilih Tinta",
+    "paper": "Kertas",
+    "style": "Gaya",
+    "content": "Konten",
+    "clickHere": "kunjungi di sini"
+  },
+  "seo": {
+    "title": "Generator Tulisan Tangan - Ubah Teks menjadi Tulisan Tangan Realistis",
+    "description": "Hasilkan teks tulisan tangan realistis dengan font, templat, dan warna tinta yang dapat disesuaikan. Sempurna untuk membuat sampel tulisan tangan asli dengan berbagai templat kertas.",
+    "keywords": "generator tulisan tangan, teks ke tulisan tangan, konversi teks ke tulisan tangan, teks tulisan tangan, font khusus, tulisan tangan realistis, konverter teks ke tulisan tangan, generator tulisan tangan online, alat tulisan tangan gratis, generator font tulisan tangan, studygram, catatan estetika, tulisan tangan digital, generator catatan tulisan tangan, pembuat tulisan tangan"
+  },
+  "hero": {
+    "headline": "Ubah Teks Menjadi Tulisan Tangan Asli",
+    "subheadline": "Buat catatan, tugas, dan desain tulisan tangan realistis dengan generator tulisan tangan online gratis kami. Tanpa daftar, 100% pribadi.",
+    "cta": "Mulai Membuat Gratis",
+    "keywords": [
+      "generator tulisan tangan",
+      "teks ke tulisan tangan",
+      "konversi teks ke tulisan tangan",
+      "alat tulisan tangan gratis"
+    ]
+  },
+  "howItWorks": {
+    "heading": "Cara Kerja",
+    "subheading": "Ubah teks Anda menjadi tulisan tangan asli dalam tiga langkah sederhana",
+    "steps": [
+      {
+        "title": "Masukkan Teks Anda",
+        "description": "Ketik atau tempel teks yang ingin Anda ubah menjadi tulisan tangan. Alat kami mendukung hingga 6 halaman konten, cocok untuk tugas, catatan, atau proyek kreatif."
+      },
+      {
+        "title": "Sesuaikan Gaya Anda",
+        "description": "Pilih dari 9 font tulisan tangan, pilih templat kertas (kosong, bergaris, atau kotak-kotak), dan sesuaikan warna serta ketebalan tinta agar sesuai dengan estetika Anda."
+      },
+      {
+        "title": "Hasilkan & Unduh",
+        "description": "Klik hasilkan untuk membuat halaman tulisan tangan Anda. Unduh sebagai gambar PNG berkualitas tinggi atau kompilasi menjadi PDF. Semua pemrosesan terjadi di browser Anda — sepenuhnya pribadi."
+      }
+    ],
+    "context": "Generator tulisan tangan kami memudahkan pembuatan teks tulisan tangan yang realistis untuk segala kebutuhan. Baik Anda pelajar yang mengerjakan tugas, kreator konten yang membuat postingan estetis, maupun profesional yang menambahkan sentuhan pribadi pada dokumen, alat kami selalu memberikan hasil yang autentik."
+  },
+  "features": {
+    "heading": "Fitur Canggih",
+    "subheading": "Segala yang Anda butuhkan untuk membuat tulisan tangan yang realistis dan asli untuk tujuan apa pun",
+    "items": [
+      {
+        "title": "Variasi Tulisan Tangan Realistis",
+        "description": "Mesin rendering canggih kami menciptakan tulisan tangan asli dengan variasi alami pada garis dasar, kemiringan, dan intensitas tinta.",
+        "benefits": [
+          "Ketidakteraturan garis dasar alami",
+          "Kemiringan huruf variabel",
+          "Variasi warna tinta",
+          "Kemiringan mikro dan ketidaksempurnaan"
+        ]
+      },
+      {
+        "title": "Berbagai Templat Kertas",
+        "description": "Pilih dari berbagai templat kertas yang sesuai dengan kebutuhan Anda. Halaman kosong untuk kebebasan kreatif, kertas bergaris untuk catatan terstruktur, atau kisi titik untuk bullet journal.",
+        "benefits": [
+          "Opsi kosong, bergaris, dan titik",
+          "Tekstur kertas asli",
+          "Templat resolusi tinggi",
+          "Dioptimalkan untuk pencetakan"
+        ]
+      },
+      {
+        "title": "Unggah Font Khusus",
+        "description": "Jadikan benar-benar milik Anda dengan mengunggah font tulisan tangan Anda sendiri. Alat kami mendukung format TTF, OTF, dan WOFF.",
+        "benefits": [
+          "Unggah tulisan tangan Anda sendiri",
+          "Dukungan untuk TTF, OTF, WOFF",
+          "2 slot font khusus",
+          "Pratinjau instan"
+        ]
+      },
+      {
+        "title": "100% Gratis & Pribadi",
+        "description": "Tanpa langganan, tanpa biaya tersembunyi, tanpa pengumpulan data. Semuanya berjalan di browser Anda — teks Anda tidak pernah menyentuh server kami.",
+        "benefits": [
+          "Sepenuhnya gratis selamanya",
+          "Tanpa perlu mendaftar",
+          "Pemrosesan sisi klien",
+          "Penggunaan komersial diizinkan"
+        ]
+      }
+    ],
+    "context": "Generator tulisan tangan kami menggabungkan teknologi rendering canggih dengan desain yang ramah pengguna untuk memberikan hasil profesional."
+  },
+  "useCases": {
+    "heading": "Siapa yang Menggunakan Generator Kami?",
+    "subheading": "Dari siswa hingga profesional, temukan bagaimana orang menggunakan alat kami untuk membuat konten tulisan tangan yang asli",
+    "items": [
+      {
+        "title": "Siswa & Pendidik",
+        "description": "Sempurna untuk membuat tugas tulisan tangan, catatan studi, dan lembar kerja latihan. Hasilkan kiriman tulisan tangan yang tampak asli untuk kursus online.",
+        "examplesLabel": "Sangat Cocok Untuk:",
+        "examples": [
+          "Tugas sekolah",
+          "Catatan dan ringkasan studi",
+          "Lembar kerja latihan",
+          "Sampel tulisan tangan"
+        ]
+      },
+      {
+        "title": "Pembuat Konten & Desainer",
+        "description": "Tingkatkan Studygram, desain bullet journal, atau proyek desain Anda dengan elemen tulisan tangan asli. Buat postingan media sosial yang menarik.",
+        "examplesLabel": "Sangat Cocok Untuk:",
+        "examples": [
+          "Postingan Studygram",
+          "Desain bullet journal",
+          "Konten media sosial",
+          "Halaman perencana digital"
+        ]
+      },
+      {
+        "title": "Profesional & Bisnis",
+        "description": "Tambahkan sentuhan pribadi pada komunikasi bisnis, buat catatan terima kasih gaya tulisan tangan, atau desain materi pemasaran yang unik.",
+        "examplesLabel": "Sangat Cocok Untuk:",
+        "examples": [
+          "Catatan terima kasih",
+          "Surat pribadi",
+          "Materi pemasaran",
+          "Pembuatan tanda tangan"
+        ]
+      }
+    ],
+    "context": "Apa pun kebutuhan Anda, generator tulisan tangan kami memberikan fleksibilitas dan kualitas yang Anda butuhkan."
+  },
+  "testimonials": {
+    "heading": "Apa Kata Pengguna Kami",
+    "subheading": "Bergabunglah dengan ribuan pengguna puas yang mempercayai generator tulisan tangan kami untuk proyek mereka",
+    "items": [
+      {
+        "quote": "Setiap kali saya harus menulis sesuatu, hasilnya berantakan sekali. Situs ini benar-benar mengubah segalanya — sekarang catatan saya terlihat sangat lucu, dan gaya fontnya? Benar-benar luar biasa.",
+        "author": "Baddie Brown",
+        "role": "Ratu Estetika"
+      },
+      {
+        "quote": "Dulu saya harus mencoret-coret catatan dengan tangan supaya Jesse bisa mengikuti. Berantakan, kacau — benar-benar merepotkan. Situs ini membersihkan semuanya. Variasi font-nya? Anggap saja kualitas A murni.",
+        "author": "Heisenberg",
+        "role": "Sang Kimiawan"
+      },
+      {
+        "quote": "Tulisan tangan saya sangat gemetar sehingga penjual bahkan tidak bisa membaca catatan saya. Situs ini memperbaikinya — sekarang daftar belanja saya terlihat bersih, dan gaya font-nya? Anggap saja efeknya lebih kuat dari apa yang saya hisap.",
+        "author": "Peter Tanaman",
+        "role": "Ahli Botani Lokal"
+      },
+      {
+        "quote": "Tulisan tangan harus lebih dari sekadar kata-kata — ia harus terasa menggoda. Dengan situs ini, bahkan catatan saya terlihat tak tertahankan, seperti surat cinta di layar. Halus, bergaya, dan mustahil untuk diabaikan.",
+        "author": "Aggressive Armas",
+        "role": "Agen Rahasia"
+      },
+      {
+        "quote": "Dengarkan... saya mencoba menulis catatan setelah minum-minum, dan anggap saja hasilnya seperti seni modern. Situs ini? Penyelamat total. Sekarang tulisan saya terlihat berkelas bahkan ketika saya tidak bisa jalan lurus. Tos untuk itu!",
+        "author": "Daud Mabuk",
+        "role": "Penggemar Anggur"
+      },
+      {
+        "quote": "Lirik lagu saya tidak selalu terlihat cantik di atas kertas. Situs ini membuat setiap catatan terasa seperti lagu cinta — sederhana, bergaya, tak terlupakan.",
+        "author": "Swirl Swift",
+        "role": "Penulis Lagu"
+      },
+      {
+        "quote": "Di lapangan, saya pernah menulis catatan dalam kegelapan, hujan deras — hampir tidak terbaca. Situs ini? Membuat tulisan saya tajam dan jelas setiap saat. Ini alat yang sangat bagus.",
+        "author": "Kapten Price",
+        "role": "Satuan Tugas 141"
+      },
+      {
+        "quote": "Saya selalu bepergian, dan catatan cepat saya tidak pernah terlihat siap untuk panggung mode. Situs ini membuat segalanya chic dan tanpa cela — seperti tulisan tangan, tapi modis.",
+        "author": "Jacked Jenner",
+        "role": "Model / Ikon"
+      },
+      {
+        "quote": "Saya dulu sering mengerjakan tugas dan mendapat nilai rendah — itulah sebabnya semua orang memanggil saya L. Tapi saya merasakan kemenangan menggunakan situs ini. Catatan saya tidak pernah terlihat seakurat ini.",
+        "author": "L",
+        "role": "Detektif"
+      }
+    ],
+    "context": "Siap untuk membuat konten tulisan tangan Anda sendiri? Bergabunglah dengan komunitas siswa, kreator, dan profesional kami yang menggunakan generator tulisan tangan gratis kami setiap hari."
+  },
+  "tips": {
+    "heading": "Tips & Praktik Terbaik",
+    "subheading": "Dapatkan hasil maksimal dari generator tulisan tangan Anda dengan tips ahli ini",
+    "items": [
+      {
+        "title": "Pilih Font yang Tepat",
+        "description": "Font yang berbeda cocok untuk tujuan yang berbeda. Gunakan font sambung elegan untuk dokumen formal, font kasual untuk catatan pribadi, dan font yang jelas untuk keterbacaan."
+      },
+      {
+        "title": "Sesuaikan Ketebalan Tinta",
+        "description": "Kontrol ketebalan tulisan tangan Anda dengan menyesuaikan ketebalan tinta. Pengaturan yang lebih ringan menciptakan tulisan yang halus dan feminin, sementara pengaturan yang lebih tebal menghasilkan guratan yang kuat dan percaya diri."
+      },
+      {
+        "title": "Pilih Templat yang Tepat",
+        "description": "Sesuaikan templat kertas dengan konten Anda. Kertas bergaris paling cocok untuk catatan dan tugas terstruktur, halaman kosong untuk kebebasan kreatif, dan kisi titik untuk bullet journal."
+      },
+      {
+        "title": "Pratinjau Sebelum Menghasilkan",
+        "description": "Gunakan pratinjau langsung untuk memeriksa teks Anda sebelum menghasilkan. Ini menghemat waktu dan memastikan konten Anda terlihat persis seperti yang Anda inginkan."
+      },
+      {
+        "title": "Gunakan Unduhan Massal untuk Banyak Halaman",
+        "description": "Menghasilkan banyak halaman? Gunakan fitur unduhan massal untuk menyimpan semua halaman Anda sekaligus. Pilih pengaturan kualitas pilihan Anda dan unduh semuanya sebagai file ZIP."
+      }
+    ],
+    "context": "Tips ini akan membantu Anda membuat teks tulisan tangan yang lebih realistis dan tampak profesional."
+  },
+  "mainPage": {
+    "mobileControls": "Kontrol",
+    "mobilePreview": "Pratinjau & Galeri",
+    "updatingPreview": "Memperbarui pratinjau...",
+    "mission": {
+      "badge": "Misi Kami",
+      "heading": "Mengapa kami membangun ini?",
+      "description": "Kami percaya pada masa depan di mana siswa dapat fokus pada ide-ide mereka alih-alih kram tangan karena menulis tugas. Tanpa canda, saatnya merangkul era digital sambil tetap menjaga nuansa tulisan tangan asli tersebut."
+    },
+    "lab": {
+      "heading": "Laboratorium",
+      "version": "v1.4.1",
+      "inputLabel": "Konten",
+      "placeholder": "Ketik teks Anda di sini...",
+      "style": "Gaya",
+      "size": "Ukuran",
+      "paperRealism": "Realisme Kertas",
+      "ultra": "Ultra",
+      "high": "Tinggi",
+      "low": "Rendah",
+      "inkBoldness": "Ketebalan Tinta"
+    },
+    "output": {
+      "title": "Pratinjau Langsung",
+      "template": "Templat",
+      "loading": "Memuat...",
+      "loadingTemplate": "Memuat templat kertas...",
+      "initializing": "Menjalankan mesin tulisan tangan...",
+      "presentRose": "Hadiahkan Mawar"
+    }
+  },
+  "footer": {
+    "about": "Tentang",
+    "blog": "Blog Kami",
+    "changelog": "Catatan Perubahan",
+    "terms": "Syarat dan Ketentuan",
+    "faq": "Tanya Jawab (FAQ)",
+    "rights": "Hak cipta dilindungi undang-undang."
+  },
+  "pages": {
+    "about": {
+      "title": "Tentang Vibe Ini",
+      "back": "Kembali ke laboratorium",
+      "community": "Terbuka untuk komunitas",
+      "communityDesc": "Ide fitur, laporan bug, dan saran menarik semuanya masuk ke kotak masuk yang sama. Kami benar-benar membaca semua yang masuk.",
+      "description1": "dimulai sebagai tantangan larut malam untuk membuat catatan digital terasa tidak terlalu robotik dan lebih seperti halaman coretan saat kita tumbuh dewasa. Apa yang seharusnya menjadi skrip kecil berkembang menjadi Blend Modes, manajer tekstur, dan terlalu banyak cangkir kopi.",
+      "description2": "Saat ini generator ini memberdayakan siswa, desainer, dan penunda serial yang tetap ingin tugas mereka terlihat buatan tangan. Kami terobsesi dengan getaran tinta yang dapat dipercaya, kanvas responsif, dan menjaga seluruh pengalaman cukup cepat untuk menyelesaikan tugas itu tiga puluh menit sebelum tenggat waktu.",
+      "donateBtc": "Donasi Bitcoin",
+      "donateBtcDesc": "Alamat dompet segera hadir — sampai saat itu, kirimkan pesan kepada kami dan kami akan mengirimkan detail terbaru secara pribadi.",
+      "presentRose": "Hadiahkan Mawar",
+      "madeBy": "Dibuat dengan $ oleh Th3-F00L",
+      "supportHeadline": "Butuh bantuan, umpan balik, atau hanya ingin menyapa?",
+      "supportDesc": "Kami menjawab setiap email sendiri. Tangkapan layar, ide fitur, dan keberhasilan Anda menjaga proyek ini tetap hidup.",
+      "keywords": "tentang txttohandwriting, misi generator tulisan tangan, tim txttohandwriting"
+    },
+    "faq": {
+      "title": "Informasi Utama (FAQ)",
+      "back": "Kembali ke laboratorium",
+      "keywords": "faq generator tulisan tangan, dukungan alat tulisan tangan, bantuan tulisan tangan",
+      "q1": "Apakah ini benar-benar gratis?",
+      "a1": "Beneran, ini gratis. Tanpa canda. Kami bukan tentang kehidupan langganan. Silakan gunakan sepuasnya (jangan merusak apa pun).",
+      "q2": "Bisakah saya menggunakan ini untuk pekerjaan sampingan saya?",
+      "a2": "Tentu saja. Buat meme Anda, branding Depop Anda, apa pun. Silakan cari uang. Tidak perlu kredit, tapi penyebutan akan sangat ikonik.",
+      "q3": "Apakah Anda membaca pikiran saya yang tidak terkendali?",
+      "a3": "Nggak, kami tidak bisa melihat apa-apa. Kami tidak seperti alien Mar... kek... sudahlah, terus terang kami tidak butuh data Anda. Server kami seperti batu. Rahasia Anda aman bersama kami, kawan.",
+      "q4": "Apa urusannya dengan unduhan?",
+      "a4": "Saat ini hanya PNG. Hasilnya... kualitas tinggi. Kami mungkin akan menambahkan lebih banyak format nanti jika suasananya tepat.",
+      "q5": "Mengapa font-nya terlihat agak aneh?",
+      "a5": "Mungkin karena browser Anda. Coba perbarui. Jika masih terlihat mencurigakan, mungkin itu hanya sistem operasi Anda yang beraksi. Ini soal rasa, bukan sains yang tepat.",
+      "q6": "Fakultas saya meminta salinan fisik, apa yang harus saya lakukan?",
+      "a6": "Aku mengerti kawan! Aku punya solusi sempurna untukmu",
+      "supportHeadline": "Masih bingung atau ingin melaporkan bug?",
+      "supportDesc": "Kirim pesan kepada tim dan kami akan membalas lebih cepat daripada Anda bisa mengucapkan tulisan sambung."
+    },
+    "changelog": {
+      "title": "Catatan Perubahan",
+      "back": "Kembali ke laboratorium",
+      "productUpdates": "Pembaruan produk",
+      "description": "Setiap peningkatan, penyesuaian, dan pengungkapan besar yang telah kami kirimkan sejak peluncuran. Kami menjaganya tetap manusiawi — tanpa jargon, hanya apa yang berubah dan mengapa itu penting bagi catatan Anda.",
+      "mood": "Suasana",
+      "keywords": "pembaruan produk, catatan perubahan txttohandwriting, fitur baru",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "Menyempurnakan pengalaman untuk semua.",
+          "highlights": [
+            "Memperbaiki beberapa bug dan perbaikan baru.",
+            "Menambahkan fungsionalitas dukungan berbagai bahasa."
+          ],
+          "mood": "Getaran global."
+        },
+        "v1-4": {
+          "tagline": "Tingkat realisme dan performa berikutnya.",
+          "highlights": [
+            "Perombakan UI baru dengan sistem desain yang lebih bersih dan modern.",
+            "Peningkatan pembuatan gambar dengan fidelitas lebih tinggi dan tekstur tinta yang lebih baik.",
+            "Peningkatan rendering gambar langsung ke tingkat berikutnya untuk umpan balik instan.",
+            "Pengoptimalan mesin untuk pemrosesan yang lebih cepat dan interaksi yang lebih lancar."
+          ],
+          "mood": "Awal baru, tahun baru, catatan baru."
+        },
+        "v1-3": {
+          "tagline": "Lebih banyak kontrol, kualitas lebih tinggi, dan pengalaman yang lebih lancar.",
+          "highlights": [
+            "Peninjauan kembali desain UI untuk pengalaman yang lebih intuitif dan estetis.",
+            "Menambahkan opsi kontrol berat tinta untuk kontrol yang lebih halus atas tampilan tulisan tangan.",
+            "Menambahkan opsi untuk mengunduh semua gambar yang dihasilkan sebagai satu file PDF.",
+            "Menambahkan opsi kualitas gambar (Tinggi, Sedang, Rendah) untuk menyeimbangkan kualitas dan ukuran file.",
+            "Memperbaiki berbagai bug yang diketahui untuk meningkatkan stabilitas dan performa."
+          ],
+          "mood": "Merasa kuat dan terpoles."
+        },
+        "v1-2": {
+          "tagline": "Glow-up baru dengan kebebasan kreatif baru.",
+          "highlights": [
+            "Redesain besar laboratorium sehingga kontrol, pratinjau, dan galeri mengalir bersama di setiap ukuran layar.",
+            "Manajer unggahan font khusus dengan panduan langkah demi langkah dan dua slot pribadi untuk tulisan tangan Anda.",
+            "Peningkatan performa di Chrome, Safari, Firefox, dan Edge sehingga halaman dimuat lebih cepat dan terasa lebih lancar."
+          ],
+          "mood": "Hari ini terasa seperti penyebaran perencana baru."
+        },
+        "v1-0": {
+          "tagline": "Hari ketika txttohandwriting.org diluncurkan ke publik.",
+          "highlights": [
+            "Meluncurkan laboratorium tulisan tangan dengan pratinjau instan, warna tinta, dan slider realisme.",
+            "Memperkenalkan rak Paper Vibe dengan templat kosong, titik, dan garis yang siap diunduh sebagai PNG.",
+            "Membuka galeri gambar dengan tampilan layar penuh, label urutan, dan unduhan sekali klik."
+          ],
+          "mood": "Gugup hari pertama sekolah, tapi untuk penggemar alat tulis."
+        }
+      }
+    },
+    "terms": {
+      "title": "Syarat dan Ketentuan",
+      "back": "Kembali ke Generator",
+      "keywords": "syarat layanan tulisan tangan, kebijakan privasi txttohandwriting, legal",
+      "lastUpdated": "Terakhir diperbarui",
+      "welcome": "Selamat datang di txttohandwriting.org! Syarat dan ketentuan ini menguraikan aturan dan peraturan untuk penggunaan situs web kami. Dengan mengakses situs web ini, kami menganggap Anda menerima syarat dan ketentuan ini. Jangan terus menggunakan txttohandwriting.org jika Anda tidak menyetujui semua syarat dan ketentuan yang tercantum di halaman ini.",
+      "section1Title": "1. Penerimaan Syarat",
+      "section1Content": "Layanan disediakan \"apa adanya\" dan \"sebagaimana tersedia\" tanpa jaminan apa pun. Kami tidak menjamin bahwa layanan tidak akan terganggu atau bebas dari kesalahan.",
+      "section2Title": "2. Penggunaan Layanan",
+      "section2Content": "Anda setuju untuk menggunakan layanan kami hanya untuk tujuan yang sah. Anda bertanggung jawab penuh atas konten yang Anda buat dan konversi. Anda setuju untuk tidak menggunakan layanan untuk membuat konten apa pun yang bersifat fitnah, cabul, atau tidak menyenangkan.",
+      "section3Title": "3. Kekayaan Intelektual",
+      "section3Content": "Teks yang Anda masukkan adalah milik Anda sendiri. Gambar yang dihasilkan dari teks Anda dapat digunakan untuk tujuan pribadi dan komersial. Namun, font, desain, dan branding txttohandwriting.org adalah milik pemilik situs web dan tidak boleh digunakan tanpa izin.",
+      "section4Title": "4. Penafian Jaminan",
+      "section4Content": "Situs web kami disediakan atas dasar \"apa adanya\". Kami tidak memberikan jaminan, tersurat maupun tersirat, dan dengan ini menolak dan meniadakan semua jaminan lainnya termasuk, tanpa batasan, jaminan tersirat atau kondisi kelayakan jual, kesesuaian untuk tujuan tertentu, atau non-pelanggaran kekayaan intelektual atau pelanggaran hak lainnya.",
+      "section5Title": "5. Batasan Tanggung Jawab",
+      "section5Content": "Dalam keadaan apa pun txttohandwriting.org atau pemasoknya tidak akan bertanggung jawab atas kerusakan apa pun (termasuk, tanpa batasan, kerusakan karena kehilangan data atau keuntungan, atau karena gangguan bisnis) yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan materi di situs web kami, bahkan jika kami telah diberitahu secara lisan atau tertulis tentang kemungkinan kerusakan tersebut.",
+      "section6Title": "6. Perubahan Syarat",
+      "section6Content": "Kami berhak merevisi syarat dan ketentuan ini kapan saja. Dengan menggunakan situs web ini, Anda diharapkan untuk meninjau syarat-syarat ini secara berkala untuk memastikan Anda memahami semua syarat dan ketentuan yang mengatur penggunaan situs web ini.",
+      "section7Title": "7. Analitik & Cookie",
+      "section7Content1": "Kami menggunakan Google Analytics dengan Mode Izin untuk memahami bagaimana txttohandwriting.org digunakan dan untuk terus meningkatkan pengalaman. Cookie analitik tetap dinonaktifkan sampai Anda secara eksplisit memberikan izin melalui spanduk yang ditampilkan saat Anda pertama kali mengunjungi situs. Jika Anda menolak, tidak ada data analitik yang dikirim ke Google dan situs terus berfungsi secara normal.",
+      "section7Content2": "Pengaturan izin mencakup parameter Google berikut: ad_storage, ad_personalization, ad_user_data, dan analytics_storage. Sampai Anda memilih ikut, masing-masing nilai ini tetap dalam status \"ditolak\", mencegah cookie ditulis dan acara dikirim. Saat Anda menerima, kami memperbarui pengaturan tersebut menjadi \"diberikan\" dan menyimpan preferensi Anda di browser Anda.",
+      "section8Title": "8. Mengelola Izin Anda",
+      "section8Content": "Anda dapat memperbarui atau menarik izin Anda kapan saja dengan menghapus data situs di browser Anda atau dengan menghubungi tim kami. Kami akan dengan senang hati membantu dan memastikan preferensi Anda dihormati. Untuk pertanyaan privasi atau permintaan terkait izin, hubungi kami di: segera hadir.",
+      "supportHeadline": "Pertanyaan tentang syarat-syarat ini?",
+      "supportDesc": "Kami senang untuk mengklarifikasi apa pun yang bersifat hukum atau membantu Anda menjaga tugas Anda tetap pada jalurnya."
+    },
+    "notFound": {
+      "title": "Halaman Tidak Ditemukan | txttohandwriting.org",
+      "description": "Kami tidak dapat menemukan halaman yang Anda cari. Kembali ke laboratorium tulisan tangan untuk terus berkreasi.",
+      "keywords": "generator tulisan tangan 404, halaman tidak ditemukan"
+    },
+    "blog": {
+      "title": "Blog Inspirasi Tulisan Tangan | txttohandwriting.org",
+      "description": "Panduan, inspirasi, dan tips untuk mengubah teks ketikan menjadi tulisan tangan estetis untuk Studygram, perencana, dan tugas.",
+      "keywords": "blog tulisan tangan, tips studygram, inspirasi catatan"
+    },
+    "blogPost": {
+      "keywords": "blog tulisan tangan, tips, inspirasi"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "backToLab": "Kembali ke lab",
+    "backToAll": "Kembali ke semua tulisan",
+    "readMore": "Klik untuk membaca lebih lanjut →",
+    "by": "Oleh",
+    "ctaHeadline": "Punya ide artikel atau masukan?",
+    "ctaDescription": "Beri tahu kami apa yang ingin kamu lihat di blog atau bagikan tips tulisan tanganmu."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "Glow Up Catatanmu: Panduan Utama Konverter Teks ke Tulisan Tangan Estetik",
+      "content": "<p>Jujur saja, catatan kuliahmu terlihat agak hambar. Kamu ingin punya catatan estetik yang beda di Studygram, tapi teks panjang yang diketik itu bukan vibe‑nya. Masuklah <strong>konverter teks ke tulisan tangan</strong>, life hack buat meromantisasi hidup belajar.</p>\n<h2>Apa sih generator tulisan tangan?</h2>\n<p><strong>Generator tulisan tangan</strong> seperti kami mengubah teks digital menjadi tulisan tangan yang lucu. Cocok kalau kamu mau kesan tulisan tangan tanpa pegal. Untuk ringkasan belajar atau desain planner digital, <strong>alat gratis teks ke tulisan tangan</strong> adalah bestie baru kamu.</p>\n<h2>Mencari estetika font kamu</h2>\n<p>Glow‑up dimulai dari font yang “kamu banget”. Mau rapi dan elegan atau santai dan berantakan? Kami punya banyak pilihan. <strong>Konverter tulisan tangan online</strong> yang bagus memberi opsi agar kamu bisa ganti dari catatan bio ke esai sejarah. Hasilnya: berguna dan estetik.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Kenapa Studygram‑mu Kurang Hype (Dan Cara Generator Tulisan Tangan Memperbaikinya)",
+      "content": "<p>Kamu punya highlighter pastel, washi tape, dan kopi dingin. Jadi kenapa Studygram‑mu belum dapat hype? Mungkin kontennya. Melihat Times New Roman yang sama itu membosankan. Kalau mau menghentikan scroll, kamu butuh visual yang kece. Dan tidak ada yang bilang “hidupku rapi” seperti catatan tulisan tangan yang estetik.</p>\n<h2>Rahasia utamanya: ubah teks ke tulisan tangan online</h2>\n<p>Tidak ada waktu menulis semuanya manual, apalagi besok ada tiga tugas. Di sinilah <strong>alat online teks ke tulisan tangan</strong> membantu. Kamu bisa mengetik dan <strong>mengubah teks menjadi gambar</strong> tulisan tangan yang indah.</p>\n<p>Bayangkan story dengan ringkasan bab bergaya tulisan tangan yang rapi. Unik, menarik perhatian, dan terlihat lebih effort. Itulah kekuatan <strong>generator tulisan tangan gratis</strong>: mengangkat konten dari basic ke iconic.</p>\n<h2>Biar makin pop</h2>\n<p>Jangan tempel di latar polos. Pilih vibe kertas—bergaris, kotak, atau polos—dan warna tinta yang sesuai tema. Unduh PNG lalu masukkan ke Canva atau GoodNotes. Ini rahasia konten Studygram yang bikin orang simpan dan bagikan.</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "Cara Membuat Font Tulisan Tanganmu Sendiri (Tanpa Pusing)",
+      "content": "<p>Mau melihat <strong>tulisan tanganmu sendiri</strong> di txttohandwriting.org? Bisa banget. Mengubah coretan jadi font terdengar rumit, tapi ada banyak tools yang mudah dan murah.</p>\n<h2>Langkah 1: Siapkan sampel tulisan</h2>\n<p>Cetak template atau tulis di tablet dengan brush netral. Jaga garis dasar stabil, tulis huruf dengan jelas—huruf besar, kecil, angka, tanda baca.</p>\n<ul>\n  <li><strong>Template Calligraphr:</strong> cetak lembar dari <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>, tulis dengan tinta gelap, lalu scan 300 dpi.</li>\n  <li><strong>Procreate atau Affinity:</strong> aplikasi seperti <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> dan <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> memudahkan—ekspor PNG transparan.</li>\n</ul>\n<h2>Langkah 2: Ubah huruf menjadi file font</h2>\n<p>Generator gratis (atau hampir gratis) yang bisa dipakai:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – cepat dan mudah untuk TTF/OTF.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – editor browser untuk pengaturan tambahan.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – gratis dan berbasis grid.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – donationware dengan impor SVG.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> atau <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> untuk hasil pro.</li>\n</ul>\n<p>Unggah lembar, rapikan karakter, cek pratinjau, lalu ekspor TTF, OTF, atau WOFF/WOFF2.</p>\n<h2>Langkah 3: Rapikan detail</h2>\n<p>Atur baseline, kerning, dan line height agar tulisan tidak “loncat‑loncat”.</p>\n<h2>Langkah 4: Upload ke txttohandwriting.org</h2>\n<p>Buka lab, pilih <strong>Custom → Upload</strong>, unggah font, dan beri nama. Kami menyimpan dua font kustom per akun.</p>\n<p>Selesai! Kamu bisa pakai gaya tulisanmu di planner dan catatan. Kalau sudah, tag kami—kami tampilkan di galeri.</p>"
+    },
+    "paper-texture-science": {
+      "title": "Sains Tekstur Kertas: Kenapa Itu Penting",
+      "content": "<p>Pernah bertanya kenapa catatan digital kadang terlihat palsu? Semua soal <strong>tekstur kertas</strong>. Latar putih polos terlihat “komputer”, tapi sedikit grain membuat halaman hidup.</p>\n<h2>Detail mikro</h2>\n<p>Kertas asli punya serat dan ketidaksempurnaan. Generator kami meniru <strong>detail mikro</strong> agar teks terasa menempel di kertas, bukan melayang.</p>\n<h2>Tekstur sesuai mood</h2>\n<p>Kertas kotak cocok untuk hal teknis, kertas garis memberi nuansa kelas, dan kertas polos bertekstur cocok untuk sketsa dan jurnal. Latar adalah setengah dari estetika.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "Psikologi Catatan Tulisan Tangan vs. Mengetik",
+      "content": "<p>Debat laptop vs. buku catatan itu nyata. Ilmu menunjukkan <strong>keunggulan tulisan tangan</strong>: lebih banyak area otak aktif, memori lebih kuat.</p>\n<h2>Kenapa otak suka kurva</h2>\n<p>Mengetik itu mekanis, sedangkan menulis tangan melibatkan gerakan unik. Ini membantu menyimpan informasi lebih lama.</p>\n<h2>Kompromi digital</h2>\n<p>Menulis tangan itu lambat. <strong>Alat teks ke tulisan tangan</strong> memberi kecepatan mengetik dengan nuansa manuskrip yang hangat.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "Top 5 Cara Kreatif Memakai Generator Tulisan Tangan di Luar Sekolah",
+      "content": "<p>Generator tulisan tangan bukan cuma untuk PR. Berikut 5 ide kreatif favorit kami.</p>\n<h2>1. Properti D&D dan TTRPG</h2>\n<p>Surat “dicoret buru‑buru” di atas kertas perkamen bikin sesi terasa nyata.</p>\n<h2>2. Scrapbooking digital</h2>\n<p>Tambahkan caption tanpa stylus, tetap DIY dan rapi.</p>\n<h2>3. Kartu resep estetik</h2>\n<p>Tulis resep rahasia nenek, pilih font kursif, lalu cetak.</p>\n<h2>4. Kutipan media sosial</h2>\n<p>Kutipan tulisan tangan di atas tekstur kertas lebih menonjol di feed.</p>\n<h2>5. Surat cinta</h2>\n<p>Kalau tulisan tanganmu susah dibaca, generator bisa jadi wingman‑mu.</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "Tulisan Tangan Siap Cetak: Margin, Spasi, dan Vibe Kertas",
+      "content": "<p>Di layar terlihat bagus, tapi saat dicetak bisa berantakan. Beberapa tweak kecil bikin hasil tetap rapi di kertas.</p>\n<h2>Mulai dari halaman, bukan font</h2>\n<p>Pilih template kertas dulu, lalu atur margin dan ukuran font agar teks “bernapas”.</p>\n<h2>Ekspor dengan cerdas</h2>\n<p>Gunakan kualitas tinggi dan PDF untuk banyak halaman. Tinta netral dan tekstur halus terlihat lebih autentik.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "Sentuhan Tulisan Tangan untuk Proyek Kerja (Tanpa Terlihat Tidak Profesional)",
+      "content": "<p>Tulisan tangan bukan hanya untuk sekolah. Callout kecil bisa membuat proposal atau moodboard terasa lebih manusiawi.</p>\n<h2>Gunakan sebagai highlight</h2>\n<p>Biarkan konten utama tetap diketik, gunakan tulisan tangan untuk judul, kutipan, atau aksi.</p>\n<h2>Samakan tone</h2>\n<p>Pilih font bersih, tinta hitam/biru, dan tekstur kertas yang halus. Tujuan: “sengaja”, bukan “scrapbook”.</p>"
+    }
+  }
+}

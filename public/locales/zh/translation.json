@@ -1,0 +1,442 @@
+{
+  "common": {
+    "startCreating": "开始创作",
+    "learnMore": "了解更多",
+    "viewFaq": "查看常见问题",
+    "readBlog": "阅读博客文章",
+    "loading": "加载中...",
+    "generating": "正在生成...",
+    "download": "下载",
+    "preview": "预览",
+    "backToLab": "返回实验室",
+    "customFont": "上传自定义字体",
+    "manageFonts": "管理自定义字体",
+    "inkColor": "墨水颜色",
+    "paper": "纸张",
+    "style": "样式",
+    "content": "内容",
+    "clickHere": "点此访问",
+    "selectInk": "选择墨水",
+    "colors": {
+      "black": "黑色",
+      "blue": "蓝色",
+      "red": "红色",
+      "green": "绿色"
+    }
+  },
+  "seo": {
+    "title": "手写字体生成器 - 将文本转换为逼真手写体",
+    "description": "使用可自定义的字体、纸张模板和墨水颜色，生成逼真的手写文本。非常适合制作多种纸张样式的真实手写作品。",
+    "keywords": "手写生成器, 文本转手写, 将文本转换为手写, 手写文本, 自定义字体, 逼真手写, 在线手写生成器, 免费手写工具, 手写字体生成器, studygram, 美学笔记, 数字手写, 手写笔记生成器"
+  },
+  "hero": {
+    "headline": "在几秒钟内把文本变成真实笔迹",
+    "subheadline": "使用我们的免费在线手写生成器，创建逼真的手写笔记、作业和设计。无需注册，100% 本地隐私。",
+    "cta": "免费开始",
+    "keywords": [
+      "手写生成器",
+      "文本转手写",
+      "文本转手写体",
+      "免费手写工具"
+    ]
+  },
+  "howItWorks": {
+    "heading": "使用方式",
+    "subheading": "三个简单步骤，将你的文本转换成真实手写",
+    "steps": [
+      {
+        "title": "输入文本",
+        "description": "输入或粘贴想要转换的文本。工具最多支持 6 页内容，适合作业、笔记或创意项目。"
+      },
+      {
+        "title": "自定义样式",
+        "description": "从 9 款手写字体中选择，匹配空白、横线或点阵纸张，并调整墨水颜色与粗细，营造理想美感。"
+      },
+      {
+        "title": "生成与下载",
+        "description": "点击生成即可获得手写页面，可保存为高质量 PNG 或合并为 PDF。一切在浏览器本地完成，安全私密。"
+      }
+    ],
+    "context": "我们的手写生成器让你轻松创建适用于任何用途的逼真手写文字。无论你是完成作业的学生、设计美感帖子的内容创作者，还是为文档增添个人风格的专业人士，我们的工具每次都能带来真实的效果。"
+  },
+  "features": {
+    "heading": "强大功能",
+    "subheading": "打造真实手写所需的全部控制",
+    "items": [
+      {
+        "title": "逼真的手写变化",
+        "description": "先进渲染引擎模拟真实笔迹，包含基线抖动、倾斜和墨水浓淡变化。",
+        "benefits": [
+          "自然的基线抖动",
+          "字母倾斜随笔势变化",
+          "墨水颜色细微波动",
+          "微小倾斜与不完美"
+        ]
+      },
+      {
+        "title": "多样纸张模板",
+        "description": "提供空白、横线和点阵纸张，满足创作、学习或排版需求，全部为高分辨率纹理。",
+        "benefits": [
+          "空白/横线/点阵随心选",
+          "真实纸张纹理",
+          "高分辨率模板",
+          "打印友好"
+        ]
+      },
+      {
+        "title": "上传专属字体",
+        "description": "支持上传 TTF、OTF、WOFF 字体，随时使用你的真实手写或任何自定义字体。",
+        "benefits": [
+          "保留个人手写风格",
+          "TTF/OTF/WOFF 全兼容",
+          "两组私有字体位",
+          "即时预览"
+        ]
+      },
+      {
+        "title": "100% 免费且私密",
+        "description": "无订阅、无隐藏费用、无数据采集。所有处理都在浏览器完成，你的文本绝不上传。",
+        "benefits": [
+          "永久免费",
+          "无需注册",
+          "客户端本地处理",
+          "可用于商业项目"
+        ]
+      }
+    ],
+    "context": "结合渲染科技与友好体验，让每一次输出都真实可信。"
+  },
+  "useCases": {
+    "heading": "谁在使用我们的手写生成器？",
+    "subheading": "学生、创作者到职场人士都能用它制作真实手写内容",
+    "items": [
+      {
+        "title": "学生与教师",
+        "description": "用于生成手写作业、学习笔记或练习纸，打造看起来更真实的提交作品。",
+        "examplesLabel": "适用场景：",
+        "examples": [
+          "课堂作业",
+          "学习笔记与摘要",
+          "练习讲义",
+          "手写示例"
+        ]
+      },
+      {
+        "title": "内容创作者与设计师",
+        "description": "为 Studygram、子弹笔记或社媒设计添加温度十足的手写元素，吸引更多目光。",
+        "examplesLabel": "适用场景：",
+        "examples": [
+          "Studygram 帖子",
+          "子弹笔记排版",
+          "社交媒体内容",
+          "数字规划页面"
+        ]
+      },
+      {
+        "title": "专业人士与企业",
+        "description": "在商务沟通、感谢信或营销物料中加入手写感，营造更个性化的体验。",
+        "examplesLabel": "适用场景：",
+        "examples": [
+          "感谢信",
+          "私人信件",
+          "营销物料",
+          "签名生成"
+        ]
+      }
+    ],
+    "context": "无论需求如何，都能在这里获得灵活又高质量的手写呈现。"
+  },
+  "testimonials": {
+    "heading": "真实用户评价",
+    "subheading": "成千上万的创作者每天都在使用 txttohandwriting.org",
+    "items": [
+      {
+        "quote": "以前我写的东西像一团乱麻。现在我的笔记可爱又有型，字体风格简直绝了。",
+        "author": "Baddie Brown",
+        "role": "审美玩家"
+      },
+      {
+        "quote": "过去得手写一堆笔记帮朋友赶进度，既乱又累。这个工具把一切收拾得干干净净。",
+        "author": "Heisenberg",
+        "role": "化学老师"
+      },
+      {
+        "quote": "我的手抖得厉害，之前连购物清单都看不清。现在生成的字干净利落，比我自己的墨迹靠谱多了。",
+        "author": "Plant Peter",
+        "role": "本地植物爱好者"
+      },
+      {
+        "quote": "手写不仅是文字，更是一种氛围。有了它，就连随手便签都像屏幕上的情书。",
+        "author": "Aggressive Armas",
+        "role": "特工"
+      },
+      {
+        "quote": "喝多写字像现代艺术。这网站救了我，即使脚步虚浮，字也依旧有范儿。",
+        "author": "Drunk David",
+        "role": "葡萄酒粉丝"
+      },
+      {
+        "quote": "我的歌词草稿总是乱七八糟。这个工具让每一段都像精心写下的情歌。",
+        "author": "Swirl Swift",
+        "role": "词曲作者"
+      },
+      {
+        "quote": "执行任务时我在雨夜里记笔记，几乎看不清。现在生成的文字锋利又清楚，真是可靠的装备。",
+        "author": "Captain Price",
+        "role": "141 特遣队"
+      },
+      {
+        "quote": "我总在奔波，匆忙写下的内容从来不够体面。这个工具让每一页都像走秀道具。",
+        "author": "Jacked Jenner",
+        "role": "模特 / Icon"
+      },
+      {
+        "quote": "以前交作业常常翻车，现在用它生成的手写看上去专业又利落。",
+        "author": "L",
+        "role": "侦探"
+      }
+    ],
+    "context": "准备好制作自己的手写内容了吗？加入这群每天都在使用生成器的学生、创作者和专业人士吧。"
+  },
+  "tips": {
+    "heading": "技巧与最佳实践",
+    "subheading": "用这些建议发挥手写生成器的全部实力",
+    "items": [
+      {
+        "title": "选择合适字体",
+        "description": "正式文本适合优雅字体，私人笔记可选轻松随性的字体，需强调可读性时就用清晰款式。"
+      },
+      {
+        "title": "调整墨水粗细",
+        "description": "通过控制墨迹粗细来改变笔触轻重，轻一点更柔和，粗一点更有力量。"
+      },
+      {
+        "title": "匹配纸张模板",
+        "description": "根据内容选择空白、横线或点阵纸，一秒切换记笔记、自由创作或子弹笔记模式。"
+      },
+      {
+        "title": "生成前先预览",
+        "description": "利用实时预览确认排版与内容，避免生成后再返工。"
+      },
+      {
+        "title": "多页内容用批量下载",
+        "description": "如果一次生成多页，请使用批量下载功能，快速保存全部页面。"
+      }
+    ],
+    "context": "这些技巧帮助你输出更真实、专业的手写作品。"
+  },
+  "mainPage": {
+    "mobileControls": "控制",
+    "mobilePreview": "预览与图库",
+    "updatingPreview": "正在刷新预览...",
+    "mission": {
+      "badge": "我们的使命",
+      "heading": "为什么要做这个？",
+      "description": "我们希望学生可以专注于想法，而不是被手写作业累到抽筋。拥抱数字时代，同时保留真实的手写质感。"
+    },
+    "lab": {
+      "heading": "实验室",
+      "version": "v1.4.1",
+      "inputLabel": "内容",
+      "placeholder": "在此输入文本...",
+      "style": "样式",
+      "size": "大小",
+      "paperRealism": "纸张真实感",
+      "ultra": "超真实",
+      "high": "高",
+      "low": "低",
+      "inkBoldness": "墨迹粗细"
+    },
+    "output": {
+      "title": "实时预览",
+      "template": "模板",
+      "loading": "加载中...",
+      "loadingTemplate": "正在载入纸张模板...",
+      "initializing": "正在初始化手写引擎...",
+      "presentRose": "送一朵玫瑰"
+    }
+  },
+  "footer": {
+    "about": "关于我们",
+    "blog": "最新动态",
+    "changelog": "更新日志",
+    "terms": "条款",
+    "faq": "常见问题",
+    "rights": "保留所有权利。"
+  },
+  "pages": {
+    "about": {
+      "title": "关于这份氛围",
+      "back": "返回实验室",
+      "community": "开放给社区",
+      "communityDesc": "功能点子、Bug 反馈甚至梗图建议都会被我们看到，我们真的会阅读每一条。",
+      "description1": "最初是深夜的一个挑战：让数字笔记不再呆板，而像成长时习惯的手写纸张。一个小脚本最终演变成多层混合、纹理管理器和无数杯咖啡。",
+      "description2": "现在它为学生、设计师和拖延症患者提供帮助，让作品依旧看起来像亲手写的。我们痴迷于真实的墨水抖动、灵活的画布，以及在截止前半小时还能完成作业的速度。",
+      "donateBtc": "捐赠比特币",
+      "donateBtcDesc": "钱包地址即将公布——目前想支持可以先给我们发消息，我们会私下回复最新信息。",
+      "presentRose": "递上一朵玫瑰",
+      "madeBy": "由 Th3-F00L 用爱手工打造",
+      "keywords": "关于 txttohandwriting, 手写生成器使命, 团队",
+      "supportHeadline": "需要帮助或想分享想法？",
+      "supportDesc": "所有邮件都由我们亲自回复。你的截图、功能灵感与好消息，是项目持续向前的动力。"
+    },
+    "faq": {
+      "title": "FAQ（灵魂拷问）",
+      "back": "返回实验室",
+      "keywords": "手写生成器常见问题, 免费手写工具帮助",
+      "q1": "这真的免费吗？",
+      "a1": "真的免费。没有订阅套路，尽情使用（别搞坏就好）。",
+      "q2": "能用在副业吗？",
+      "a2": "当然。做表情包、布置店铺、经营品牌都可以。不要求署名，但打个招呼我们会很开心。",
+      "q3": "你们会看到我写的内容吗？",
+      "a3": "不会。我们看不到任何文本，也不会上传到服务器。你的秘密很安全。",
+      "q4": "现在能下载哪些格式？",
+      "a4": "目前提供 PNG 图像，高质量且易于分享。后续会根据反馈加入更多格式。",
+      "q5": "为什么字体看起来怪怪的？",
+      "a5": "通常是浏览器或系统渲染造成的，先尝试更新浏览器。如果还是不对，就把它当作一种风格。",
+      "q6": "学院要求纸质版怎么办？",
+      "a6": "别担心，我们已经为此准备了最佳解决方案。",
+      "supportHeadline": "还有问题或想调侃一个 Bug？",
+      "supportDesc": "写信告诉我们，我们回复的速度会比你说完“书法”还快。"
+    },
+    "changelog": {
+      "title": "更新日志",
+      "back": "返回实验室",
+      "productUpdates": "产品更新",
+      "description": "自上线以来的每一次焕新、调优与重要发布。我们用最平实的语言说明改了什么、为什么重要。",
+      "mood": "心情",
+      "keywords": "txttohandwriting 更新, 功能发布",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "为每个人优化体验。",
+          "highlights": [
+            "修复了一些错误并进行了新的改进。",
+            "添加了多语言支持功能。"
+          ],
+          "mood": "全球氛围。"
+        },
+        "v1-4": {
+          "tagline": "让真实感与性能更上一层楼。",
+          "highlights": [
+            "焕新界面设计，带来更干净、现代的体验。",
+            "提高手写生成的精细度与墨水纹理。",
+            "实时渲染同步升级，反馈更即时。",
+            "引擎优化，处理速度更快、交互更顺滑。"
+          ],
+          "mood": "新年新气象，笔记焕然一新。"
+        },
+        "v1-3": {
+          "tagline": "更多控制、更高质量、更流畅。",
+          "highlights": [
+            "更新界面布局，体验更直观、更养眼。",
+            "新增墨迹粗细控制，微调手写视觉。",
+            "支持将所有图片一次性导出为 PDF。",
+            "提供高/中/低画质选项，平衡质量与文件大小。",
+            "修复多个已知问题，整体更稳定。"
+          ],
+          "mood": "强大而细腻。"
+        },
+        "v1-2": {
+          "tagline": "一次新的光彩升级，释放创意。",
+          "highlights": [
+            "实验室界面大幅改版，控制区、预览与图库在任意屏幕上都流畅衔接。",
+            "上线自定义字体管理器，提供逐步引导与两个私人字体槽位。",
+            "为 Chrome、Safari、Firefox、Edge 做性能调校，渲染更快、操作更顺。"
+          ],
+          "mood": "像刚翻开的全新手账。"
+        },
+        "v1-0": {
+          "tagline": "txttohandwriting.org 正式公开的那一天。",
+          "highlights": [
+            "上线手写实验室，提供即时预览、墨水颜色与真实感滑杆。",
+            "Paper Vibe 书架提供空白/点阵/横线模板，直接下载 PNG。",
+            "开放图片库，支持全屏查看、序号标签与一键下载。"
+          ],
+          "mood": "像开学第一天对新文具的期待。"
+        }
+      }
+    },
+    "terms": {
+      "title": "使用条款",
+      "back": "返回生成器",
+      "keywords": "txttohandwriting 条款, 手写工具使用条款",
+      "lastUpdated": "最后更新",
+      "welcome": "欢迎来到 txttohandwriting.org！以下条款说明本网站的使用规则。访问本网站即表示你同意这些条款；若不同意，请停止使用。",
+      "section1Title": "1. 接受条款",
+      "section1Content": "我们以“原样”提供服务，不保证始终无误或不中断，也不附带任何明示或暗示的担保。",
+      "section2Title": "2. 合法使用",
+      "section2Content": "你承诺仅将本服务用于合法用途，并对自己创建与转换的内容全权负责。请勿生成任何诽谤、淫秽或令人反感的内容。",
+      "section3Title": "3. 知识产权",
+      "section3Content": "你输入的文字归你所有，生成的图像可用于个人或商业用途。但网站的字体、设计和品牌元素归本站所有，未经许可不得复制。",
+      "section4Title": "4. 免责声明",
+      "section4Content": "本网站按“现状”提供，我们不做任何明示或暗示的保证，包括但不限于适销性、特定用途适用性或不侵犯权益等。",
+      "section5Title": "5. 责任限制",
+      "section5Content": "在任何情况下，txttohandwriting.org 及其供应商均不对因使用或无法使用本站内容而产生的任何损失负责，包括（但不限于）数据或利润损失，或业务中断造成的损害。",
+      "section6Title": "6. 条款变更",
+      "section6Content": "我们保留随时修改条款的权利。继续使用本站即表示你接受最新条款，请定期查看以了解最新内容。",
+      "section7Title": "7. 分析与 Cookie",
+      "section7Content1": "我们使用带同意模式的 Google Analytics 了解网站使用情况。除非你在弹窗中同意，否则不会启用相关 Cookie，拒绝也不会影响站点使用。",
+      "section7Content2": "同意设置涵盖 ad_storage、ad_personalization、ad_user_data 与 analytics_storage。在你授权前，所有开关都保持“拒绝”以阻止写入 Cookie 或发送事件。一旦同意，我们会更新设置并在浏览器中保存偏好。",
+      "section8Title": "8. 管理你的同意",
+      "section8Content": "你可随时在浏览器中清除站点数据或联系我们以更新/撤回同意。若有隐私问题或请求，请发送邮件（即将开放）。",
+      "supportHeadline": "对条款有疑问？",
+      "supportDesc": "我们乐意解释任何法律相关的问题，也很乐意帮你保持作业井然有序。"
+    },
+    "notFound": {
+      "title": "页面未找到 | txttohandwriting.org",
+      "description": "我们找不到你访问的页面，返回手写实验室继续创作吧。",
+      "keywords": "手写生成器 404, 页面不存在"
+    },
+    "blog": {
+      "title": "手写灵感博客 | txttohandwriting.org",
+      "description": "分享如何把键入文本转化为 Studygram、手帐和作业里的美学手写。",
+      "keywords": "手写博客, studygram 手写技巧, 笔记灵感"
+    },
+    "blogPost": {
+      "keywords": "手写博客, 灵感, 技巧"
+    }
+  },
+  "blog": {
+    "title": "博客",
+    "backToLab": "返回实验室",
+    "backToAll": "返回所有文章",
+    "readMore": "点击阅读更多 →",
+    "by": "作者",
+    "ctaHeadline": "有文章想法或反馈吗？",
+    "ctaDescription": "告诉我们你想在博客看到什么，或分享你的手写小技巧。"
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "笔记大改造：审美型文字转手写终极指南",
+      "content": "<p>说实话，你的课堂笔记有点平淡。你想成为 Studygram 上那种审美拉满的笔记达人，但一整面打字文本并不带感。主角登场：<strong>文字转手写转换器</strong>。这是把学习生活“浪漫化”的超级 life hack。</p>\n<h2>手写生成器到底是啥？</h2>\n<p><strong>手写生成器</strong>会把枯燥的数字文本变成可爱的手写字。你想要手写的氛围，却不想手酸，它刚好适合。无论是做一份好看的复习资料，还是为电子手账做设计，<strong>免费的文字转手写工具</strong>就是你的新闺蜜。</p>\n<h2>找到你的字体美学</h2>\n<p>想要 glow‑up，关键是选对字体——让它喊出“这就是我”。你更喜欢干净优雅的连笔，还是随性潦草的风格？我们提供一整套字体任你挑。别只用一种，尽情尝试！一个好的 <strong>在线手写转换器</strong>能让你从生物笔记切换到历史作文，既实用又好看。</p>"
+    },
+    "fix-your-studygram": {
+      "title": "你的 Studygram 为何不火（手写生成器来救场）",
+      "content": "<p>你有粉色荧光笔、和纸胶带和冰咖啡，但 Studygram 还是不火？也许问题在内容。一直用 Times New Roman 太无聊。想让人停下滚动，需要更吸睛的视觉。没有什么比精致的手写笔记更像“我很有条理”。</p>\n<h2>秘密武器：在线文字转手写</h2>\n<p>没人有时间把所有东西都手写，尤其是明天还有三份作业。<strong>在线文字转手写工具</strong>能帮你把笔记、清单和金句快速<strong>变成手写图片</strong>。</p>\n<p>想象一下发一条手写风格的章节总结——独特、抓眼、看起来超有心。这就是<strong>免费手写生成器</strong>的力量：让你的内容从普通变成惊艳。</p>\n<h2>让它更好看</h2>\n<p>别直接贴在纯色背景上。选纸张风格（横线、方格或纯白），搭配合适的墨色。下载 PNG 后放进 Canva 或 GoodNotes。Studygram 想要的“可保存”内容就是这样做出来的。</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "如何做出自己的手写字体（不崩溃版）",
+      "content": "<p>想在 txttohandwriting.org 里看到<strong>自己的手写</strong>？当然可以。把涂鸦做成字体听起来很专业，但其实有很多简单又便宜的工具。</p>\n<h2>步骤 1：准备手写样本</h2>\n<p>打印模板或在平板上写字，保持基线稳定，清楚写完大小写、数字和标点。</p>\n<ul>\n  <li><strong>Calligraphr 模板：</strong>打印 <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> 的表格，用深色笔写好并扫描。</li>\n  <li><strong>Procreate / Affinity：</strong>用 <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> 或 <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> 导出透明 PNG。</li>\n</ul>\n<h2>步骤 2：把字母变成字体文件</h2>\n<p>这些工具能帮你快速生成字体：</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – 上手快、生成 TTF/OTF。</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – 浏览器里微调。</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – 网格化、免费好用。</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – 支持 SVG 导入。</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> / <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> – 追求专业效果。</li>\n</ul>\n<p>上传、对齐、检查预览后导出 TTF/OTF/WOFF 即可。</p>\n<h2>步骤 3：微调细节</h2>\n<p>调整基线、字距和行距，让字更稳。</p>\n<h2>步骤 4：上传到 txttohandwriting.org</h2>\n<p>进入实验室，选择 <strong>Custom → Upload</strong> 上传字体并命名。每个账号可保存两款。</p>\n<p>搞定！把你的手写风格用在手账和笔记里，记得来打卡。</p>"
+    },
+    "paper-texture-science": {
+      "title": "纸张纹理的科学：为什么重要",
+      "content": "<p>为什么有些电子笔记看起来很假？关键在<strong>纸张纹理</strong>。纯白平面看起来像电脑生成，细微纹理会让页面“活起来”。</p>\n<h2>微小细节</h2>\n<p>真实纸张有纤维和不平整。我们模拟这些<strong>微细节</strong>，让文字像是写在纸上。</p>\n<h2>纹理与氛围</h2>\n<p>方格纸更理性、横线纸更课堂、纹理纸适合自由手账。背景决定一半的审美。</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "手写笔记 vs 打字的心理学",
+      "content": "<p>手写还是打字？研究表明<strong>手写优势</strong>真实存在：手写会激活更多大脑区域，帮助记忆。</p>\n<h2>为什么大脑喜欢曲线</h2>\n<p>打字机械重复，手写则包含独特的空间动作，更利于长期记忆。</p>\n<h2>数字折中</h2>\n<p><strong>文字转手写工具</strong>让你保留打字速度，又拥有手写的视觉优势。</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "5 种把手写生成器用到学校之外的创意方式",
+      "content": "<p>手写生成器不只用来作业。这里是我们最喜欢的 5 个玩法。</p>\n<h2>1. D&D / TTRPG 道具</h2>\n<p>用潦草字体和羊皮纸背景，做一封“急匆匆写的信”。</p>\n<h2>2. 数字剪贴</h2>\n<p>不用手写笔也能加上手写感的注释。</p>\n<h2>3. 料理卡片</h2>\n<p>把家传配方打出来，配上手写字体打印。</p>\n<h2>4. 社交媒体语录</h2>\n<p>手写语录在信息流里更醒目、更真实。</p>\n<h2>5. 情书</h2>\n<p>手写更浪漫，但如果字太难看，生成器也能救场。</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "可打印的手写：边距、间距与纸张氛围",
+      "content": "<p>屏幕好看不代表打印也完美。几个小调整能让成品更像真实纸笔。</p>\n<h2>先定页面，再选字体</h2>\n<p>先选纸张模板，再调边距和字号，留出呼吸感。</p>\n<h2>聪明导出</h2>\n<p>打印用高质量，需多页就导出 PDF。中性墨色和浅纹理更自然。</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "工作项目的手写点缀（不显得业余）",
+      "content": "<p>手写不只适合课堂。适当的手写标注能让提案或入职文档更有人味。</p>\n<h2>当作重点，而不是整页</h2>\n<p>主体用打字，标题或重点用手写点缀即可。</p>\n<h2>匹配语气</h2>\n<p>选干净字体、黑或蓝墨、轻纹理纸张。目标是“有意为之”，不是“剪贴簿”。</p>"
+    }
+  }
+}

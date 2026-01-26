@@ -4,8 +4,9 @@
  */
 
 import React, { useMemo, lazy, Suspense, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
-import { blogPosts } from './services/blogPosts';
+import { blogPosts, getLocalizedBlogPost, getLocalizedBlogPosts } from './services/blogPosts';
 import { GENERATION_TIPS } from './components/GenerationTips';
 import ErrorNotificationPanel from './components/ErrorNotificationPanel';
 import { DEFAULT_RENDERING_CONFIG } from './types/index';
@@ -24,9 +25,12 @@ import { SUPPORT_EMAIL } from './components/SupportCTA';
 import { AppFooter } from './components/app/AppFooter';
 import { AppDialogs } from './components/app/AppDialogs';
 import PageLoadingFallback from './components/PageLoadingFallback';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, getLanguageInfo } from './services/languageService';
+import { buildLocalizedPath, normalizePath } from './services/languageRouting';
 
 // Lazy load page components (route-based code splitting)
 const TermsPage = lazy(() => import('./components/TermsPage'));
+const PrivacyPage = lazy(() => import('./components/PrivacyPage'));
 const FaqPage = lazy(() => import('./components/FaqPage'));
 const BlogPage = lazy(() => import('./components/BlogPage'));
 const BlogPostPage = lazy(() => import('./components/BlogPostPage'));
@@ -59,6 +63,7 @@ import {
   createFaqStructuredData,
   createTipsFaqStructuredData,
   createTermsStructuredData,
+  createPrivacyStructuredData,
   createAboutStructuredData,
   createBlogStructuredData,
   createBlogPostStructuredData,
@@ -74,6 +79,11 @@ const GENERATION_DELAY_MS = 3000;
 import InteractiveBackground from './components/InteractiveBackground';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const activeLanguage = i18n.resolvedLanguage || i18n.language || DEFAULT_LANGUAGE;
+  const activeLanguageInfo = getLanguageInfo(activeLanguage);
+  const activeLocale = activeLanguageInfo?.locale || 'en-US';
+  const localizedBlogPosts = useMemo(() => getLocalizedBlogPosts(t), [t, activeLanguage]);
   // Use custom hooks for state, services, and effects
   const [state, setters, refs] = useAppState();
   const services = useAppServices(
@@ -87,7 +97,7 @@ const App: React.FC = () => {
   );
 
   // Apply effects
-  useAppEffects(state, setters, refs, services);
+  useAppEffects(state, setters, refs, services, activeLanguage);
 
   // Performant font loading - Requirements: 4.2, 4.3, 6.2, 6.3
   const fontLoader = usePerformantFontLoader();
@@ -163,16 +173,33 @@ const App: React.FC = () => {
 
   // SEO options
   const seoOptions = useMemo(() => {
-    const defaultTitle = 'Handwriting Generator - Convert Text to Realistic Handwriting';
-    const defaultDescription = 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates.';
-    const canonicalPath = state.page === 'notFound' && state.missingPath
-      ? state.missingPath
-      : getPathForPage(state.page, state.currentPostSlug);
+    const defaultTitle = t('seo.title', 'Handwriting Generator - Convert Text to Realistic Handwriting');
+    const defaultDescription = t('seo.description', 'Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates.');
+    const basePath = getPathForPage(state.page, state.currentPostSlug);
+    const missingPath = state.page === 'notFound' && state.missingPath
+      ? normalizePath(state.missingPath)
+      : null;
+    const canonicalPath = missingPath || buildLocalizedPath(basePath, activeLanguage);
     const canonicalUrl = `${normalizedCanonicalBase}${canonicalPath === '/' ? '' : canonicalPath}`;
-    const alternateLocales = [
-      { hrefLang: 'x-default', url: canonicalUrl },
-      { hrefLang: 'en', url: canonicalUrl }
-    ];
+    const localizedRootPath = buildLocalizedPath('/', activeLanguage);
+    const localizedBaseUrl = `${normalizedCanonicalBase}${localizedRootPath === '/' ? '' : localizedRootPath}`;
+    
+    // Dynamic alternate locales
+    const alternateLocales = SUPPORTED_LANGUAGES.map(lang => {
+      const hreflang = lang.hreflang || lang.code;
+      const localizedPath = buildLocalizedPath(basePath, lang.code);
+      return {
+        hrefLang: hreflang,
+        url: `${normalizedCanonicalBase}${localizedPath === '/' ? '' : localizedPath}`
+      };
+    });
+    
+    // Add x-default
+    const defaultPath = buildLocalizedPath(basePath, DEFAULT_LANGUAGE);
+    alternateLocales.push({
+      hrefLang: 'x-default',
+      url: `${normalizedCanonicalBase}${defaultPath === '/' ? '' : defaultPath}`
+    });
 
     let title = defaultTitle;
     let description = defaultDescription;
@@ -183,47 +210,59 @@ const App: React.FC = () => {
     const customMetaTags: any[] = [];
     const structuredData: any[] = [];
 
-    const activeBlogPost = state.currentPostSlug ? blogPosts.find(post => post.slug === state.currentPostSlug) : undefined;
+    const activeBlogPost = state.currentPostSlug
+      ? localizedBlogPosts.find(post => post.slug === state.currentPostSlug)
+      : undefined;
 
     switch (state.page) {
       case 'faq':
-        title = 'Handwriting Generator FAQ | txttohandwriting.org';
-        description = 'Answers to the most common questions about txttohandwriting.org — pricing, privacy, downloads, and usage rights.';
-        keywords = `${DEFAULT_KEYWORDS}, handwriting generator faq, handwriting tool support`;
+        title = t('pages.faq.title', 'Handwriting Generator FAQ | txttohandwriting.org');
+        description = t('pages.faq.description', 'Answers to the most common questions about txttohandwriting.org — pricing, privacy, downloads, and usage rights.');
+        keywords = t('pages.faq.keywords', `${DEFAULT_KEYWORDS}, handwriting generator faq, handwriting tool support`);
         structuredData.push(createFaqStructuredData());
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: '/' },
-          { name: 'FAQ', path: '/faq' }
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'FAQ', path: buildLocalizedPath('/faq', activeLanguage) }
         ]));
         break;
       case 'terms':
-        title = 'Terms & Conditions | txttohandwriting.org';
-        description = 'Review the official terms of service, usage policies, and consent details for txttohandwriting.org.';
-        keywords = `${DEFAULT_KEYWORDS}, handwriting generator terms, txttohandwriting terms of service`;
-        structuredData.push(createTermsStructuredData(canonicalUrl));
+        title = t('pages.terms.title', 'Terms & Conditions | txttohandwriting.org');
+        description = t('pages.terms.description', 'Review the official terms of service, usage policies, and consent details for txttohandwriting.org.');
+        keywords = t('pages.terms.keywords', `${DEFAULT_KEYWORDS}, handwriting generator terms, txttohandwriting terms of service`);
+        structuredData.push(createTermsStructuredData(canonicalUrl, activeLocale));
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: '/' },
-          { name: 'Terms & Conditions', path: '/terms' }
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'Terms & Conditions', path: buildLocalizedPath('/terms', activeLanguage) }
+        ]));
+        break;
+      case 'privacy':
+        title = t('pages.privacy.title', 'Privacy Policy | txttohandwriting.org');
+        description = t('pages.privacy.description', 'Review how we protect your privacy and data at txttohandwriting.org.');
+        keywords = t('pages.privacy.keywords', `${DEFAULT_KEYWORDS}, privacy policy, data security`);
+        structuredData.push(createPrivacyStructuredData(canonicalUrl, activeLocale));
+        structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'Privacy Policy', path: buildLocalizedPath('/privacy', activeLanguage) }
         ]));
         break;
       case 'about':
-        title = 'About txttohandwriting.org | Meet the Team and Mission';
-        description = 'Get to know the people and purpose behind txttohandwriting.org — a handwriting generator built for students, creators, and storytellers.';
-        keywords = `${DEFAULT_KEYWORDS}, about txttohandwriting, handwriting generator mission`;
-        structuredData.push(createAboutStructuredData(canonicalUrl));
+        title = t('pages.about.title', 'About txttohandwriting.org | Meet the Team and Mission');
+        description = t('pages.about.description', 'Get to know the people and purpose behind txttohandwriting.org — a handwriting generator built for students, creators, and storytellers.');
+        keywords = t('pages.about.keywords', `${DEFAULT_KEYWORDS}, about txttohandwriting, handwriting generator mission`);
+        structuredData.push(createAboutStructuredData(canonicalUrl, activeLocale));
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: '/' },
-          { name: 'About', path: '/about' }
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'About', path: buildLocalizedPath('/about', activeLanguage) }
         ]));
         break;
       case 'blog':
-        title = 'Handwriting Inspiration Blog | txttohandwriting.org';
-        description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
-        keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
-        structuredData.push(createBlogStructuredData(normalizedCanonicalBase, blogPosts));
+        title = t('pages.blog.title', 'Handwriting Inspiration Blog | txttohandwriting.org');
+        description = t('pages.blog.description', 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.');
+        keywords = t('pages.blog.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`);
+        structuredData.push(createBlogStructuredData(localizedBaseUrl, localizedBlogPosts, activeLocale));
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: '/' },
-          { name: 'Blog', path: '/blog' }
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) }
         ]));
         break;
       case 'blogPost':
@@ -232,46 +271,46 @@ const App: React.FC = () => {
           const snippet = articleBody.slice(0, 155);
           title = `${activeBlogPost.title} | txttohandwriting.org`;
           description = snippet.length === articleBody.length ? snippet : `${snippet}…`;
-          keywords = `${DEFAULT_KEYWORDS}, handwriting blog, ${activeBlogPost.title.toLowerCase()}`;
-          structuredData.push(createBlogPostStructuredData(normalizedCanonicalBase, activeBlogPost, socialImageUrl));
+          keywords = t('pages.blogPost.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, ${activeBlogPost.title.toLowerCase()}`);
+          structuredData.push(createBlogPostStructuredData(localizedBaseUrl, activeBlogPost, socialImageUrl, activeLocale));
           structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-            { name: 'Home', path: '/' },
-            { name: 'Blog', path: '/blog' },
-            { name: activeBlogPost.title, path: `/blog/${activeBlogPost.slug}` }
+            { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+            { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) },
+            { name: activeBlogPost.title, path: buildLocalizedPath(`/blog/${activeBlogPost.slug}`, activeLanguage) }
           ]));
           customMetaTags.push({ property: 'og:type', content: 'article' });
         } else {
-          title = 'Handwriting Inspiration Blog | txttohandwriting.org';
-          description = 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.';
-          keywords = `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`;
-          structuredData.push(createBlogStructuredData(normalizedCanonicalBase, blogPosts));
+          title = t('pages.blog.title', 'Handwriting Inspiration Blog | txttohandwriting.org');
+          description = t('pages.blog.description', 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.');
+          keywords = t('pages.blog.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`);
+          structuredData.push(createBlogStructuredData(localizedBaseUrl, localizedBlogPosts, activeLocale));
           structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-            { name: 'Home', path: '/' },
-            { name: 'Blog', path: '/blog' }
+            { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+            { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) }
           ]));
         }
         break;
       case 'changelog':
-        title = 'Changelog | txttohandwriting.org';
-        description = 'Follow every release of txttohandwriting.org, from launch day to the latest glow-up.';
-        keywords = `${DEFAULT_KEYWORDS}, product updates, txttohandwriting changelog`;
-        structuredData.push(createChangelogStructuredData(canonicalUrl));
+        title = t('pages.changelog.title', 'Changelog | txttohandwriting.org');
+        description = t('pages.changelog.description', 'Follow every release of txttohandwriting.org, from launch day to the latest glow-up.');
+        keywords = t('pages.changelog.keywords', `${DEFAULT_KEYWORDS}, product updates, txttohandwriting changelog`);
+        structuredData.push(createChangelogStructuredData(canonicalUrl, activeLocale));
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: '/' },
-          { name: 'Changelog', path: '/changelog' }
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'Changelog', path: buildLocalizedPath('/changelog', activeLanguage) }
         ]));
         break;
       case 'notFound':
-        title = 'Page Not Found | txttohandwriting.org';
-        description = 'We could not find the page you were looking for. Head back to the handwriting lab to keep creating.';
-        keywords = `${DEFAULT_KEYWORDS}, handwriting generator 404`;
+        title = t('pages.notFound.title', 'Page Not Found | txttohandwriting.org');
+        description = t('pages.notFound.description', 'We could not find the page you were looking for. Head back to the handwriting lab to keep creating.');
+        keywords = t('pages.notFound.keywords', `${DEFAULT_KEYWORDS}, handwriting generator 404`);
         twitterCard = 'summary';
         noindex = true;
         break;
       default:
         title = defaultTitle;
         description = defaultDescription;
-        keywords = DEFAULT_KEYWORDS;
+        keywords = t('seo.keywords', DEFAULT_KEYWORDS);
         // Add Tips FAQ structured data for homepage
         structuredData.push(createTipsFaqStructuredData(tips));
     }
@@ -299,9 +338,19 @@ const App: React.FC = () => {
       twitterCard,
       noindex,
       customMetaTags,
-      structuredData: validatedStructuredData.length ? validatedStructuredData : undefined
+      structuredData: validatedStructuredData.length ? validatedStructuredData : undefined,
+      language: activeLanguage
     };
-  }, [state.page, state.currentPostSlug, normalizedCanonicalBase, socialImageUrl, state.missingPath]);
+  }, [
+    state.page,
+    state.currentPostSlug,
+    normalizedCanonicalBase,
+    socialImageUrl,
+    state.missingPath,
+    t,
+    activeLanguage,
+    activeLocale
+  ]);
 
   useSEO(seoOptions);
 
@@ -708,6 +757,15 @@ const App: React.FC = () => {
             }} />
           </Suspense>
         );
+      case 'privacy':
+        return (
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PrivacyPage onGoBack={() => {
+              setters.setPage('main');
+              setters.setPreviewRefreshToken(token => token + 1);
+            }} />
+          </Suspense>
+        );
       case 'faq':
         return (
           <Suspense fallback={<PageLoadingFallback />}>
@@ -742,7 +800,9 @@ const App: React.FC = () => {
           </Suspense>
         );
       case 'blogPost': {
-        const post = blogPosts.find(p => p.slug === state.currentPostSlug);
+        const post = state.currentPostSlug
+          ? getLocalizedBlogPost(t, state.currentPostSlug)
+          : undefined;
         if (!post) {
           if (state.currentPostSlug) {
             setters.setMissingPath(`/blog/${state.currentPostSlug}`);

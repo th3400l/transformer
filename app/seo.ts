@@ -36,29 +36,44 @@ export const createTipsFaqStructuredData = (tips: Array<{ title: string; descrip
   }))
 });
 
-export const createTermsStructuredData = (url: string): StructuredData => ({
+export const createTermsStructuredData = (url: string, languageLocale = 'en-US'): StructuredData => ({
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'Terms and Conditions - txttohandwriting.org',
   url,
   description: 'Terms of service, data use, and consent information for txttohandwriting.org.',
-  inLanguage: 'en-US'
+  inLanguage: languageLocale
 });
 
-export const createAboutStructuredData = (url: string): StructuredData => ({
+export const createPrivacyStructuredData = (url: string, languageLocale = 'en-US'): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy Policy - txttohandwriting.org',
+  url,
+  description: 'Privacy policy and data handling practices for txttohandwriting.org.',
+  inLanguage: languageLocale
+});
+
+export const createAboutStructuredData = (url: string, languageLocale = 'en-US'): StructuredData => ({
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   name: 'About txttohandwriting.org',
   url,
-  description: 'Story, mission, and team behind txttohandwriting.org — the handwriting generator crafted for students and creators.'
+  description: 'Story, mission, and team behind txttohandwriting.org — the handwriting generator crafted for students and creators.',
+  inLanguage: languageLocale
 });
 
-export const createBlogStructuredData = (baseUrl: string, posts: Array<{ slug: string; title: string; date: string; author: string }>): StructuredData => ({
+export const createBlogStructuredData = (
+  baseUrl: string,
+  posts: Array<{ slug: string; title: string; date: string; author: string }>,
+  languageLocale = 'en-US'
+): StructuredData => ({
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: 'txttohandwriting.org Blog',
   description: 'Guides and ideas for turning typed text into aesthetic handwriting for study notes, planners, and content.',
   url: `${baseUrl}/blog`,
+  inLanguage: languageLocale,
   blogPost: posts.map(post => ({
     '@type': 'BlogPosting',
     headline: post.title,
@@ -77,7 +92,8 @@ export const createBlogStructuredData = (baseUrl: string, posts: Array<{ slug: s
 export const createBlogPostStructuredData = (
   baseUrl: string,
   post: { slug: string; title: string; date: string; author: string; content: string },
-  socialImage: string
+  socialImage: string,
+  languageLocale = 'en-US'
 ): StructuredData => {
   const parsed = new Date(post.date);
   const isoDate = isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
@@ -92,6 +108,7 @@ export const createBlogPostStructuredData = (
     articleBody,
     datePublished: isoDate,
     dateModified: isoDate,
+    inLanguage: languageLocale,
     url: `${baseUrl}/blog/${post.slug}`,
     image: socialImage,
     author: {
@@ -101,11 +118,12 @@ export const createBlogPostStructuredData = (
   };
 };
 
-export const createChangelogStructuredData = (url: string): StructuredData => ({
+export const createChangelogStructuredData = (url: string, languageLocale = 'en-US'): StructuredData => ({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'txttohandwriting.org Product Updates',
   url,
+  inLanguage: languageLocale,
   itemListElement: CHANGELOG_ENTRIES.map((entry, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -214,6 +232,8 @@ export const getPathForPage = (page: Page, slug: string | null): string => {
   switch (page) {
     case 'terms':
       return '/terms';
+    case 'privacy':
+      return '/privacy';
     case 'faq':
       return '/faq';
     case 'about':

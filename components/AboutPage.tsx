@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import SupportCTA, { SUPPORT_EMAIL } from './SupportCTA';
 import { usePerformanceMonitoring, useRenderPerformance } from '../hooks/usePerformanceMonitoring';
 
@@ -25,6 +26,7 @@ interface RosePetal {
 }
 
 const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
+  const { t } = useTranslation();
   const [isRoseTheme, setIsRoseTheme] = useState(false);
 
   // Performance monitoring for rose petal animations
@@ -250,31 +252,31 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
       )}
       <div className="relative z-10 bg-panel-bg backdrop-blur-lg border border-panel-border rounded-xl shadow-2xl p-6 md:p-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[var(--panel-border)] pb-6 mb-8 gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-accent tracking-tight">About The Vibe</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-accent tracking-tight">{t('pages.about.title', 'About The Vibe')}</h1>
           <Button
             variant="ghost"
             onClick={onGoBack}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-text-muted hover:text-text hover:bg-control-bg"
           >
             <ArrowLeftIcon className="w-4 h-4" />
-            Back to the lab
+            {t('pages.about.back', 'Back to the lab')}
           </Button>
         </div>
 
         <div className="text-text-muted space-y-8 leading-relaxed text-lg">
           <p>
-            <strong className="text-text">txttohandwriting.org</strong> started as a late-night dare to make digital notes feel less robotic and more like the doodled pages we grew up with. What was supposed to be a tiny script spiralled into Blend Modes, texture managers, and way too many cups of coffee.
+            <strong className="text-text">txttohandwriting.org</strong> {t('pages.about.description1', 'started as a late-night dare to make digital notes feel less robotic and more like the doodled pages we grew up with.')}
           </p>
           <p>
-            Today the generator powers students, designers, and serial procrastinators who still want their submissions to look handcrafted. We obsess over believable ink jitter, responsive canvases, and keeping the whole experience fast enough to finish that assignment thirty minutes before the deadline.
+            {t('pages.about.description2', 'Today the generator powers students, designers, and serial procrastinators who still want their submissions to look handcrafted.')}
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 mt-10">
             <div className="p-8 md:p-10 rounded-2xl border border-panel-border bg-control-bg/40 md:col-span-2 hover:border-accent transition-all duration-300">
               <div className="max-w-2xl">
-                <h2 className="text-2xl font-bold text-text mb-4">Open to the community</h2>
+                <h2 className="text-2xl font-bold text-text mb-4">{t('pages.about.community', 'Open to the community')}</h2>
                 <p className="text-lg text-text-muted leading-relaxed">
-                  Feature ideas, bug reports, and meme-worthy suggestions all land in the same inbox. We genuinely read everything that comes through.
+                  {t('pages.about.communityDesc', 'Feature ideas, bug reports, and meme-worthy suggestions all land in the same inbox.')}
                 </p>
               </div>
 
@@ -285,7 +287,7 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-rose-500/50 text-sm"
                 >
-                  <HeartIcon className="w-5 h-5" /> Present a Rose
+                  <HeartIcon className="w-5 h-5" /> {t('pages.about.presentRose', 'Present a Rose')}
                 </a>
                 <a
                   href={`mailto:${SUPPORT_EMAIL}?subject=Bitcoin%20Donation&body=Hey%20team,%20drop%20me%20the%20current%20BTC%20wallet%20so%20I%20can%20support%20the%20project.`}
@@ -293,14 +295,14 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-accent text-bg hover:bg-accent-hover shadow-lg shadow-accent/20 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent/50 text-sm"
                 >
-                  <span className="text-lg">₿</span> Donate a Bitcoin
+                  <span className="text-lg">₿</span> {t('pages.about.donateBtc', 'Donate a Bitcoin')}
                 </a>
               </div>
 
               <div className="mt-8 pt-6 border-t border-panel-border/50">
                 <p className="text-sm text-text-muted flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span>
-                  Wallet address coming soon—until then, shoot us a message and we’ll send the latest details personally.
+                  {t('pages.about.donateBtcDesc')}
                 </p>
               </div>
             </div>
@@ -309,15 +311,15 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
 
 
           <div className="text-center pt-8 border-t border-panel-border mt-8">
-            <span className="font-mono text-sm text-fool-pink opacity-80 hover:opacity-100 transition-opacity">Made with $ by Th3-F00L</span>
+            <span className="font-mono text-sm text-accent opacity-80 hover:opacity-100 transition-opacity">{t('pages.about.madeBy')}</span>
           </div>
         </div>
       </div>
 
       <div className="relative z-10">
         <SupportCTA
-          headline="Need help, feedback, or just want to say hi?"
-          description="We answer every email ourselves. Your screenshots, feature ideas, and wins keep this project alive."
+          headline={t('pages.about.supportHeadline')}
+          description={t('pages.about.supportDesc')}
         />
       </div>
     </div>

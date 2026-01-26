@@ -1,0 +1,439 @@
+{
+  "common": {
+    "startCreating": "시작하기",
+    "learnMore": "자세히 보기",
+    "viewFaq": "FAQ 보기",
+    "readBlog": "블로그 읽기",
+    "loading": "로딩 중...",
+    "generating": "생성 중...",
+    "download": "다운로드",
+    "preview": "미리보기",
+    "backToLab": "실험실로 돌아가기",
+    "customFont": "사용자 폰트 업로드",
+    "manageFonts": "사용자 폰트 관리",
+    "inkColor": "잉크 색상",
+    "colors": {
+      "black": "검정",
+      "blue": "파랑",
+      "red": "빨강",
+      "green": "초록"
+    },
+    "selectInk": "잉크 선택",
+    "paper": "종이",
+    "style": "스타일",
+    "content": "내용",
+    "clickHere": "여기 클릭"
+  },
+  "seo": {
+    "title": "손글씨 생성기 - 텍스트를 현실적인 손글씨로 변환",
+    "description": "폰트, 템플릿, 잉크 색상을 맞춤 설정해 현실적인 손글씨 텍스트를 생성하세요. 다양한 종이 템플릿으로 진짜 같은 손글씨 샘플을 만들기에 완벽합니다."
+  },
+  "hero": {
+    "headline": "텍스트를 진짜 손글씨로 바꾸세요",
+    "subheadline": "무료 온라인 손글씨 생성기로 현실적인 손글씨 노트, 과제, 디자인을 만들 수 있습니다. 가입 없이, 100% 비공개.",
+    "cta": "무료로 시작하기",
+    "keywords": [
+      "손글씨 생성기",
+      "텍스트를 손글씨로",
+      "텍스트 손글씨 변환",
+      "무료 손글씨 도구"
+    ]
+  },
+  "howItWorks": {
+    "heading": "사용 방법",
+    "subheading": "세 가지 간단한 단계로 텍스트를 손글씨로 변환하세요",
+    "steps": [
+      {
+        "title": "텍스트 입력",
+        "description": "손글씨로 바꿀 텍스트를 입력하거나 붙여넣으세요. 최대 6페이지까지 지원해 과제, 노트, 창작 작업에 딱 맞습니다."
+      },
+      {
+        "title": "스타일 커스터마이즈",
+        "description": "9가지 손글씨 폰트 중 선택하고, 종이 템플릿(무지, 줄, 점)을 고른 뒤 잉크 색상과 굵기를 조절하세요."
+      },
+      {
+        "title": "생성 및 다운로드",
+        "description": "생성을 눌러 손글씨 페이지를 만들고 PNG 고화질 이미지로 다운로드하거나 PDF로 묶으세요. 모든 처리는 브라우저에서만 진행됩니다."
+      }
+    ],
+    "context": "우리의 손글씨 생성기는 어떤 목적이든 현실적인 손글씨 텍스트를 쉽게 만들 수 있게 해줍니다. 과제를 하는 학생이든, 감각적인 포스트를 디자인하는 콘텐츠 제작자든, 문서에 개인적인 터치를 더하는 전문가든, 이 도구는 항상 진짜 같은 결과를 제공합니다."
+  },
+  "features": {
+    "heading": "강력한 기능",
+    "subheading": "어떤 목적이든 현실적인 손글씨를 만들기 위한 모든 것",
+    "items": [
+      {
+        "title": "현실적인 손글씨 변형",
+        "description": "고급 렌더링 엔진이 기준선, 기울기, 잉크 농도의 자연스러운 변화를 구현합니다.",
+        "benefits": [
+          "자연스러운 기준선 흔들림",
+          "글자 기울기 변화",
+          "잉크 색상 변화",
+          "미세한 기울기와 흠"
+        ]
+      },
+      {
+        "title": "다양한 종이 템플릿",
+        "description": "필요에 맞는 종이를 선택하세요. 자유로운 무지, 정돈된 줄노트, 불렛 저널용 도트 그리드까지.",
+        "benefits": [
+          "무지, 줄, 도트 옵션",
+          "리얼한 종이 질감",
+          "고해상도 템플릿",
+          "인쇄 최적화"
+        ]
+      },
+      {
+        "title": "사용자 폰트 업로드",
+        "description": "나만의 손글씨 폰트를 업로드해 진짜 내 스타일로 만드세요. TTF, OTF, WOFF 지원.",
+        "benefits": [
+          "나만의 손글씨 업로드",
+          "TTF, OTF, WOFF 지원",
+          "사용자 폰트 2개 슬롯",
+          "즉시 미리보기"
+        ]
+      },
+      {
+        "title": "100% 무료 & 프라이버시",
+        "description": "구독 없음, 숨겨진 비용 없음, 데이터 수집 없음. 모든 처리는 브라우저에서만 이루어집니다.",
+        "benefits": [
+          "영원히 무료",
+          "가입 필요 없음",
+          "클라이언트 측 처리",
+          "상업적 사용 가능"
+        ]
+      }
+    ],
+    "context": "사용하기 쉬운 디자인과 고급 렌더링 기술을 결합해 전문가 수준의 결과를 제공합니다."
+  },
+  "useCases": {
+    "heading": "누가 이 손글씨 생성기를 사용할까요?",
+    "subheading": "학생부터 전문가까지, 다양한 사람들이 어떻게 사용하는지 알아보세요",
+    "items": [
+      {
+        "title": "학생과 교육자",
+        "description": "손글씨 과제, 공부 노트, 연습 워크시트 제작에 완벽합니다.",
+        "examplesLabel": "추천 용도:",
+        "examples": [
+          "숙제",
+          "공부 노트와 요약",
+          "연습 워크시트",
+          "손글씨 샘플"
+        ]
+      },
+      {
+        "title": "콘텐츠 크리에이터 & 디자이너",
+        "description": "Studygram, 불렛 저널, 디자인 작업에 진짜 같은 손글씨 요소를 더하세요.",
+        "examplesLabel": "추천 용도:",
+        "examples": [
+          "Studygram 포스트",
+          "불렛 저널 디자인",
+          "SNS 콘텐츠",
+          "디지털 플래너 페이지"
+        ]
+      },
+      {
+        "title": "전문가와 비즈니스",
+        "description": "비즈니스 커뮤니케이션에 개인적인 느낌을 더하고, 손글씨 스타일 감사 카드나 독특한 마케팅 자료를 만들어 보세요.",
+        "examplesLabel": "추천 용도:",
+        "examples": [
+          "감사 카드",
+          "개인 편지",
+          "마케팅 자료",
+          "서명 생성"
+        ]
+      }
+    ],
+    "context": "어떤 상황이든 필요한 유연성과 품질을 제공합니다."
+  },
+  "testimonials": {
+    "heading": "사용자 후기",
+    "subheading": "수천 명의 사용자들이 우리 손글씨 생성기를 믿고 있습니다",
+    "items": [
+      {
+        "quote": "예전엔 적기만 하면 난장판이었어요. 이 사이트 덕분에 이제 노트가 정말 예뻐졌고, 폰트 스타일은 말해 뭐해요. 완전 최고.",
+        "author": "Baddie Brown",
+        "role": "에스테틱 퀸"
+      },
+      {
+        "quote": "예전엔 손으로 급하게 쓰느라 엉망이었죠. 이 사이트가 다 정리해줬어요. 폰트 변화? 한마디로 끝내줍니다.",
+        "author": "Heisenberg",
+        "role": "화학자"
+      },
+      {
+        "quote": "손이 떨려서 메모도 못 읽을 정도였는데, 여기 덕분에 리스트가 깔끔해졌어요. 폰트 느낌도 완전 찰떡.",
+        "author": "Plant Peter",
+        "role": "동네 식물 박사"
+      },
+      {
+        "quote": "손글씨는 단순한 글자가 아니라 분위기죠. 이 사이트 덕분에 메모도 사랑 편지처럼 보입니다. 부드럽고 세련되고 매력적이에요.",
+        "author": "Aggressive Armas",
+        "role": "비밀 요원"
+      },
+      {
+        "quote": "몇 잔 마시고 쓰면 글씨가 현대미술이 됐는데, 이 사이트는 구원이에요. 이제는 비틀거려도 글씨는 품격.",
+        "author": "Drunk David",
+        "role": "와인 애호가"
+      },
+      {
+        "quote": "가사는 종이 위에서 예쁘게 보이기 어렵죠. 이 사이트 덕분에 모든 문장이 사랑 노래처럼 느껴져요.",
+        "author": "Swirl Swift",
+        "role": "작곡가"
+      },
+      {
+        "quote": "현장에서 비를 맞으며 쓴 메모는 읽기 어려웠어요. 이 사이트는 언제나 선명하게 만들어 줍니다. 정말 좋은 도구예요.",
+        "author": "Captain Price",
+        "role": "Task Force 141"
+      },
+      {
+        "quote": "항상 이동 중이라 메모가 멋지게 보이기 힘들었는데, 이 사이트는 모든 걸 세련되게 만들어 줍니다. 손글씨지만 패션.",
+        "author": "Jacked Jenner",
+        "role": "모델 / 아이콘"
+      },
+      {
+        "quote": "과제 점수가 늘 낮아서 L이라 불렸는데, 이 사이트로 W를 맛봤습니다. 노트가 이렇게 정확했던 적이 없어요.",
+        "author": "L",
+        "role": "탐정"
+      }
+    ],
+    "context": "이제 나만의 손글씨를 만들어 보세요. 학생, 크리에이터, 전문가 모두와 함께하세요."
+  },
+  "tips": {
+    "heading": "팁과 베스트 프랙티스",
+    "subheading": "전문가 팁으로 손글씨 생성기를 더 잘 활용하세요",
+    "items": [
+      {
+        "title": "적합한 폰트 선택",
+        "description": "목적에 맞는 폰트를 고르세요. 공식 문서에는 우아한 스크립트, 개인 노트에는 캐주얼 폰트, 가독성을 위해서는 선명한 폰트를 추천합니다."
+      },
+      {
+        "title": "잉크 굵기 조절",
+        "description": "잉크 굵기로 손글씨의 무게감을 조절하세요. 가벼운 설정은 섬세한 느낌을, 굵은 설정은 강하고 자신감 있는 획을 만듭니다."
+      },
+      {
+        "title": "올바른 템플릿 선택",
+        "description": "내용에 맞는 종이를 선택하세요. 줄노트는 구조적인 과제에, 무지는 자유로운 작업에, 도트는 불렛 저널에 좋습니다."
+      },
+      {
+        "title": "생성 전 미리보기",
+        "description": "실시간 미리보기로 텍스트를 확인하세요. 시간을 절약하고 원하는 결과를 보장합니다."
+      },
+      {
+        "title": "여러 페이지 일괄 다운로드",
+        "description": "여러 페이지를 생성한다면 일괄 다운로드를 사용하세요. 원하는 품질로 ZIP 파일을 받아보세요."
+      }
+    ],
+    "context": "이 팁들은 더 현실적이고 전문적인 손글씨 결과를 만드는 데 도움이 됩니다."
+  },
+  "mainPage": {
+    "mobileControls": "컨트롤",
+    "mobilePreview": "미리보기 및 갤러리",
+    "updatingPreview": "미리보기 업데이트 중...",
+    "mission": {
+      "badge": "우리의 미션",
+      "heading": "왜 만들었나요?",
+      "description": "학생들이 손목 통증 대신 아이디어에 집중할 수 있는 미래를 믿습니다. 이제는 디지털 시대를 받아들이면서도 진짜 손글씨 감성을 지킬 때입니다."
+    },
+    "lab": {
+      "heading": "실험실",
+      "version": "v1.4.1",
+      "inputLabel": "내용",
+      "placeholder": "여기에 텍스트를 입력하세요...",
+      "style": "스타일",
+      "size": "크기",
+      "paperRealism": "종이 리얼리즘",
+      "ultra": "울트라",
+      "high": "높음",
+      "low": "낮음",
+      "inkBoldness": "잉크 굵기"
+    },
+    "output": {
+      "title": "실시간 미리보기",
+      "template": "템플릿",
+      "loading": "로딩 중...",
+      "loadingTemplate": "종이 템플릿 로딩 중...",
+      "initializing": "손글씨 엔진 초기화 중...",
+      "presentRose": "장미 보내기"
+    }
+  },
+  "footer": {
+    "about": "소개",
+    "blog": "티타임",
+    "changelog": "변경 로그",
+    "terms": "이용 약관",
+    "faq": "자주 묻는 질문",
+    "rights": "모든 권리 보유."
+  },
+  "pages": {
+    "about": {
+      "title": "바이브 소개",
+      "back": "실험실로 돌아가기",
+      "community": "커뮤니티에 열려 있음",
+      "communityDesc": "기능 아이디어, 버그 제보, 밈 같은 제안까지 모두 같은 inbox에 도착합니다. 우리는 정말 다 읽습니다.",
+      "description1": "늦은 밤의 도전으로 시작해, 디지털 노트를 로봇 같지 않고 우리가 어릴 때 보던 낙서 같은 느낌으로 만들고자 했습니다. 작은 스크립트가 Blend Modes, 텍스처 매니저, 그리고 너무 많은 커피로 커졌죠.",
+      "description2": "지금은 학생, 디자이너, 그리고 미루기 장인들에게도 손글씨 같은 느낌을 제공합니다. 믿을 수 있는 잉크 흔들림, 반응형 캔버스, 마감 30분 전에도 끝낼 수 있는 속도에 집착합니다.",
+      "donateBtc": "비트코인 후원",
+      "donateBtcDesc": "지갑 주소는 곧 공개됩니다. 그 전에는 메시지를 주시면 최신 정보를 보내드릴게요.",
+      "presentRose": "장미 보내기",
+      "madeBy": "$로 만든 Th3-F00L",
+      "keywords": "about txttohandwriting, handwriting generator mission, txttohandwriting team",
+      "supportHeadline": "도움이 필요하거나 피드백, 혹은 인사하고 싶나요?",
+      "supportDesc": "모든 이메일에 직접 답합니다. 스크린샷, 아이디어, 성공 사례가 프로젝트를 살립니다."
+    },
+    "faq": {
+      "title": "FAQ",
+      "back": "실험실로 돌아가기",
+      "keywords": "handwriting generator faq, handwriting tool support, free handwriting tool help",
+      "q1": "정말 무료인가요?",
+      "a1": "네, 무료입니다. 구독도 없어요. 마음껏 사용하세요 (부디 망가뜨리지만 말아 주세요).",
+      "q2": "사이드 프로젝트에 써도 되나요?",
+      "a2": "물론이죠. 밈 만들든, 샵 꾸미든, 자유롭게 쓰세요. 크레딧은 필수는 아니지만 멋집니다.",
+      "q3": "제 내용을 읽나요?",
+      "a3": "아니요, 아무것도 보지 않습니다. 데이터도 필요 없습니다. 모든 처리는 브라우저에서 진행됩니다.",
+      "q4": "다운로드는 어떤 형식인가요?",
+      "a4": "현재는 PNG만 제공합니다. 고화질이에요. 나중에 다른 형식도 추가할 수 있습니다.",
+      "q5": "폰트가 좀 이상해 보여요",
+      "a5": "대부분 브라우저 문제입니다. 업데이트해 보세요. 그래도 이상하면 OS 특성일 수 있어요.",
+      "q6": "교수님이 종이 출력본을 요구해요. 어떻게 하죠?",
+      "a6": "걱정 마세요. 해결책이 있습니다.",
+      "supportHeadline": "아직 헷갈리거나 버그를 찾았나요?",
+      "supportDesc": "메시지 주세요. 빠르게 답할게요."
+    },
+    "changelog": {
+      "title": "변경 로그",
+      "back": "실험실로 돌아가기",
+      "productUpdates": "제품 업데이트",
+      "description": "출시 이후의 모든 개선과 변화. 전문 용어 없이, 무엇이 바뀌었고 왜 중요한지 설명합니다.",
+      "mood": "무드",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "모두를 위한 경험 개선.",
+          "highlights": [
+            "일부 버그 수정 및 새로운 개선 사항.",
+            "다국어 지원 기능이 추가되었습니다."
+          ],
+          "mood": "글로벌한 분위기."
+        },
+        "v1-4": {
+          "tagline": "리얼리즘과 성능의 다음 단계.",
+          "highlights": [
+            "더 깔끔하고 현대적인 디자인 시스템으로 UI 전면 개편.",
+            "더 높은 품질의 이미지와 잉크 텍스처 개선.",
+            "즉각 피드백을 위한 실시간 렌더링 강화.",
+            "빠르고 부드러운 처리를 위한 엔진 최적화."
+          ],
+          "mood": "새 출발, 새해, 새 노트."
+        },
+        "v1-3": {
+          "tagline": "더 많은 컨트롤, 더 높은 품질, 더 부드러운 경험.",
+          "highlights": [
+            "더 직관적이고 감각적인 경험을 위한 UI 재설계.",
+            "잉크 굵기 조절 옵션 추가.",
+            "모든 이미지를 하나의 PDF로 다운로드하는 기능 추가.",
+            "품질 선택 옵션(높음/중간/낮음) 추가.",
+            "다양한 버그 수정과 안정성 개선."
+          ],
+          "mood": "힘 있고 세련된 느낌."
+        },
+        "v1-2": {
+          "tagline": "새로운 자유를 위한 리뉴얼.",
+          "highlights": [
+            "모든 화면에서 컨트롤, 미리보기, 갤러리가 자연스럽게 흐르도록 대대적인 리디자인.",
+            "단계별 가이드와 2개의 개인 슬롯을 제공하는 사용자 폰트 업로드 매니저.",
+            "Chrome, Safari, Firefox, Edge 전반의 성능 튜닝."
+          ],
+          "mood": "새 플래너 페이지를 펼친 느낌."
+        },
+        "v1-0": {
+          "tagline": "txttohandwriting.org가 공개된 날.",
+          "highlights": [
+            "실시간 미리보기, 잉크 색상, 리얼리즘 슬라이더와 함께 실험실 출시.",
+            "무지, 도트, 줄 템플릿을 제공하는 Paper Vibe 추가.",
+            "전체 화면 보기, 시퀀스 라벨, 원클릭 다운로드를 갖춘 갤러리 공개."
+          ],
+          "mood": "새학기 설렘, 문구 덕후 버전."
+        }
+      }
+    },
+    "terms": {
+      "title": "이용 약관",
+      "back": "생성기로 돌아가기",
+      "lastUpdated": "마지막 업데이트",
+      "welcome": "txttohandwriting.org에 오신 것을 환영합니다! 이 약관은 웹사이트 사용 규칙을 설명합니다. 이 사이트에 접속하면 약관에 동의한 것으로 간주합니다. 동의하지 않는 경우 이용을 중단하세요.",
+      "section1Title": "1. 약관 수락",
+      "section1Content": "서비스는 \"있는 그대로\" 및 \"있는 그대로 제공\" 형태로 제공되며 어떠한 보증도 하지 않습니다. 서비스가 중단되지 않거나 오류가 없을 것을 보장하지 않습니다.",
+      "section2Title": "2. 서비스 이용",
+      "section2Content": "서비스는 합법적인 목적에만 사용해야 합니다. 생성하는 콘텐츠에 대한 책임은 사용자에게 있습니다. 비방, 음란 또는 부적절한 콘텐츠를 생성하지 않을 것에 동의합니다.",
+      "section3Title": "3. 지적 재산권",
+      "section3Content": "입력한 텍스트는 사용자 소유입니다. 생성된 이미지는 개인 및 상업적 용도로 사용할 수 있습니다. 단, txttohandwriting.org의 폰트, 디자인, 브랜드는 사이트 소유자의 자산이며 허가 없이 사용할 수 없습니다.",
+      "section4Title": "4. 보증 부인",
+      "section4Content": "웹사이트는 있는 그대로 제공됩니다. 명시적 또는 묵시적 보증을 하지 않으며, 상품성, 특정 목적 적합성, 지적 재산권 비침해 등에 대한 모든 보증을 부인합니다.",
+      "section5Title": "5. 책임 제한",
+      "section5Content": "txttohandwriting.org 또는 공급자는 데이터 손실이나 수익 손실, 영업 중단 등 어떠한 손해에 대해서도 책임을 지지 않습니다. 이는 사용 또는 사용 불능으로 인해 발생한 손해를 포함합니다.",
+      "section6Title": "6. 약관 변경",
+      "section6Content": "약관은 언제든지 변경될 수 있으며, 사용자는 정기적으로 확인할 책임이 있습니다.",
+      "section7Title": "7. 분석 및 쿠키",
+      "section7Content1": "txttohandwriting.org는 Consent Mode가 적용된 Google Analytics를 사용해 사이트 이용 방식을 파악하고 개선합니다. 방문 시 표시되는 배너에서 동의하기 전까지 분석 쿠키는 비활성화됩니다. 거부해도 사이트는 정상 동작합니다.",
+      "section7Content2": "동의 설정은 ad_storage, ad_personalization, ad_user_data, analytics_storage를 포함합니다. 동의 전에는 모두 \"denied\" 상태로 유지되어 쿠키와 이벤트 전송이 차단됩니다. 동의하면 \"granted\"로 업데이트되고 브라우저에 저장됩니다.",
+      "section8Title": "8. 동의 관리",
+      "section8Content": "브라우저에서 사이트 데이터를 삭제하거나 팀에 문의해 언제든 동의를 변경 또는 철회할 수 있습니다. 요청은 성심껏 처리합니다. 문의: support@txttohandwriting.org.",
+      "supportHeadline": "약관에 대한 질문이 있나요?",
+      "supportDesc": "법적 내용도 편하게 물어보세요."
+    },
+    "notFound": {
+      "title": "페이지를 찾을 수 없습니다 | txttohandwriting.org",
+      "description": "요청한 페이지를 찾을 수 없습니다. 실험실로 돌아가 계속 만들어보세요.",
+      "keywords": "handwriting generator 404, page not found"
+    },
+    "blog": {
+      "title": "손글씨 영감 블로그 | txttohandwriting.org",
+      "description": "Studygram, 플래너, 과제를 위한 감각적인 손글씨로 텍스트를 바꾸는 가이드와 영감을 제공합니다.",
+      "keywords": "handwriting blog, studygram handwriting tips, notes inspiration"
+    },
+    "blogPost": {
+      "keywords": "handwriting blog, tips, inspiration"
+    }
+  },
+  "blog": {
+    "title": "블로그",
+    "backToLab": "실험실로 돌아가기",
+    "backToAll": "전체 글로 돌아가기",
+    "readMore": "자세히 보기 →",
+    "by": "작성자",
+    "ctaHeadline": "글 아이디어나 피드백이 있나요?",
+    "ctaDescription": "블로그에서 보고 싶은 내용이나 손글씨 팁을 알려주세요."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "노트 글로우업: 감성 텍스트→손글씨 변환 완전 가이드",
+      "content": "<p>솔직히 말해, 수업 노트가 좀 밋밋하죠. Studygram에서 감성 노트로 보이고 싶은데, 타이핑된 긴 텍스트는 그 느낌이 아니에요. 주인공은 <strong>텍스트→손글씨 변환기</strong>. 공부 라이프를 로맨틱하게 만드는 최고의 해킹입니다.</p>\n<h2>손글씨 생성기란?</h2>\n<p><strong>손글씨 생성기</strong>는 디지털 텍스트를 귀여운 손글씨로 바꿔줍니다. 손 아프게 쓰지 않고 손글씨 감성을 얻을 수 있죠. 예쁜 요약 노트나 디지털 플래너 디자인에 <strong>무료 텍스트→손글씨 도구</strong>가 제격입니다.</p>\n<h2>나만의 폰트 감성 찾기</h2>\n<p>글로우업의 핵심은 “나 같은” 폰트. 깔끔한 필기체? 편한 낙서체? 다양한 폰트를 제공해요. 좋은 <strong>온라인 손글씨 변환기</strong>라면 과목마다 분위기를 바꿀 수 있어요.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Studygram이 안 뜨는 이유 (손글씨 생성기로 해결)",
+      "content": "<p>파스텔 형광펜도 있고, 와시테이프도 있는데 Studygram이 안 뜬다? 아마 콘텐츠 때문일 수 있어요. 늘 같은 Times New Roman은 지루하죠. 스크롤을 멈추려면 눈에 띄는 비주얼이 필요합니다. 그럴 때 손글씨 노트가 최고예요.</p>\n<h2>비법: 온라인 텍스트→손글씨</h2>\n<p>손으로 전부 쓰기엔 시간이 없죠. <strong>텍스트→손글씨 온라인 도구</strong>로 입력하면 <strong>손글씨 이미지로 변환</strong>됩니다.</p>\n<p>손글씨 스타일의 챕터 요약을 올려보세요. 유니크하고 눈에 띄며, 엄청 노력한 것처럼 보여요. <strong>무료 손글씨 생성기</strong>의 힘입니다.</p>\n<h2>더 예쁘게 만드는 법</h2>\n<p>밋밋한 배경 말고, 줄노트/모눈/무지 종이를 선택하세요. PNG로 내려받아 Canva나 GoodNotes에 넣으면 끝!</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "내 손글씨 폰트 만들기 (멘붕 없이)",
+      "content": "<p>txttohandwriting.org에 <strong>내 손글씨</strong>를 넣고 싶나요? 가능합니다. 생각보다 쉽고 무료 도구도 많아요.</p>\n<h2>1단계: 손글씨 샘플 준비</h2>\n<p>템플릿을 출력하거나 태블릿에 써 보세요. 대문자·소문자·숫자·기호까지 또렷하게.</p>\n<ul>\n  <li><strong>Calligraphr 템플릿:</strong> <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> 양식을 사용해 300dpi로 스캔.</li>\n  <li><strong>Procreate / Affinity:</strong> <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> 또는 <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a>에서 투명 PNG로 내보내기.</li>\n</ul>\n<h2>2단계: 폰트 파일 만들기</h2>\n<p>추천 도구:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – 빠르게 TTF/OTF 생성.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – 브라우저 편집.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – 무료 실험용.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – SVG 지원.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> / <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> – 프로 느낌.</li>\n</ul>\n<p>업로드 후 정렬하고 TTF/OTF/WOFF로 내보내면 됩니다.</p>\n<h2>3단계: 디테일 정리</h2>\n<p>베이스라인과 글자 간격을 다듬어 안정감을 주세요.</p>\n<h2>4단계: txttohandwriting.org에 업로드</h2>\n<p>랩에서 <strong>Custom → Upload</strong>로 업로드하고 이름을 붙이면 끝.</p>\n<p>이제 내 손글씨를 플래너와 노트에 적용하세요!</p>"
+    },
+    "paper-texture-science": {
+      "title": "종이 질감의 과학: 왜 중요한가",
+      "content": "<p>디지털 노트가 가짜처럼 보일 때가 있죠. 핵심은 <strong>종이 질감</strong>입니다. 완전히 하얀 배경은 인위적이고, 미세한 질감이 현실감을 줍니다.</p>\n<h2>미세 디테일</h2>\n<p>실제 종이는 섬유와 요철이 있어요. 우리는 그 <strong>미세 디테일</strong>을 재현해 글자가 종이에 놓인 듯 보이게 합니다.</p>\n<h2>질감과 분위기</h2>\n<p>모눈은 정확함, 줄노트는 교실 느낌, 질감 종이는 자유로운 스케치에 좋아요. 배경이 절반의 분위기를 만듭니다.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "손글씨 노트 vs 타이핑의 심리학",
+      "content": "<p>손글씨가 좋을까, 타이핑이 좋을까? 연구는 <strong>손글씨의 장점</strong>을 보여줍니다. 더 많은 뇌 영역이 활성화되죠.</p>\n<h2>뇌가 곡선을 좋아하는 이유</h2>\n<p>타이핑은 반복적이지만 손글씨는 매 글자 움직임이 달라 기억에 도움이 됩니다.</p>\n<h2>디지털 타협</h2>\n<p><strong>텍스트→손글씨 도구</strong>는 타이핑 속도와 손글씨 감성을 동시에 제공합니다.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "학교 밖에서 쓰는 손글씨 생성기 활용법 5가지",
+      "content": "<p>손글씨 생성기는 과제만을 위한 도구가 아니에요. 추천 활용법 5가지!</p>\n<h2>1. D&D/TTRPG 소품</h2>\n<p>급히 적은 편지 느낌을 만들면 몰입도가 올라갑니다.</p>\n<h2>2. 디지털 스크랩북</h2>\n<p>스타일러스 없이도 손글씨 캡션을 추가.</p>\n<h2>3. 레시피 카드</h2>\n<p>비밀 레시피를 손글씨 스타일로 인쇄.</p>\n<h2>4. SNS 명언</h2>\n<p>손글씨 인용문은 피드에서 더 눈에 띕니다.</p>\n<h2>5. 러브레터</h2>\n<p>손글씨가 자신 없으면 생성기가 도와줍니다.</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "인쇄용 손글씨: 여백, 간격, 종이 감성",
+      "content": "<p>화면에서는 예뻐도 인쇄에서 깨질 수 있어요. 작은 조정이 중요합니다.</p>\n<h2>페이지부터 정하기</h2>\n<p>먼저 종이 템플릿을 고르고 여백과 글자 크기를 조절하세요.</p>\n<h2>스마트하게 내보내기</h2>\n<p>인쇄는 고품질, 여러 페이지는 PDF. 중성 잉크가 안전합니다.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "업무용 문서에 손글씨 감성 더하기 (프로답게)",
+      "content": "<p>손글씨는 학교만의 것이 아닙니다. 작은 손글씨 표시만으로 문서가 더 인간적으로 보입니다.</p>\n<h2>강조로 사용하기</h2>\n<p>본문은 타이핑, 제목이나 인용에만 손글씨를 사용하세요.</p>\n<h2>톤 맞추기</h2>\n<p>깔끔한 폰트, 검정/파랑 잉크, 은은한 종이 질감이 좋습니다.</p>"
+    }
+  }
+}

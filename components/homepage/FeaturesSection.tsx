@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { features } from '@/content/homepage';
 
 // Icon components for each feature
@@ -102,7 +103,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, ben
   return (
     <article className="flex flex-col p-6 md:p-8 bg-panel-bg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-panel-border" role="listitem">
       {/* Icon */}
-      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-[var(--rose-primary)] to-[var(--rose-secondary)] flex items-center justify-center mb-6 shadow-md" aria-hidden="true">
+      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-color-hover)] flex items-center justify-center mb-6 shadow-md" aria-hidden="true">
         <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </div>
 
@@ -147,6 +148,17 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, ben
 };
 
 export const FeaturesSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  // Use translations if available, falling back to English content from file
+  const featuresList = t('features.items', { returnObjects: true }) as Array<{ title: string; description: string; benefits: string[] }>;
+  
+  // Combine with icons from original source (assuming structure matches)
+  const renderedFeatures = featuresList.map((feature, index) => ({
+    ...feature,
+    icon: features[index]?.icon || 'pen' // Fallback icon
+  }));
+
   return (
     <section
       className="w-full py-16 md:py-24 bg-bg transition-colors duration-300"
@@ -156,16 +168,16 @@ export const FeaturesSection: React.FC = () => {
         {/* Section Header */}
         <header className="text-center mb-12 md:mb-16">
           <h2 id="features-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-text mb-4">
-            Powerful Features
+            {t('features.heading')}
           </h2>
           <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto">
-            Everything you need to create authentic, realistic handwriting for any purpose
+            {t('features.subheading')}
           </p>
         </header>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10" role="list" aria-label="List of features">
-          {features.map((feature, index) => (
+          {renderedFeatures.map((feature, index) => (
             <FeatureCard
               key={index}
               title={feature.title}
@@ -179,11 +191,7 @@ export const FeaturesSection: React.FC = () => {
         {/* Additional Context */}
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto">
-            Our handwriting generator combines advanced rendering technology with user-friendly design
-            to deliver professional results. Whether you need realistic handwriting for school assignments,
-            creative projects, or business communications, our comprehensive feature set ensures you can
-            create exactly what you envision. All features are completely free and work entirely in your
-            browser for maximum privacy and convenience.
+            {t('features.context')}
           </p>
         </div>
       </div>

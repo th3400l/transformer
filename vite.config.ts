@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
     const siteUrl = env.SITE_URL || 'https://txttohandwriting.org';
 
-    const generateSitemapPlugin = () => {
+    const generateSitemapPlugin = (): any => {
       let resolvedOutDir = 'dist';
       let publicDir = path.resolve(__dirname, 'public');
 
@@ -31,6 +31,7 @@ export default defineConfig(({ mode }) => {
             { path: 'about', priority: '0.7', lastmod: today },
             { path: 'faq', priority: '0.6', lastmod: today },
             { path: 'terms', priority: '0.4', lastmod: today },
+            { path: 'privacy', priority: '0.4', lastmod: today },
             { path: 'blog', priority: '0.7', lastmod: today },
             { path: 'changelog', priority: '0.6', lastmod: today }
           ];
@@ -96,6 +97,10 @@ export default defineConfig(({ mode }) => {
           output: {
             // Advanced code splitting for better caching and smaller initial bundle
             manualChunks: (id) => {
+              if (id.includes('vite/preload-helper')) {
+                return 'preload-helper';
+              }
+
               // Core React libraries
               if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
                 return 'vendor-react';
@@ -181,6 +186,10 @@ export default defineConfig(({ mode }) => {
         allowedHosts: [
           '3cc048a316ae.ngrok-free.app'
         ]
+      },
+
+      optimizeDeps: {
+        include: ['react', 'react-dom', 'react-i18next', 'i18next']
       },
 
       test: {

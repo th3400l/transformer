@@ -1,6 +1,48 @@
 // Vitest setup file for canvas support in tests
 import { vi } from 'vitest';
 import '@testing-library/jest-dom';
+import { heroContent, howItWorksSteps, features, useCases, tips, testimonials } from './content/homepage';
+
+// Mock react-i18next
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string, options?: any) => {
+      // Map keys to actual content to pass tests
+      if (key === 'hero.headline') return heroContent.headline;
+      if (key === 'hero.subheadline') return heroContent.subheadline;
+      if (key === 'hero.cta') return heroContent.cta;
+      if (key === 'hero.keywords') return heroContent.keywords;
+      
+      if (key === 'howItWorks.heading') return 'How It Works';
+      if (key === 'howItWorks.steps') return howItWorksSteps;
+      
+      if (key === 'features.heading') return 'Powerful Features';
+      if (key === 'features.items') return features;
+      
+      if (key === 'useCases.heading') return 'Who Uses Our Handwriting Generator?';
+      if (key === 'useCases.items') return useCases;
+      
+      if (key === 'testimonials.heading') return 'What Our Users Say';
+      if (key === 'testimonials.items') return testimonials;
+      
+      if (key === 'tips.heading') return 'Tips & Best Practices';
+      if (key === 'tips.items') return tips;
+
+      if (key === 'common.startCreating') return 'Start Creating';
+      
+      // Return key for others
+      return key;
+    },
+    i18n: {
+      language: 'en',
+      changeLanguage: vi.fn(),
+    },
+  }),
+  initReactI18next: {
+    type: '3rdParty',
+    init: vi.fn(),
+  },
+}));
 
 // Create a proper mock context
 const createMockContext = () => ({

@@ -59,6 +59,17 @@ export interface ILineAlignmentEngine {
   getMarginBounds(template: TemplateMetadata): MarginBounds;
   alignTextToLines(text: string, template: TemplateMetadata, config: any): AlignmentResult;
   calculateLinePositions(template: TemplateMetadata, canvasHeight: number): number[];
+  getTemplateMetadata(templateId: string): Promise<TemplateMetadata>;
+  supportsLineAlignment(templateId: string): Promise<boolean>;
+  calculateOptimalFontSize(template: TemplateMetadata, desiredFontSize: number): number;
+  validateAlignmentConfig(template: TemplateMetadata, config: any): boolean;
+  getAlignmentStats(template: TemplateMetadata, config: any): {
+    lineCount: number;
+    lineSpacing: number;
+    availableWidth: number;
+    availableHeight: number;
+    baseline: number;
+  };
 }
 
 export class TemplateMetadataError extends Error {

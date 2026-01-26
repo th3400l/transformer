@@ -2,73 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://txttohandwriting.org</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/about</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/faq</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/terms</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://txttohandwriting.org/privacy</loc>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/changelog</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/glow-up-your-notes</loc>
-    <lastmod>2025-09-16</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/fix-your-studygram</loc>
-    <lastmod>2025-09-16</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/create-your-own-handwriting-font</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/paper-texture-science</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/psychology-handwritten-notes</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://txttohandwriting.org/blog/creative-ways-to-use-handwriting-generators</loc>
     <lastmod>2026-01-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://txttohandwriting.org/blog/print-ready-handwriting</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://txttohandwriting.org/blog/handwritten-touches-for-work</loc>
+    <lastmod>2026-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>

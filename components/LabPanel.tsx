@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import FontSelector from './FontSelector';
 import { IFontManager } from '../types/fonts';
 import { DistortionLevel, InkColorOption } from '../app/constants';
@@ -62,6 +63,8 @@ const LabPanel: React.FC<LabPanelProps> = ({
   textCutoffSnippet,
   isDisabled = false,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <section
       className="w-full bg-panel-bg border border-panel-border rounded-xl shadow-lg p-4 flex flex-col gap-4 max-h-[calc(100vh-8rem)] relative transition-opacity duration-300"
@@ -71,9 +74,9 @@ const LabPanel: React.FC<LabPanelProps> = ({
       {/* Overlay removed to allow continuous typing */}
 
       <div className="flex justify-between items-center border-b border-panel-border pb-2 flex-shrink-0">
-        <h2 id="controls-heading" className="text-lg font-bold text-text">The Lab</h2>
+        <h2 id="controls-heading" className="text-lg font-bold text-text">{t('mainPage.lab.heading', 'The Lab')}</h2>
         <div className="flex items-center gap-2" role="status" aria-label="Application status">
-          <span className="text-xs font-medium text-text-muted">v1.4</span>
+          <span className="text-xs font-medium text-text-muted">{t('mainPage.lab.version', 'v1.4.1')}</span>
         </div>
       </div>
 
@@ -82,7 +85,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
         <div className="space-y-2 flex-shrink-0">
           <div className="flex justify-between items-center">
             <label htmlFor="text-input" className="block text-xs font-semibold text-text uppercase tracking-wider">
-              Content
+              {t('common.content', 'Content')}
             </label>
             {textCutoffSnippet && (
               <span className="text-[10px] text-red-500 font-medium animate-pulse">
@@ -95,7 +98,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
             value={text}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onTextChange(e.target.value)}
             // Do not disable input during preview updates to maintain focus
-            placeholder="Type your text here..."
+            placeholder={t('mainPage.lab.placeholder', 'Type your text here...')}
             className={`w-full h-32 bg-control-bg border ${textCutoffSnippet ? 'border-red-300 focus:ring-red-400' : 'border-control-border focus:ring-accent'} text-text rounded-lg p-3 focus:ring-2 focus:outline-none transition resize-none text-sm leading-relaxed disabled:opacity-50 disabled:cursor-wait`}
             aria-label="Text input for handwriting conversion"
           />
@@ -110,7 +113,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
 
         {/* Styling Section */}
         <div className="space-y-2 flex-shrink-0">
-          <h3 className="text-xs font-semibold text-text uppercase tracking-wider">Style</h3>
+          <h3 className="text-xs font-semibold text-text uppercase tracking-wider">{t('common.style', 'Style')}</h3>
 
           {/* Font Selector */}
           <div data-tour-id="font-selector">
@@ -125,7 +128,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
             {/* Font Size */}
             <div>
               <div className="flex justify-between mb-1">
-                <label htmlFor="font-size" className="text-xs font-medium text-text-muted">Size</label>
+                <label htmlFor="font-size" className="text-xs font-medium text-text-muted">{t('mainPage.lab.size', 'Size')}</label>
                 <span className="text-[10px] text-text-muted">{fontSize}px</span>
               </div>
               <input
@@ -143,7 +146,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
 
             {/* Ink Color Selector */}
             <div ref={inkMenuRef} className="relative">
-              <label htmlFor="ink-menu-trigger" className="block text-xs font-medium text-text-muted mb-1">Ink Color</label>
+              <label htmlFor="ink-menu-trigger" className="block text-xs font-medium text-text-muted mb-1">{t('common.inkColor', 'Ink Color')}</label>
               <button
                 id="ink-menu-trigger"
                 data-tour-id="ink-selector"
@@ -153,7 +156,12 @@ const LabPanel: React.FC<LabPanelProps> = ({
                 aria-haspopup="listbox"
                 aria-expanded={isInkMenuOpen}
               >
-                <span className="truncate pr-4 text-sm">{inkColors.find(color => color.value === inkColor)?.name || 'Select ink'}</span>
+                <span className="truncate pr-4 text-sm">
+                  {(() => {
+                    const color = inkColors.find(c => c.value === inkColor);
+                    return color ? t(`common.colors.${color.name.toLowerCase()}`, color.name) : t('common.selectInk', 'Select ink');
+                  })()}
+                </span>
                 <svg
                   className={`pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-text-muted transition-transform ${isInkMenuOpen ? 'rotate-180' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +195,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
                         : 'text-text hover:bg-control-bg/70'
                         }`}
                     >
-                      <span>{color.name}</span>
+                      <span>{t(`common.colors.${color.name.toLowerCase()}`, color.name)}</span>
                       <span
                         className="ml-2 h-3 w-3 rounded-full border border-panel-border"
                         style={{ background: color.value }}
@@ -203,7 +211,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
             {setInkBoldness && (
               <div>
                 <div className="flex justify-between mb-1">
-                  <label htmlFor="ink-boldness" className="text-xs font-medium text-text-muted">Ink Boldness</label>
+                  <label htmlFor="ink-boldness" className="text-xs font-medium text-text-muted">{t('mainPage.lab.inkBoldness', 'Ink Boldness')}</label>
                   <span className="text-[10px] text-text-muted">{inkBoldness.toFixed(1)}x</span>
                 </div>
                 <input
@@ -227,14 +235,14 @@ const LabPanel: React.FC<LabPanelProps> = ({
         {/* Paper Section */}
         <div className="space-y-2 flex-shrink-0" data-tour-id="template-selector">
           <label className="block text-xs font-semibold text-text uppercase tracking-wider">
-            Paper
+            {t('common.paper', 'Paper')}
           </label>
 
 
           {/* Paper Distortion */}
           <div className="mt-2">
             <div className="flex justify-between mb-1">
-              <label htmlFor="paper-distortion" className="text-xs font-medium text-text-muted">Paper Realism</label>
+              <label htmlFor="paper-distortion" className="text-xs font-medium text-text-muted">{t('mainPage.lab.paperRealism', 'Paper Realism')}</label>
               <span className="text-[10px] text-text-muted">Lv. {paperDistortionLevel}</span>
             </div>
             <input
@@ -249,9 +257,9 @@ const LabPanel: React.FC<LabPanelProps> = ({
               aria-label="Adjust paper realism level"
             />
             <div className="flex justify-between mt-1 px-0.5">
-              <span className="text-[9px] text-text-muted">Ultra</span>
-              <span className="text-[9px] text-text-muted">High</span>
-              <span className="text-[9px] text-text-muted">Low</span>
+              <span className="text-[9px] text-text-muted">{t('mainPage.lab.ultra', 'Ultra')}</span>
+              <span className="text-[9px] text-text-muted">{t('mainPage.lab.high', 'High')}</span>
+              <span className="text-[9px] text-text-muted">{t('mainPage.lab.low', 'Low')}</span>
             </div>
           </div>
         </div>
@@ -265,8 +273,8 @@ const LabPanel: React.FC<LabPanelProps> = ({
             aria-label={`Manage custom fonts. ${currentCustomFontsCount} of 2 fonts uploaded.`}
           >
             {currentCustomFontsCount === 0
-              ? 'Upload Custom Font'
-              : 'Manage Custom Fonts'}
+              ? t('common.customFont', 'Upload Custom Font')
+              : t('common.manageFonts', 'Manage Custom Fonts')}
           </button>
           <button
             data-tour-id="generate-button"
@@ -277,7 +285,7 @@ const LabPanel: React.FC<LabPanelProps> = ({
               : 'bg-gradient-to-r from-accent to-pink-600 text-white'
               }`}
           >
-            {isGenerating ? 'Generating...' : 'Generate Images'}
+            {isGenerating ? t('common.generating', 'Generating...') : t('common.startCreating', 'Generate Images')}
           </button>
 
           {/* Export Progress */}

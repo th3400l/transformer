@@ -118,7 +118,7 @@ export class EnhancedCanvasRenderer extends CanvasRenderer implements IEnhancedC
     ctx.textAlign = 'left';
     
     // Apply blend mode for realistic ink effect
-    ctx.globalCompositeOperation = config.blendMode || 'multiply';
+    ctx.globalCompositeOperation = (config.blendMode || 'multiply') as GlobalCompositeOperation;
   }
 
   /**

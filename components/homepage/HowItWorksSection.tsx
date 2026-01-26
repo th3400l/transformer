@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { howItWorksSteps } from '@/content/homepage';
 
 // Icon components for each step
@@ -71,6 +72,18 @@ const iconMap: Record<string, React.FC<{ className?: string }>> = {
 };
 
 export const HowItWorksSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  // Use translations if available, falling back to English content from file
+  const steps = t('howItWorks.steps', { returnObjects: true }) as Array<{ title: string; description: string }>;
+  
+  // Combine with icons from original source (assuming structure matches)
+  const renderedSteps = steps.map((step, index) => ({
+    ...step,
+    number: index + 1,
+    icon: howItWorksSteps[index]?.icon || 'edit' // Fallback icon
+  }));
+
   return (
     <section
       className="w-full py-16 md:py-24 bg-bg transition-colors duration-300"
@@ -80,10 +93,10 @@ export const HowItWorksSection: React.FC = () => {
         {/* Section Header */}
         <header className="text-center mb-12 md:mb-16">
           <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-text mb-4">
-            How It Works
+            {t('howItWorks.heading')}
           </h2>
           <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto">
-            Transform your text into authentic handwriting in three simple steps
+            {t('howItWorks.subheading')}
           </p>
         </header>
 
@@ -91,14 +104,14 @@ export const HowItWorksSection: React.FC = () => {
         <div className="relative">
           {/* Connecting line (desktop only) */}
           <div
-            className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--rose-highlight)] via-[var(--rose-primary)] to-[var(--rose-highlight)] opacity-50"
+            className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--spinner-color-highlight)] via-[var(--accent-color)] to-[var(--spinner-color-highlight)] opacity-50"
             style={{ top: '6rem' }}
             aria-hidden="true"
           />
 
           {/* Steps Grid */}
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" role="list" aria-label="Steps to use the handwriting generator">
-            {howItWorksSteps.map((step) => {
+            {renderedSteps.map((step) => {
               const IconComponent = iconMap[step.icon] || EditIcon;
 
               return (
@@ -107,11 +120,11 @@ export const HowItWorksSection: React.FC = () => {
                   className="relative flex flex-col items-center text-center"
                 >
                   {/* Icon Circle */}
-                  <div className="relative z-10 w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-[var(--rose-primary)] to-[var(--rose-secondary)] flex items-center justify-center shadow-lg mb-6" aria-hidden="true">
+                  <div className="relative z-10 w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-color-hover)] flex items-center justify-center shadow-lg mb-6" aria-hidden="true">
                     <IconComponent className="w-12 h-12 md:w-14 md:h-14 text-white" />
 
                     {/* Step Number Badge */}
-                    <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-panel-bg border-4 border-[var(--rose-primary)] flex items-center justify-center shadow-md">
+                    <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-panel-bg border-4 border-[var(--accent-color)] flex items-center justify-center shadow-md">
                       <span className="text-lg font-bold text-accent" aria-label={`Step ${step.number}`}>
                         {step.number}
                       </span>
@@ -128,7 +141,7 @@ export const HowItWorksSection: React.FC = () => {
                   </p>
 
                   {/* Connecting arrow (mobile only) */}
-                  {step.number < howItWorksSteps.length && (
+                  {step.number < renderedSteps.length && (
                     <div
                       className="md:hidden mt-6 mb-2"
                       aria-hidden="true"
@@ -158,9 +171,7 @@ export const HowItWorksSection: React.FC = () => {
         {/* Additional Context */}
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto">
-            Our handwriting generator makes it easy to create realistic handwritten text for any purpose.
-            Whether you're a student working on assignments, a content creator designing aesthetic posts,
-            or a professional adding personal touches to documents, our tool delivers authentic results every time.
+            {t('howItWorks.context', 'Our handwriting generator makes it easy to create realistic handwritten text for any purpose. Whether you\'re a student working on assignments, a content creator designing aesthetic posts, or a professional adding personal touches to documents, our tool delivers authentic results every time.')}
           </p>
         </div>
       </div>

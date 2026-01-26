@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import CanvasOutput from './CanvasOutput';
 import ImageGallery from './ImageGallery';
 import { PaperTemplate, ICanvasRenderer, VariationRangeConfig, IPaperTextureManager, ITemplateProvider } from '../types/core';
@@ -35,7 +36,7 @@ interface OutputPanelProps {
   onPreviewRenderingChange?: (isRendering: boolean) => void;
 }
 
-const OutputPanel: React.FC<OutputPanelProps> = ({
+export const OutputPanel: React.FC<OutputPanelProps> = ({
   text,
   fontFamily,
   fontSize,
@@ -63,6 +64,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
   onTemplateChange,
   onPreviewRenderingChange
 }) => {
+  const { t } = useTranslation();
   const [templates, setTemplates] = useState<EnhancedPaperTemplate[]>([]);
   const namingService = useRef(new TemplateNamingService()).current;
 
@@ -128,21 +130,21 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
         {/* Left: Title */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
           <div className="flex items-center">
-            <h3 className="text-lg font-bold text-[var(--text-color)]">Live Preview</h3>
+            <h3 className="text-lg font-bold text-[var(--text-color)]">{t('mainPage.output.title', 'Live Preview')}</h3>
             <div className="blinking-dot ml-2" aria-hidden="true" />
           </div>
 
           {/* Mobile-only template name display */}
           <div className="md:hidden text-sm font-medium text-[var(--text-muted)] bg-[var(--surface-color)] px-3 py-1 rounded-full border border-[var(--panel-border)]">
-            {currentEnhancedTemplate ? currentEnhancedTemplate.displayName : 'Loading...'}
+            {currentEnhancedTemplate ? currentEnhancedTemplate.displayName : t('common.loading', 'Loading...')}
           </div>
         </div>
 
         {/* Center: Template Info (Desktop) */}
         <div className="hidden md:flex items-center justify-center gap-3">
-          <span className="text-[var(--text-muted)] text-sm">Template:</span>
+          <span className="text-[var(--text-muted)] text-sm">{t('mainPage.output.template', 'Template')}:</span>
           <span className="font-medium text-[var(--text-color)] bg-[var(--bg-secondary)] px-3 py-1 rounded-lg border border-[var(--panel-border)] min-w-[100px] text-center">
-            {currentEnhancedTemplate ? currentEnhancedTemplate.displayName : 'Loading...'}
+            {currentEnhancedTemplate ? currentEnhancedTemplate.displayName : t('common.loading', 'Loading...')}
           </span>
         </div>
 
@@ -153,7 +155,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
             href="https://www.buymeacoffee.com/th3f00l"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 h-10 text-sm font-medium text-pink-500 bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 rounded-lg transition-colors whitespace-nowrap w-full md:w-auto"
+            className="flex items-center justify-center gap-2 px-4 h-10 text-sm font-medium text-accent bg-accent/10 hover:bg-accent/20 border border-accent/30 rounded-lg transition-colors whitespace-nowrap w-full md:w-auto"
           >
             <span>🌹</span>
             <span className="inline">Present Rose</span>
@@ -207,7 +209,7 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
             <div className="w-full h-full min-h-[460px] flex flex-col items-center justify-center gap-4">
               <div className="w-12 h-12 border-4 border-[var(--accent-color)] border-t-transparent rounded-full animate-spin"></div>
               <p className="text-[var(--text-muted)] font-medium animate-pulse">
-                {isTemplateLoading ? 'Loading paper template...' : 'Initializing handwriting engine...'}
+                {isTemplateLoading ? t('mainPage.output.loadingTemplate', 'Loading paper template...') : t('mainPage.output.initializing', 'Initializing handwriting engine...')}
               </p>
             </div>
           )}
@@ -231,5 +233,3 @@ const OutputPanel: React.FC<OutputPanelProps> = ({
     </div>
   );
 };
-
-export default OutputPanel;

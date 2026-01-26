@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { testimonials } from '@/content/homepage';
 
 // QuoteIcon component for visual decoration
@@ -77,7 +78,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
       {/* Author Info */}
       <footer className="flex items-center mt-auto pt-4 border-t border-[var(--panel-border)]">
         {/* Avatar or Fallback */}
-        <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0 mr-4 bg-gradient-to-br from-[var(--rose-primary)] to-[var(--rose-secondary)] flex items-center justify-center" role="img" aria-label={`${author}'s profile picture`}>
+        <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0 mr-4 bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-color-hover)] flex items-center justify-center" role="img" aria-label={`${author}'s profile picture`}>
           {showFallback ? (
             <span className="text-white font-bold text-lg md:text-xl">
               {initials}
@@ -113,6 +114,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
 };
 
 export const TestimonialsSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  // Use translations if available, falling back to English content from file
+  const testimonialsList = t('testimonials.items', { returnObjects: true }) as Array<{ quote: string; author: string; role: string }>;
+  
+  const renderedTestimonials = testimonialsList.map((testimonial, index) => ({
+    ...testimonial,
+    avatar: testimonials[index]?.avatar // Keep original avatar
+  }));
+
   return (
     <section
       className="w-full py-16 md:py-24 bg-[var(--bg-color)] transition-colors duration-300"
@@ -122,16 +133,16 @@ export const TestimonialsSection: React.FC = () => {
         {/* Section Header */}
         <header className="text-center mb-12 md:mb-16">
           <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-color)] mb-4">
-            What Our Users Say
+            {t('testimonials.heading')}
           </h2>
           <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl mx-auto">
-            Join thousands of satisfied users who trust our handwriting generator for their projects
+            {t('testimonials.subheading')}
           </p>
         </header>
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" role="list" aria-label="User testimonials">
-          {testimonials.map((testimonial, index) => (
+          {renderedTestimonials.map((testimonial, index) => (
             <TestimonialCard
               key={index}
               quote={testimonial.quote}
@@ -146,9 +157,7 @@ export const TestimonialsSection: React.FC = () => {
         {/* Call to Action */}
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-base md:text-lg text-[var(--text-muted)] max-w-3xl mx-auto mb-6">
-            Ready to create your own handwritten content? Join our community of students, creators,
-            and professionals who use our free handwriting generator every day. No signup required,
-            completely private, and always free.
+            {t('testimonials.context')}
           </p>
         </div>
       </div>

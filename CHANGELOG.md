@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-01-26
+
+### Improvements
+- Fixed some bugs and new improvements.
+- Added multiple language support functionality.
+
 ## [2.0.0] - 2025-01-11
 
 ### Major Performance Optimizations

@@ -130,28 +130,28 @@ export interface FaqEntry {
 
 export const FAQ_ENTRIES: FaqEntry[] = [
   {
-    question: 'Is this actually free?',
-    answer: "Fr fr, it's free. No cap. We're not about that subscription life. Go wild (just don't break anything)."
+    question: 'Is this tool completely free?',
+    answer: 'Yes, it is 100% free to use. We do not require any subscriptions, credit cards, or sign-ups. We support the project through non-intrusive ads.'
   },
   {
-    question: 'Can I use this for my side hustle?',
-    answer: 'Totally. Make your memes, brand your Depop, whatever. Go get that bread. No credit needed, but a shoutout would be iconic.'
+    question: 'Can I use the generated images for commercial projects?',
+    answer: 'Absolutely. You own the content you create. Feel free to use the handwritten images for your business, social media, or any commercial purpose without attribution.'
   },
   {
-    question: 'Are you reading my unhinged thoughts?',
-    answer: "Nah, we can't see a thing. We don't need your data. Our servers are like stones anyway. Your secrets are safe with us, bestie."
+    question: 'Is my text data private?',
+    answer: 'Yes. This is a client-side application, which means all processing happens directly in your browser. We do not store, view, or save any of the text you type.'
   },
   {
-    question: "What's the deal with downloads?",
-    answer: "Right now it's just PNGs. It's giving high quality. We'll add more formats later if the vibes are right."
+    question: 'What file formats can I download?',
+    answer: "Currently, you can download your work as high-quality PNG images. We also offer a 'Bulk Download' feature that bundles multiple pages into a ZIP file, and a PDF export option."
   },
   {
-    question: 'Why does the font look kinda off?',
-    answer: "It's probably your browser. Try updating it. If it's still looking sus, it might just be your OS doing its thing."
+    question: 'The font looks distorted or blurry, how do I fix it?',
+    answer: 'This can happen due to browser rendering scaling. Try ensuring your browser zoom is at 100%. If you are on a mobile device, try switching to a desktop for higher resolution generation.'
   },
   {
-    question: 'My faculty asks for hardcopies, what should I do?',
-    answer: 'We linked a video walkthrough that keeps things on the low — check the FAQ link for the exact steps.'
+    question: 'How do I print these to look real?',
+    answer: "For best results, download the high-quality version. When printing, choose 'Actual Size' or 'Scale to 100%' in your printer settings to avoid stretching."
   }
 ];
 
@@ -168,10 +168,20 @@ export interface ChangelogEntry {
   tagline: string;
   highlights: string[];
   mood?: string;
-  changeType?: 'new-year' | 'major' | 'minor'; // Added for custom styling
+  changeType?: 'new-year' | 'major' | 'minor' | 'launch-2025'; // Added for custom styling
 }
 
 export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
+  {
+    version: '1.4.1',
+    date: 'January 2026',
+    tagline: 'Refining the experience for everyone.',
+    highlights: [
+      'Fixed some bugs and new improvements.',
+      'Added multiple language support functionality.'
+    ],
+    mood: 'Global vibes.'
+  },
   {
     version: '1.4',
     date: 'January 2026',
@@ -200,7 +210,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   },
   {
     version: '1.2',
-    date: 'Septemeber 2025',
+    date: 'September 2025',
     tagline: 'A fresh glow-up with new creative freedom.',
     highlights: [
       'Major redesign of the lab so controls, preview, and gallery flow together on every screen size.',
@@ -211,18 +221,19 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   },
   {
     version: '1.0',
-    date: 'Septemeber 2025',
+    date: 'September 2025',
     tagline: 'The day txttohandwriting.org went public.',
     highlights: [
       'Launched the handwriting lab with instant preview, ink colours, and realism sliders.',
       'Introduced the Paper Vibe shelf with blank, dotted, and lined templates ready to download as PNGs.',
       'Opened the image gallery with full-screen view, sequence labels, and one-click downloads.'
     ],
-    mood: 'First-day-of-school butterflies, but for stationery nerds.'
+    mood: 'First-day-of-school butterflies, but for stationery nerds.',
+    changeType: 'launch-2025'
   }
 ];
 
-export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog' | 'notFound';
+export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog' | 'notFound' | 'privacy';
 export type Theme = 'nightlight' | 'dark' | 'feminine';
 export const THEME_STORAGE_KEY = 'texttohandwriting-theme';
 

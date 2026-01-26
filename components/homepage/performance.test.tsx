@@ -42,8 +42,14 @@ const mockProps = {
   inkColorResolved: '#000000',
   currentPaperTemplate: null,
   textureManager: null,
-  distortionProfile: { baseline: 0, slant: 0, color: 0, tilt: 0 },
-  paperDistortionLevel: 'medium' as const,
+  distortionProfile: { 
+    baselineJitterRange: 0, 
+    slantJitterRange: 0, 
+    colorVariationIntensity: 0, 
+    microTiltRange: 0,
+    description: 'Mock profile'
+  },
+  paperDistortionLevel: 4 as const,
   onPaperDistortionChange: vi.fn(),
   isTemplateLoading: false,
   previewRefreshToken: 0,

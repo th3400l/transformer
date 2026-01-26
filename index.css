@@ -195,10 +195,6 @@ textarea {
   font-family: inherit;
 }
 
-.text-fool-pink {
-  color: #ff7eb8 !important;
-}
-
 .paper-output {
   line-height: 1.8;
   white-space: pre-wrap;
@@ -411,24 +407,6 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   border: 2px solid var(--paper-bg);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Rose button styling for all themes */
-.border-pink-400 {
-  border-color: #f472b6 !important;
-}
-
-.text-pink-400 {
-  color: #f472b6 !important;
-}
-
-.text-pink-400:hover {
-  color: #ffffff !important;
-}
-
-.hover\:bg-pink-400:hover {
-  background-color: #f472b6 !important;
 }
 
 /* Global Scrollbar Styling */

@@ -239,58 +239,40 @@ export const tips: Tip[] = [
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "Whenever I had to write stuff down, it looked like a total mess. This site seriously changed the game — now my notes look super cute, and the font styles? Absolute slay.",
-    author: "Baddie Brown",
-    role: "Aesthetic Queen",
-    avatar: "/avatars/millie.png"
+    quote: "I used this for my history project and my teacher actually thought I wrote it by hand. The ink flow looks so natural!",
+    author: "Sarah J.",
+    role: "High School Student",
+    avatar: "/avatars/avatar1.png"
   },
   {
-    quote: "Back in the day, I had to scribble notes by hand just so Jesse could keep up. Sloppy, messy — a real pain. This site cleaned it all up. The font variations? Let’s just say, they’re pure grade A.",
-    author: "Heisenberg",
-    role: "The Chemist",
-    avatar: "/avatars/heisenberg.png"
+    quote: "As a digital planner creator, this tool is a lifesaver. I can create handwritten-style stickers and inserts in seconds without needing an iPad.",
+    author: "Mia Chen",
+    role: "Digital Creator",
+    avatar: "/avatars/avatar2.png"
   },
   {
-    quote: "My handwriting was so shaky the dealer couldn’t even read my notes. This site fixed that — now my shopping lists look clean, and the font style? Let’s just say it hits harder than what I smoke.",
-    author: "Plant Peter",
-    role: "Local Botanist",
-    avatar: "/avatars/peter.png"
+    quote: "The best text-to-handwriting tool I've found. The ability to upload my own font and tweak the paper texture makes it incredibly versatile.",
+    author: "Alex Rivera",
+    role: "Graphic Designer",
+    avatar: "/avatars/avatar3.png"
   },
   {
-    quote: "Handwriting should be more than just words — it should feel seductive. With this site, even my notes look irresistible, like a love letter on screen. Smooth, stylish, and impossible to ignore.",
-    author: "Aggressive Armas",
-    role: "Secret Agent",
-    avatar: "/avatars/anadearmas.png"
+    quote: "I love how easy it is to use. I type out my study notes, print them, and they look beautiful. It makes studying so much more aesthetic.",
+    author: "Emily Watson",
+    role: "University Student",
+    avatar: "/avatars/avatar4.png"
   },
   {
-    quote: "Listen… I tried writing a note after a few drinks, and let’s just say it looked like modern art. This site? Total lifesaver. Now my handwriting looks classy even when I can’t walk straight. Cheers to that!",
-    author: "Drunk David",
-    role: "Wine Enthusiast",
-    avatar: "/avatars/david.png"
+    quote: "Great for generating 'handwritten' letters for marketing campaigns. It adds a personal touch that printed text just doesn't have.",
+    author: "David K.",
+    role: "Marketing Specialist",
+    avatar: "/avatars/avatar5.png"
   },
   {
-    quote: "My lyrics don’t always look pretty on paper. This site makes every note feel like a love song — simple, stylish, unforgettable.",
-    author: "Swirl Swift",
-    role: "Songwriter",
-    avatar: "/avatars/taylor.png"
-  },
-  {
-    quote: "Out in the field, I’ve scribbled notes in the dark, rain pouring down — damn near unreadable. This site? Makes my writing sharp and clear every time. That’s a bloody good tool.",
-    author: "Captain Price",
-    role: "Task Force 141",
-    avatar: "/avatars/price.png"
-  },
-  {
-    quote: "I’m always on the move, and my quick notes never look runway-ready. This site makes everything chic and flawless — like handwriting, but make it fashion.",
-    author: "Jacked Jenner",
-    role: "Model / Icon",
-    avatar: "/avatars/kendall.png"
-  },
-  {
-    quote: "I used to write assignments and get low grades — that’s why everyone calls me L. But I tasted a W using this site. My notes have never looked this precise.",
-    author: "L",
-    role: "Detective",
-    avatar: "/avatars/L.png"
+    quote: "Finally, a generator that doesn't look fake. The jitter and ink variation features are game-changers for realism.",
+    author: "Chris T.",
+    role: "Software Developer",
+    avatar: "/avatars/avatar6.png"
   }
 ];
 

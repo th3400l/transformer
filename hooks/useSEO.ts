@@ -12,11 +12,12 @@ interface UseSEOOptions {
   twitterCard?: 'summary' | 'summary_large_image';
   customMetaTags?: MetaTag[];
   structuredData?: StructuredData | StructuredData[];
+  language?: string;
 }
 
 export function useSEO(options: UseSEOOptions = {}) {
   useEffect(() => {
-    const seoOptimizer = new SEOOptimizer();
+    const seoOptimizer = new SEOOptimizer({ languageCode: options.language });
     
     // Generate and apply meta tags
     const defaultMetaTags = seoOptimizer.generateMetaTags();
@@ -111,6 +112,7 @@ export function useSEO(options: UseSEOOptions = {}) {
     options.alternateLocales,
     options.noindex,
     options.ogImage,
-    options.twitterCard
+    options.twitterCard,
+    options.language
   ]);
 }

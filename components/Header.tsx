@@ -7,6 +7,7 @@ import { Theme, Page } from '../app/constants';
 import RoseLogo from './RoseLogo';
 import { Button } from './Button';
 import { SunIcon, MoonIcon, HeartIcon, GearIcon, CheckIcon } from './icons';
+import LanguageSelector from './LanguageSelector';
 
 interface HeaderProps {
     theme: Theme;
@@ -64,6 +65,8 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                 </div>
 
                 <div className="flex items-center gap-2 sm:gap-4">
+                    <LanguageSelector />
+                    
                     <div className="relative" ref={engineMenuRef}>
                         <Button
                             variant="icon"
@@ -77,12 +80,8 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                             <div className="absolute right-0 mt-2 w-48 bg-panel-bg border border-panel-border rounded-lg shadow-xl py-1 z-10 backdrop-blur-xl">
                                 <div className="px-3 py-1.5 text-xs font-semibold text-text-muted uppercase tracking-wider">GEN ENGINE</div>
                                 <div className="flex items-center justify-between px-3 py-2 text-text bg-control-bg border-y border-panel-border">
-                                    <span className="font-medium">Version 1.4</span>
+                                    <span className="font-medium">Version 1.4.1</span>
                                     <CheckIcon className="w-5 h-5 text-accent" />
-                                </div>
-                                <div className="flex items-center justify-between px-3 py-2 text-text-muted opacity-60 cursor-not-allowed">
-                                    <span className="font-medium">Version 2</span>
-                                    <span className="text-xs font-bold bg-control-border text-text-muted rounded-full px-2 py-0.5">Soon</span>
                                 </div>
                             </div>
                         )}

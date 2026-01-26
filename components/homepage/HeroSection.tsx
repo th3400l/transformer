@@ -8,13 +8,15 @@
  */
 
 import React from 'react';
-import { heroContent } from '@/content/homepage';
+import { useTranslation } from 'react-i18next';
 
 interface HeroSectionProps {
   onScrollToTool: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
+  const { t } = useTranslation();
+
   return (
     <section
       className="relative w-full min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden"
@@ -37,12 +39,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Headline */}
         <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
-          {heroContent.headline}
+          {t('hero.headline')}
         </h1>
 
         {/* Subheadline */}
         <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">
-          {heroContent.subheadline}
+          {t('hero.subheadline')}
         </p>
 
         {/* CTA Button */}
@@ -58,10 +60,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
                      focus:outline-none focus:ring-4 focus:ring-blue-300 
                      dark:focus:ring-blue-800
                      touch-manipulation"
-          aria-label={`${heroContent.cta} - Scroll to handwriting generator tool`}
+          aria-label={`${t('hero.cta')} - Scroll to handwriting generator tool`}
           type="button"
         >
-          <span>{heroContent.cta}</span>
+          <span>{t('hero.cta')}</span>
           <svg
             className="ml-2 w-5 h-5"
             fill="none"
@@ -81,7 +83,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
 
         {/* Keywords for SEO (visually hidden) */}
         <div className="sr-only" aria-hidden="true">
-          {heroContent.keywords.join(', ')}
+          {(t('hero.keywords', { returnObjects: true }) as string[]).join(', ')}
         </div>
       </div>
     </section>

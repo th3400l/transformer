@@ -11,12 +11,15 @@ import { PAPER_QUALITY_OVERRIDES, FEEDBACK_DIALOG_DELAY_MS } from '../app/consta
 import { GENERATION_TIPS } from '../components/GenerationTips';
 import { getPathForPage } from '../app/seo';
 import { blogPosts } from '../services/blogPosts';
+import { languageService } from '../services/languageService';
+import { buildLocalizedPath, normalizePath, parsePathWithLanguage } from '../services/languageRouting';
 
 export const useAppEffects = (
   state: AppState,
   setters: AppStateSetters,
   refs: AppRefs,
-  services: AppServices
+  services: AppServices,
+  activeLanguage: string
 ): void => {
   const {
     page,
@@ -91,7 +94,12 @@ export const useAppEffects = (
       return;
     }
 
-    const rawPath = window.location.pathname.replace(/\/+$/, '') || '/';
+    const rawLocation = normalizePath(window.location.pathname);
+    const { language, path: rawPath } = parsePathWithLanguage(rawLocation);
+
+    if (language) {
+      void languageService.changeLanguage(language);
+    }
 
     if (rawPath === '/' || rawPath === '') {
       setMissingPath(null);
@@ -138,13 +146,13 @@ export const useAppEffects = (
         return;
       }
       setCurrentPostSlug(null);
-      setMissingPath(rawPath);
+      setMissingPath(rawLocation);
       setPage('notFound');
       return;
     }
 
     setCurrentPostSlug(null);
-    setMissingPath(rawPath);
+    setMissingPath(rawLocation);
     setPage('notFound');
   }, []);
 
@@ -158,11 +166,14 @@ export const useAppEffects = (
       return;
     }
 
-    const targetPath = getPathForPage(page, currentPostSlug);
+    const targetPath = buildLocalizedPath(
+      getPathForPage(page, currentPostSlug),
+      activeLanguage
+    );
     if (window.location.pathname !== targetPath) {
       window.history.replaceState({}, '', targetPath);
     }
-  }, [page, currentPostSlug]);
+  }, [page, currentPostSlug, activeLanguage]);
 
   // Clear missing path when page changes
   useEffect(() => {

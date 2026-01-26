@@ -49,7 +49,7 @@ const NotFoundPage: React.FC<NotFoundPageProps> = ({
               href={donationHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-transparent bg-[#ff7eb8] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-transform hover:scale-[1.03]"
+              className="rounded-lg border border-transparent bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-transform hover:scale-[1.03]"
             >
               Present a Rose
             </a>

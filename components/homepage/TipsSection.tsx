@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { tips } from '@/content/homepage';
 
 // Icon components for each tip
@@ -126,7 +127,7 @@ const TipCard: React.FC<TipCardProps> = ({ title, description, icon, className =
   return (
     <article className={`flex flex-col p-6 bg-panel-bg rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-panel-border ${className}`} role="listitem">
       {/* Icon */}
-      <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-[var(--rose-primary)] to-[var(--rose-secondary)] flex items-center justify-center mb-4 shadow-sm" aria-hidden="true">
+      <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-color-hover)] flex items-center justify-center mb-4 shadow-sm" aria-hidden="true">
         <IconComponent className="w-7 h-7 text-white" />
       </div>
 
@@ -144,6 +145,16 @@ const TipCard: React.FC<TipCardProps> = ({ title, description, icon, className =
 };
 
 export const TipsSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  // Use translations if available, falling back to English content from file
+  const tipsList = t('tips.items', { returnObjects: true }) as Array<{ title: string; description: string }>;
+  
+  const renderedTips = tipsList.map((tip, index) => ({
+    ...tip,
+    icon: tips[index]?.icon || 'font' // Fallback icon
+  }));
+
   return (
     <section
       className="w-full py-16 md:py-24 bg-bg transition-colors duration-300"
@@ -153,16 +164,16 @@ export const TipsSection: React.FC = () => {
         {/* Section Header */}
         <header className="text-center mb-12 md:mb-16">
           <h2 id="tips-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-text mb-4">
-            Tips & Best Practices
+            {t('tips.heading')}
           </h2>
           <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto">
-            Get the most out of your handwriting generator with these expert tips
+            {t('tips.subheading')}
           </p>
         </header>
 
         {/* Tips Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8" role="list" aria-label="List of tips and best practices">
-          {tips.map((tip, index) => (
+          {renderedTips.map((tip, index) => (
             <TipCard
               key={index}
               title={tip.title}
@@ -176,10 +187,7 @@ export const TipsSection: React.FC = () => {
         {/* Additional Context with Internal Links */}
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto mb-6">
-            These tips will help you create more realistic and professional-looking handwritten text.
-            Whether you're working on school assignments, creative projects, or business documents,
-            following these best practices ensures optimal results every time. Experiment with different
-            combinations of fonts, templates, and settings to discover what works best for your specific needs.
+            {t('tips.context')}
           </p>
 
           {/* Internal Links */}
@@ -213,7 +221,7 @@ export const TipsSection: React.FC = () => {
                   d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>View FAQ</span>
+              <span>{t('common.viewFaq')}</span>
             </a>
 
             <a
@@ -245,7 +253,7 @@ export const TipsSection: React.FC = () => {
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
                 />
               </svg>
-              <span>Read Blog Posts</span>
+              <span>{t('common.readBlog')}</span>
             </a>
 
             <a
@@ -277,7 +285,7 @@ export const TipsSection: React.FC = () => {
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Learn More</span>
+              <span>{t('common.learnMore')}</span>
             </a>
           </nav>
         </div>

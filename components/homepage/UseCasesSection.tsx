@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCases } from '@/content/homepage';
 
 // Icon components for each use case
@@ -82,16 +83,17 @@ interface UseCaseCardProps {
   title: string;
   description: string;
   examples: string[];
+  examplesLabel: string;
   className?: string;
 }
 
-const UseCaseCard: React.FC<UseCaseCardProps> = ({ title, description, examples, className = '' }) => {
+const UseCaseCard: React.FC<UseCaseCardProps> = ({ title, description, examples, examplesLabel, className = '' }) => {
   const IconComponent = getIconForUseCase(title);
 
   return (
     <article className={`flex flex-col p-6 md:p-8 bg-panel-bg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-panel-border ${className}`} role="listitem">
       {/* Icon */}
-      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-[var(--rose-primary)] to-[var(--rose-secondary)] flex items-center justify-center mb-6 shadow-md" aria-hidden="true">
+      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-color-hover)] flex items-center justify-center mb-6 shadow-md" aria-hidden="true">
         <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </div>
 
@@ -108,7 +110,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({ title, description, examples,
       {/* Examples List */}
       <div className="mt-auto">
         <h4 className="text-sm font-semibold text-text-muted mb-3 uppercase tracking-wide">
-          Perfect For:
+          {examplesLabel}
         </h4>
         <ul className="space-y-2" role="list" aria-label={`Examples for ${title}`}>
           {examples.map((example, index) => (
@@ -141,6 +143,18 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({ title, description, examples,
 };
 
 export const UseCasesSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  // Use translations if available, falling back to English content from file
+  const useCasesList = t('useCases.items', { returnObjects: true }) as Array<{ title: string; description: string; examples: string[]; examplesLabel?: string }>;
+  
+  const renderedUseCases = useCasesList.map((useCase, index) => ({
+    ...useCase,
+    // Add original title for icon mapping if needed, or use the translated one if it contains keywords
+    // For robust icon mapping, we might want to keep a key or use index, but for now using title is okay as fallback logic handles it
+    originalTitle: useCases[index]?.title || useCase.title
+  }));
+
   return (
     <section
       className="w-full py-16 md:py-24 bg-bg transition-colors duration-300"
@@ -150,22 +164,23 @@ export const UseCasesSection: React.FC = () => {
         {/* Section Header */}
         <header className="text-center mb-12 md:mb-16">
           <h2 id="use-cases-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-text mb-4">
-            Who Uses Our Handwriting Generator?
+            {t('useCases.heading')}
           </h2>
           <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto">
-            From students to professionals, discover how people use our tool to create authentic handwritten content
+            {t('useCases.subheading')}
           </p>
         </header>
 
         {/* Use Cases Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" role="list" aria-label="List of use cases">
-          {useCases.map((useCase, index) => (
+          {renderedUseCases.map((useCase, index) => (
             <UseCaseCard
               key={index}
               title={useCase.title}
               description={useCase.description}
               examples={useCase.examples}
-              className={useCase.title.includes('Professionals') ? 'md:col-span-full lg:col-span-2' : ''}
+              examplesLabel={useCase.examplesLabel || "Perfect For:"}
+              className={useCase.originalTitle.includes('Professionals') ? 'md:col-span-full lg:col-span-2' : ''}
             />
           ))}
         </div>
@@ -173,10 +188,7 @@ export const UseCasesSection: React.FC = () => {
         {/* Additional Context */}
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto">
-            No matter your use case, our handwriting generator provides the flexibility and quality you need.
-            Whether you're a student working on assignments, a content creator building your brand, or a
-            professional adding personal touches to communications, our tool adapts to your needs. Join thousands
-            of users who trust our free handwriting generator for their projects.
+            {t('useCases.context')}
           </p>
         </div>
       </div>

@@ -71,8 +71,14 @@ const mockProps: StartScreenProps = {
   inkColorResolved: '#000000',
   currentPaperTemplate: null,
   textureManager: null,
-  distortionProfile: { baselineJitter: 0, slantVariation: 0, inkColorVariation: 0, microTilt: 0 },
-  paperDistortionLevel: 'medium',
+  distortionProfile: { 
+    baselineJitterRange: 0, 
+    slantJitterRange: 0, 
+    colorVariationIntensity: 0, 
+    microTiltRange: 0,
+    description: 'Mock profile'
+  },
+  paperDistortionLevel: 4 as const,
   onPaperDistortionChange: vi.fn(),
   isTemplateLoading: false,
   previewRefreshToken: 0,

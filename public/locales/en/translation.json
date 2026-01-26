@@ -1,0 +1,447 @@
+{
+  "common": {
+    "startCreating": "Start Creating",
+    "learnMore": "Learn More",
+    "viewFaq": "View FAQ",
+    "readBlog": "Read Blog Posts",
+    "loading": "Loading...",
+    "generating": "Generating...",
+    "download": "Download",
+    "preview": "Preview",
+    "backToLab": "Back to the lab",
+    "customFont": "Upload Custom Font",
+    "manageFonts": "Manage Custom Fonts",
+    "inkColor": "Ink Color",
+    "colors": {
+      "black": "Black",
+      "blue": "Blue",
+      "red": "Red",
+      "green": "Green"
+    },
+    "selectInk": "Select Ink",
+    "paper": "Paper",
+    "style": "Style",
+    "content": "Content",
+    "clickHere": "visit here"
+  },
+  "seo": {
+    "title": "Handwriting Generator - Convert Text to Realistic Handwriting",
+    "description": "Generate realistic handwritten text with customizable fonts, templates, and ink colors. Perfect for creating authentic handwriting samples with multiple paper templates."
+  },
+  "hero": {
+    "headline": "Transform Text into Authentic Handwriting",
+    "subheadline": "Create realistic handwritten notes, assignments, and designs with our free online handwriting generator. No signup required, 100% private.",
+    "cta": "Start Creating Free",
+    "keywords": [
+      "handwriting generator",
+      "text to handwriting",
+      "convert text to handwriting",
+      "free handwriting tool"
+    ]
+  },
+  "howItWorks": {
+    "heading": "How It Works",
+    "subheading": "Transform your text into authentic handwriting in three simple steps",
+    "steps": [
+      {
+        "title": "Enter Your Text",
+        "description": "Type or paste the text you want to convert into handwriting. Our tool supports up to 6 pages of content, perfect for assignments, notes, or creative projects."
+      },
+      {
+        "title": "Customize Your Style",
+        "description": "Choose from 9 handwriting fonts, select paper templates (blank, lined, or dotted), and adjust ink colors and boldness to match your aesthetic."
+      },
+      {
+        "title": "Generate & Download",
+        "description": "Click generate to create your handwritten pages. Download as high-quality PNG images or compile into a PDF. All processing happens in your browser—completely private."
+      }
+    ],
+    "context": "Our handwriting generator makes it easy to create realistic handwritten text for any purpose. Whether you're a student working on assignments, a content creator designing aesthetic posts, or a professional adding personal touches to documents, our tool delivers authentic results every time."
+  },
+  "features": {
+    "heading": "Powerful Features",
+    "subheading": "Everything you need to create authentic, realistic handwriting for any purpose",
+    "items": [
+      {
+        "title": "Realistic Handwriting Variations",
+        "description": "Our advanced rendering engine creates authentic handwriting with natural variations in baseline, slant, and ink intensity.",
+        "benefits": [
+          "Natural baseline jitter",
+          "Variable letter slant",
+          "Ink color variations",
+          "Micro-tilts and imperfections"
+        ]
+      },
+      {
+        "title": "Multiple Paper Templates",
+        "description": "Choose from a variety of paper templates to match your needs. Blank pages for creative freedom, lined paper for structured notes, or dotted grids for bullet journals.",
+        "benefits": [
+          "Blank, lined, and dotted options",
+          "Authentic paper textures",
+          "High-resolution templates",
+          "Optimized for printing"
+        ]
+      },
+      {
+        "title": "Custom Font Upload",
+        "description": "Make it truly yours by uploading your own handwriting font. Our tool supports TTF, OTF, and WOFF formats.",
+        "benefits": [
+          "Upload your own handwriting",
+          "Support for TTF, OTF, WOFF",
+          "2 custom font slots",
+          "Instant preview"
+        ]
+      },
+      {
+        "title": "100% Free & Private",
+        "description": "No subscriptions, no hidden fees, no data collection. Everything runs in your browser—your text never touches our servers.",
+        "benefits": [
+          "Completely free forever",
+          "No signup required",
+          "Client-side processing",
+          "Commercial use allowed"
+        ]
+      }
+    ],
+    "context": "Our handwriting generator combines advanced rendering technology with user-friendly design to deliver professional results."
+  },
+  "useCases": {
+    "heading": "Who Uses Our Handwriting Generator?",
+    "subheading": "From students to professionals, discover how people use our tool to create authentic handwritten content",
+    "items": [
+      {
+        "title": "Students & Educators",
+        "description": "Perfect for creating handwritten assignments, study notes, and practice worksheets.",
+        "examplesLabel": "Perfect For:",
+        "examples": [
+          "Homework assignments",
+          "Study notes and summaries",
+          "Practice worksheets",
+          "Handwriting samples"
+        ]
+      },
+      {
+        "title": "Content Creators & Designers",
+        "description": "Elevate your Studygram, bullet journal spreads, or design projects with authentic handwritten elements.",
+        "examplesLabel": "Perfect For:",
+        "examples": [
+          "Studygram posts",
+          "Bullet journal designs",
+          "Social media content",
+          "Digital planner pages"
+        ]
+      },
+      {
+        "title": "Professionals & Businesses",
+        "description": "Add a personal touch to business communications, create handwritten-style thank you notes, or design unique marketing materials.",
+        "examplesLabel": "Perfect For:",
+        "examples": [
+          "Thank you notes",
+          "Personal letters",
+          "Marketing materials",
+          "Signature generation"
+        ]
+      }
+    ],
+    "context": "No matter your use case, our handwriting generator provides the flexibility and quality you need."
+  },
+  "testimonials": {
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
+    "items": [
+      {
+        "quote": "I used this for my history project and my teacher actually thought I wrote it by hand. The ink flow looks so natural!",
+        "author": "Sarah J.",
+        "role": "High School Student"
+      },
+      {
+        "quote": "As a digital planner creator, this tool is a lifesaver. I can create handwritten-style stickers and inserts in seconds without needing an iPad.",
+        "author": "Mia Chen",
+        "role": "Digital Creator"
+      },
+      {
+        "quote": "The best text-to-handwriting tool I've found. The ability to upload my own font and tweak the paper texture makes it incredibly versatile.",
+        "author": "Alex Rivera",
+        "role": "Graphic Designer"
+      },
+      {
+        "quote": "I love how easy it is to use. I type out my study notes, print them, and they look beautiful. It makes studying so much more aesthetic.",
+        "author": "Emily Watson",
+        "role": "University Student"
+      },
+      {
+        "quote": "Great for generating 'handwritten' letters for marketing campaigns. It adds a personal touch that printed text just doesn't have.",
+        "author": "David K.",
+        "role": "Marketing Specialist"
+      },
+      {
+        "quote": "Finally, a generator that doesn't look fake. The jitter and ink variation features are game-changers for realism.",
+        "author": "Chris T.",
+        "role": "Software Developer"
+      }
+    ],
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
+  },
+  "tips": {
+    "heading": "Tips & Best Practices",
+    "subheading": "Get the most out of your handwriting generator with these expert tips",
+    "items": [
+      {
+        "title": "Choose the Right Font",
+        "description": "Different fonts work better for different purposes. Use elegant script fonts for formal documents, casual fonts for personal notes, and clear fonts for readability."
+      },
+      {
+        "title": "Adjust Ink Boldness",
+        "description": "Control the weight of your handwriting by adjusting ink boldness. Lighter settings create delicate, feminine writing, while bolder settings produce strong, confident strokes."
+      },
+      {
+        "title": "Select the Right Template",
+        "description": "Match your paper template to your content. Lined paper works best for structured notes and assignments, blank pages for creative freedom, and dotted grids for bullet journals."
+      },
+      {
+        "title": "Preview Before Generating",
+        "description": "Use the live preview to check your text before generating. This saves time and ensures your content looks exactly how you want it."
+      },
+      {
+        "title": "Use Bulk Download for Multiple Pages",
+        "description": "Generating multiple pages? Use the bulk download feature to save all your pages at once. Choose your preferred quality setting and download everything as a ZIP file."
+      }
+    ],
+    "context": "These tips will help you create more realistic and professional-looking handwritten text."
+  },
+  "mainPage": {
+    "mobileControls": "Controls",
+    "mobilePreview": "Preview & Gallery",
+    "updatingPreview": "Updating preview...",
+    "mission": {
+      "badge": "Our Mission",
+      "heading": "Why we built this?",
+      "description": "We believe in a future where students can focus on their ideas instead of getting hand cramps from writing assignments. No cap, it's time to embrace the digital age while keeping that authentic handwritten vibe."
+    },
+    "lab": {
+      "heading": "The Lab",
+      "version": "v1.4.1",
+      "inputLabel": "Content",
+      "placeholder": "Type your text here...",
+      "style": "Style",
+      "size": "Size",
+      "paperRealism": "Paper Realism",
+      "ultra": "Ultra",
+      "high": "High",
+      "low": "Low",
+      "inkBoldness": "Ink Boldness"
+    },
+    "output": {
+      "title": "Live Preview",
+      "template": "Template",
+      "loading": "Loading...",
+      "loadingTemplate": "Loading paper template...",
+      "initializing": "Initializing handwriting engine...",
+      "presentRose": "Present Rose"
+    }
+  },
+  "footer": {
+    "about": "About",
+    "blog": "The Tea",
+    "changelog": "Changelog",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "faq": "Frequently Asked Questions",
+    "rights": "All rights reserved."
+  },
+  "pages": {
+    "about": {
+      "title": "About txttohandwriting.org",
+      "back": "Back to the lab",
+      "community": "Community Driven",
+      "communityDesc": "We believe in open development. Your feature requests, bug reports, and feedback directly shape the future of this tool. We're building this for you.",
+      "description1": "txttohandwriting.org began as a simple project to bridge the gap between digital convenience and the personal touch of handwriting. In an increasingly digital world, the unique character of handwritten text often gets lost. We wanted to bring that back—without the hand cramps.",
+      "description2": "Today, our platform serves thousands of students, educators, designers, and professionals worldwide. We use advanced canvas rendering technology to simulate natural ink flow, pressure variations, and paper textures, ensuring that every generated document looks authentically human. We are committed to keeping this tool free, private, and accessible to everyone.",
+      "donateBtc": "Donate Bitcoin",
+      "donateBtcDesc": "Support the server costs and development. Wallet address support@txttohandwriting.org.",
+      "presentRose": "Support Us",
+      "madeBy": "Designed & Developed by Th3-F00L",
+      "keywords": "about txttohandwriting, handwriting generator mission, team, open source tool",
+      "supportHeadline": "Get in Touch",
+      "supportDesc": "Have a question, a feature idea, or found a bug? We'd love to hear from you."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "back": "Back to the lab",
+      "keywords": "handwriting generator faq, handwriting tool support, privacy questions, free tool help",
+      "q1": "Is this tool completely free?",
+      "a1": "Yes, it is 100% free to use. We do not require any subscriptions, credit cards, or sign-ups. We support the project through non-intrusive ads.",
+      "q2": "Can I use the generated images for commercial projects?",
+      "a2": "Absolutely. You own the content you create. Feel free to use the handwritten images for your business, social media, or any commercial purpose without attribution (though a shoutout is always appreciated!).",
+      "q3": "Is my text data private?",
+      "a3": "Yes. This is a client-side application, which means all processing happens directly in your browser. We do not store, view, or save any of the text you type. Your privacy is our top priority.",
+      "q4": "What file formats can I download?",
+      "a4": "Currently, you can download your work as high-quality PNG images. We also offer a 'Bulk Download' feature that bundles multiple pages into a ZIP file, and a PDF export option for documents.",
+      "q5": "The font looks distorted or blurry, how do I fix it?",
+      "a5": "This can happen due to browser rendering scaling. Try ensuring your browser zoom is at 100%. If you are on a mobile device, try switching to a desktop for higher resolution generation. You can also adjust the 'Paper Realism' settings to reduce distortion.",
+      "q6": "How do I print these to look real?",
+      "a6": "For best results, download the high-quality version. When printing, choose 'Actual Size' or 'Scale to 100%' in your printer settings to avoid stretching. Using slightly off-white paper can also enhance the realistic effect.",
+      "supportHeadline": "Still have questions?",
+      "supportDesc": "We're here to help. If you encounter any bugs or need specific assistance, please reach out."
+    },
+    "changelog": {
+      "title": "Changelog",
+      "back": "Back to the lab",
+      "productUpdates": "Product updates",
+      "description": "Every glow-up, tweak, and big reveal we have shipped since launch. We keep things human—no jargon, just what changed and why it matters for your notes.",
+      "mood": "Mood",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "Refining the experience for everyone.",
+          "highlights": [
+            "Fixed some bugs and new improvements.",
+            "Added multiple language support functionality."
+          ],
+          "mood": "Global vibes."
+        },
+        "v1-4": {
+          "tagline": "Next level realism and performance.",
+          "highlights": [
+            "New UI overhaul with a cleaner, modern design system.",
+            "Improved generation of images with higher fidelity and better ink textures.",
+            "Improved live image rendering to the next level for instant feedback.",
+            "Optimized the engine for faster processing and smoother interactions."
+          ],
+          "mood": "Fresh start, new year, new notes."
+        },
+        "v1-3": {
+          "tagline": "More control, higher quality, and a smoother experience.",
+          "highlights": [
+            "UI design revisit for a more intuitive and aesthetically pleasing experience.",
+            "Added Ink weight control option for finer control over the handwriting appearance.",
+            "Added the option to download all generated images as a single PDF file.",
+            "Added image quality option (High, Medium, Low) to balance quality and file size.",
+            "Fixed various known bugs to improve stability and performance."
+          ],
+          "mood": "Feeling powerful and polished."
+        },
+        "v1-2": {
+          "tagline": "A fresh glow-up with new creative freedom.",
+          "highlights": [
+            "Major redesign of the lab so controls, preview, and gallery flow together on every screen size.",
+            "Custom font upload manager with step-by-step guidance and two personal slots for your handwriting.",
+            "Performance tune-up across Chrome, Safari, Firefox, and Edge so pages render faster and feel smoother."
+          ],
+          "mood": "Today feels like a brand-new planner spread."
+        },
+        "v1-0": {
+          "tagline": "The day txttohandwriting.org went public.",
+          "highlights": [
+            "Launched the handwriting lab with instant preview, ink colours, and realism sliders.",
+            "Introduced the Paper Vibe shelf with blank, dotted, and lined templates ready to download as PNGs.",
+            "Opened the image gallery with full-screen view, sequence labels, and one-click downloads."
+          ],
+          "mood": "First-day-of-school butterflies, but for stationery nerds."
+        }
+      }
+    },
+    "terms": {
+      "title": "Terms and Conditions",
+      "back": "Back to Generator",
+      "lastUpdated": "Last updated",
+      "welcome": "Welcome to txttohandwriting.org! These terms and conditions outline the rules and regulations for the use of our website. By accessing this website, we assume you accept these terms and conditions. Do not continue to use txttohandwriting.org if you do not agree to all of the terms and conditions stated on this page.",
+      "section1Title": "1. Acceptance of Terms",
+      "section1Content": "The service is provided \"as is\" and \"as available\" without any warranties. We do not guarantee that the service will be uninterrupted or error-free.",
+      "section2Title": "2. Use of the Service",
+      "section2Content": "You agree to use our service for lawful purposes only. You are solely responsible for the content you create and convert. You agree not to use the service to create any content that is defamatory, obscene, or otherwise objectionable.",
+      "section3Title": "3. Intellectual Property",
+      "section3Content": "The text you input is your own. The generated images from your text can be used for personal and commercial purposes. However, the fonts, design, and branding of txttohandwriting.org are the property of the website owners and may not be used without permission.",
+      "section4Title": "4. Disclaimer of Warranties",
+      "section4Content": "Our website is provided on an \"as is\" basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
+      "section5Title": "5. Limitation of Liability",
+      "section5Content": "In no event shall txttohandwriting.org or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our website, even if we have been notified orally or in writing of the possibility of such damage.",
+      "section6Title": "6. Changes to Terms",
+      "section6Content": "We reserve the right to revise these terms and conditions at any time. By using this website, you are expected to review these terms on a regular basis to ensure you understand all terms and conditions governing the use of this website.",
+      "section7Title": "7. Analytics & Cookies",
+      "section7Content1": "We use Google Analytics with Consent Mode to understand how txttohandwriting.org is used and to keep improving the experience. Analytics cookies remain disabled until you explicitly grant consent through the banner shown when you first visit the site. If you decline, no analytics data is sent to Google and the site continues to function normally.",
+      "section7Content2": "The consent settings cover the following Google parameters: ad_storage, ad_personalization, ad_user_data, and analytics_storage. Until you opt in, each of these values stays in the \"denied\" state, preventing cookies from being written and events from being sent. When you accept, we update those settings to \"granted\" and store your preference in your browser.",
+      "section8Title": "8. Managing Your Consent",
+      "section8Content": "You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at support@txttohandwriting.org.",
+      "supportHeadline": "Questions about these terms?",
+      "supportDesc": "We're happy to clarify anything legal-ish or help you keep your assignments in line."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "back": "Back to Generator",
+      "lastUpdated": "Last updated",
+      "intro": "At txttohandwriting.org, we prioritize your privacy. This policy outlines how we handle your data, or rather, how we don't handle it. Our core philosophy is client-side processing, meaning your data stays on your device.",
+      "dataCollectionTitle": "1. Data Collection & Processing",
+      "dataCollectionContent": "We do not collect, store, or transmit the text you enter into the generator. All handwriting generation happens locally in your browser using JavaScript. Your notes, assignments, and creative works never leave your device.",
+      "localProcessingTitle": "2. Local Processing",
+      "localProcessingContent": "Unlike other tools that send your data to a server for processing, our technology runs entirely on your machine. This ensures maximum security and privacy for your personal documents.",
+      "cookiesTitle": "3. Cookies & Local Storage",
+      "cookiesContent": "We use local storage to save your preferences (like your last used font or ink color) so you can pick up where you left off. These are stored only on your browser and are not shared with us.",
+      "analyticsTitle": "4. Analytics",
+      "analyticsContent": "We use privacy-focused analytics (Google Analytics 4 with IP anonymization) to understand site usage trends (e.g., which fonts are most popular). This data is aggregated and does not identify individual users. You can opt-out via our cookie banner.",
+      "advertisingTitle": "5. Advertising",
+      "advertisingContent": "We display ads to support the free nature of this tool. These ads may use cookies to serve relevant content. We use Google AdSense, which operates under its own privacy policy.",
+      "rightsTitle": "6. Your Rights",
+      "rightsContent": "Since we do not store your personal data, there is nothing for us to delete or export. You have full control over your data because it never leaves your possession.",
+      "contactTitle": "7. Contact Us",
+      "contactContent": "If you have any questions about this privacy policy, please contact us at privacy@txttohandwriting.org.",
+      "supportHeadline": "Questions about privacy?",
+      "supportDesc": "We believe in transparency. Reach out if something isn't clear."
+    },
+    "notFound": {
+      "title": "Page Not Found | txttohandwriting.org",
+      "description": "We could not find the page you were looking for. Head back to the handwriting lab to keep creating.",
+      "keywords": "handwriting generator 404, page not found"
+    },
+    "blog": {
+      "title": "Handwriting Inspiration Blog | txttohandwriting.org",
+      "description": "Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.",
+      "keywords": "handwriting blog, studygram handwriting tips, notes inspiration"
+    },
+    "blogPost": {
+      "keywords": "handwriting blog, tips, inspiration"
+    }
+  },
+  "blog": {
+    "title": "The Tea",
+    "backToLab": "Back to the lab",
+    "backToAll": "Back to all posts",
+    "readMore": "Click to read more →",
+    "by": "By",
+    "ctaHeadline": "Got story ideas or feedback on our hot takes?",
+    "ctaDescription": "Share what you'd like to see on the blog or send over your own handwriting hacks."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "Glow Up Your Notes: The Ultimate Guide to Aesthetic Text-to-Handwriting Converters",
+      "content": "<p>Let's be real, your lecture notes are looking kinda bland. You're trying to be that student, the one with the aesthetic notes that hit different on Studygram, but your typed-out walls of text are not the vibe. Enter the main character: the <strong>text-to-handwriting converter</strong>. It's low-key the biggest life hack for anyone trying to romanticize their study life.</p>\n<h2>What's the Tea on Handwriting Generators?</h2>\n<p>A <strong>handwriting generator</strong> like ours takes your boring digital text and transforms it into cute, handwritten script. It’s perfect for when you want the charm of handwritten notes without the hand cramps. Whether you need to make a study guide that's actually fun to look at or create custom designs for your digital planner, a <strong>free text to handwriting tool</strong> is your new bestie.</p>\n<h2>Finding Your Font Aesthetic</h2>\n<p>The key to the glow-up is finding a font that screams 'you'. Are you more of a clean, elegant script type? Or a chaotic, casual scrawl? Our site has a whole lineup of fonts to match your energy. Don't just stick to one—play around! A good <strong>online handwriting converter</strong> gives you options, so you can switch it up from bio notes to history essays. This is how you make your study materials not only useful but also super aesthetic.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Why Your Studygram is Low-Key Flopping (And How a Handwriting Generator Can Fix It)",
+      "content": "<p>You've got the pastel highlighters, the washi tape, and the iced coffee. So why is your Studygram not getting the hype it deserves? It might be your content, fam. Staring at the same old Times New Roman is a total snooze-fest. If you want to stop the scroll, you need visuals that are bussin'. And nothing says \"I've got my life together\" like flawless, aesthetic handwritten notes.</p>\n<h2>The Secret Sauce: Convert Text to Handwriting Online</h2>\n<p>No one has time to write everything out by hand, especially when you've got three assignments due tomorrow. That's where a <strong>text to handwriting online tool</strong> comes in clutch. You can type out your notes, your to-do lists, your favorite quotes, and instantly <strong>convert text to an image</strong> of beautiful handwriting.</p>\n<p>Imagine posting a story with a perfectly crafted, handwritten-style summary of a chapter. It's unique, it's eye-catching, and it looks like you put in way more effort than you actually did. That's the power of using a <strong>free online handwriting generator</strong>. It elevates your content from basic to iconic.</p>\n<h2>How to Make it Pop</h2>\n<p>Don't just slap it on a plain background. Use our tool to choose a paper vibe—lined, grid, or just plain—and pick an ink color that matches your theme. Download the PNG and drop it into your Canva design or your digital notebook app like GoodNotes. This is the secret to creating drool-worthy Studygram content that'll have your followers saving and sharing. You're welcome.</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "How to Create Your Own Handwriting Font (Without Losing Your Mind)",
+      "content": "<p>Dreaming about seeing <strong>your exact handwriting</strong> show up inside txttohandwriting.org? You totally can. Making a font out of your scribbles sounds like something only designers do, but the internet blessed us with tools that keep it fun, free (or close), and very DIY friendly.</p>\n<h2>Step 1: Grab Your Handwriting Sample</h2>\n<p>Print a template or sketch on a tablet using a neutral brush. Keep your baseline steady, use a favourite pen, and jot each letter clearly—upper, lower, numbers, punctuation. The cleaner your sheet, the cleaner the final font.</p>\n<ul>\n  <li><strong>Calligraphr template:</strong> Print the guide sheet from <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>, write with a dark pen, and scan it at 300 dpi or snap a crisp photo.</li>\n  <li><strong>Procreate or Affinity:</strong> Apps like <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> or <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> make it easy—just export a transparent PNG layer.</li>\n</ul>\n<h2>Step 2: Turn Letters into a Font File</h2>\n<p>Here are the best free (or almost free) generators that do the heavy lifting for you:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – friendly, web-based, and the fastest way to get a polished TTF or OTF. The free tier handles one font at a time.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – a browser editor if you want extra tweaks like spacing and ligatures.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – totally free, grid-based, and perfect for bold, geometric lettering experiments.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – donationware for macOS, Windows, and Linux with an easy SVG import workflow.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (paid, Illustrator/Photoshop plug-in) or <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> on iPad if you crave a pro finish.</li>\n</ul>\n<p>Upload your sheet, align every character, double-check previews (especially “g”, “s”, and spacing), then export as TTF, OTF, or WOFF/WOFF2—exactly what our uploader loves.</p>\n<h2>Step 3: Clean Up the Details</h2>\n<p>Most editors let you adjust baseline, kerning, and line height. A quick polish keeps your lettering from looking jumpy in notes. Try a test sentence like “Zany fox jumps high” to spot wobbles before exporting.</p>\n<h2>Step 4: Upload to txttohandwriting.org</h2>\n<p>Head to the lab, tap <strong>Custom → Upload</strong>, drop in your shiny font file, and give it a name. We’ll keep two custom fonts per account, so keep your absolute faves at the ready.</p>\n<p>That’s it! In less than an afternoon you can flex a signature handwriting style across your planners, study notes, and journal spreads. If you try this, tag us—we’ll hype your font up in the gallery.</p>"
+    },
+    "paper-texture-science": {
+      "title": "Paper Texture Science: Why It Matters",
+      "content": "<p>Ever wonder why some digital notes look fake while others trick your brain into thinking they’re real? It’s all about the <strong>paper texture</strong>. A perfectly white, flat background screams \"computer-generated,\" but adding a subtle grain or shadow depth brings the whole page to life.</p>\n<h2>The Micro-Details</h2>\n<p>Real paper isn't perfect. It has fibers, slight unevenness, and absorbs ink differently in spots. Our generator simulates these <strong>micro-details</strong> to ensure your text sits <em>on</em> the paper, not just floating above it. Whether you choose the crisp lines of notebook paper or the rugged feel of old parchment, texture is the unsung hero of realism.</p>\n<h2>Matching Texture to Mood</h2>\n<p>Picking the right background sets the vibe. <strong>Graph paper</strong> signals precision and math, perfect for technical diagrams. <strong>Lined paper</strong> brings back that nostalgic classroom feel. And <strong>plain textured paper</strong>? It’s the ultimate blank canvas for sketches and free-form journaling. Don’t underestimate the power of the background—it’s half the aesthetic.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "The Psychology of Handwritten Notes vs. Typing",
+      "content": "<p>We’ve all heard the debate: laptop vs. notebook. But did you know there’s actual science backing the <strong>handwriting advantage</strong>? Studies show that writing by hand activates more areas of the brain, boosting memory retention and understanding.</p>\n<h2>Why Your Brain Loves Curves</h2>\n<p>Typing is mechanical and repetitive; every 'A' feels the same. Handwriting involves unique spatial movements for each letter. This cognitive engagement helps lock information into your long-term memory. It’s why that cheat sheet you wrote out by hand (or generated to look like it!) feels more familiar during a test than a typed PDF.</p>\n<h2>The Digital Compromise</h2>\n<p>But let’s be real—handwriting is slow. That’s where <strong>text-to-handwriting tools</strong> bridge the gap. You get the speed of typing with the cognitive and visual benefits of a handwritten format. It creates a sense of personal connection and warmth that standard fonts just can't replicate, making your notes feel less like data and more like <em>knowledge</em>.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "Top 5 Creative Ways to Use Handwriting Generators Beyond School",
+      "content": "<p>Think handwriting generators are just for homework? Think again. The creative possibilities are endless once you start thinking outside the binder. Here are our top 5 ways to use generated script for fun and profit.</p>\n<h2>1. D&D and TTRPG Props</h2>\n<p>Dungeon Masters, listen up. Nothing immerses players like a physical letter found on a goblin corpse. Generate a \"hastily scrawled\" warning or an ancient riddle using a messy font and our parchment background.</p>\n<h2>2. Digital Scrapbooking</h2>\n<p>Add captions to your photo collages without needing a stylus. It keeps that DIY aesthetic while keeping your layout clean and editable.</p>\n<h2>3. Aesthetic Recipe Cards</h2>\n<p>Type out grandma’s secret cookie recipe, pick a cursive font, and print it on cardstock. It makes for an incredible, personalized gift (or just a cute fridge magnet).</p>\n<h2>4. Social Media Quotes</h2>\n<p>Stop using the same Canva fonts as everyone else. A handwritten quote on a textured background stands out in the feed and feels more authentic and vulnerable.</p>\n<h2>5. Love Letters (We Won't Tell)</h2>\n<p>Okay, maybe writing it yourself is more romantic, but if your handwriting looks like a chicken walked across the page, a generator might be your wingman. Just choose a font that looks somewhat believable!</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "Print-Ready Handwriting: Margins, Spacing, and Paper Vibes",
+      "content": "<p>Handwritten pages can look gorgeous on screen, but printing is where the magic can fall apart. A couple of small tweaks keep your pages clean and believable once they hit real paper.</p>\n<h2>Start With the Page, Not the Font</h2>\n<p>Pick the paper template first, then set margins and font size so the text can breathe. Leaving a little white space at the edges makes the output feel like a real notebook page instead of a full-bleed graphic.</p>\n<h2>Export Smart</h2>\n<p>Use high quality for print, and export to PDF if you need multi-page consistency. If your printer is picky, stick to neutral ink colors and avoid super light textures—subtle always looks more authentic.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "Handwritten Touches for Work Projects (Without Looking Unprofessional)",
+      "content": "<p>Handwriting isn’t just for school. A small handwritten callout can make a proposal, moodboard, or onboarding doc feel more human—without making it look messy.</p>\n<h2>Use It as a Highlight, Not the Whole Page</h2>\n<p>Keep the core content typed and drop handwritten snippets for headings, quotes, or action items. It guides attention and keeps the document readable for clients and teammates.</p>\n<h2>Match the Tone</h2>\n<p>Choose a clean font, stick to black or blue ink, and pair it with lined or subtle paper textures. The goal is “intentional,” not “scrapbook.”</p>"
+    }
+  }
+}

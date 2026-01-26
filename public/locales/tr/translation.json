@@ -1,0 +1,439 @@
+{
+  "common": {
+    "startCreating": "Oluşturmaya Başla",
+    "learnMore": "Daha Fazla Bilgi",
+    "viewFaq": "SSS'yi Gör",
+    "readBlog": "Blog Yazılarını Oku",
+    "loading": "Yükleniyor...",
+    "generating": "Oluşturuluyor...",
+    "download": "İndir",
+    "preview": "Önizleme",
+    "backToLab": "Laba dön",
+    "customFont": "Özel Yazı Tipi Yükle",
+    "manageFonts": "Özel Yazı Tiplerini Yönet",
+    "inkColor": "Mürekkep Rengi",
+    "colors": {
+      "black": "Siyah",
+      "blue": "Mavi",
+      "red": "Kırmızı",
+      "green": "Yeşil"
+    },
+    "selectInk": "Mürekkep Seç",
+    "paper": "Kağıt",
+    "style": "Stil",
+    "content": "İçerik",
+    "clickHere": "buraya tıkla"
+  },
+  "seo": {
+    "title": "El Yazısı Oluşturucu - Metni Gerçekçi El Yazısına Dönüştür",
+    "description": "Özelleştirilebilir yazı tipleri, şablonlar ve mürekkep renkleriyle gerçekçi el yazısı metin oluşturun. Farklı kağıt şablonlarıyla otantik örnekler için ideal."
+  },
+  "hero": {
+    "headline": "Metni Gerçek El Yazısına Dönüştür",
+    "subheadline": "Ücretsiz çevrimiçi el yazısı oluşturucumuzla gerçekçi el yazısı notlar, ödevler ve tasarımlar oluşturun. Kayıt yok, %100 gizli.",
+    "cta": "Ücretsiz Başla",
+    "keywords": [
+      "el yazısı oluşturucu",
+      "metni el yazısına çevir",
+      "metni el yazısına dönüştür",
+      "ücretsiz el yazısı aracı"
+    ]
+  },
+  "howItWorks": {
+    "heading": "Nasıl Çalışır",
+    "subheading": "Metninizi üç basit adımda otantik el yazısına dönüştürün",
+    "steps": [
+      {
+        "title": "Metninizi Girin",
+        "description": "El yazısına dönüştürmek istediğiniz metni yazın veya yapıştırın. Araç 6 sayfaya kadar içerik destekler; ödevler, notlar veya yaratıcı projeler için ideal."
+      },
+      {
+        "title": "Stilinizi Özelleştirin",
+        "description": "9 el yazısı fontundan birini seçin, kağıt şablonlarını (boş, çizgili, noktalı) belirleyin ve mürekkep rengi ile kalınlığını estetiğinize göre ayarlayın."
+      },
+      {
+        "title": "Oluştur ve İndir",
+        "description": "Oluştur'a tıklayıp el yazısı sayfalarını oluşturun. Yüksek kaliteli PNG olarak indirin veya PDF olarak birleştirin. Tüm işlem tarayıcınızda—tamamen gizli."
+      }
+    ],
+    "context": "El yazısı oluşturucumuz, her amaç için gerçekçi el yazısı metinler oluşturmayı kolaylaştırır. İster ödevler üzerinde çalışan bir öğrenci, ister estetik paylaşımlar tasarlayan bir içerik üreticisi, ister belgelere kişisel dokunuşlar katan bir profesyonel olun, aracımız her seferinde özgün sonuçlar sunar."
+  },
+  "features": {
+    "heading": "Güçlü Özellikler",
+    "subheading": "Her amaç için otantik ve gerçekçi el yazısı oluşturmanız için gereken her şey",
+    "items": [
+      {
+        "title": "Gerçekçi El Yazısı Varyasyonları",
+        "description": "Gelişmiş render motorumuz, temel çizgi, eğim ve mürekkep yoğunluğunda doğal varyasyonlarla otantik el yazısı üretir.",
+        "benefits": [
+          "Doğal temel çizgi titremesi",
+          "Değişken harf eğimi",
+          "Mürekkep rengi varyasyonları",
+          "Mikro eğimler ve kusurlar"
+        ]
+      },
+      {
+        "title": "Birden Fazla Kağıt Şablonu",
+        "description": "İhtiyacınıza uygun çeşitli kağıt şablonları seçin. Yaratıcı özgürlük için boş sayfalar, düzenli notlar için çizgili kağıt veya bullet journal için noktalı ızgaralar.",
+        "benefits": [
+          "Boş, çizgili ve noktalı seçenekler",
+          "Otantik kağıt dokuları",
+          "Yüksek çözünürlüklü şablonlar",
+          "Baskı için optimize"
+        ]
+      },
+      {
+        "title": "Özel Yazı Tipi Yükleme",
+        "description": "Kendi el yazısı fontunuzu yükleyerek kişiselleştirin. TTF, OTF ve WOFF desteklenir.",
+        "benefits": [
+          "Kendi el yazınızı yükleyin",
+          "TTF, OTF, WOFF desteği",
+          "2 özel font slotu",
+          "Anında önizleme"
+        ]
+      },
+      {
+        "title": "100% Ücretsiz ve Özel",
+        "description": "Abonelik yok, gizli ücret yok, veri toplama yok. Her şey tarayıcınızda çalışır—metniniz sunucularımıza asla gitmez.",
+        "benefits": [
+          "Sonsuza kadar ücretsiz",
+          "Kayıt gerekmez",
+          "İstemci tarafı işlem",
+          "Ticari kullanım serbest"
+        ]
+      }
+    ],
+    "context": "El yazısı oluşturucumuz, profesyonel sonuçlar için gelişmiş render teknolojisini kullanıcı dostu tasarımla birleştirir."
+  },
+  "useCases": {
+    "heading": "El yazısı oluşturucumuzu kim kullanıyor?",
+    "subheading": "Öğrencilerden profesyonellere, insanların aracımızı nasıl kullandığını keşfedin",
+    "items": [
+      {
+        "title": "Öğrenciler ve Eğitmenler",
+        "description": "El yazısı ödevler, ders notları ve alıştırma sayfaları için ideal.",
+        "examplesLabel": "İdeal:",
+        "examples": [
+          "Ödevler",
+          "Ders notları ve özetler",
+          "Alıştırma sayfaları",
+          "El yazısı örnekleri"
+        ]
+      },
+      {
+        "title": "İçerik Üreticileri ve Tasarımcılar",
+        "description": "Studygram'ınızı, bullet journal sayfalarınızı veya tasarımlarınızı otantik el yazısı öğeleriyle yükseltin.",
+        "examplesLabel": "İdeal:",
+        "examples": [
+          "Studygram gönderileri",
+          "Bullet journal tasarımları",
+          "Sosyal medya içerikleri",
+          "Dijital planlayıcı sayfaları"
+        ]
+      },
+      {
+        "title": "Profesyoneller ve İşletmeler",
+        "description": "Kurumsal iletişime kişisel bir dokunuş ekleyin, el yazısı teşekkür notları veya özgün pazarlama materyalleri oluşturun.",
+        "examplesLabel": "İdeal:",
+        "examples": [
+          "Teşekkür notları",
+          "Kişisel mektuplar",
+          "Pazarlama materyalleri",
+          "İmza oluşturma"
+        ]
+      }
+    ],
+    "context": "Kullanım alanınız ne olursa olsun, oluşturucumuz size esneklik ve kalite sunar."
+  },
+  "testimonials": {
+    "heading": "Kullanıcılarımız ne diyor",
+    "subheading": "Projeleri için oluşturucumuza güvenen binlerce memnun kullanıcıya katılın",
+    "items": [
+      {
+        "quote": "Ne zaman bir şey yazmam gerekse tam bir karmaşaya dönüyordu. Bu site oyunu değiştirdi — artık notlarım çok tatlı, yazı stilleri mi? Efsane.",
+        "author": "Baddie Brown",
+        "role": "Estetik Kraliçesi"
+      },
+      {
+        "quote": "Eskiden Jesse yetişsin diye notları elle karalamak zorundaydım. Dağınık, kirli — tam bir çile. Bu site hepsini toparladı. Font varyasyonları? A sınıfı.",
+        "author": "Heisenberg",
+        "role": "Kimyager"
+      },
+      {
+        "quote": "El yazım o kadar titriyordu ki adam notlarımı okuyamıyordu. Bu site düzeltti — artık alışveriş listem bile tertemiz, stil mi? Dumanımdan daha sert vuruyor diyelim.",
+        "author": "Plant Peter",
+        "role": "Yerel Botanikçi"
+      },
+      {
+        "quote": "El yazısı sadece kelimelerden ibaret olmamalı — baştan çıkarmalı. Bu siteyle notlarım bile ekranda aşk mektubu gibi. Pürüzsüz, şık, görmezden gelmek imkansız.",
+        "author": "Aggressive Armas",
+        "role": "Gizli Ajan"
+      },
+      {
+        "quote": "Dinle… birkaç içkiden sonra not yazmayı denedim, modern sanat gibiydi. Bu site? Tam kurtarıcı. Artık düzgün yürüyemediğimde bile yazım şık. Şerefe!",
+        "author": "Drunk David",
+        "role": "Şarap Tutkunu"
+      },
+      {
+        "quote": "Sözlerim kağıtta her zaman güzel durmaz. Bu site her notayı aşk şarkısı gibi hissettiriyor — sade, şık, unutulmaz.",
+        "author": "Swirl Swift",
+        "role": "Şarkı Yazarı"
+      },
+      {
+        "quote": "Sahada karanlıkta, yağmur altında notlar karaladım — neredeyse okunmazdı. Bu site? Yazımı her seferinde net ve keskin yapıyor. Harbi sağlam bir araç.",
+        "author": "Captain Price",
+        "role": "Task Force 141"
+      },
+      {
+        "quote": "Sürekli hareket halindeyim ve hızlı notlarım asla podyuma çıkacak gibi görünmez. Bu site her şeyi şık ve kusursuz yapıyor — el yazısı ama fashion.",
+        "author": "Jacked Jenner",
+        "role": "Model / İkon"
+      },
+      {
+        "quote": "Ödev yazıp düşük notlar alırdım — bu yüzden bana L derler. Ama bu siteyle W tattım. Notlarım hiç bu kadar net olmamıştı.",
+        "author": "L",
+        "role": "Dedektif"
+      }
+    ],
+    "context": "Kendi el yazısı içeriğinizi oluşturmaya hazır mısınız? Her gün ücretsiz oluşturucumuzu kullanan öğrenci, creator ve profesyonel topluluğumuza katılın."
+  },
+  "tips": {
+    "heading": "İpuçları ve En İyi Uygulamalar",
+    "subheading": "Bu uzman ipuçlarıyla el yazısı oluşturucunuzdan en iyi şekilde yararlanın",
+    "items": [
+      {
+        "title": "Doğru Fontu Seçin",
+        "description": "Farklı amaçlar için farklı fontlar daha iyi çalışır. Resmi belgeler için zarif script fontlar, kişisel notlar için casual fontlar ve okunabilirlik için net fontlar kullanın."
+      },
+      {
+        "title": "Mürekkep Kalınlığını Ayarlayın",
+        "description": "Mürekkep kalınlığını ayarlayarak yazınızın ağırlığını kontrol edin. Daha hafif ayarlar narin bir yazı, daha koyu ayarlar güçlü vuruşlar üretir."
+      },
+      {
+        "title": "Doğru Şablonu Seçin",
+        "description": "Kağıt şablonunu içeriğinize göre eşleştirin. Çizgili kağıt yapılandırılmış notlar için, boş sayfalar yaratıcı özgürlük için, noktalı ızgaralar bullet journal için."
+      },
+      {
+        "title": "Oluşturmadan Önce Önizleyin",
+        "description": "Canlı önizleme ile metni kontrol edin. Zaman kazandırır ve istediğiniz gibi görünmesini sağlar."
+      },
+      {
+        "title": "Birden Fazla Sayfa için Toplu İndirme",
+        "description": "Birden fazla sayfa mı? Toplu indirme özelliğiyle hepsini bir kerede kaydedin. Kaliteyi seçin ve ZIP olarak indirin."
+      }
+    ],
+    "context": "Bu ipuçları daha gerçekçi ve profesyonel görünümlü el yazısı metin oluşturmanıza yardımcı olur."
+  },
+  "mainPage": {
+    "mobileControls": "Kontroller",
+    "mobilePreview": "Önizleme ve Galeri",
+    "updatingPreview": "Önizleme güncelleniyor...",
+    "mission": {
+      "badge": "Misyonumuz",
+      "heading": "Bunu neden yaptık?",
+      "description": "Öğrencilerin ödev yazarken el krampı yaşamak yerine fikirlerine odaklanabildiği bir geleceğe inanıyoruz. Dijital çağı kucaklayıp o otantik el yazısı havasını korumanın zamanı."
+    },
+    "lab": {
+      "heading": "Lab",
+      "version": "v1.4.1",
+      "inputLabel": "İçerik",
+      "placeholder": "Metninizi buraya yazın...",
+      "style": "Stil",
+      "size": "Boyut",
+      "paperRealism": "Kağıt Gerçekçiliği",
+      "ultra": "Ultra",
+      "high": "Yüksek",
+      "low": "Düşük",
+      "inkBoldness": "Mürekkep Kalınlığı"
+    },
+    "output": {
+      "title": "Canlı Önizleme",
+      "template": "Şablon",
+      "loading": "Yükleniyor...",
+      "loadingTemplate": "Kağıt şablonu yükleniyor...",
+      "initializing": "El yazısı motoru başlatılıyor...",
+      "presentRose": "Gül Sun"
+    }
+  },
+  "footer": {
+    "about": "Hakkında",
+    "blog": "Blog",
+    "changelog": "Değişiklikler",
+    "terms": "Şartlar ve Koşullar",
+    "faq": "Sık Sorulan Sorular",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "pages": {
+    "about": {
+      "title": "Vibe Hakkında",
+      "back": "Laba dön",
+      "community": "Topluluğa açık",
+      "communityDesc": "Özellik fikirleri, hata raporları ve meme'lik öneriler aynı gelen kutusuna düşer. Gelen her şeyi gerçekten okuyoruz.",
+      "description1": "Dijital notların daha az robotik ve büyüdüğümüz karalanmış sayfalara daha çok benzemesi için gece yarısı bir meydan okumayla başladı. Küçük bir script olacağı şey, blend mode'lara, doku yöneticilerine ve çok fazla kahveye dönüştü.",
+      "description2": "Bugün oluşturucu; öğrenciler, tasarımcılar ve kronik erteleyiciler tarafından kullanılıyor ve teslimlerin el yapımı görünmesini sağlıyor. İnanılır mürekkep jitter'ı, duyarlı canvas'lar ve o ödevi teslimden otuz dakika önce bitirecek kadar hızlı bir deneyim için takıntılıyız.",
+      "donateBtc": "Bitcoin Bağışla",
+      "donateBtcDesc": "Cüzdan adresi yakında—şimdilik bize yazın, en güncel detayları gönderelim.",
+      "presentRose": "Gül Sun",
+      "madeBy": "Th3-F00L tarafından $ ile yapıldı",
+      "keywords": "txttohandwriting hakkında, el yazısı oluşturucu misyonu, txttohandwriting ekibi",
+      "supportHeadline": "Yardım, geri bildirim ya da sadece selam mı?",
+      "supportDesc": "Her e-postayı bizzat yanıtlıyoruz. Ekran görüntüleriniz, fikirleriniz ve başarılarınız bu projeyi ayakta tutuyor."
+    },
+    "faq": {
+      "title": "SSS",
+      "back": "Laba dön",
+      "keywords": "el yazısı oluşturucu sss, el yazısı aracı destek, ücretsiz el yazısı aracı yardım",
+      "q1": "Gerçekten ücretsiz mi?",
+      "a1": "Evet, ücretsiz. Abonelik yok. Dilediğin gibi kullan (bir şeyleri kırma).",
+      "q2": "Bunu yan işim için kullanabilir miyim?",
+      "a2": "Kesinlikle. Meme yap, Depop'ını markala, ne istersen. Kredi şart değil ama bir mention efsane olur.",
+      "q3": "Tuhaf düşüncelerimi mi okuyorsunuz?",
+      "a3": "Yok, hiçbir şey görmüyoruz. Verine ihtiyacımız yok. Sunucularımız taş gibi. Sırların güvende, bestie.",
+      "q4": "İndirmelerin olayı ne?",
+      "a4": "Şimdilik sadece PNG. Yüksek kalite. Vibe uygunsa daha fazla format gelebilir.",
+      "q5": "Font neden biraz garip görünüyor?",
+      "a5": "Muhtemelen tarayıcın. Güncelle. Hâlâ garipse işletim sistemindir. Bu bir vibe, kesin bilim değil.",
+      "q6": "Hocalarım çıktılar istiyor, ne yapmalıyım?",
+      "a6": "Seni düşündüm, mükemmel bir çözümüm var",
+      "supportHeadline": "Hâlâ kafan karışık mı ya da bir bug'a diss atmak mı istiyorsun?",
+      "supportDesc": "Ekibe yaz, cursive diyene kadar cevaplarız."
+    },
+    "changelog": {
+      "title": "Değişiklikler",
+      "back": "Laba dön",
+      "productUpdates": "Ürün güncellemeleri",
+      "description": "Çıkıştan beri attığımız her glow-up, ince ayar ve büyük duyuru. Jargon yok—sadece ne değişti ve notların için neden önemli.",
+      "mood": "Mood",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "Herkes için deneyimi iyileştiriyoruz.",
+          "highlights": [
+            "Bazı hatalar düzeltildi ve yeni iyileştirmeler yapıldı.",
+            "Çoklu dil desteği işlevi eklendi."
+          ],
+          "mood": "Küresel hisler."
+        },
+        "v1-4": {
+          "tagline": "Bir sonraki seviye gerçekçilik ve performans.",
+          "highlights": [
+            "Daha temiz, modern bir tasarım sistemiyle yeni UI yenilemesi.",
+            "Daha yüksek doğruluk ve daha iyi mürekkep dokularıyla görüntü üretimi iyileştirildi.",
+            "Anlık geri bildirim için canlı görüntü renderı bir üst seviyeye taşındı.",
+            "Daha hızlı işleme ve daha akıcı etkileşimler için motor optimize edildi."
+          ],
+          "mood": "Taze başlangıç, yeni yıl, yeni notlar."
+        },
+        "v1-3": {
+          "tagline": "Daha fazla kontrol, daha yüksek kalite ve daha akıcı deneyim.",
+          "highlights": [
+            "Daha sezgisel ve estetik bir deneyim için UI tasarımı tekrar ele alındı.",
+            "El yazısı görünümünde ince ayar için mürekkep kalınlığı kontrolü eklendi.",
+            "Tüm oluşturulan görüntüleri tek bir PDF olarak indirme seçeneği eklendi.",
+            "Kalite ve dosya boyutu dengesine göre görüntü kalitesi seçeneği eklendi (Yüksek, Orta, Düşük).",
+            "Stabilite ve performans için çeşitli bilinen hatalar giderildi."
+          ],
+          "mood": "Güçlü ve parlak."
+        },
+        "v1-2": {
+          "tagline": "Yeni yaratıcı özgürlükle taze bir glow-up.",
+          "highlights": [
+            "Kontroller, önizleme ve galeri her ekranda akıcı olsun diye lab büyük ölçüde yeniden tasarlandı.",
+            "Adım adım yönlendirmeli özel font yükleme yöneticisi ve iki kişisel slot.",
+            "Chrome, Safari, Firefox ve Edge üzerinde performans ayarı; sayfalar daha hızlı ve akıcı."
+          ],
+          "mood": "Bugün yepyeni bir planner sayfası gibi."
+        },
+        "v1-0": {
+          "tagline": "txttohandwriting.org'nin yayına çıktığı gün.",
+          "highlights": [
+            "Anında önizleme, mürekkep renkleri ve gerçekçilik kaydırıcılarıyla lab başlatıldı.",
+            "Boş, noktalı ve çizgili şablonlarla Paper Vibe rafı tanıtıldı (PNG indirmeye hazır).",
+            "Tam ekran görünüm, sıra etiketleri ve tek tık indirme ile görsel galeri açıldı."
+          ],
+          "mood": "İlk okul günü kelebekleri, ama kırtasiye meraklıları için."
+        }
+      }
+    },
+    "terms": {
+      "title": "Şartlar ve Koşullar",
+      "back": "Oluşturucuya dön",
+      "lastUpdated": "Son güncelleme",
+      "welcome": "txttohandwriting.org'ye hoş geldiniz! Bu şartlar ve koşullar, web sitemizi kullanım kurallarını açıklar. Bu web sitesine erişerek bu şartları kabul etmiş sayılırsınız. Buradaki tüm şartları kabul etmiyorsanız txttohandwriting.org'yi kullanmaya devam etmeyin.",
+      "section1Title": "1. Şartların Kabulü",
+      "section1Content": "Hizmet \"olduğu gibi\" ve \"mevcut olduğu şekilde\" sunulur, herhangi bir garanti verilmez. Hizmetin kesintisiz veya hatasız olacağını garanti etmeyiz.",
+      "section2Title": "2. Hizmetin Kullanımı",
+      "section2Content": "Hizmetimizi yalnızca yasal amaçlarla kullanmayı kabul edersiniz. Oluşturduğunuz içerikten yalnızca siz sorumlusunuz. İftira, müstehcen veya uygunsuz içerik üretmemeyi kabul edersiniz.",
+      "section3Title": "3. Fikri Mülkiyet",
+      "section3Content": "Girdiğiniz metin size aittir. Oluşturulan görseller kişisel ve ticari amaçlarla kullanılabilir. Ancak txttohandwriting.org'nin fontları, tasarımı ve markası site sahiplerine aittir ve izinsiz kullanılamaz.",
+      "section4Title": "4. Garanti Reddi",
+      "section4Content": "Web sitemiz \"olduğu gibi\" sunulur. Açık veya zımni tüm garantileri reddederiz; ticari elverişlilik, belirli bir amaca uygunluk veya fikri mülkiyet haklarının ihlali olmaması dahil.",
+      "section5Title": "5. Sorumluluğun Sınırlandırılması",
+      "section5Content": "txttohandwriting.org veya tedarikçileri, verilerin veya kârın kaybı ya da iş kesintisi dahil, sitemizdeki materyallerin kullanımından veya kullanılamamasından doğan hiçbir zarardan sorumlu değildir; bu tür zarar olasılığı bildirilmiş olsa bile.",
+      "section6Title": "6. Şartlarda Değişiklik",
+      "section6Content": "Bu şartları dilediğimiz zaman değiştirme hakkımız saklıdır. Bu siteyi kullanarak bu şartları düzenli olarak gözden geçirmeniz beklenir.",
+      "section7Title": "7. Analiz ve Çerezler",
+      "section7Content1": "txttohandwriting.org'nin nasıl kullanıldığını anlamak ve deneyimi iyileştirmek için Consent Mode ile Google Analytics kullanıyoruz. Analitik çerezler, ilk ziyarette gösterilen banner üzerinden açıkça izin verene kadar devre dışıdır. Reddederseniz Google'a veri gönderilmez ve site normal çalışır.",
+      "section7Content2": "Onay ayarları şu Google parametrelerini kapsar: ad_storage, ad_personalization, ad_user_data ve analytics_storage. Onay verene kadar bu değerler \"denied\" durumda kalır; çerez yazımı ve etkinlik gönderimi engellenir. Kabul ettiğinizde bunları \"granted\" olarak günceller ve tercihinizi tarayıcıda saklarız.",
+      "section8Title": "8. Onayın Yönetimi",
+      "section8Content": "Onayınızı istediğiniz zaman tarayıcınızdan site verilerini temizleyerek veya ekibimize ulaşarak güncelleyebilir ya da geri çekebilirsiniz. Yardımcı olmaktan memnuniyet duyarız. Gizlilik veya onay ile ilgili sorular için bizimle iletişime geçin: support@txttohandwriting.org.",
+      "supportHeadline": "Bu şartlarla ilgili sorularınız mı var?",
+      "supportDesc": "Yasal konuları açıklamaktan ve ödevlerinizi doğru yapmak konusunda yardımcı olmaktan mutluyuz."
+    },
+    "notFound": {
+      "title": "Sayfa Bulunamadı | txttohandwriting.org",
+      "description": "Aradığınız sayfayı bulamadık. Oluşturmaya devam etmek için yazı laboratuvarına dönün.",
+      "keywords": "el yazısı oluşturucu 404, sayfa bulunamadı"
+    },
+    "blog": {
+      "title": "El Yazısı İlham Blogu | txttohandwriting.org",
+      "description": "Studygram, planlayıcılar ve ödevler için yazılı metni estetik el yazısına çevirme ipuçları, rehberler ve ilham.",
+      "keywords": "el yazısı blogu, studygram el yazısı ipuçları, not ilhamı"
+    },
+    "blogPost": {
+      "keywords": "el yazısı blogu, ipuçları, ilham"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "backToLab": "Laba dön",
+    "backToAll": "Tüm yazılara dön",
+    "readMore": "Devamını oku →",
+    "by": "Yazar",
+    "ctaHeadline": "Yazı fikirlerin veya geri bildirimlerin var mı?",
+    "ctaDescription": "Blogda görmek istediklerini paylaş ya da el yazısı tüyolarını gönder."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "Notlarını Glow Up Et: Estetik Metin‑El Yazısı Dönüştürücülerin Nihai Rehberi",
+      "content": "<p>Dürüst olalım, ders notların biraz sönük duruyor. Studygram’da parlayan estetik notlara sahip o kişi olmak istiyorsun ama düz metin duvarları o vibe’ı vermiyor. Sahneye çıkıyor: <strong>text‑to‑handwriting converter</strong>. Çalışma hayatını romantize etmek isteyenler için büyük bir life‑hack.</p>\n<h2>El yazısı üreticilerinin olayı ne?</h2>\n<p>Bizimki gibi bir <strong>handwriting generator</strong>, sıkıcı dijital metni sevimli el yazısına dönüştürür. Elin ağrımadan el yazısı havası istiyorsan mükemmel. İster şık bir çalışma kılavuzu, ister dijital planlayıcı için tasarım olsun, <strong>free text to handwriting tool</strong> yeni bestin.</p>\n<h2>Font estetiğini bul</h2>\n<p>Glow‑up’ın anahtarı “sen” diyen bir font. Temiz, zarif bir script mi; yoksa rahat, dağınık bir yazı mı? Sitede her enerjiye uygun font var. Tek birinde takılı kalma—deneyimle. İyi bir <strong>online handwriting converter</strong> sana seçenek verir; böylece biyolojiden tarihe kolayca geçersin. Sonuç: hem kullanışlı hem süper estetik notlar.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Studygram’in Neden Low‑Key Flop (Ve El Yazısı Üretici Nasıl Kurtarır)",
+      "content": "<p>Pastel fosforlular, washi tape ve buzlu kahve var. Peki Studygram neden hype almıyor? Belki içerik. Aynı Times New Roman görmek sıkıcı. Scroll’u durdurmak istiyorsan görselin güçlü olması lazım. Ve hiçbir şey “hayatım düzenli” demeyi estetik el yazısı notlar kadar başaramaz.</p>\n<h2>Gizli sos: Metni online el yazısına çevir</h2>\n<p>Kimsenin her şeyi elde yazacak zamanı yok, hele ki yarına üç ödev varken. İşte burada <strong>text to handwriting online tool</strong> devreye girer. Notlarını, yapılacaklarını, favori alıntılarını yazarsın ve anında <strong>metni görsele dönüştürür</strong>.</p>\n<p>Düşünsene, bir bölüm özetini kusursuz el yazısı tarzında story atıyorsun. Benzersiz, dikkat çekici ve aşırı emek vermişsin gibi görünüyor. <strong>free online handwriting generator</strong>’ın gücü bu: içeriği basic’ten ikoniğe taşır.</p>\n<h2>Nasıl daha da parlatırsın?</h2>\n<p>Sade arka plana yapıştırma. Kağıt vibe’ı seç—çizgili, kareli ya da düz—ve temana uygun mürekkep rengi kullan. PNG indir, Canva ya da GoodNotes’a at. Studygram’da kaydedilip paylaşılan içeriklerin sırrı bu.</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "Kendi El Yazısı Fontunu Yapmak (Delirmeden)",
+      "content": "<p>txttohandwriting.org’da <strong>kendi el yazını</strong> görmek ister misin? Mümkün. Karalamalarını fonta çevirmek tasarımcı işi gibi dursa da internet bunu kolaylaştıran araçlarla dolu.</p>\n<h2>Adım 1: El yazısı örneği hazırla</h2>\n<p>Bir şablon yazdır ya da tablette yaz. Baz çizgisini sabit tut, sevdiğin kalemi kullan ve her harfi net yaz—büyük/küçük, rakamlar, noktalama. Kağıt ne kadar temizse font o kadar temiz olur.</p>\n<ul>\n  <li><strong>Calligraphr şablonu:</strong> <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>’dan kılavuzu yazdır, koyu kalemle yaz ve 300 dpi tarat ya da net fotoğraf çek.</li>\n  <li><strong>Procreate veya Affinity:</strong> <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> ya da <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> ile yazıp şeffaf PNG olarak dışa aktar.</li>\n</ul>\n<h2>Adım 2: Harfleri font dosyasına çevir</h2>\n<p>Bu ücretsiz (ya da neredeyse ücretsiz) araçlar işi senin yerine yapar:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – hızlı ve temiz TTF/OTF için en kolay yol. Ücretsiz sürümde tek font.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – aralıklar ve ligatürler için tarayıcı editörü.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – tamamen ücretsiz, grid tabanlı ve deneyler için harika.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – macOS/Windows/Linux için donationware ve kolay SVG import.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (ücretli) ya da <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> (iPad) profesyonel sonuç için.</li>\n</ul>\n<p>Şablonu yükle, karakterleri hizala, önizlemeleri kontrol et (özellikle “g”, “s” ve aralıklar), sonra TTF/OTF/WOFF/WOFF2 olarak dışa aktar.</p>\n<h2>Adım 3: Detayları düzelt</h2>\n<p>Baseline, kerning ve satır yüksekliğini ayarlayarak titremeleri gider. Kısa bir test cümlesi işe yarar.</p>\n<h2>Adım 4: txttohandwriting.org’a yükle</h2>\n<p>Laba gir, <strong>Custom → Upload</strong>’a tıkla, fontu bırak ve isim ver. İki özel font slotumuz var.</p>\n<p>Hepsi bu! Bir öğleden sonra içinde kendi yazınla planlayıcı ve notlarda şov yapabilirsin. Denersen bizi etiketle.</p>"
+    },
+    "paper-texture-science": {
+      "title": "Kağıt Dokusu Bilimi: Neden Önemli?",
+      "content": "<p>Bazı dijital notlar neden sahte görünürken bazıları gerçekmiş gibi durur? Her şey <strong>paper texture</strong> ile ilgili. Düz, bembeyaz arka plan “bilgisayar üretimi” diye bağırır, ama hafif gren ve gölge sayfayı canlandırır.</p>\n<h2>Mikro detaylar</h2>\n<p>Gerçek kağıt kusursuz değildir. Lifler, küçük düzensizlikler ve mürekkebin farklı emilimi vardır. Biz bu <strong>micro‑details</strong>’ı simüle ederek metnin kağıdın <em>üstünde</em> oturmasını sağlarız. Çizgili defter ya da pürüzlü parşömen fark etmez—dokunun kendisi realizmin gizli kahramanıdır.</p>\n<h2>Doku ve ruh hali</h2>\n<p>Doğru arka plan vibe’ı belirler. <strong>Graph paper</strong> hassasiyet ve matematik, <strong>lined paper</strong> sınıf nostaljisi, <strong>plain textured paper</strong> ise eskiz ve journaling için birebirdir. Arka plan estetiğin yarısıdır.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "El yazısı notların psikolojisi: Yazmak mı, klavye mi?",
+      "content": "<p>Laptop vs defter tartışmasını herkes bilir. Ama <strong>handwriting advantage</strong> diye gerçek bir bilim var. El yazısı, daha fazla beyin bölgesini çalıştırır ve hafızayı güçlendirir.</p>\n<h2>Beyin neden kıvrımları sever?</h2>\n<p>Yazmak mekanik ve tekrar edicidir; her harf aynı görünür. El yazısı ise her harfte farklı hareket ister. Bu bilişsel etkileşim bilgiyi uzun süreli hafızaya kilitler. Bu yüzden el yazısı (ya da el yazısı gibi) notlar, yazılı PDF’ten daha tanıdık gelir.</p>\n<h2>Dijital uzlaşma</h2>\n<p>El yazısı yavaştır. <strong>text‑to‑handwriting tools</strong> boşluğu kapatır: klavye hızı + el yazısı sıcaklığı. Notlar daha az “veri”, daha çok <em>bilgi</em> gibi hissedilir.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "Okul dışında el yazısı jeneratörü için 5 yaratıcı kullanım",
+      "content": "<p>El yazısı jeneratörleri sadece ödev için mi? Değil. İşte favori 5 kullanım:</p>\n<h2>1. D&D ve TTRPG Prop’ları</h2>\n<p>Dungeon Master’lar, dinleyin. Bir goblinin üstünden çıkan mektup gibi prop’lar oyunu içine çeker. Dağınık bir font ve parşömen arka planla “acele yazılmış” uyarı oluşturun.</p>\n<h2>2. Dijital scrapbooking</h2>\n<p>Stylus olmadan kolajlara yazı ekleyin. DIY görünüm korunur, düzen temiz kalır.</p>\n<h2>3. Estetik tarif kartları</h2>\n<p>Anneannenin tarifini yaz, kursif font seç, kartona bas—harika kişisel hediye.</p>\n<h2>4. Sosyal medya alıntıları</h2>\n<p>Herkesin kullandığı Canva fontlarından çıkın. Dokulu zeminde el yazısı alıntı feed’de öne çıkar.</p>\n<h2>5. Aşk mektupları (söylemeyiz)</h2>\n<p>Kendin yazmak romantik ama el yazın kötü ise jeneratör kanat adamın olabilir.</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "Baskıya hazır el yazısı: Kenarlar, boşluklar ve kağıt vibe’ı",
+      "content": "<p>Ekranda harika görünen şeyler baskıda dağılabilir. Küçük ayarlar sayfayı temiz ve inandırıcı tutar.</p>\n<h2>Önce sayfa, sonra font</h2>\n<p>Önce kağıt şablonunu seç, sonra kenar boşlukları ve font boyutunu ayarla. Kenarlarda biraz beyaz alan gerçek defter hissi verir.</p>\n<h2>Akıllı dışa aktarım</h2>\n<p>Baskı için yüksek kalite, çok sayfa için PDF seç. Yazıcı hassassa nötr mürekkep ve hafif dokular kullan.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "İş projelerinde el yazısı dokunuşları (amatör görünmeden)",
+      "content": "<p>El yazısı sadece okul için değil. Küçük bir el yazısı notu, teklif veya moodboard’u daha insani yapar—dağınık görünmeden.</p>\n<h2>Vurgu olarak kullan, tüm sayfa değil</h2>\n<p>Ana metni yazılı bırak, başlıklar ve alıntılar için el yazısı ekle. Bu, odağı yönlendirir ve okunabilir kalır.</p>\n<h2>Tonu eşleştir</h2>\n<p>Temiz font, siyah veya mavi mürekkep ve hafif kağıt dokusu seç. Amaç: “bilinçli”, “scrapbook” değil.</p>"
+    }
+  }
+}

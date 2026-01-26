@@ -1,4 +1,5 @@
 import React, { useRef, lazy, Suspense, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { HeroSection } from './homepage/HeroSection';
 import MainPage from './app/MainPage';
 
@@ -15,7 +16,7 @@ import { ICustomFontUploadManager } from '../types/customFontUpload';
 import { IPaperTextureManager } from '../types/core';
 import { GeneratedImage } from '../types/gallery';
 
-interface StartScreenProps {
+export interface StartScreenProps {
   text: string;
   onTextChange: (value: string) => void;
   fontManager: IFontManager | null;
@@ -74,6 +75,7 @@ const SectionLoadingFallback: React.FC = () => (
 );
 
 export const StartScreen: React.FC<StartScreenProps> = (props) => {
+  const { t } = useTranslation();
   const toolInterfaceRef = useRef<HTMLDivElement>(null);
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -137,7 +139,7 @@ export const StartScreen: React.FC<StartScreenProps> = (props) => {
                        transition-all duration-200"
             aria-label="Scroll to tool interface"
           >
-            Start Creating
+            {t('common.startCreating')}
           </button>
         </div>
       )}

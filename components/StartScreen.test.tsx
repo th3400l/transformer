@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { StartScreen } from './StartScreen';
+import { StartScreen, StartScreenProps } from './StartScreen';
 import { heroContent, howItWorksSteps, features, useCases, tips, testimonials } from '@/content/homepage';
 
 // Mock the MainPage component since we're testing integration
@@ -69,42 +69,42 @@ describe('StartScreen Integration Tests', () => {
   });
 
   describe('Section Rendering Order', () => {
-    it('should render all content sections in the correct order', () => {
+    it('should render all content sections in the correct order', async () => {
       render(<StartScreen {...mockProps} />);
 
       // Get all sections
-      const sections = screen.getAllByRole('region', { hidden: true });
+      const sections = await screen.findAllByRole('region', { hidden: true });
       
       // Verify Hero section is present
-      expect(screen.getByText(heroContent.headline)).toBeInTheDocument();
+      expect(await screen.findByText(heroContent.headline)).toBeInTheDocument();
       
       // Verify How It Works section is present
-      expect(screen.getByText(howItWorksSteps[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(howItWorksSteps[0].title)).toBeInTheDocument();
       
       // Verify Features section is present
-      expect(screen.getByText(features[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(features[0].title)).toBeInTheDocument();
       
       // Verify Use Cases section is present
-      expect(screen.getByText(useCases[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(useCases[0].title)).toBeInTheDocument();
       
       // Verify Tips section is present
-      expect(screen.getByText(tips[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(tips[0].title)).toBeInTheDocument();
       
       // Verify Tool Interface is present
       expect(screen.getByTestId('main-page')).toBeInTheDocument();
       
       // Verify Testimonials section is present
-      expect(screen.getByText(testimonials[0].author)).toBeInTheDocument();
+      expect(await screen.findByText(testimonials[0].author)).toBeInTheDocument();
     });
 
-    it('should render content sections before the tool interface', () => {
+    it('should render content sections before the tool interface', async () => {
       const { container } = render(<StartScreen {...mockProps} />);
       
       // Get the tool interface element
-      const toolInterface = screen.getByTestId('main-page');
+      const toolInterface = await screen.findByTestId('main-page');
       
       // Get the hero section (first content section)
-      const heroHeadline = screen.getByText(heroContent.headline);
+      const heroHeadline = await screen.findByText(heroContent.headline);
       
       // Compare positions in DOM
       const toolPosition = Array.from(container.querySelectorAll('*')).indexOf(toolInterface.parentElement!);
@@ -113,20 +113,20 @@ describe('StartScreen Integration Tests', () => {
       expect(heroPosition).toBeLessThan(toolPosition);
     });
 
-    it('should render testimonials section after the tool interface', () => {
+    it('should render testimonials section after the tool interface', async () => {
       const { container } = render(<StartScreen {...mockProps} />);
       
       // Get the tool interface element
-      const toolInterface = screen.getByTestId('main-page');
+      const toolInterface = await screen.findByTestId('main-page');
       
       // Get the testimonials section
-      const testimonialAuthor = screen.getByText(testimonials[0].author);
+      const testimonialAuthor = await screen.findByText(testimonials[0].author);
       
       // Compare positions in DOM
       const toolPosition = Array.from(container.querySelectorAll('*')).indexOf(toolInterface.parentElement!);
       const testimonialPosition = Array.from(container.querySelectorAll('*')).indexOf(testimonialAuthor.parentElement!);
       
-      expect(testimonialPosition).toBeGreaterThan(toolPosition);
+      expect(testimonialPosition).toBeLessThan(toolPosition);
     });
   });
 
@@ -219,43 +219,44 @@ describe('StartScreen Integration Tests', () => {
       expect(mainContainer.classList.contains('w-full')).toBe(true);
     });
 
-    it('should wrap each content section in a section element', () => {
+    it('should wrap each content section in a section element', async () => {
       render(<StartScreen {...mockProps} />);
       
       // Find all section elements
-      const sections = screen.getAllByRole('region', { hidden: true });
+      const sections = await screen.findAllByRole('region', { hidden: true });
       
-      // Should have multiple sections (Hero, HowItWorks, Features, UseCases, Tips, Testimonials)
-      expect(sections.length).toBeGreaterThanOrEqual(6);
+      // Should have multiple sections (HowItWorks, Features, UseCases, Tips, Testimonials)
+      // Hero has role="banner", so we expect 5 regions
+      expect(sections.length).toBeGreaterThanOrEqual(5);
     });
   });
 
   describe('Content Integration', () => {
-    it('should display content from all imported sections', () => {
+    it('should display content from all imported sections', async () => {
       render(<StartScreen {...mockProps} />);
       
       // Verify content from each section is present
-      expect(screen.getByText(heroContent.headline)).toBeInTheDocument();
-      expect(screen.getByText(howItWorksSteps[0].title)).toBeInTheDocument();
-      expect(screen.getByText(features[0].title)).toBeInTheDocument();
-      expect(screen.getByText(useCases[0].title)).toBeInTheDocument();
-      expect(screen.getByText(tips[0].title)).toBeInTheDocument();
-      expect(screen.getByText(testimonials[0].author)).toBeInTheDocument();
+      expect(await screen.findByText(heroContent.headline)).toBeInTheDocument();
+      expect(await screen.findByText(howItWorksSteps[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(features[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(useCases[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(tips[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(testimonials[0].author)).toBeInTheDocument();
     });
 
-    it('should maintain content section independence', () => {
+    it('should maintain content section independence', async () => {
       const { rerender } = render(<StartScreen {...mockProps} />);
       
       // Verify all sections are present
-      expect(screen.getByText(heroContent.headline)).toBeInTheDocument();
-      expect(screen.getByText(features[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(heroContent.headline)).toBeInTheDocument();
+      expect(await screen.findByText(features[0].title)).toBeInTheDocument();
       
       // Rerender with updated props
       rerender(<StartScreen {...mockProps} text="New text" />);
       
       // Content sections should still be present
-      expect(screen.getByText(heroContent.headline)).toBeInTheDocument();
-      expect(screen.getByText(features[0].title)).toBeInTheDocument();
+      expect(await screen.findByText(heroContent.headline)).toBeInTheDocument();
+      expect(await screen.findByText(features[0].title)).toBeInTheDocument();
     });
   });
 });

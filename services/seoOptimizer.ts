@@ -1,4 +1,13 @@
 import { GeneratedImage } from '../types/gallery';
+import { LanguageInfo, SUPPORTED_LANGUAGES, getLanguageInfo } from './languageConfig';
+
+const FALLBACK_LANGUAGE: LanguageInfo = {
+  code: 'en',
+  name: 'English',
+  nativeName: 'English',
+  locale: 'en-US',
+  hreflang: 'en'
+};
 
 export interface MetaTag {
   name?: string;
@@ -39,25 +48,30 @@ export class SEOOptimizer implements ISEOOptimizer {
   private readonly baseUrl: string;
   private readonly appName: string;
   private readonly appDescription: string;
+  private readonly activeLanguage: LanguageInfo;
 
-  constructor() {
+  constructor(options: { languageCode?: string } = {}) {
     this.baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://txttohandwriting.org';
     this.appName = 'Handwriting Generator - Convert Text to Handwriting Online';
     this.appDescription = 'Transform typed text into realistic handwriting with our free online handwriting generator. Create authentic handwritten notes, assignments, and designs with multiple fonts, paper templates, and ink colors. No signup required, 100% private and secure. Perfect for students, content creators, and professionals.';
+    this.activeLanguage = getLanguageInfo(options.languageCode) || FALLBACK_LANGUAGE;
   }
 
   generateMetaTags(): MetaTag[] {
-    return [
+    const primaryLanguage = this.activeLanguage || SUPPORTED_LANGUAGES[0] || FALLBACK_LANGUAGE;
+    const alternateLanguages = SUPPORTED_LANGUAGES.filter(lang => lang.code !== primaryLanguage.code);
+
+    const metaTags: MetaTag[] = [
       // Basic meta tags
       { name: 'description', content: this.appDescription },
       { name: 'keywords', content: 'handwriting generator, text to handwriting, convert text to handwriting, handwritten text, custom fonts, realistic handwriting, text to handwriting converter, online handwriting generator, free handwriting tool, handwriting font generator, studygram, aesthetic notes, digital handwriting, handwritten notes generator, handwriting maker' },
       { name: 'author', content: 'txttohandwriting.org Team' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-      { name: 'language', content: 'en' },
-      { name: 'language', content: 'en' },
       { name: 'revisit-after', content: '1 day' },
       { name: 'distribution', content: 'global' },
       { name: 'rating', content: 'general' },
+      { name: 'language', content: primaryLanguage.hreflang || primaryLanguage.code },
+      { httpEquiv: 'content-language', content: primaryLanguage.locale },
 
       // Open Graph meta tags (Enhanced for social sharing)
       { property: 'og:title', content: this.appName },
@@ -65,7 +79,7 @@ export class SEOOptimizer implements ISEOOptimizer {
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: this.baseUrl },
       { property: 'og:site_name', content: 'txttohandwriting.org' },
-      { property: 'og:locale', content: 'en_US' },
+      { property: 'og:locale', content: primaryLanguage.locale },
       { property: 'og:image', content: `${this.baseUrl}/app-screenshot.jpg` },
       { property: 'og:image:secure_url', content: `${this.baseUrl}/app-screenshot.jpg` },
       { property: 'og:image:type', content: 'image/jpeg' },
@@ -103,19 +117,29 @@ export class SEOOptimizer implements ISEOOptimizer {
       { name: 'HandheldFriendly', content: 'true' },
       { name: 'MobileOptimized', content: '320' }
     ];
+    
+    const alternateLocaleMeta = alternateLanguages.map(lang => ({
+      property: 'og:locale:alternate',
+      content: lang.locale
+    }));
+
+    return [...metaTags, ...alternateLocaleMeta];
   }
 
   createStructuredData(): StructuredData {
+    const languages = SUPPORTED_LANGUAGES.map(lang => lang.locale);
+
     return {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
       name: this.appName,
       description: this.appDescription,
       url: this.baseUrl,
+      inLanguage: languages,
       applicationCategory: 'DesignApplication',
       operatingSystem: 'Web Browser',
       browserRequirements: 'Requires JavaScript. Requires HTML5.',
-      softwareVersion: '2.0',
+      softwareVersion: '1.4.1',
       datePublished: '2025-01-01',
       dateModified: '2025-12-28',
       author: {
@@ -229,13 +253,18 @@ export class SEOOptimizer implements ISEOOptimizer {
     if (typeof document === 'undefined') return;
 
     metaTags.forEach(tag => {
-      const selector = tag.name ? `meta[name="${tag.name}"]` : `meta[property="${tag.property}"]`;
+      const selector = tag.name
+        ? `meta[name="${tag.name}"]`
+        : tag.property
+          ? `meta[property="${tag.property}"]`
+          : `meta[http-equiv="${tag.httpEquiv}"]`;
       let element = document.querySelector(selector) as HTMLMetaElement;
 
       if (!element) {
         element = document.createElement('meta');
         if (tag.name) element.name = tag.name;
         if (tag.property) element.setAttribute('property', tag.property);
+        if (tag.httpEquiv) element.setAttribute('http-equiv', tag.httpEquiv);
         document.head.appendChild(element);
       }
 
@@ -321,6 +350,10 @@ export class SEOOptimizer implements ISEOOptimizer {
   }
 
   createOrganizationStructuredData(): StructuredData {
+    const availableLanguages = SUPPORTED_LANGUAGES.map(
+      lang => lang.hreflang || lang.code
+    );
+
     return {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -333,11 +366,12 @@ export class SEOOptimizer implements ISEOOptimizer {
         `${this.baseUrl}/about`,
         `${this.baseUrl}/blog`
       ],
+      availableLanguage: availableLanguages,
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        email: 'coming soon',
-        availableLanguage: 'English'
+        email: 'support@txttohandwriting.org',
+        availableLanguage: availableLanguages
       }
     };
   }
@@ -356,13 +390,19 @@ export class SEOOptimizer implements ISEOOptimizer {
   }
 
   createWebsiteStructuredData(): StructuredData {
+    const languages = SUPPORTED_LANGUAGES.map(lang => lang.locale);
+    const availableLanguages = SUPPORTED_LANGUAGES.map(
+      lang => lang.hreflang || lang.code
+    );
+
     return {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'txttohandwriting.org',
       url: this.baseUrl,
       description: this.appDescription,
-      inLanguage: 'en-US',
+      inLanguage: languages,
+      availableLanguage: availableLanguages,
       potentialAction: {
         '@type': 'SearchAction',
         target: {

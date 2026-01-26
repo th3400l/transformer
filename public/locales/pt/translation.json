@@ -1,0 +1,442 @@
+{
+  "common": {
+    "startCreating": "Começar a Criar",
+    "learnMore": "Saiba mais",
+    "viewFaq": "Ver FAQ",
+    "readBlog": "Ler o Blog",
+    "loading": "Carregando...",
+    "generating": "Gerando...",
+    "download": "Baixar",
+    "preview": "Visualizar",
+    "backToLab": "Voltar ao laboratório",
+    "customFont": "Enviar Fonte",
+    "manageFonts": "Gerenciar Fontes",
+    "inkColor": "Cor da Tinta",
+    "colors": {
+      "black": "Preto",
+      "blue": "Azul",
+      "red": "Vermelho",
+      "green": "Verde"
+    },
+    "selectInk": "Escolher Tinta",
+    "paper": "Papel",
+    "style": "Estilo",
+    "content": "Conteúdo",
+    "clickHere": "visite aqui"
+  },
+  "seo": {
+    "title": "Gerador de Caligrafia - Converta Texto em Escrita Realista",
+    "description": "Gere texto manuscrito realista com fontes, modelos e cores de tinta personalizáveis. Perfeito para criar amostras de caligrafia autênticas com vários modelos de papel.",
+    "keywords": "gerador de caligrafia, texto para caligrafia, converter texto em caligrafia, texto manuscrito, fontes personalizadas, caligrafia realista, conversor de texto para caligrafia, gerador de caligrafia online, ferramenta de caligrafia gratuita, gerador de fonte de caligrafia, studygram, notas estéticas, caligrafia digital, gerador de notas manuscritas, criador de caligrafia"
+  },
+  "hero": {
+    "headline": "Transforme Texto em Caligrafia Autêntica",
+    "subheadline": "Crie notas, trabalhos e designs manuscritos realistas com nosso gerador de caligrafia online gratuito. Sem cadastro, 100% privado.",
+    "cta": "Começar Grátis",
+    "keywords": [
+      "gerador de caligrafia",
+      "texto para caligrafia",
+      "converter texto para caligrafia",
+      "ferramenta de caligrafia gratuita"
+    ]
+  },
+  "howItWorks": {
+    "heading": "Como Funciona",
+    "subheading": "Transforme seu texto em caligrafia autêntica em três etapas simples",
+    "steps": [
+      {
+        "title": "Digite Seu Texto",
+        "description": "Digite ou cole o texto que deseja converter em caligrafia. Nossa ferramenta suporta até 6 páginas de conteúdo, perfeito para trabalhos, notas ou projetos criativos."
+      },
+      {
+        "title": "Personalize Seu Estilo",
+        "description": "Escolha entre 9 fontes de caligrafia, selecione modelos de papel (branco, pautado ou pontilhado) e ajuste as cores e a espessura da tinta para combinar com sua estética."
+      },
+      {
+        "title": "Gere e Baixe",
+        "description": "Clique em gerar para criar suas páginas manuscritas. Baixe como imagens PNG de alta qualidade ou compile em um PDF. Todo o processamento acontece no seu navegador — totalmente privado."
+      }
+    ],
+    "context": "Nosso gerador de caligrafia facilita criar texto manuscrito realista para qualquer finalidade. Seja você estudante fazendo trabalhos, criador de conteúdo criando posts estéticos ou profissional adicionando toques pessoais a documentos, nossa ferramenta entrega resultados autênticos sempre."
+  },
+  "features": {
+    "heading": "Recursos Poderosos",
+    "subheading": "Tudo o que você precisa para criar uma caligrafia realista e autêntica para qualquer finalidade",
+    "items": [
+      {
+        "title": "Variações de Caligrafia Realistas",
+        "description": "Nosso mecanismo de renderização avançado cria caligrafia autêntica com variações naturais na linha de base, inclinação e intensidade da tinta.",
+        "benefits": [
+          "Instabilidade natural da linha de base",
+          "Inclinação de letra variável",
+          "Variações de cor da tinta",
+          "Micro-inclinações e imperfeições"
+        ]
+      },
+      {
+        "title": "Vários Modelos de Papel",
+        "description": "Escolha entre uma variedade de modelos de papel para atender às suas necessidades. Páginas em branco, papel pautado ou grades pontilhadas para bullet journals.",
+        "benefits": [
+          "Opções em branco, pautado e pontilhado",
+          "Texturas de papel autênticas",
+          "Modelos de alta resolução",
+          "Otimizado para impressão"
+        ]
+      },
+      {
+        "title": "Upload de Fonte Personalizada",
+        "description": "Deixe com a sua cara enviando sua própria fonte de caligrafia. Nossa ferramenta suporta os formatos TTF, OTF e WOFF, permitindo que você use sua caligrafia real.",
+        "benefits": [
+          "Envie sua própria caligrafia",
+          "Suporte para TTF, OTF, WOFF",
+          "2 slots para fontes personalizadas",
+          "Visualização instantânea"
+        ]
+      },
+      {
+        "title": "100% Grátis e Privado",
+        "description": "Sem assinaturas, sem taxas ocultas, sem coleta de dados. Tudo roda no seu navegador — seu texto nunca toca nossos servidores.",
+        "benefits": [
+          "Completamente grátis para sempre",
+          "Sem necessidade de cadastro",
+          "Processamento no cliente",
+          "Uso comercial permitido"
+        ]
+      }
+    ],
+    "context": "Nosso gerador de caligrafia combina tecnologia de renderização avançada com um design amigável para oferecer resultados profissionais."
+  },
+  "useCases": {
+    "heading": "Quem Usa Nosso Gerador de Caligrafia?",
+    "subheading": "De estudantes a profissionais, descubra como as pessoas usam nossa ferramenta para criar conteúdo manuscrito autêntico",
+    "items": [
+      {
+        "title": "Estudantes e Educadores",
+        "description": "Perfeito para criar trabalhos manuscritos, notas de estudo e folhas de exercícios. Gere envios manuscritos de aparência autêntica para cursos online.",
+        "examplesLabel": "Perfeito Para:",
+        "examples": [
+          "Trabalhos de casa",
+          "Notas de estudo e resumos",
+          "Folhas de exercícios",
+          "Amostras de caligrafia"
+        ]
+      },
+      {
+        "title": "Criadores de Conteúdo e Designers",
+        "description": "Eleve seu Studygram, designs de bullet journal ou projetos de design com elementos manuscritos autênticos. Crie postagens atraentes para redes sociais.",
+        "examplesLabel": "Perfeito Para:",
+        "examples": [
+          "Postagens de Studygram",
+          "Designs de bullet journal",
+          "Conteúdo para redes sociais",
+          "Páginas de planejador digital"
+        ]
+      },
+      {
+        "title": "Profissionais e Empresas",
+        "description": "Adicione um toque pessoal às comunicações empresariais, crie notas de agradecimento em estilo manuscrito ou desenhe materiais de marketing exclusivos.",
+        "examplesLabel": "Perfeito Para:",
+        "examples": [
+          "Notas de agradecimento",
+          "Cartas pessoais",
+          "Materiais de marketing",
+          "Geração de assinaturas"
+        ]
+      }
+    ],
+    "context": "Não importa o seu caso de uso, nosso gerador de caligrafia oferece a flexibilidade e a qualidade que você precisa."
+  },
+  "testimonials": {
+    "heading": "O Que Nossos Usuários Dizem",
+    "subheading": "Junte-se a milhares de usuários satisfeitos que confiam em nosso gerador de caligrafia para seus projetos",
+    "items": [
+      {
+        "quote": "Sempre que eu tinha que escrever as coisas, parecia uma bagunça total. Este site mudou o jogo de verdade — agora minhas notas parecem super fofas, e os estilos de fonte? Um arraso absoluto.",
+        "author": "Baddie Brown",
+        "role": "Rainha da Estética"
+      },
+      {
+        "quote": "Antigamente, eu tinha que rabiscar notas à mão só para o Jesse conseguir acompanhar. Desleixado, bagunçado — um verdadeiro pesadelo. Este site limpou tudo. As variações de fonte? Digamos apenas que são puro grau A.",
+        "author": "Heisenberg",
+        "role": "O Químico"
+      },
+      {
+        "quote": "Minha caligrafia era tão trêmula que o revendedor nem conseguia ler minhas notas. Este site resolveu isso — agora minhas listas de compras parecem limpas, e o estilo da fonte? Digamos que bate mais forte do que o que eu fumo.",
+        "author": "Plant Peter",
+        "role": "Botânico Local"
+      },
+      {
+        "quote": "A caligrafia deve ser mais do que apenas palavras — deve parecer sedutora. Com este site, até minhas notas parecem irresistíveis, como uma carta de amor na tela. Suave, elegante e impossível de ignorar.",
+        "author": "Aggressive Armas",
+        "role": "Agente Secreta"
+      },
+      {
+        "quote": "Escute… tentei escrever uma nota depois de alguns copos e digamos que parecia arte moderna. Este site? Salvador total. Agora minha caligrafia parece elegante mesmo quando não consigo andar em linha reta. Um brinde a isso!",
+        "author": "Drunk David",
+        "role": "Entusiasta de Vinhos"
+      },
+      {
+        "quote": "Minhas letras nem sempre ficam bonitas no papel. Este site faz cada nota parecer uma canção de amor — simples, elegante, inesquecível.",
+        "author": "Swirl Swift",
+        "role": "Compositora"
+      },
+      {
+        "quote": "No campo, já rabisquei notas no escuro, chuva caindo — quase ilegíveis. Este site? Torna minha escrita nítida e clara sempre. Essa é uma ferramenta muito boa.",
+        "author": "Captain Price",
+        "role": "Força-Tarefa 141"
+      },
+      {
+        "quote": "Estou sempre em movimento e minhas notas rápidas nunca parecem prontas para a passarela. Este site torna tudo chique e impecável — como caligrafia, mas fashion.",
+        "author": "Jacked Jenner",
+        "role": "Modelo / Ícone"
+      },
+      {
+        "quote": "Eu costumava fazer trabalhos e tirar notas baixas — é por isso que todos me chamam de L. Mas experimentei uma vitória usando este site. Minhas notas nunca pareceram tão precisas.",
+        "author": "L",
+        "role": "Detetive"
+      }
+    ],
+    "context": "Pronto para criar seu próprio conteúdo manuscrito? Junte-se à nossa comunidade de estudantes, criadores e profissionais que usam nosso gerador de caligrafia gratuito todos os dias."
+  },
+  "tips": {
+    "heading": "Dicas e Melhores Práticas",
+    "subheading": "Aproveite ao máximo seu gerador de caligrafia com estas dicas de especialistas",
+    "items": [
+      {
+        "title": "Escolha a Fonte Certa",
+        "description": "Diferentes fontes funcionam melhor para diferentes propósitos. Use fontes cursivas elegantes para documentos formais, fontes casuais para notas pessoais e fontes claras para legibilidade."
+      },
+      {
+        "title": "Ajuste a Espessura da Tinta",
+        "description": "Controle o peso da sua caligrafia ajustando a espessura da tinta. Configurações mais leves criam uma escrita delicada e feminina, enquanto configurações mais fortes produzem traços fortes e confiantes."
+      },
+      {
+        "title": "Selecione o Modelo Certo",
+        "description": "Combine seu modelo de papel com seu conteúdo. O papel pautado funciona melhor para notas estruturadas e trabalhos, páginas em branco para liberdade criativa e grades pontilhadas para bullet journals."
+      },
+      {
+        "title": "Visualize Antes de Gerar",
+        "description": "Use a visualização ao vivo para verificar seu texto antes de gerar. Isso economiza tempo e garante que seu conteúdo fique exatamente como você deseja."
+      },
+      {
+        "title": "Use o Download em Lote para Várias Páginas",
+        "description": "Gerando várias páginas? Use o recurso de download em lote para salvar todas as suas páginas de uma vez. Escolha sua configuração de qualidade preferida e baixe tudo como um arquivo ZIP."
+      }
+    ],
+    "context": "Essas dicas ajudarão você a criar textos manuscritos mais realistas e com aparência profissional."
+  },
+  "mainPage": {
+    "mobileControls": "Controles",
+    "mobilePreview": "Visualização e Galeria",
+    "updatingPreview": "Atualizando visualização...",
+    "mission": {
+      "badge": "Nossa Missão",
+      "heading": "Por que construímos isso?",
+      "description": "Acreditamos em um futuro onde os estudantes possam se concentrar em suas ideias em vez de ficarem com cãibras nas mãos ao escrever trabalhos. Sem brincadeira, é hora de abraçar a era digital mantendo aquela vibração manuscrita autêntica."
+    },
+    "lab": {
+      "heading": "O Laboratório",
+      "version": "v1.4.1",
+      "inputLabel": "Conteúdo",
+      "placeholder": "Digite seu texto aqui...",
+      "style": "Estilo",
+      "size": "Tamanho",
+      "paperRealism": "Realismo do Papel",
+      "ultra": "Ultra",
+      "high": "Alto",
+      "low": "Baixo",
+      "inkBoldness": "Espessura da Tinta"
+    },
+    "output": {
+      "title": "Visualização ao Vivo",
+      "template": "Modelo",
+      "loading": "Carregando...",
+      "loadingTemplate": "Carregando modelo de papel...",
+      "initializing": "Iniciando motor de caligrafia...",
+      "presentRose": "Presentear Rosa"
+    }
+  },
+  "footer": {
+    "about": "Sobre",
+    "blog": "O Blog",
+    "changelog": "Notas de Atualização",
+    "terms": "Termos e Condições",
+    "faq": "Perguntas Frequentes",
+    "rights": "Todos os direitos reservados."
+  },
+  "pages": {
+    "about": {
+      "title": "Sobre a Vibe",
+      "back": "Voltar ao laboratório",
+      "community": "Aberto à comunidade",
+      "communityDesc": "Ideias de recursos, relatórios de bugs e sugestões dignas de memes caem todos na mesma caixa de entrada. Lemos genuinamente tudo o que chega.",
+      "description1": "começou como um desafio de fim de noite para fazer as notas digitais parecerem menos robóticas e mais como as páginas rabiscadas com as quais crescemos. O que deveria ser um pequeno script transformou-se em Blend Modes, gerenciadores de textura e muitas xícaras de café.",
+      "description2": "Hoje, o gerador atende estudantes, designers e procrastinadores em série que ainda querem que seus trabalhos pareçam feitos à mão. Somos obcecados por um tremor de tinta crível, telas responsivas e por manter toda a experiência rápida o suficiente para terminar aquele trabalho trinta minutos antes do prazo final.",
+      "donateBtc": "Doar um Bitcoin",
+      "donateBtcDesc": "Endereço da carteira em breve — até lá, envie-nos uma mensagem e enviaremos os detalhes mais recentes pessoalmente.",
+      "presentRose": "Presentear uma Rosa",
+      "madeBy": "Feito com $ por Th3-F00L",
+      "keywords": "sobre txttohandwriting, missão gerador de caligrafia, equipe txttohandwriting",
+      "supportHeadline": "Precisa de ajuda, feedback ou quer apenas dizer oi?",
+      "supportDesc": "Nós mesmos respondemos a todos os e-mails. Suas capturas de tela, ideias de recursos e vitórias mantêm este projeto vivo."
+    },
+    "faq": {
+      "title": "O 411 (FAQ)",
+      "back": "Voltar ao laboratório",
+      "keywords": "faq gerador de caligrafia, suporte ferramenta de caligrafia, ajuda caligrafia",
+      "q1": "Isso é realmente grátis?",
+      "a1": "De verdade, é grátis. Sem mentira. Não somos dessa vida de assinatura. Fique à vontade (só não quebre nada).",
+      "q2": "Posso usar isso para o meu negócio paralelo?",
+      "a2": "Com certeza. Faça seus memes, crie a marca do seu Depop, o que for. Vá buscar o seu dinheiro. Nenhum crédito é necessário, mas uma menção seria icônica.",
+      "q3": "Vocês estão lendo meus pensamentos malucos?",
+      "a3": "Não, não conseguimos ver nada. Não somos como aquele alien Mar... kek... enfim, para ser franco, não precisamos dos seus dados. Nossos servidores são como pedras, de qualquer forma. Seus segredos estão seguros conosco, bestie.",
+      "q4": "Qual é a dos downloads?",
+      "a4": "No momento, são apenas PNGs. Estão ficando… com alta qualidade. Podemos adicionar mais formatos mais tarde, se a vibe for boa.",
+      "q5": "Por que a fonte parece um pouco estranha?",
+      "a5": "Provavelmente é o seu navegador. Tente atualizá-lo. Se ainda parecer suspeito, pode ser apenas o seu sistema operacional fazendo as coisas dele. É uma vibe, não uma ciência exata.",
+      "q6": "Minha faculdade pede cópias físicas, o que devo fazer?",
+      "a6": "Te ajudo, garota/garoto! Tenho uma solução perfeita para você",
+      "supportHeadline": "Ainda confuso ou quer criticar um bug?",
+      "supportDesc": "Envie uma nota para a equipe e responderemos mais rápido do que você consegue dizer cursiva."
+    },
+    "changelog": {
+      "title": "Notas de Atualização",
+      "back": "Voltar ao laboratório",
+      "productUpdates": "Atualizações do produto",
+      "description": "Cada melhoria, ajuste e grande revelação que lançamos desde o lançamento. Mantemos as coisas humanas — sem jargão, apenas o que mudou e por que isso importa para suas notas.",
+      "mood": "Vibe",
+      "keywords": "atualizações de produto, notas de atualização txttohandwriting, novos recursos",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "Refinando a experiência para todos.",
+          "highlights": [
+            "Corrigidos alguns bugs e novas melhorias.",
+            "Adicionada funcionalidade de suporte a múltiplos idiomas."
+          ],
+          "mood": "Vibrações globais."
+        },
+        "v1-4": {
+          "tagline": "Próximo nível de realismo e desempenho.",
+          "highlights": [
+            "Nova reformulação da interface do usuário com um sistema de design mais limpo e moderno.",
+            "Melhoria na geração de imagens com maior fidelidade e melhores texturas de tinta.",
+            "Melhoria na renderização de imagens ao vivo para o próximo nível para feedback instantâneo.",
+            "Otimização do motor para processamento mais rápido e interações mais suaves."
+          ],
+          "mood": "Novo começo, novo ano, novas notas."
+        },
+        "v1-3": {
+          "tagline": "Mais controle, maior qualidade e uma experiência mais suave.",
+          "highlights": [
+            "Revisão do design da interface do usuário para uma experiência mais intuitiva e esteticamente agradável.",
+            "Adicionada opção de controle de peso da tinta para controle mais preciso da aparência da caligrafia.",
+            "Adicionada a opção de baixar todas as imagens geradas como um único arquivo PDF.",
+            "Adicionada opção de qualidade de imagem (Alta, Média, Baixa) para equilibrar qualidade e tamanho do arquivo.",
+            "Corrigidos vários bugs conhecidos para melhorar a estabilidade e o desempenho."
+          ],
+          "mood": "Sentindo-se poderoso e polido."
+        },
+        "v1-2": {
+          "tagline": "Um novo brilho com nova liberdade criativa.",
+          "highlights": [
+            "Redesenho principal do laboratório para que os controles, a visualização e a galeria fluam juntos em todos os tamanhos de tela.",
+            "Gerenciador de upload de fontes personalizadas com orientação passo a passo e dois slots pessoais para sua caligrafia.",
+            "Ajuste de desempenho no Chrome, Safari, Firefox e Edge para que as páginas renderizem mais rápido e pareçam mais suaves."
+          ],
+          "mood": "Hoje parece uma página de planejador novinha em folha."
+        },
+        "v1-0": {
+          "tagline": "O dia em que o txttohandwriting.org se tornou público.",
+          "highlights": [
+            "Lançado o laboratório de caligrafia com visualização instantânea, cores de tinta e controles de realismo.",
+            "Introduzida a prateleira Paper Vibe com modelos em branco, pontilhados e pautados prontos para baixar como PNGs.",
+            "Aberta a galeria de imagens com visualização em tela cheia, etiquetas de sequência e downloads com um clique."
+          ],
+          "mood": "Frio na barriga do primeiro dia de aula, mas para viciados em papelaria."
+        }
+      }
+    },
+    "terms": {
+      "title": "Termos e Condições",
+      "back": "Voltar ao Gerador",
+      "keywords": "termos de serviço caligrafia, política de privacidade txttohandwriting, legal",
+      "lastUpdated": "Última atualização",
+      "welcome": "Bem-vindo ao txttohandwriting.org! Estes termos e condições descrevem as regras e regulamentos para o uso do nosso site. Ao acessar este site, presumimos que você aceita estes termos e condições. Não continue a usar o txttohandwriting.org se não concordar com todos os termos e condições declarados nesta página.",
+      "section1Title": "1. Aceitação dos Termos",
+      "section1Content": "O serviço é fornecido \"como está\" e \"conforme disponível\", sem quaisquer garantias. Não garantimos que o serviço será ininterrupto ou livre de erros.",
+      "section2Title": "2. Uso do Serviço",
+      "section2Content": "Você concorda em usar nosso serviço apenas para fins legais. Você é o único responsável pelo conteúdo que cria e converte. Você concorda em não usar o serviço para criar qualquer conteúdo que seja difamatório, obsceno ou de outra forma questionável.",
+      "section3Title": "3. Propriedade Intelectual",
+      "section3Content": "O texto que você digita é seu. As imagens geradas a partir do seu texto podem ser usadas para fins pessoais e comerciais. No entanto, as fontes, o design e a marca do txttohandwriting.org são propriedade dos proprietários do site e não podem ser usados sem permissão.",
+      "section4Title": "4. Isenção de Garantias",
+      "section4Content": "Nosso site é fornecido em uma base \"como está\". Não oferecemos garantias, expressas ou implícitas, e por meio deste nos isentamos e negamos todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um propósito específico ou não violação de propriedade intelectual ou outra violação de direitos.",
+      "section5Title": "5. Limitação de Responsabilidade",
+      "section5Content": "Em nenhum caso o txttohandwriting.org ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro, ou devido à interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em nosso site, mesmo que tenhamos sido notificados oralmente ou por escrito da possibilidade de tais danos.",
+      "section6Title": "6. Alterações nos Termos",
+      "section6Content": "Reservamo-nos o direito de revisar estes termos e condições a qualquer momento. Ao usar este site, espera-se que você revise estes termos regularmente para garantir que entende todos os termos e condições que regem o uso deste site.",
+      "section7Title": "7. Análise e Cookies",
+      "section7Content1": "Usamos o Google Analytics com o Modo de Consentimento para entender como o txttohandwriting.org é usado e para continuar melhorando a experiência. Os cookies de análise permanecem desativados até que você conceda explicitamente o consentimento por meio do banner mostrado na sua primeira visita ao site. Se você recusar, nenhum dado de análise será enviado ao Google e o site continuará funcionando normalmente.",
+      "section7Content2": "As configurações de consentimento abrangem os seguintes parâmetros do Google: ad_storage, ad_personalization, ad_user_data e analytics_storage. Até que você aceite, cada um desses valores permanece no estado \"negado\", impedindo que cookies sejam gravados e eventos sejam enviados. Quando você aceita, atualizamos essas configurações para \"concedido\" e armazenamos sua preferência em seu navegador.",
+      "section8Title": "8. Gerenciando Seu Consentimento",
+      "section8Content": "Você pode atualizar ou retirar seu consentimento a qualquer momento limpando os dados do site em seu navegador ou entrando em contato com nossa equipe. Teremos o prazer em ajudar e garantir que suas preferências sejam respeitadas. Para qualquer dúvida de privacidade ou solicitações relacionadas ao consentimento, entre em contato conosco em: em breve.",
+      "supportHeadline": "Dúvidas sobre estes termos?",
+      "supportDesc": "Ficaremos felizes em esclarecer qualquer questão legal ou ajudar você a manter seus trabalhos em ordem."
+    },
+    "notFound": {
+      "title": "Página Não Encontrada | txttohandwriting.org",
+      "description": "Não conseguimos encontrar a página que você estava procurando. Volte para o laboratório de caligrafia para continuar criando.",
+      "keywords": "gerador de caligrafia 404, página não encontrada"
+    },
+    "blog": {
+      "title": "Blog de Inspiração de Caligrafia | txttohandwriting.org",
+      "description": "Guias, inspiração e dicas para transformar texto digitado em caligrafia estética para Studygram, planejadores e trabalhos.",
+      "keywords": "blog de caligrafia, dicas de studygram, inspiração de notas"
+    },
+    "blogPost": {
+      "keywords": "blog de caligrafia, dicas, inspiração"
+    }
+  },
+  "blog": {
+    "title": "O Blog",
+    "backToLab": "Voltar ao laboratório",
+    "backToAll": "Voltar para todas as postagens",
+    "readMore": "Clique para ler mais →",
+    "by": "Por",
+    "ctaHeadline": "Tem ideias de posts ou feedback?",
+    "ctaDescription": "Conta o que você quer ver no blog ou compartilhe suas dicas de escrita à mão."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "Dê um Glow Up nas suas Anotações: Guia Definitivo de Conversores de Texto para Manuscrito",
+      "content": "<p>Vamos ser sinceros: seus apontamentos estão meio sem graça. Você quer ser a pessoa com notas estéticas no Studygram, mas blocos de texto digitado não dão a vibe. Entra o <strong>conversor de texto para escrita à mão</strong>, o life hack para romantizar os estudos.</p>\n<h2>O que são geradores de escrita à mão?</h2>\n<p>Um <strong>gerador de escrita à mão</strong> transforma seu texto digital em manuscrito fofo. Perfeito para ter o charme do escrito à mão sem câimbras. Para guias de estudo ou designs do planner, uma <strong>ferramenta gratuita de texto para manuscrito</strong> vira sua bestie.</p>\n<h2>Encontre sua estética de fonte</h2>\n<p>O glow‑up vem da fonte certa, aquela que grita “você”. Mais clean e elegante ou casual e bagunçada? Temos várias opções. Um bom <strong>conversor de escrita à mão online</strong> te dá escolha para ir de biologia a história. Útil e super estético.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Por Que seu Studygram Está Flopando (e Como um Gerador de Caligrafia Pode Resolver)",
+      "content": "<p>Você tem marca‑texto pastel, washi tape e café gelado. Então por que o Studygram não decola? Talvez o conteúdo. Times New Roman de sempre é um tédio. Para parar o scroll, você precisa de visuais fortes. E nada diz “tô com a vida em dia” como notas manuscritas perfeitas.</p>\n<h2>O segredo: converter texto para escrita à mão online</h2>\n<p>Ninguém tem tempo de escrever tudo à mão, principalmente com três trabalhos para amanhã. Aí entra um <strong>tool de texto para escrita à mão</strong>. Você digita e <strong>transforma o texto em imagem</strong> de caligrafia bonita.</p>\n<p>Imagine postar um story com um resumo manuscrito impecável. É único, chama atenção e parece muito mais esforço. Esse é o poder do <strong>gerador de escrita à mão gratuito</strong>: eleva o conteúdo do básico ao icônico.</p>\n<h2>Como fazer aparecer</h2>\n<p>Não jogue em fundo liso. Escolha papel — pautado, quadriculado ou liso — e cor de tinta que combine. Baixe o PNG e use no Canva ou no GoodNotes. Segredo para conteúdo Studygram que a galera salva e compartilha.</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "Como Criar sua Própria Fonte de Escrita à Mão (Sem Pirar)",
+      "content": "<p>Quer ver <strong>sua própria escrita</strong> no txttohandwriting.org? Dá para fazer. Transformar seus rabiscos em fonte parece coisa de designer, mas a internet tem ferramentas simples, gratuitas (ou quase) e bem DIY.</p>\n<h2>Passo 1: Prepare uma amostra</h2>\n<p>Imprima um modelo ou escreva no tablet com um pincel neutro. Mantenha a linha base estável e escreva todas as letras com clareza — maiúsculas, minúsculas, números, pontuação.</p>\n<ul>\n  <li><strong>Modelo Calligraphr:</strong> imprima a folha do <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>, escreva com caneta escura e escaneie em 300 dpi.</li>\n  <li><strong>Procreate ou Affinity:</strong> apps como <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> e <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> facilitam — exporte um PNG transparente.</li>\n</ul>\n<h2>Passo 2: Transforme letras em fonte</h2>\n<p>Alguns geradores gratuitos (ou quase) fazem o trabalho pesado:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – web e rápido para TTF/OTF. A versão grátis faz uma fonte por vez.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – editor no navegador para ajustes extras.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – gratuito, baseado em grade, ótimo para experimentar.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – donationware com importação SVG fácil.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (pago) ou <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> para um acabamento pro.</li>\n</ul>\n<p>Envie a folha, alinhe cada caractere, confira as prévias e exporte em TTF, OTF ou WOFF/WOFF2.</p>\n<h2>Passo 3: Ajuste os detalhes</h2>\n<p>Edite linha base, kerning e altura de linha para evitar tremidas. Teste uma frase antes de exportar.</p>\n<h2>Passo 4: Envie para o txttohandwriting.org</h2>\n<p>Vá ao lab, toque em <strong>Custom → Upload</strong>, envie sua fonte e dê um nome. Guardamos duas fontes personalizadas por conta.</p>\n<p>Pronto! Em pouco tempo você aplica sua escrita em planners e anotações. Se testar, marque a gente — mostramos sua fonte na galeria.</p>"
+    },
+    "paper-texture-science": {
+      "title": "Ciência da Textura do Papel: Por Que Importa",
+      "content": "<p>Por que algumas notas digitais parecem falsas e outras parecem reais? Tudo está na <strong>textura do papel</strong>. Um fundo branco e plano grita “gerado por computador”, mas um grão sutil dá vida à página.</p>\n<h2>Os microdetalhes</h2>\n<p>Papel real tem fibras e pequenas imperfeições. Nosso gerador simula esses <strong>microdetalhes</strong> para o texto parecer sobre o papel, não flutuando. Linhas de caderno ou papel rústico, a textura é a heroína do realismo.</p>\n<h2>Textura e mood</h2>\n<p>O fundo certo define o clima. Papel quadriculado passa precisão, o pautado traz nostalgia de sala de aula. E o papel liso texturizado? É o canvas perfeito para esboços e journaling. Não subestime o fundo: ele é metade da estética.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "A Psicologia das Anotações à Mão vs. Digitar",
+      "content": "<p>Todo mundo conhece o debate: laptop vs. caderno. Mas há ciência por trás da <strong>vantagem da escrita à mão</strong>. Estudos mostram que escrever ativa mais áreas do cérebro, melhorando memória e compreensão.</p>\n<h2>Por que o cérebro ama curvas</h2>\n<p>Digitar é mecânico; toda letra parece igual. A escrita à mão usa movimentos únicos e isso ajuda a fixar a informação. Por isso seu resumo manuscrito parece mais familiar do que um PDF digitado.</p>\n<h2>O compromisso digital</h2>\n<p>Mas escrever à mão é lento. As <strong>ferramentas de texto para escrita à mão</strong> fecham essa lacuna: você mantém a velocidade de digitar com os benefícios visuais do manuscrito. As notas ficam menos “dados” e mais <em>conhecimento</em>.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "Top 5 Maneiras Criativas de Usar Geradores de Escrita Além da Escola",
+      "content": "<p>Acha que geradores de escrita são só para tarefas? Pense de novo. As possibilidades criativas são infinitas. Aqui vão nossos 5 usos favoritos.</p>\n<h2>1. Props para D&D e TTRPG</h2>\n<p>Mestres de RPG: nada imerge mais do que uma carta física. Gere um aviso “rabiscado às pressas” com fonte bagunçada e fundo de pergaminho.</p>\n<h2>2. Scrapbooking digital</h2>\n<p>Adicione legendas aos seus collages sem stylus. Mantém o DIY e o layout limpo.</p>\n<h2>3. Cartões de receita estéticos</h2>\n<p>Digite a receita secreta da vovó, escolha uma fonte cursiva e imprima em papel cartão. Presente personalizado incrível.</p>\n<h2>4. Frases para redes sociais</h2>\n<p>Chega de usar as mesmas fontes do Canva. Uma citação manuscrita em fundo texturizado se destaca no feed.</p>\n<h2>5. Cartas de amor (a gente não conta)</h2>\n<p>Escrever você mesmo é mais romântico, mas se sua letra parece de galinha, o gerador ajuda. Escolha uma fonte crível.</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "Escrita Pronta para Imprimir: Margens, Espaçamento e Vibes de Papel",
+      "content": "<p>Páginas manuscritas ficam lindas na tela, mas a impressão pode derrubar a magia. Alguns ajustes mantêm tudo limpo e crível no papel.</p>\n<h2>Comece pela página, não pela fonte</h2>\n<p>Escolha o papel primeiro e depois ajuste margens e tamanho da fonte. Um pouco de espaço em branco nas bordas deixa a página com cara de caderno real.</p>\n<h2>Exporte com inteligência</h2>\n<p>Use alta qualidade para imprimir e exporte em PDF se precisar de várias páginas. Se a impressora for exigente, use tintas neutras e texturas sutis.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "Toques Manuscritos para Projetos de Trabalho (Sem Parecer Amador)",
+      "content": "<p>Escrita à mão não é só para escola. Um detalhe manuscrito pode deixar proposta, moodboard ou onboarding mais humano sem parecer bagunça.</p>\n<h2>Use como destaque, não como página inteira</h2>\n<p>Deixe o conteúdo principal digitado e use trechos manuscritos para títulos, citações e ações. Guia o olhar e mantém a legibilidade.</p>\n<h2>Combine o tom</h2>\n<p>Escolha uma fonte limpa, use tinta preta ou azul e texturas de papel sutis. O objetivo é “intencional”, não “scrapbook”.</p>"
+    }
+  }
+}

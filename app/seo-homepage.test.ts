@@ -54,7 +54,8 @@ describe('Homepage SEO Enhancement Tests', () => {
       expect(title.length).toBeLessThanOrEqual(70);
       
       // Should include brand or descriptive text
-      expect(title.toLowerCase()).toContain('convert text') || expect(title.toLowerCase()).toContain('free');
+      const titleLower = title.toLowerCase();
+      expect(titleLower.includes('convert text') || titleLower.includes('free')).toBe(true);
     });
   });
 
@@ -106,8 +107,8 @@ describe('Homepage SEO Enhancement Tests', () => {
       // Should mention key features
       const featureText = structuredData.featureList.join(' ').toLowerCase();
       expect(featureText).toContain('handwriting');
-      expect(featureText).toContain('template') || expect(featureText).toContain('paper');
-      expect(featureText).toContain('free') || expect(featureText).toContain('private');
+      expect(featureText.includes('template') || featureText.includes('paper')).toBe(true);
+      expect(featureText.includes('free') || featureText.includes('private')).toBe(true);
     });
   });
 
@@ -118,7 +119,8 @@ describe('Homepage SEO Enhancement Tests', () => {
       // Hero should have a clear, keyword-rich headline
       expect(headline).toBeDefined();
       expect(headline.length).toBeGreaterThan(0);
-      expect(headline.toLowerCase()).toContain('handwriting') || expect(headline.toLowerCase()).toContain('text');
+      const headlineLower = headline.toLowerCase();
+      expect(headlineLower.includes('handwriting') || headlineLower.includes('text')).toBe(true);
     });
 
     it('should validate logical heading hierarchy concept', () => {

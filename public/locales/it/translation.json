@@ -1,0 +1,439 @@
+{
+  "common": {
+    "startCreating": "Inizia a creare",
+    "learnMore": "Scopri di più",
+    "viewFaq": "Vedi FAQ",
+    "readBlog": "Leggi i post del blog",
+    "loading": "Caricamento...",
+    "generating": "Generazione...",
+    "download": "Scarica",
+    "preview": "Anteprima",
+    "backToLab": "Torna al laboratorio",
+    "customFont": "Carica font personalizzato",
+    "manageFonts": "Gestisci font personalizzati",
+    "inkColor": "Colore inchiostro",
+    "colors": {
+      "black": "Nero",
+      "blue": "Blu",
+      "red": "Rosso",
+      "green": "Verde"
+    },
+    "selectInk": "Seleziona inchiostro",
+    "paper": "Carta",
+    "style": "Stile",
+    "content": "Contenuto",
+    "clickHere": "clicca qui"
+  },
+  "seo": {
+    "title": "Generatore di scrittura a mano - Converti testo in scrittura realistica",
+    "description": "Genera testo manoscritto realistico con font, template e colori di inchiostro personalizzabili. Perfetto per creare campioni autentici con diversi modelli di carta."
+  },
+  "hero": {
+    "headline": "Trasforma il testo in scrittura autentica",
+    "subheadline": "Crea note, compiti e design manoscritti realistici con il nostro generatore online gratuito. Nessuna registrazione, 100% privato.",
+    "cta": "Inizia gratis",
+    "keywords": [
+      "generatore di scrittura a mano",
+      "testo in scrittura a mano",
+      "converti testo in scrittura a mano",
+      "strumento gratuito di scrittura a mano"
+    ]
+  },
+  "howItWorks": {
+    "heading": "Come funziona",
+    "subheading": "Trasforma il tuo testo in scrittura autentica in tre semplici passaggi",
+    "steps": [
+      {
+        "title": "Inserisci il testo",
+        "description": "Scrivi o incolla il testo che vuoi convertire in scrittura a mano. Il nostro strumento supporta fino a 6 pagine di contenuto, perfetto per compiti, appunti o progetti creativi."
+      },
+      {
+        "title": "Personalizza lo stile",
+        "description": "Scegli tra 9 font manoscritti, seleziona template di carta (bianca, a righe o a punti) e regola colore e intensità dell'inchiostro per il tuo look."
+      },
+      {
+        "title": "Genera e scarica",
+        "description": "Clicca genera per creare le pagine manoscritte. Scarica PNG di alta qualità o un PDF. Tutto avviene nel tuo browser, completamente privato."
+      }
+    ],
+    "context": "Il nostro generatore di scrittura a mano rende facile creare testo manoscritto realistico per qualsiasi scopo. Che tu sia uno studente alle prese con i compiti, un content creator che progetta post estetici o un professionista che aggiunge tocchi personali ai documenti, il nostro strumento offre risultati autentici ogni volta."
+  },
+  "features": {
+    "heading": "Funzionalità potenti",
+    "subheading": "Tutto ciò che ti serve per creare una scrittura autentica e realistica per qualsiasi scopo",
+    "items": [
+      {
+        "title": "Variazioni realistiche della scrittura",
+        "description": "Il nostro motore di rendering avanzato crea una scrittura autentica con variazioni naturali di linea di base, inclinazione e intensità dell'inchiostro.",
+        "benefits": [
+          "Leggera vibrazione naturale della linea di base",
+          "Inclinazione variabile delle lettere",
+          "Variazioni del colore dell'inchiostro",
+          "Micro-inclinazioni e imperfezioni"
+        ]
+      },
+      {
+        "title": "Template di carta multipli",
+        "description": "Scegli tra diversi template di carta per le tue esigenze. Pagine bianche per libertà creativa, carta a righe per appunti strutturati o griglie puntinate per bullet journal.",
+        "benefits": [
+          "Opzioni bianche, a righe e puntinate",
+          "Texture di carta autentiche",
+          "Template ad alta risoluzione",
+          "Ottimizzato per la stampa"
+        ]
+      },
+      {
+        "title": "Caricamento font personalizzato",
+        "description": "Rendilo davvero tuo caricando il tuo font manoscritto. Il nostro strumento supporta i formati TTF, OTF e WOFF.",
+        "benefits": [
+          "Carica la tua grafia",
+          "Supporto per TTF, OTF, WOFF",
+          "2 slot per font personalizzati",
+          "Anteprima immediata"
+        ]
+      },
+      {
+        "title": "100% gratuito e privato",
+        "description": "Nessun abbonamento, nessun costo nascosto, nessuna raccolta dati. Tutto gira nel tuo browser—il tuo testo non passa mai dai nostri server.",
+        "benefits": [
+          "Completamente gratuito per sempre",
+          "Nessuna registrazione richiesta",
+          "Elaborazione lato client",
+          "Uso commerciale consentito"
+        ]
+      }
+    ],
+    "context": "Il nostro generatore combina tecnologia di rendering avanzata con un design intuitivo per risultati professionali."
+  },
+  "useCases": {
+    "heading": "Chi usa il nostro generatore?",
+    "subheading": "Dagli studenti ai professionisti, scopri come usano il nostro strumento per creare contenuti manoscritti autentici",
+    "items": [
+      {
+        "title": "Studenti e insegnanti",
+        "description": "Perfetto per creare compiti scritti a mano, appunti di studio e schede di esercizi.",
+        "examplesLabel": "Ideale per:",
+        "examples": [
+          "Compiti a casa",
+          "Appunti e riassunti",
+          "Schede di esercitazione",
+          "Campioni di scrittura"
+        ]
+      },
+      {
+        "title": "Content creator e designer",
+        "description": "Dai un upgrade al tuo Studygram, ai bullet journal o ai progetti di design con elementi manoscritti autentici.",
+        "examplesLabel": "Ideale per:",
+        "examples": [
+          "Post Studygram",
+          "Design di bullet journal",
+          "Contenuti social",
+          "Pagine di planner digitali"
+        ]
+      },
+      {
+        "title": "Professionisti e aziende",
+        "description": "Aggiungi un tocco personale alle comunicazioni aziendali, crea biglietti di ringraziamento in stile manoscritto o materiali marketing unici.",
+        "examplesLabel": "Ideale per:",
+        "examples": [
+          "Biglietti di ringraziamento",
+          "Lettere personali",
+          "Materiali di marketing",
+          "Generazione di firme"
+        ]
+      }
+    ],
+    "context": "Qualunque sia il tuo uso, il nostro generatore offre flessibilità e qualità."
+  },
+  "testimonials": {
+    "heading": "Cosa dicono gli utenti",
+    "subheading": "Unisciti a migliaia di utenti soddisfatti che si fidano del nostro generatore per i loro progetti",
+    "items": [
+      {
+        "quote": "Ogni volta che dovevo scrivere qualcosa, veniva un disastro. Questo sito ha cambiato tutto: ora i miei appunti sono super carini, e gli stili del font? Una bomba.",
+        "author": "Baddie Brown",
+        "role": "Regina dell'estetica"
+      },
+      {
+        "quote": "Una volta dovevo scarabocchiare appunti a mano solo per far stare dietro Jesse. Disordinati, illeggibili—una sofferenza. Questo sito ha messo tutto in ordine. Le variazioni di font? Diciamo solo che sono di livello assoluto.",
+        "author": "Heisenberg",
+        "role": "Il Chimico"
+      },
+      {
+        "quote": "La mia grafia era così tremolante che il tipo non riusciva nemmeno a leggere i miei appunti. Questo sito l'ha sistemata—ora anche la lista della spesa è pulita, e lo stile? Diciamo che spacca più di quello che fumo.",
+        "author": "Plant Peter",
+        "role": "Botanico locale"
+      },
+      {
+        "quote": "La scrittura a mano dovrebbe essere più di parole—dovrebbe sedurre. Con questo sito, anche i miei appunti sembrano una lettera d'amore sullo schermo. Smooth, stilosi, impossibili da ignorare.",
+        "author": "Aggressive Armas",
+        "role": "Agente segreto"
+      },
+      {
+        "quote": "Senti… ho provato a scrivere un biglietto dopo qualche drink, e sembrava arte moderna. Questo sito? Salvavita. Ora la mia grafia è elegante anche quando non cammino dritto. Cin cin!",
+        "author": "Drunk David",
+        "role": "Appassionato di vino"
+      },
+      {
+        "quote": "Le mie lyrics non sono sempre belle su carta. Questo sito fa sembrare ogni nota una canzone d'amore—semplice, stilosa, indimenticabile.",
+        "author": "Swirl Swift",
+        "role": "Cantautrice"
+      },
+      {
+        "quote": "Sul campo ho scarabocchiato note al buio, sotto la pioggia—quasi illeggibili. Questo sito rende la mia scrittura sempre nitida e chiara. È uno strumento dannatamente buono.",
+        "author": "Captain Price",
+        "role": "Task Force 141"
+      },
+      {
+        "quote": "Sono sempre in movimento, e i miei appunti veloci non sono mai da passerella. Questo sito rende tutto chic e impeccabile—come scrittura a mano, ma fashion.",
+        "author": "Jacked Jenner",
+        "role": "Modella / Icona"
+      },
+      {
+        "quote": "Scrivevo compiti e prendevo voti bassi—per questo mi chiamano L. Ma con questo sito ho assaggiato una W. I miei appunti non sono mai stati così precisi.",
+        "author": "L",
+        "role": "Detective"
+      }
+    ],
+    "context": "Pronto a creare i tuoi contenuti manoscritti? Unisciti alla community di studenti, creator e professionisti che usano ogni giorno il nostro generatore gratuito."
+  },
+  "tips": {
+    "heading": "Consigli e best practice",
+    "subheading": "Sfrutta al massimo il generatore con questi consigli",
+    "items": [
+      {
+        "title": "Scegli il font giusto",
+        "description": "Font diversi funzionano meglio per scopi diversi. Usa script eleganti per documenti formali, font casual per note personali e font chiari per la leggibilità."
+      },
+      {
+        "title": "Regola la grassezza dell'inchiostro",
+        "description": "Controlla il peso della scrittura regolando la grassezza. Impostazioni leggere creano una scrittura delicata, quelle più intense danno tratti forti e sicuri."
+      },
+      {
+        "title": "Seleziona il template giusto",
+        "description": "Abbina il template di carta al contenuto. Carta a righe per appunti strutturati, bianca per libertà creativa, griglia puntinata per bullet journal."
+      },
+      {
+        "title": "Fai un'anteprima prima di generare",
+        "description": "Usa l'anteprima live per controllare il testo prima di generare. Risparmi tempo e ottieni esattamente il risultato desiderato."
+      },
+      {
+        "title": "Usa il download multiplo per più pagine",
+        "description": "Hai più pagine? Usa il download in blocco per salvarle tutte insieme. Scegli la qualità preferita e scarica tutto come file ZIP."
+      }
+    ],
+    "context": "Questi consigli ti aiuteranno a creare testo manoscritto più realistico e professionale."
+  },
+  "mainPage": {
+    "mobileControls": "Controlli",
+    "mobilePreview": "Anteprima e galleria",
+    "updatingPreview": "Aggiornamento anteprima...",
+    "mission": {
+      "badge": "La nostra missione",
+      "heading": "Perché l'abbiamo creato?",
+      "description": "Crediamo in un futuro in cui gli studenti possano concentrarsi sulle idee invece di farsi venire i crampi scrivendo compiti. È ora di abbracciare il digitale mantenendo quel vibe autentico della scrittura a mano."
+    },
+    "lab": {
+      "heading": "Il laboratorio",
+      "version": "v1.4.1",
+      "inputLabel": "Contenuto",
+      "placeholder": "Scrivi qui il tuo testo...",
+      "style": "Stile",
+      "size": "Dimensione",
+      "paperRealism": "Realismo carta",
+      "ultra": "Ultra",
+      "high": "Alta",
+      "low": "Bassa",
+      "inkBoldness": "Grassezza inchiostro"
+    },
+    "output": {
+      "title": "Anteprima live",
+      "template": "Template",
+      "loading": "Caricamento...",
+      "loadingTemplate": "Caricamento template di carta...",
+      "initializing": "Inizializzazione del motore di scrittura...",
+      "presentRose": "Dona una rosa"
+    }
+  },
+  "footer": {
+    "about": "Chi siamo",
+    "blog": "Il Blog",
+    "changelog": "Registro cambiamenti",
+    "terms": "Termini e condizioni",
+    "faq": "Domande frequenti",
+    "rights": "Tutti i diritti riservati."
+  },
+  "pages": {
+    "about": {
+      "title": "La Vibe",
+      "back": "Torna al laboratorio",
+      "community": "Aperto alla community",
+      "communityDesc": "Idee di funzionalità, bug report e suggerimenti da meme finiscono tutti nella stessa inbox. Leggiamo davvero tutto.",
+      "description1": "È iniziato come una sfida notturna per rendere le note digitali meno robotiche e più simili alle pagine scarabocchiate con cui siamo cresciuti. Quello che doveva essere un piccolo script è diventato blend mode, gestori di texture e troppe tazze di caffè.",
+      "description2": "Oggi il generatore aiuta studenti, designer e procrastinatori seriali che vogliono consegne con un tocco artigianale. Siamo ossessionati da un jitter credibile dell'inchiostro, canvas reattive e un'esperienza abbastanza veloce da finire quel compito trenta minuti prima della scadenza.",
+      "donateBtc": "Dona un Bitcoin",
+      "donateBtcDesc": "Indirizzo del wallet in arrivo—per ora scrivici e ti invieremo i dettagli più recenti.",
+      "presentRose": "Dona una rosa",
+      "madeBy": "Realizzato con $ da Th3-F00L",
+      "keywords": "su txttohandwriting, missione generatore di scrittura, team txttohandwriting",
+      "supportHeadline": "Serve aiuto, feedback o vuoi solo salutare?",
+      "supportDesc": "Rispondiamo a ogni email di persona. Screenshot, idee e vittorie tengono vivo questo progetto."
+    },
+    "faq": {
+      "title": "FAQ (Il 411)",
+      "back": "Torna al laboratorio",
+      "keywords": "faq generatore di scrittura, supporto strumento di scrittura, aiuto scrittura a mano",
+      "q1": "È davvero gratis?",
+      "a1": "Sì, davvero. Niente abbonamenti. Divertiti (ma non rompere nulla).",
+      "q2": "Posso usarlo per il mio side hustle?",
+      "a2": "Certo. Fai meme, brandizza il tuo Depop, quello che vuoi. Nessun credito richiesto, ma un tag sarebbe iconico.",
+      "q3": "State leggendo i miei pensieri folli?",
+      "a3": "No, non vediamo nulla. Non ci serve il tuo dato. I nostri server sono come pietre. I tuoi segreti sono al sicuro, bestie.",
+      "q4": "Come funzionano i download?",
+      "a4": "Per ora solo PNG. Qualità alta. Potremmo aggiungere altri formati se la vibe è giusta.",
+      "q5": "Perché il font sembra un po' strano?",
+      "a5": "Probabilmente è il tuo browser. Prova ad aggiornarlo. Se è ancora strano, potrebbe essere il tuo OS. È una vibe, non una scienza esatta.",
+      "q6": "La mia facoltà chiede copie cartacee, che faccio?",
+      "a6": "Ti copro io! Ho una soluzione perfetta per te",
+      "supportHeadline": "Ancora dubbi o vuoi segnalare un bug?",
+      "supportDesc": "Scrivi al team e rispondiamo più veloce di quanto tu possa dire corsivo."
+    },
+    "changelog": {
+      "title": "Registro cambiamenti",
+      "back": "Torna al laboratorio",
+      "productUpdates": "Aggiornamenti del prodotto",
+      "description": "Ogni glow-up, ritocco e grande reveal rilasciato dal lancio. Niente gergo: solo cosa è cambiato e perché conta per i tuoi appunti.",
+      "mood": "Mood",
+      "entries": {
+        "v1-4-1": {
+          "tagline": "Perfezionare l'esperienza per tutti.",
+          "highlights": [
+            "Risolti alcuni bug e nuovi miglioramenti.",
+            "Aggiunta la funzionalità di supporto multilingue."
+          ],
+          "mood": "Vibrazioni globali."
+        },
+        "v1-4": {
+          "tagline": "Realismo e performance di livello superiore.",
+          "highlights": [
+            "Nuovo overhaul UI con un sistema di design più pulito e moderno.",
+            "Generazione immagini migliorata con maggiore fedeltà e texture di inchiostro migliori.",
+            "Rendering live delle immagini portato al livello successivo per feedback istantaneo.",
+            "Motore ottimizzato per elaborazioni più rapide e interazioni più fluide."
+          ],
+          "mood": "Nuovo inizio, nuovo anno, nuove note."
+        },
+        "v1-3": {
+          "tagline": "Più controllo, qualità più alta e un'esperienza più fluida.",
+          "highlights": [
+            "Revisione del design UI per un'esperienza più intuitiva e piacevole.",
+            "Aggiunta l'opzione di controllo del peso dell'inchiostro per regolare meglio l'aspetto.",
+            "Aggiunta la possibilità di scaricare tutte le immagini generate in un unico PDF.",
+            "Aggiunta l'opzione di qualità immagine (Alta, Media, Bassa) per bilanciare qualità e dimensioni.",
+            "Risolti vari bug noti per migliorare stabilità e performance."
+          ],
+          "mood": "Potente e rifinito."
+        },
+        "v1-2": {
+          "tagline": "Un glow-up fresco con nuova libertà creativa.",
+          "highlights": [
+            "Ridisegno totale del lab per far fluire controlli, anteprima e galleria su ogni schermo.",
+            "Manager per upload di font personalizzati con guida passo passo e due slot personali.",
+            "Ottimizzazioni su Chrome, Safari, Firefox e Edge per render più rapidi e fluidi."
+          ],
+          "mood": "Oggi sembra una nuova pagina di planner."
+        },
+        "v1-0": {
+          "tagline": "Il giorno in cui txttohandwriting.org è andato online.",
+          "highlights": [
+            "Lancio del lab con anteprima istantanea, colori d'inchiostro e slider di realismo.",
+            "Introdotta la Paper Vibe shelf con template bianchi, puntinati e a righe pronti in PNG.",
+            "Aperta la galleria immagini con vista a schermo intero, etichette di sequenza e download con un click."
+          ],
+          "mood": "Farfalle da primo giorno di scuola, ma per nerd della cancelleria."
+        }
+      }
+    },
+    "terms": {
+      "title": "Termini e condizioni",
+      "back": "Torna al generatore",
+      "lastUpdated": "Ultimo aggiornamento",
+      "welcome": "Benvenuto su txttohandwriting.org! Questi termini e condizioni descrivono le regole e i regolamenti per l'uso del nostro sito. Accedendo a questo sito, si presume che tu accetti questi termini e condizioni. Non continuare a usare txttohandwriting.org se non accetti tutti i termini e le condizioni qui indicati.",
+      "section1Title": "1. Accettazione dei termini",
+      "section1Content": "Il servizio è fornito \"così com'è\" e \"come disponibile\" senza alcuna garanzia. Non garantiamo che il servizio sia ininterrotto o privo di errori.",
+      "section2Title": "2. Uso del servizio",
+      "section2Content": "Accetti di utilizzare il nostro servizio solo per scopi leciti. Sei l'unico responsabile dei contenuti che crei e converti. Accetti di non utilizzare il servizio per creare contenuti diffamatori, osceni o comunque inappropriati.",
+      "section3Title": "3. Proprietà intellettuale",
+      "section3Content": "Il testo che inserisci è tuo. Le immagini generate dal tuo testo possono essere usate per scopi personali e commerciali. Tuttavia, i font, il design e il branding di txttohandwriting.org sono di proprietà dei gestori del sito e non possono essere usati senza permesso.",
+      "section4Title": "4. Esclusione di garanzie",
+      "section4Content": "Il nostro sito è fornito \"così com'è\". Non offriamo garanzie, espresse o implicite, e con la presente decliniamo tutte le altre garanzie, incluse, senza limitazione, le garanzie implicite di commerciabilità, idoneità a uno scopo particolare o non violazione di diritti di proprietà intellettuale.",
+      "section5Title": "5. Limitazione di responsabilità",
+      "section5Content": "In nessun caso txttohandwriting.org o i suoi fornitori saranno responsabili per danni (inclusi, senza limitazione, perdita di dati o profitti o interruzione dell'attività) derivanti dall'uso o dall'impossibilità di usare i materiali sul nostro sito, anche se siamo stati avvisati della possibilità di tali danni.",
+      "section6Title": "6. Modifiche ai termini",
+      "section6Content": "Ci riserviamo il diritto di rivedere questi termini e condizioni in qualsiasi momento. Usando questo sito, ti aspettiamo di rivedere regolarmente questi termini per assicurarti di comprenderli.",
+      "section7Title": "7. Analytics e cookie",
+      "section7Content1": "Usiamo Google Analytics con Consent Mode per capire come viene usato txttohandwriting.org e migliorare l'esperienza. I cookie di analytics restano disattivati finché non dai esplicito consenso tramite il banner mostrato alla prima visita. Se rifiuti, nessun dato analytics viene inviato a Google e il sito continua a funzionare normalmente.",
+      "section7Content2": "Le impostazioni di consenso coprono i seguenti parametri Google: ad_storage, ad_personalization, ad_user_data e analytics_storage. Finché non dai l'ok, ciascun valore resta in stato \"denied\", impedendo la scrittura di cookie e l'invio di eventi. Quando accetti, li aggiorniamo a \"granted\" e salviamo la tua preferenza nel browser.",
+      "section8Title": "8. Gestione del consenso",
+      "section8Content": "Puoi aggiornare o revocare il consenso in qualsiasi momento cancellando i dati del sito nel browser o contattando il nostro team. Saremo felici di aiutarti. Per domande su privacy o consenso, contattaci: support@txttohandwriting.org.",
+      "supportHeadline": "Domande su questi termini?",
+      "supportDesc": "Siamo felici di chiarire qualsiasi dubbio legale e aiutarti con i tuoi compiti."
+    },
+    "notFound": {
+      "title": "Pagina non trovata | txttohandwriting.org",
+      "description": "Non siamo riusciti a trovare la pagina che cercavi. Torna al laboratorio di scrittura per continuare a creare.",
+      "keywords": "generatore di scrittura 404, pagina non trovata"
+    },
+    "blog": {
+      "title": "Blog di ispirazione sulla scrittura a mano | txttohandwriting.org",
+      "description": "Guide, ispirazione e consigli per trasformare testo digitato in scrittura a mano estetica per Studygram, planner e compiti.",
+      "keywords": "blog scrittura a mano, consigli studygram, ispirazione appunti"
+    },
+    "blogPost": {
+      "keywords": "blog scrittura a mano, consigli, ispirazione"
+    }
+  },
+  "blog": {
+    "title": "Il Blog",
+    "backToLab": "Torna al laboratorio",
+    "backToAll": "Torna a tutti i post",
+    "readMore": "Leggi di più →",
+    "by": "Di",
+    "ctaHeadline": "Hai idee per i post o feedback sulle nostre hot take?",
+    "ctaDescription": "Dicci cosa vuoi vedere sul blog o condividi i tuoi trucchi di scrittura a mano."
+  },
+  "blogPosts": {
+    "glow-up-your-notes": {
+      "title": "Glow Up ai tuoi appunti: la guida definitiva ai convertitori testo‑mano estetici",
+      "content": "<p>Diciamolo: i tuoi appunti di lezione sono un po’ spenti. Vuoi essere la persona con note aesthetic da Studygram, ma muri di testo digitato non hanno quella vibe. Entra in scena il <strong>text‑to‑handwriting converter</strong>. È il life‑hack definitivo per romanticizzare lo studio.</p>\n<h2>Di cosa si tratta davvero con i generatori di scrittura a mano?</h2>\n<p>Un <strong>handwriting generator</strong> come il nostro trasforma il tuo testo digitale in una bella grafia. Perfetto se vuoi il fascino del manoscritto senza crampi. Per una guida di studio bella da vedere o design per il planner digitale, un <strong>free text to handwriting tool</strong> è il tuo nuovo bestie.</p>\n<h2>Trova la tua estetica di font</h2>\n<p>La chiave del glow‑up è un font che urla “tu”. Preferisci uno script elegante e pulito o una grafia casual e disordinata? Sul nostro sito trovi tante opzioni. Non fermarti a una—sperimenta! Un buon <strong>online handwriting converter</strong> ti permette di passare da bio a storia con un click. Così i tuoi appunti sono utili e super aesthetic.</p>"
+    },
+    "fix-your-studygram": {
+      "title": "Perché il tuo Studygram sta floppando (e come un handwriting generator lo salva)",
+      "content": "<p>Hai evidenziatori pastello, washi tape e iced coffee. Perché allora il tuo Studygram non riceve hype? Forse è il contenuto. Vedere sempre lo stesso Times New Roman è una noia. Se vuoi fermare lo scroll, servono visual che spaccano. E niente dice “ho la vita in ordine” come note manoscritte perfette.</p>\n<h2>La salsa segreta: converti testo in scrittura a mano online</h2>\n<p>Nessuno ha tempo di scrivere tutto a mano, soprattutto con tre compiti per domani. Qui entra un <strong>text to handwriting online tool</strong>. Digiti appunti, to‑do e citazioni, e in un attimo <strong>converti il testo in un’immagine</strong> di bella calligrafia.</p>\n<p>Immagina una storia con un riassunto in stile manoscritto impeccabile. È unico, attira l’attenzione e sembra un lavoro enorme. Questo è il potere di un <strong>free online handwriting generator</strong>: elevare il contenuto da basic a iconico.</p>\n<h2>Come farlo risaltare</h2>\n<p>Non piazzarlo su uno sfondo piatto. Scegli la carta—rigata, quadrettata o semplice—e un colore d’inchiostro che matchi il tema. Scarica il PNG e mettilo in Canva o GoodNotes. È il segreto dei contenuti Studygram che la gente salva e condivide.</p>"
+    },
+    "create-your-own-handwriting-font": {
+      "title": "Come creare il tuo font di scrittura a mano (senza impazzire)",
+      "content": "<p>Sogni di vedere <strong>la tua grafia</strong> dentro txttohandwriting.org? Si può fare. Trasformare scarabocchi in font sembra da designer, ma il web offre strumenti semplici e (quasi) gratuiti.</p>\n<h2>Step 1: Prepara un campione di scrittura</h2>\n<p>Stampa un template o scrivi su tablet con un pennello neutro. Mantieni la baseline stabile, usa una penna scura e scrivi ogni lettera con chiarezza—maiuscole, minuscole, numeri, punteggiatura. Più pulito il foglio, più pulito il font.</p>\n<ul>\n  <li><strong>Template Calligraphr:</strong> stampa la guida da <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>, scrivi con penna scura e scansiona a 300 dpi o scatta una foto nitida.</li>\n  <li><strong>Procreate o Affinity:</strong> app come <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> o <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> rendono tutto facile—esporta un PNG trasparente.</li>\n</ul>\n<h2>Step 2: Trasforma le lettere in un file font</h2>\n<p>Ecco i migliori generatori free (o quasi):</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – semplice e veloce per ottenere un TTF/OTF pulito. La versione free gestisce un font alla volta.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – editor nel browser per spacing e legature.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – totalmente gratis, a griglia, perfetto per sperimentare.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – donationware per macOS/Windows/Linux con import SVG facile.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (a pagamento) o <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> su iPad per un finish pro.</li>\n</ul>\n<p>Carica il foglio, allinea i caratteri, controlla i preview (soprattutto “g”, “s” e spacing), poi esporta TTF/OTF/WOFF/WOFF2.</p>\n<h2>Step 3: Rifinisci i dettagli</h2>\n<p>Regola baseline, kerning e altezza di linea. Un test rapido evita oscillazioni.</p>\n<h2>Step 4: Carica su txttohandwriting.org</h2>\n<p>Vai al lab, fai <strong>Custom → Upload</strong>, carica il font e dargli un nome. Hai due slot per font personalizzati.</p>\n<p>Fatto! In un pomeriggio puoi usare la tua grafia su planner, appunti e journaling. Se lo provi, taggaci: lo metteremo in gallery.</p>"
+    },
+    "paper-texture-science": {
+      "title": "La scienza della texture della carta: perché conta",
+      "content": "<p>Ti sei mai chiesto perché alcune note digitali sembrano finte e altre reali? Tutto sta nella <strong>paper texture</strong>. Un fondo bianco piatto urla “computer‑generated”, ma una grana sottile o un’ombra leggera dà vita alla pagina.</p>\n<h2>I micro‑dettagli</h2>\n<p>La carta vera non è perfetta: fibre, leggere irregolarità e assorbimento dell’inchiostro non uniforme. Il nostro generatore simula questi <strong>micro‑dettagli</strong> per far sì che il testo stia <em>sopra</em> la carta, non sospeso. Che tu scelga righe nitide o un pergamena ruvida, la texture è l’eroe silenzioso del realismo.</p>\n<h2>Texture e mood</h2>\n<p>Lo sfondo giusto imposta la vibe. <strong>Graph paper</strong> comunica precisione e matematica, <strong>lined paper</strong> richiama l’aula, e <strong>plain textured paper</strong> è perfetto per schizzi e journaling libero. Lo sfondo è metà dell’estetica.</p>"
+    },
+    "psychology-handwritten-notes": {
+      "title": "La psicologia delle note scritte a mano vs digitazione",
+      "content": "<p>Il dibattito laptop vs quaderno è eterno. Ma esiste una vera <strong>handwriting advantage</strong>: scrivere a mano attiva più aree del cervello, migliorando memoria e comprensione.</p>\n<h2>Perché il cervello ama le curve</h2>\n<p>Digitare è meccanico e ripetitivo; ogni “A” è uguale. La scrittura a mano richiede movimenti unici, aiutando a fissare le informazioni nella memoria a lungo termine. Ecco perché una scheda manoscritta (o che sembra tale) resta più familiare di un PDF digitato.</p>\n<h2>Il compromesso digitale</h2>\n<p>Scrivere a mano è lento. I <strong>text‑to‑handwriting tools</strong> colmano il gap: velocità della tastiera con i benefici visivi e cognitivi della grafia. Le note sembrano meno “dati” e più <em>conoscenza</em>.</p>"
+    },
+    "creative-ways-to-use-handwriting-generators": {
+      "title": "Top 5 modi creativi per usare generatori di scrittura oltre la scuola",
+      "content": "<p>Pensi che i generatori di scrittura siano solo per i compiti? Ripensaci. Ecco le nostre 5 idee preferite.</p>\n<h2>1. Props per D&D e TTRPG</h2>\n<p>Dungeon Master, attenzione: niente immerge i giocatori come una lettera trovata su un goblin. Genera un avviso “scritto di fretta” con un font messy e sfondo pergamena.</p>\n<h2>2. Scrapbooking digitale</h2>\n<p>Aggiungi didascalie senza stilo. Vibe DIY con layout pulito.</p>\n<h2>3. Ricette aesthetic</h2>\n<p>Digita la ricetta segreta della nonna, scegli un corsivo e stampa su cartoncino: regalo super personalizzato.</p>\n<h2>4. Citazioni per social</h2>\n<p>Basta con i soliti font Canva. Una citazione scritta a mano su fondo testurizzato spicca nel feed.</p>\n<h2>5. Lettere d’amore (non lo diremo)</h2>\n<p>Scriverle a mano è più romantico, ma se la tua grafia è illeggibile, il generatore può fare da wingman.</p>"
+    },
+    "print-ready-handwriting": {
+      "title": "Scrittura pronta per la stampa: margini, spaziatura e vibe carta",
+      "content": "<p>Su schermo può essere perfetta, ma la stampa è un’altra storia. Piccoli aggiustamenti mantengono la pagina pulita e credibile.</p>\n<h2>Prima la pagina, poi il font</h2>\n<p>Scegli il template di carta, poi imposta margini e dimensione del font per far respirare il testo. Un po’ di spazio bianco ai bordi dà l’effetto “quaderno reale”.</p>\n<h2>Esporta con intelligenza</h2>\n<p>Usa alta qualità per la stampa e PDF per multi‑pagina. Se la stampante è capricciosa, meglio inchiostri neutri e texture leggere.</p>"
+    },
+    "handwritten-touches-for-work": {
+      "title": "Tocchi manoscritti per progetti di lavoro (senza sembrare poco professionali)",
+      "content": "<p>La scrittura a mano non è solo per la scuola. Un piccolo callout scritto a mano rende una proposta o un moodboard più umano, senza risultare disordinato.</p>\n<h2>Usala come highlight, non per tutta la pagina</h2>\n<p>Lascia il corpo del testo digitato e usa la grafia per titoli, citazioni o action items. Guida l’attenzione e resta leggibile.</p>\n<h2>Abbina il tono</h2>\n<p>Scegli un font pulito, inchiostro nero o blu e texture carta sottili. Obiettivo: “intenzionale”, non “scrapbook”.</p>"
+    }
+  }
+}

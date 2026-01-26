@@ -299,7 +299,7 @@ describe('Homepage Accessibility Tests', () => {
       
       links.forEach(link => {
         // Check link can receive focus
-        expect(link.tabIndex).not.toBe(-1);
+        expect((link as HTMLElement).tabIndex).not.toBe(-1);
         
         // Check link has focus styles
         const classes = link.className;

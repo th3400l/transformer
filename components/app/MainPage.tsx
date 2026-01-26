@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import LabPanel from '../LabPanel';
-import OutputPanel from '../OutputPanel';
+import { OutputPanel } from '../OutputPanel';
 import { RoseSpinner } from '../Spinner';
 import { DistortionProfile, DistortionLevel, InkColorOption } from '../../app/constants';
 import { ITemplateProvider, PaperTemplate, ICanvasRenderer } from '../../types/core';
@@ -107,6 +108,7 @@ export const MainPage: React.FC<MainPageProps> = ({
   wordsPerPage,
   textCutoffSnippet
 }) => {
+  const { t } = useTranslation();
   // Live Preview Logic - Removed auto-generation as per user feedback
   // The CanvasOutput component automatically re-renders when props change, providing a visual preview
   // without adding to the generated images gallery.
@@ -115,20 +117,20 @@ export const MainPage: React.FC<MainPageProps> = ({
 
   return (
     <main className="flex-grow w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8" role="main" aria-label="Handwriting generator application">
-      <h1 className="sr-only">Handwriting Generator - Convert Text to Realistic Handwritten Notes</h1>
+      <h1 className="sr-only">{t('seo.title')}</h1>
       {/* Mobile Tab Navigation (example, assuming this is part of the mobile layout) */}
       <div className="lg:hidden flex justify-center gap-4 mb-4">
         <button
           className={`px-4 py-2 rounded-full text-sm font-medium ${activeTab === 'lab' ? 'bg-accent text-white' : 'bg-control-bg text-text-muted hover:text-text'}`}
           onClick={() => setActiveTab('lab')}
         >
-          Controls
+          {t('mainPage.mobileControls')}
         </button>
         <button
           className={`px-4 py-2 rounded-full text-sm font-medium ${activeTab === 'output' ? 'bg-accent text-white' : 'bg-control-bg text-text-muted hover:text-text'}`}
           onClick={() => setActiveTab('output')}
         >
-          Preview & Gallery
+          {t('mainPage.mobilePreview')}
         </button>
       </div>
 
@@ -202,7 +204,7 @@ export const MainPage: React.FC<MainPageProps> = ({
       {isPreviewRendering && activeTab === 'lab' && (
         <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2 backdrop-blur-md">
           <RoseSpinner size={16} className="flex-shrink-0" announce={false} />
-          <span>Updating preview...</span>
+          <span>{t('mainPage.updatingPreview')}</span>
         </div>
       )}
 
@@ -212,16 +214,16 @@ export const MainPage: React.FC<MainPageProps> = ({
 
           <div className="mb-8 relative z-10">
             <span className="px-6 py-2 border border-[var(--accent-color)] rounded-full text-sm font-bold text-[var(--accent-color)] tracking-widest uppercase bg-[var(--bg-color)]">
-              Our Mission
+              {t('mainPage.mission.badge')}
             </span>
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold text-[var(--text-color)] mb-8 leading-tight">
-            Why we built this?
+            {t('mainPage.mission.heading')}
           </h2>
 
           <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
-            We believe in a future where students can focus on their ideas instead of getting hand cramps from writing assignments. No cap, it's time to embrace the digital age while keeping that authentic handwritten vibe.
+            {t('mainPage.mission.description')}
           </p>
         </div>
       </section>

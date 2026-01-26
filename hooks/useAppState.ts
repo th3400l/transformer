@@ -241,7 +241,7 @@ export const useAppState = (): [AppState, AppStateSetters, AppRefs] => {
     {
       selector: '[data-tour-id="template-selector"]',
       title: 'Paper Vibe',
-      content: 'Choose the paper style. More lined templates are coming soon.'
+content: 'Choose the paper style to match your needs.',
     },
     {
       selector: '[data-tour-id="controls-button"]',

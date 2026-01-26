@@ -3,6 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
+import type { TFunction } from 'i18next';
+import { getLanguageInfo } from './languageConfig';
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -15,7 +18,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'glow-up-your-notes',
     title: 'Glow Up Your Notes: The Ultimate Guide to Aesthetic Text-to-Handwriting Converters',
-    date: 'September 17, 2025',
+    date: '2025-09-17',
     author: '5erv@nt',
     content: `
         <p>
@@ -34,7 +37,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'fix-your-studygram',
     title: 'Why Your Studygram is Low-Key Flopping (And How a Handwriting Generator Can Fix It)',
-    date: 'September 17, 2025',
+    date: '2025-09-17',
     author: '5erv@nt',
     content: `
         <p>
@@ -56,7 +59,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'create-your-own-handwriting-font',
     title: 'How to Create Your Own Handwriting Font (Without Losing Your Mind)',
-    date: 'September 26. 2025',
+    date: '2025-09-26',
     author: '5erv@nt',
     content: `
         <p>
@@ -96,7 +99,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'paper-texture-science',
     title: 'Paper Texture Science: Why It Matters',
-    date: 'January 1, 2026',
+    date: '2026-01-01',
     author: '5erv@nt',
     content: `
         <p>
@@ -115,7 +118,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'psychology-handwritten-notes',
     title: 'The Psychology of Handwritten Notes vs. Typing',
-    date: 'January 2, 2026',
+    date: '2026-01-02',
     author: '5erv@nt',
     content: `
         <p>
@@ -134,7 +137,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'creative-ways-to-use-handwriting-generators',
     title: 'Top 5 Creative Ways to Use Handwriting Generators Beyond School',
-    date: 'January 4, 2026',
+    date: '2026-01-04',
     author: '5erv@nt',
     content: `
         <p>
@@ -162,4 +165,83 @@ export const blogPosts: BlogPost[] = [
         </p>
       `,
   },
+  {
+    slug: 'print-ready-handwriting',
+    title: 'Print-Ready Handwriting: Margins, Spacing, and Paper Vibes',
+    date: '2026-01-10',
+    author: '5erv@nt',
+    content: `
+        <p>
+          Handwritten pages can look gorgeous on screen, but printing is where the magic can fall apart. A couple of small tweaks keep your pages clean and believable once they hit real paper.
+        </p>
+        <h2>Start With the Page, Not the Font</h2>
+        <p>
+          Pick the paper template first, then set margins and font size so the text can breathe. Leaving a little white space at the edges makes the output feel like a real notebook page instead of a full-bleed graphic.
+        </p>
+        <h2>Export Smart</h2>
+        <p>
+          Use high quality for print, and export to PDF if you need multi-page consistency. If your printer is picky, stick to neutral ink colors and avoid super light textures—subtle always looks more authentic.
+        </p>
+      `,
+  },
+  {
+    slug: 'handwritten-touches-for-work',
+    title: 'Handwritten Touches for Work Projects (Without Looking Unprofessional)',
+    date: '2026-01-10',
+    author: '5erv@nt',
+    content: `
+        <p>
+          Handwriting isn’t just for school. A small handwritten callout can make a proposal, moodboard, or onboarding doc feel more human—without making it look messy.
+        </p>
+        <h2>Use It as a Highlight, Not the Whole Page</h2>
+        <p>
+          Keep the core content typed and drop handwritten snippets for headings, quotes, or action items. It guides attention and keeps the document readable for clients and teammates.
+        </p>
+        <h2>Match the Tone</h2>
+        <p>
+          Choose a clean font, stick to black or blue ink, and pair it with lined or subtle paper textures. The goal is “intentional,” not “scrapbook.”
+        </p>
+      `,
+  },
 ];
+
+const buildBlogTranslationKey = (slug: string, field: 'title' | 'content'): string =>
+  `blogPosts.${slug}.${field}`;
+
+export const getLocalizedBlogPost = (t: TFunction, slug: string): BlogPost | undefined => {
+  const post = blogPosts.find((entry) => entry.slug === slug);
+  if (!post) {
+    return undefined;
+  }
+
+  return {
+    ...post,
+    title: t(buildBlogTranslationKey(post.slug, 'title'), post.title),
+    content: t(buildBlogTranslationKey(post.slug, 'content'), post.content)
+  };
+};
+
+export const getLocalizedBlogPosts = (t: TFunction): BlogPost[] =>
+  blogPosts.map((post) => ({
+    ...post,
+    title: t(buildBlogTranslationKey(post.slug, 'title'), post.title),
+    content: t(buildBlogTranslationKey(post.slug, 'content'), post.content)
+  }));
+
+export const formatBlogDate = (date: string, languageCode?: string | null): string => {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) {
+    return date;
+  }
+
+  const locale = getLanguageInfo(languageCode)?.locale || 'en-US';
+  try {
+    return new Intl.DateTimeFormat(locale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(parsed);
+  } catch {
+    return date;
+  }
+};
