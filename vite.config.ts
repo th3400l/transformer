@@ -100,11 +100,6 @@ export default defineConfig(({ mode }) => {
               if (id.includes('vite/preload-helper')) {
                 return 'preload-helper';
               }
-
-              // Core React libraries
-              if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-                return 'vendor-react';
-              }
               
               // Image processing libraries
               if (id.includes('html-to-image') || id.includes('react-image-crop')) {
