@@ -146,56 +146,41 @@
     "context": "Kullanım alanınız ne olursa olsun, oluşturucumuz size esneklik ve kalite sunar."
   },
   "testimonials": {
-    "heading": "Kullanıcılarımız ne diyor",
-    "subheading": "Projeleri için oluşturucumuza güvenen binlerce memnun kullanıcıya katılın",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Ne zaman bir şey yazmam gerekse tam bir karmaşaya dönüyordu. Bu site oyunu değiştirdi — artık notlarım çok tatlı, yazı stilleri mi? Efsane.",
-        "author": "Baddie Brown",
-        "role": "Estetik Kraliçesi"
+        "quote": "Bunu tarih projem için kullandım ve öğretmenim gerçekten elimle yazdığımı sandı. Mürekkep akışı çok doğal görünüyor!",
+        "author": "Sarah J.",
+        "role": "Lise Öğrencisi"
       },
       {
-        "quote": "Eskiden Jesse yetişsin diye notları elle karalamak zorundaydım. Dağınık, kirli — tam bir çile. Bu site hepsini toparladı. Font varyasyonları? A sınıfı.",
-        "author": "Heisenberg",
-        "role": "Kimyager"
+        "quote": "Dijital planlayıcı yaratıcısı olarak bu araç bir hayat kurtarıcı. iPad olmadan saniyeler içinde el yazısı tarzı çıkartmalar yapabiliyorum.",
+        "author": "Mia Chen",
+        "role": "Dijital İçerik Üreticisi"
       },
       {
-        "quote": "El yazım o kadar titriyordu ki adam notlarımı okuyamıyordu. Bu site düzeltti — artık alışveriş listem bile tertemiz, stil mi? Dumanımdan daha sert vuruyor diyelim.",
-        "author": "Plant Peter",
-        "role": "Yerel Botanikçi"
+        "quote": "Bulduğum en iyi metinden el yazısına dönüştürme aracı. Kendi yazı tipimi yükleme ve kağıt dokusunu ayarlama yeteneği inanılmaz.",
+        "author": "Alex Rivera",
+        "role": "Grafik Tasarımcı"
       },
       {
-        "quote": "El yazısı sadece kelimelerden ibaret olmamalı — baştan çıkarmalı. Bu siteyle notlarım bile ekranda aşk mektubu gibi. Pürüzsüz, şık, görmezden gelmek imkansız.",
-        "author": "Aggressive Armas",
-        "role": "Gizli Ajan"
+        "quote": "Kullanımının ne kadar kolay olduğunu seviyorum. Ders notlarımı yazıyorum, yazdırıyorum ve harika görünüyorlar.",
+        "author": "Emily Watson",
+        "role": "Üniversite Öğrencisi"
       },
       {
-        "quote": "Dinle… birkaç içkiden sonra not yazmayı denedim, modern sanat gibiydi. Bu site? Tam kurtarıcı. Artık düzgün yürüyemediğimde bile yazım şık. Şerefe!",
-        "author": "Drunk David",
-        "role": "Şarap Tutkunu"
+        "quote": "Pazarlama kampanyaları için 'el yazısı' mektuplar oluşturmak için harika. Basılı metnin sahip olmadığı kişisel bir dokunuş katıyor.",
+        "author": "David K.",
+        "role": "Pazarlama Uzmanı"
       },
       {
-        "quote": "Sözlerim kağıtta her zaman güzel durmaz. Bu site her notayı aşk şarkısı gibi hissettiriyor — sade, şık, unutulmaz.",
-        "author": "Swirl Swift",
-        "role": "Şarkı Yazarı"
-      },
-      {
-        "quote": "Sahada karanlıkta, yağmur altında notlar karaladım — neredeyse okunmazdı. Bu site? Yazımı her seferinde net ve keskin yapıyor. Harbi sağlam bir araç.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Sürekli hareket halindeyim ve hızlı notlarım asla podyuma çıkacak gibi görünmez. Bu site her şeyi şık ve kusursuz yapıyor — el yazısı ama fashion.",
-        "author": "Jacked Jenner",
-        "role": "Model / İkon"
-      },
-      {
-        "quote": "Ödev yazıp düşük notlar alırdım — bu yüzden bana L derler. Ama bu siteyle W tattım. Notlarım hiç bu kadar net olmamıştı.",
-        "author": "L",
-        "role": "Dedektif"
+        "quote": "Sonunda sahte görünmeyen bir oluşturucu. Titreme ve mürekkep varyasyon özellikleri gerçekçilik için bir devrim.",
+        "author": "Chris T.",
+        "role": "Yazılım Geliştirici"
       }
     ],
-    "context": "Kendi el yazısı içeriğinizi oluşturmaya hazır mısınız? Her gün ücretsiz oluşturucumuzu kullanan öğrenci, creator ve profesyonel topluluğumuza katılın."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "İpuçları ve En İyi Uygulamalar",

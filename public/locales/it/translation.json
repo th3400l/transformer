@@ -146,56 +146,41 @@
     "context": "Qualunque sia il tuo uso, il nostro generatore offre flessibilità e qualità."
   },
   "testimonials": {
-    "heading": "Cosa dicono gli utenti",
-    "subheading": "Unisciti a migliaia di utenti soddisfatti che si fidano del nostro generatore per i loro progetti",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Ogni volta che dovevo scrivere qualcosa, veniva un disastro. Questo sito ha cambiato tutto: ora i miei appunti sono super carini, e gli stili del font? Una bomba.",
-        "author": "Baddie Brown",
-        "role": "Regina dell'estetica"
+        "quote": "L'ho usato per il mio progetto di storia e il mio insegnante pensava davvero che l'avessi scritto a mano. Il flusso dell'inchiostro sembra così naturale!",
+        "author": "Sarah J.",
+        "role": "Studentessa delle Superiori"
       },
       {
-        "quote": "Una volta dovevo scarabocchiare appunti a mano solo per far stare dietro Jesse. Disordinati, illeggibili—una sofferenza. Questo sito ha messo tutto in ordine. Le variazioni di font? Diciamo solo che sono di livello assoluto.",
-        "author": "Heisenberg",
-        "role": "Il Chimico"
+        "quote": "Come creatore di planner digitali, questo strumento è una salvezza. Posso creare adesivi e inserti in stile manoscritto in pochi secondi senza bisogno di un iPad.",
+        "author": "Mia Chen",
+        "role": "Creatrice Digitale"
       },
       {
-        "quote": "La mia grafia era così tremolante che il tipo non riusciva nemmeno a leggere i miei appunti. Questo sito l'ha sistemata—ora anche la lista della spesa è pulita, e lo stile? Diciamo che spacca più di quello che fumo.",
-        "author": "Plant Peter",
-        "role": "Botanico locale"
+        "quote": "Il miglior strumento da testo a scrittura a mano che abbia mai trovato. La possibilità di caricare il mio font e regolare la trama della carta lo rende incredibilmente versatile.",
+        "author": "Alex Rivera",
+        "role": "Graphic Designer"
       },
       {
-        "quote": "La scrittura a mano dovrebbe essere più di parole—dovrebbe sedurre. Con questo sito, anche i miei appunti sembrano una lettera d'amore sullo schermo. Smooth, stilosi, impossibili da ignorare.",
-        "author": "Aggressive Armas",
-        "role": "Agente segreto"
+        "quote": "Amo quanto sia facile da usare. Scrivo i miei appunti, li stampo e sono bellissimi. Rende lo studio molto più estetico.",
+        "author": "Emily Watson",
+        "role": "Studentessa Universitaria"
       },
       {
-        "quote": "Senti… ho provato a scrivere un biglietto dopo qualche drink, e sembrava arte moderna. Questo sito? Salvavita. Ora la mia grafia è elegante anche quando non cammino dritto. Cin cin!",
-        "author": "Drunk David",
-        "role": "Appassionato di vino"
+        "quote": "Ottimo per generare lettere 'manuscritte' per campagne di marketing. Aggiunge un tocco personale che il testo stampato non ha.",
+        "author": "David K.",
+        "role": "Specialista di Marketing"
       },
       {
-        "quote": "Le mie lyrics non sono sempre belle su carta. Questo sito fa sembrare ogni nota una canzone d'amore—semplice, stilosa, indimenticabile.",
-        "author": "Swirl Swift",
-        "role": "Cantautrice"
-      },
-      {
-        "quote": "Sul campo ho scarabocchiato note al buio, sotto la pioggia—quasi illeggibili. Questo sito rende la mia scrittura sempre nitida e chiara. È uno strumento dannatamente buono.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Sono sempre in movimento, e i miei appunti veloci non sono mai da passerella. Questo sito rende tutto chic e impeccabile—come scrittura a mano, ma fashion.",
-        "author": "Jacked Jenner",
-        "role": "Modella / Icona"
-      },
-      {
-        "quote": "Scrivevo compiti e prendevo voti bassi—per questo mi chiamano L. Ma con questo sito ho assaggiato una W. I miei appunti non sono mai stati così precisi.",
-        "author": "L",
-        "role": "Detective"
+        "quote": "Finalmente un generatore che non sembra falso. Le funzioni di tremolio e variazione dell'inchiostro sono rivoluzionarie per il realismo.",
+        "author": "Chris T.",
+        "role": "Sviluppatore Software"
       }
     ],
-    "context": "Pronto a creare i tuoi contenuti manoscritti? Unisciti alla community di studenti, creator e professionisti che usano ogni giorno il nostro generatore gratuito."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Consigli e best practice",

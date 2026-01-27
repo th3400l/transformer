@@ -147,56 +147,41 @@
     "context": "无论需求如何，都能在这里获得灵活又高质量的手写呈现。"
   },
   "testimonials": {
-    "heading": "真实用户评价",
-    "subheading": "成千上万的创作者每天都在使用 txttohandwriting.org",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "以前我写的东西像一团乱麻。现在我的笔记可爱又有型，字体风格简直绝了。",
-        "author": "Baddie Brown",
-        "role": "审美玩家"
+        "quote": "我用这个做历史作业，老师真的以为是我手写的。墨水流向看起来太自然了！",
+        "author": "莎拉 J.",
+        "role": "高中生"
       },
       {
-        "quote": "过去得手写一堆笔记帮朋友赶进度，既乱又累。这个工具把一切收拾得干干净净。",
-        "author": "Heisenberg",
-        "role": "化学老师"
+        "quote": "作为数字手账创作者，这个工具简直是救星。我可以在几秒钟内创建手写风格的贴纸和内页，无需iPad。",
+        "author": "米娅·陈",
+        "role": "数字创作者"
       },
       {
-        "quote": "我的手抖得厉害，之前连购物清单都看不清。现在生成的字干净利落，比我自己的墨迹靠谱多了。",
-        "author": "Plant Peter",
-        "role": "本地植物爱好者"
+        "quote": "我发现的最好的文字转手写工具。能够上传我自己的字体并调整纸张纹理，使其非常多功能。",
+        "author": "亚历克斯·里维拉",
+        "role": "平面设计师"
       },
       {
-        "quote": "手写不仅是文字，更是一种氛围。有了它，就连随手便签都像屏幕上的情书。",
-        "author": "Aggressive Armas",
-        "role": "特工"
+        "quote": "我喜欢它的易用性。我打出学习笔记，打印出来，看起来很漂亮。这让学习变得更有美感。",
+        "author": "艾米丽·沃森",
+        "role": "大学生"
       },
       {
-        "quote": "喝多写字像现代艺术。这网站救了我，即使脚步虚浮，字也依旧有范儿。",
-        "author": "Drunk David",
-        "role": "葡萄酒粉丝"
+        "quote": "非常适合为营销活动生成'手写'信件。它增加了一种打印文本所没有的个人色彩。",
+        "author": "大卫 K.",
+        "role": "营销专家"
       },
       {
-        "quote": "我的歌词草稿总是乱七八糟。这个工具让每一段都像精心写下的情歌。",
-        "author": "Swirl Swift",
-        "role": "词曲作者"
-      },
-      {
-        "quote": "执行任务时我在雨夜里记笔记，几乎看不清。现在生成的文字锋利又清楚，真是可靠的装备。",
-        "author": "Captain Price",
-        "role": "141 特遣队"
-      },
-      {
-        "quote": "我总在奔波，匆忙写下的内容从来不够体面。这个工具让每一页都像走秀道具。",
-        "author": "Jacked Jenner",
-        "role": "模特 / Icon"
-      },
-      {
-        "quote": "以前交作业常常翻车，现在用它生成的手写看上去专业又利落。",
-        "author": "L",
-        "role": "侦探"
+        "quote": "终于有一个看起来不假的生成器了。抖动和墨水变化功能是真实感的颠覆性改变。",
+        "author": "克里斯 T.",
+        "role": "软件开发人员"
       }
     ],
-    "context": "准备好制作自己的手写内容了吗？加入这群每天都在使用生成器的学生、创作者和专业人士吧。"
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "技巧与最佳实践",

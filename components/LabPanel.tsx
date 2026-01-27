@@ -5,6 +5,7 @@ import { IFontManager } from '../types/fonts';
 import { DistortionLevel, InkColorOption } from '../app/constants';
 import { ICustomFontUploadManager } from '../types/customFontUpload';
 import { RoseSpinner } from './Spinner';
+import { ResetIcon } from './icons';
 
 interface LabPanelProps {
   text: string;
@@ -33,6 +34,8 @@ interface LabPanelProps {
   showPageLimitWarning: boolean;
   textCutoffSnippet: string | null;
   isDisabled?: boolean;
+  onResetToDefaults: () => void;
+  isDirty: boolean;
 }
 
 const LabPanel: React.FC<LabPanelProps> = ({
@@ -62,6 +65,8 @@ const LabPanel: React.FC<LabPanelProps> = ({
   showPageLimitWarning,
   textCutoffSnippet,
   isDisabled = false,
+  onResetToDefaults,
+  isDirty,
 }) => {
   const { t } = useTranslation();
 
@@ -75,7 +80,15 @@ const LabPanel: React.FC<LabPanelProps> = ({
 
       <div className="flex justify-between items-center border-b border-panel-border pb-2 flex-shrink-0">
         <h2 id="controls-heading" className="text-lg font-bold text-text">{t('mainPage.lab.heading', 'The Lab')}</h2>
-        <div className="flex items-center gap-2" role="status" aria-label="Application status">
+        <div className="flex items-center gap-3" role="status" aria-label="Application status">
+          <button
+            onClick={onResetToDefaults}
+            className={`text-text-muted hover:text-accent transition-all duration-300 p-1 rounded-full hover:bg-control-bg/50 ${isDirty ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+            title="Reset to defaults"
+            aria-label="Reset controls to default"
+          >
+            <ResetIcon className="w-4 h-4" />
+          </button>
           <span className="text-xs font-medium text-text-muted">{t('mainPage.lab.version', 'v1.4.1')}</span>
         </div>
       </div>

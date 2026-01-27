@@ -147,56 +147,41 @@
     "context": "Egal für welchen Anwendungsfall, unser Handschrift-Generator bietet die Flexibilität und Qualität, die du brauchst."
   },
   "testimonials": {
-    "heading": "Was unsere Nutzer sagen",
-    "subheading": "Schließe dich tausenden zufriedenen Nutzern an, die unserem Handschrift-Generator für ihre Projekte vertrauen",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Immer wenn ich etwas aufschreiben musste, sah es total chaotisch aus. Diese Seite hat das Spiel ernsthaft verändert – jetzt sehen meine Notizen super süß aus, und die Schriftarten? Absolut top.",
-        "author": "Baddie Brown",
-        "role": "Ästhetik-Queen"
+        "quote": "Ich habe das für mein Geschichtsprojekt verwendet und mein Lehrer dachte wirklich, ich hätte es von Hand geschrieben. Der Tintenfluss sieht so natürlich aus!",
+        "author": "Sarah J.",
+        "role": "Schülerin"
       },
       {
-        "quote": "Früher musste ich Notizen von Hand kritzeln, nur damit Jesse mithalten konnte. Schlampig, unordentlich – echt nervig. Diese Seite hat alles aufgeräumt. Die Schriftvariationen? Sagen wir einfach, sie sind reine A-Qualität.",
-        "author": "Heisenberg",
-        "role": "Der Chemiker"
+        "quote": "Als Ersteller digitaler Planer ist dieses Tool ein Lebensretter. Ich kann handschriftliche Sticker und Einlagen in Sekunden erstellen, ohne ein iPad zu benötigen.",
+        "author": "Mia Chen",
+        "role": "Digitale Schöpferin"
       },
       {
-        "quote": "Meine Handschrift war so zittrig, dass der Händler meine Notizen nicht einmal lesen konnte. Diese Seite hat das behoben – jetzt sehen meine Einkaufslisten sauber aus, und der Schriftstil? Sagen wir einfach, er haut mehr rein als das, was ich rauche.",
-        "author": "Pflanzen-Peter",
-        "role": "Lokaler Botaniker"
+        "quote": "Das beste Text-zu-Handschrift-Tool, das ich gefunden habe. Die Möglichkeit, meine eigene Schriftart hochzuladen und die Papiertextur anzupassen, macht es unglaublich vielseitig.",
+        "author": "Alex Rivera",
+        "role": "Grafikdesigner"
       },
       {
-        "quote": "Handschrift sollte mehr sein als nur Worte – sie sollte verführerisch wirken. Mit dieser Seite sehen sogar meine Notizen unwiderstehlich aus, wie ein Liebesbrief auf dem Bildschirm. Glatt, stilvoll und unmöglich zu ignorieren.",
-        "author": "Aggressive Armas",
-        "role": "Geheimagentin"
+        "quote": "Ich liebe es, wie einfach es zu bedienen ist. Ich tippe meine Studiennotizen, drucke sie aus und sie sehen wunderschön aus. Das macht das Lernen so viel ästhetischer.",
+        "author": "Emily Watson",
+        "role": "Studentin"
       },
       {
-        "quote": "Hör zu... ich habe versucht, nach ein paar Drinks eine Notiz zu schreiben, und sagen wir einfach, es sah aus wie moderne Kunst. Diese Seite? Absoluter Lebensretter. Jetzt sieht meine Handschrift sogar stilvoll aus, wenn ich nicht geradeaus laufen kann. Prost darauf!",
-        "author": "Betrunkener David",
-        "role": "Weinliebhaber"
+        "quote": "Großartig für die Erstellung 'handschriftlicher' Briefe für Marketingkampagnen. Es verleiht eine persönliche Note, die gedruckter Text einfach nicht hat.",
+        "author": "David K.",
+        "role": "Marketing-Spezialist"
       },
       {
-        "quote": "Meine Texte sehen auf Papier nicht immer hübsch aus. Diese Seite lässt jede Note wie ein Liebeslied wirken – einfach, stilvoll, unvergesslich.",
-        "author": "Swirl Swift",
-        "role": "Songwriterin"
-      },
-      {
-        "quote": "Im Feld habe ich Notizen im Dunkeln gekritzelt, Regen prasselte herab – verdammt noch mal fast unleserlich. Diese Seite? Macht meine Schrift jedes Mal scharf und klar. Das ist ein verdammt gutes Werkzeug.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Ich bin immer unterwegs, und meine schnellen Notizen sehen nie laufstegbereit aus. Diese Seite macht alles schick und makellos – wie Handschrift, aber mach es Mode.",
-        "author": "Jacked Jenner",
-        "role": "Model / Ikone"
-      },
-      {
-        "quote": "Ich habe früher Aufgaben geschrieben und schlechte Noten bekommen – deshalb nennen mich alle L. Aber ich habe mit dieser Seite einen Sieg gekostet. Meine Notizen sahen noch nie so präzise aus.",
-        "author": "L",
-        "role": "Detektiv"
+        "quote": "Endlich ein Generator, der nicht gefälscht aussieht. Die Zitter- und Tintenvariationsfunktionen sind bahnbrechend für den Realismus.",
+        "author": "Chris T.",
+        "role": "Softwareentwickler"
       }
     ],
-    "context": "Bereit, deine eigenen handschriftlichen Inhalte zu erstellen? Schließe dich unserer Gemeinschaft von Studenten, Kreativen und Profis an, die unseren kostenlosen Generator jeden Tag nutzen."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Tipps & Best Practices",

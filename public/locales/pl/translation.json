@@ -146,56 +146,41 @@
     "context": "Niezależnie od zastosowania, nasz generator daje elastyczność i jakość."
   },
   "testimonials": {
-    "heading": "Co mówią nasi użytkownicy",
-    "subheading": "Dołącz do tysięcy zadowolonych użytkowników, którzy ufają naszemu generatorowi",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Kiedy musiałam coś zapisać, wychodził totalny chaos. Ta strona serio zmieniła grę — teraz moje notatki wyglądają super, a style fontów? Sztos.",
-        "author": "Baddie Brown",
-        "role": "Królowa estetyki"
+        "quote": "Użyłam tego do mojego projektu z historii i nauczyciel myślał, że napisałam to ręcznie. Przepływ atramentu wygląda tak naturalnie!",
+        "author": "Sarah J.",
+        "role": "Uczennica liceum"
       },
       {
-        "quote": "Kiedyś musiałem skrobać notatki ręcznie, żeby Jesse ogarniał. Brudne, nieczytelne — dramat. Ta strona wszystko ogarnęła. Wariacje fontu? Po prostu klasa A.",
-        "author": "Heisenberg",
-        "role": "Chemik"
+        "quote": "Jako twórca cyfrowych planerów, to narzędzie ratuje życie. Mogę tworzyć odręczne naklejki w kilka sekund bez iPada.",
+        "author": "Mia Chen",
+        "role": "Twórca cyfrowy"
       },
       {
-        "quote": "Moje pismo było tak chwiejne, że koleś nawet nie potrafił przeczytać notatek. Ta strona to naprawiła — teraz nawet lista zakupów wygląda czysto, a styl? Powiedzmy, że kopie mocniej niż to, co palę.",
-        "author": "Plant Peter",
-        "role": "Lokalny botanik"
+        "quote": "Najlepsze narzędzie text-to-handwriting. Możliwość wgrania własnej czcionki i zmiany faktury papieru jest niesamowita.",
+        "author": "Alex Rivera",
+        "role": "Grafik"
       },
       {
-        "quote": "Pismo to coś więcej niż słowa — powinno uwodzić. Z tą stroną nawet moje notatki wyglądają jak list miłosny na ekranie. Gładkie, stylowe, niemożliwe do zignorowania.",
-        "author": "Aggressive Armas",
-        "role": "Tajny agent"
+        "quote": "Uwielbiam łatwość obsługi. Piszę notatki, drukuję je i wyglądają pięknie. Nauka staje się bardziej estetyczna.",
+        "author": "Emily Watson",
+        "role": "Studentka"
       },
       {
-        "quote": "Słuchaj… spróbowałem napisać notatkę po kilku drinkach i wyglądało to jak sztuka nowoczesna. Ta strona? Totalny ratunek. Teraz moje pismo wygląda elegancko nawet gdy nie mogę iść prosto. Na zdrowie!",
-        "author": "Drunk David",
-        "role": "Entuzjasta wina"
+        "quote": "Świetne do tworzenia 'odręcznych' listów marketingowych. Dodaje osobisty akcent, którego brakuje drukowi.",
+        "author": "David K.",
+        "role": "Specjalista ds. marketingu"
       },
       {
-        "quote": "Moje teksty nie zawsze wyglądają ładnie na papierze. Ta strona sprawia, że każda notatka brzmi jak piosenka o miłości — prosto, stylowo, niezapomniane.",
-        "author": "Swirl Swift",
-        "role": "Autorka piosenek"
-      },
-      {
-        "quote": "W terenie bazgrałem notatki po ciemku, w deszczu — prawie nie do odczytania. Ta strona? Sprawia, że moje pismo jest ostre i czytelne za każdym razem. To cholernie dobry tool.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Zawsze jestem w biegu i moje szybkie notatki nigdy nie wyglądają pokazowo. Ta strona sprawia, że wszystko jest chic i bezbłędne — jak pismo odręczne, ale fashion.",
-        "author": "Jacked Jenner",
-        "role": "Modelka / Ikona"
-      },
-      {
-        "quote": "Pisałam prace i dostawałam słabe oceny — dlatego wszyscy mówią na mnie L. Ale z tą stroną w końcu poczułam W. Moje notatki nigdy nie wyglądały tak precyzyjnie.",
-        "author": "L",
-        "role": "Detektyw"
+        "quote": "W końcu generator, który nie wygląda sztucznie. Funkcje drżenia i zmienności tuszu to przełom.",
+        "author": "Chris T.",
+        "role": "Programista"
       }
     ],
-    "context": "Gotowa tworzyć swoje odręczne treści? Dołącz do społeczności uczniów, twórców i profesjonalistów, którzy codziennie korzystają z naszego darmowego generatora."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Wskazówki i dobre praktyki",

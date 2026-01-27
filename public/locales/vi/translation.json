@@ -146,56 +146,41 @@
     "context": "Dù mục đích của bạn là gì, trình tạo chữ viết tay của chúng tôi mang lại sự linh hoạt và chất lượng bạn cần."
   },
   "testimonials": {
-    "heading": "Người dùng nói gì",
-    "subheading": "Hàng nghìn người dùng hài lòng tin tưởng trình tạo chữ viết tay của chúng tôi cho dự án của họ",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Mỗi lần phải viết tay là mình viết lộn xộn. Trang này thay đổi cuộc chơi, giờ ghi chú siêu dễ thương và kiểu chữ thì đỉnh khỏi bàn.",
-        "author": "Baddie Brown",
-        "role": "Nữ hoàng thẩm mỹ"
+        "quote": "Tôi đã dùng cái này cho bài tập lịch sử và giáo viên thực sự nghĩ tôi đã viết tay. Mực chảy trông rất tự nhiên!",
+        "author": "Sarah J.",
+        "role": "Học sinh trung học"
       },
       {
-        "quote": "Ngày trước tôi phải ghi chú tay để Jesse theo kịp. Lộn xộn và rối rắm, rất phiền. Trang này giúp mọi thứ gọn gàng. Biến thể phông chữ thì đúng chuẩn hạng A.",
-        "author": "Heisenberg",
-        "role": "Nhà hóa học"
+        "quote": "Là người tạo kế hoạch kỹ thuật số, công cụ này là cứu cánh. Tôi có thể tạo nhãn dán viết tay trong vài giây mà không cần iPad.",
+        "author": "Mia Chen",
+        "role": "Nhà sáng tạo nội dung"
       },
       {
-        "quote": "Chữ tôi run đến mức người bán không đọc được. Trang này sửa hết, danh sách mua sắm giờ sạch đẹp, kiểu chữ thì quá đã.",
-        "author": "Plant Peter",
-        "role": "Nhà thực vật học địa phương"
+        "quote": "Công cụ chuyển văn bản thành chữ viết tay tốt nhất tôi từng thấy. Khả năng tải lên phông chữ riêng và chỉnh giấy rất linh hoạt.",
+        "author": "Alex Rivera",
+        "role": "Nhà thiết kế đồ họa"
       },
       {
-        "quote": "Chữ viết tay phải có sức hút chứ không chỉ là chữ. Với trang này, ghi chú của tôi quyến rũ như thư tình trên màn hình. Mượt, sành điệu, khó bỏ qua.",
-        "author": "Aggressive Armas",
-        "role": "Điệp viên bí mật"
+        "quote": "Tôi thích sự dễ dàng của nó. Tôi gõ ghi chú học tập, in ra và chúng trông thật đẹp. Việc học trở nên thẩm mỹ hơn nhiều.",
+        "author": "Emily Watson",
+        "role": "Sinh viên đại học"
       },
       {
-        "quote": "Nghe này, tôi từng ghi chú sau vài ly và nó trông như nghệ thuật hiện đại. Trang này là cứu tinh. Giờ chữ tôi vẫn sang khi tôi đi chưa thẳng. Cạn ly!",
-        "author": "Drunk David",
-        "role": "Người mê rượu vang"
+        "quote": "Tuyệt vời để tạo thư 'viết tay' cho tiếp thị. Nó thêm nét cá nhân mà văn bản in không có.",
+        "author": "David K.",
+        "role": "Chuyên gia tiếp thị"
       },
       {
-        "quote": "Lời nhạc của tôi không phải lúc nào cũng đẹp trên giấy. Trang này khiến mỗi dòng như bản tình ca, đơn giản, tinh tế, khó quên.",
-        "author": "Swirl Swift",
-        "role": "Nhạc sĩ"
-      },
-      {
-        "quote": "Ngoài hiện trường tôi từng ghi chú trong bóng tối, mưa như trút, gần như không đọc nổi. Trang này làm chữ tôi sắc nét mỗi lần. Công cụ quá chất.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Tôi luôn di chuyển nên ghi chú nhanh chẳng bao giờ sẵn sàng cho runway. Trang này làm mọi thứ chic và hoàn hảo, chữ viết tay nhưng rất thời trang.",
-        "author": "Jacked Jenner",
-        "role": "Người mẫu / Biểu tượng"
-      },
-      {
-        "quote": "Tôi từng làm bài và điểm thấp nên ai cũng gọi tôi là L. Nhưng nhờ trang này tôi đã có W. Ghi chú chưa bao giờ chuẩn như vậy.",
-        "author": "L",
-        "role": "Thám tử"
+        "quote": "Cuối cùng cũng có một trình tạo không trông giả tạo. Tính năng rung và biến thể mực là bước đột phá về độ chân thực.",
+        "author": "Chris T.",
+        "role": "Kỹ sư phần mềm"
       }
     ],
-    "context": "Sẵn sàng tạo nội dung chữ viết tay của bạn? Hãy tham gia cộng đồng học sinh, nhà sáng tạo và chuyên gia dùng trình tạo chữ viết tay miễn phí của chúng tôi mỗi ngày."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Mẹo và thực hành tốt nhất",

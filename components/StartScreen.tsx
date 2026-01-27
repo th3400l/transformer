@@ -62,6 +62,8 @@ export interface StartScreenProps {
   canvasRenderer: ICanvasRenderer | null;
   wordsPerPage: number;
   textCutoffSnippet: string | null;
+  onResetToDefaults: () => void;
+  isDirty: boolean;
 }
 
 // Loading fallback component for lazy-loaded sections
@@ -199,7 +201,7 @@ export const StartScreen: React.FC<StartScreenProps> = (props) => {
 
       {/* Tool Interface - Scroll Target */}
       <div ref={toolInterfaceRef} id="tool-interface">
-        <MainPage {...props} />
+        <MainPage {...props} onResetToDefaults={props.onResetToDefaults} isDirty={props.isDirty} />
       </div>
 
 

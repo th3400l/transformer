@@ -890,6 +890,8 @@ const App: React.FC = () => {
               onFontSizeChange={setters.setFontSize}
               onPaperDistortionChange={(value: DistortionLevel) => setters.setPaperDistortionLevel(value)}
               textCutoffSnippet={textCutoffSnippet}
+              onResetToDefaults={setters.resetToDefaults}
+              isDirty={state.isDirty}
             />
           </Suspense>
         );

@@ -146,56 +146,41 @@
     "context": "어떤 상황이든 필요한 유연성과 품질을 제공합니다."
   },
   "testimonials": {
-    "heading": "사용자 후기",
-    "subheading": "수천 명의 사용자들이 우리 손글씨 생성기를 믿고 있습니다",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "예전엔 적기만 하면 난장판이었어요. 이 사이트 덕분에 이제 노트가 정말 예뻐졌고, 폰트 스타일은 말해 뭐해요. 완전 최고.",
-        "author": "Baddie Brown",
-        "role": "에스테틱 퀸"
+        "quote": "역사 과제에 이것을 사용했는데 선생님은 제가 손으로 썼다고 생각하셨어요. 잉크 흐름이 정말 자연스러워요!",
+        "author": "사라 J.",
+        "role": "고등학생"
       },
       {
-        "quote": "예전엔 손으로 급하게 쓰느라 엉망이었죠. 이 사이트가 다 정리해줬어요. 폰트 변화? 한마디로 끝내줍니다.",
-        "author": "Heisenberg",
-        "role": "화학자"
+        "quote": "디지털 플래너 크리에이터로서 이 도구는 구세주입니다. iPad 없이도 몇 초 만에 손글씨 스타일의 스티커와 속지를 만들 수 있어요.",
+        "author": "미아 첸",
+        "role": "디지털 크리에이터"
       },
       {
-        "quote": "손이 떨려서 메모도 못 읽을 정도였는데, 여기 덕분에 리스트가 깔끔해졌어요. 폰트 느낌도 완전 찰떡.",
-        "author": "Plant Peter",
-        "role": "동네 식물 박사"
+        "quote": "제가 찾은 최고의 텍스트-손글씨 변환 도구입니다. 내 폰트를 업로드하고 종이 질감을 조정할 수 있는 기능은 정말 다재다능해요.",
+        "author": "알렉스 리베라",
+        "role": "그래픽 디자이너"
       },
       {
-        "quote": "손글씨는 단순한 글자가 아니라 분위기죠. 이 사이트 덕분에 메모도 사랑 편지처럼 보입니다. 부드럽고 세련되고 매력적이에요.",
-        "author": "Aggressive Armas",
-        "role": "비밀 요원"
+        "quote": "사용하기 쉬워서 정말 좋아요. 공부 노트를 타이핑하고 인쇄하면 정말 예뻐요. 공부가 훨씬 감각적으로 느껴져요.",
+        "author": "에밀리 왓슨",
+        "role": "대학생"
       },
       {
-        "quote": "몇 잔 마시고 쓰면 글씨가 현대미술이 됐는데, 이 사이트는 구원이에요. 이제는 비틀거려도 글씨는 품격.",
-        "author": "Drunk David",
-        "role": "와인 애호가"
+        "quote": "마케팅 캠페인을 위한 '손글씨' 편지를 만드는 데 아주 좋습니다. 인쇄된 텍스트에는 없는 개인적인 느낌을 더해줍니다.",
+        "author": "데이비드 K.",
+        "role": "마케팅 전문가"
       },
       {
-        "quote": "가사는 종이 위에서 예쁘게 보이기 어렵죠. 이 사이트 덕분에 모든 문장이 사랑 노래처럼 느껴져요.",
-        "author": "Swirl Swift",
-        "role": "작곡가"
-      },
-      {
-        "quote": "현장에서 비를 맞으며 쓴 메모는 읽기 어려웠어요. 이 사이트는 언제나 선명하게 만들어 줍니다. 정말 좋은 도구예요.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "항상 이동 중이라 메모가 멋지게 보이기 힘들었는데, 이 사이트는 모든 걸 세련되게 만들어 줍니다. 손글씨지만 패션.",
-        "author": "Jacked Jenner",
-        "role": "모델 / 아이콘"
-      },
-      {
-        "quote": "과제 점수가 늘 낮아서 L이라 불렸는데, 이 사이트로 W를 맛봤습니다. 노트가 이렇게 정확했던 적이 없어요.",
-        "author": "L",
-        "role": "탐정"
+        "quote": "드디어 가짜처럼 보이지 않는 생성기가 나왔네요. 떨림과 잉크 변화 기능은 사실감을 위한 게임 체인저입니다.",
+        "author": "크리스 T.",
+        "role": "소프트웨어 개발자"
       }
     ],
-    "context": "이제 나만의 손글씨를 만들어 보세요. 학생, 크리에이터, 전문가 모두와 함께하세요."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "팁과 베스트 프랙티스",

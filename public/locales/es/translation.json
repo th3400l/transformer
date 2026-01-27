@@ -147,56 +147,41 @@
     "context": "No importa tu caso de uso, nuestro generador de escritura proporciona la flexibilidad y calidad que necesitas."
   },
   "testimonials": {
-    "heading": "Lo Que Dicen Nuestros Usuarios",
-    "subheading": "Únete a miles de usuarios satisfechos que confían en nuestro generador de escritura para sus proyectos",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Siempre que tenía que escribir cosas, parecía un desastre total. Este sitio cambió el juego en serio: ahora mis notas se ven súper lindas, ¿y los estilos de fuente? Absolutamente geniales.",
-        "author": "Baddie Brown",
-        "role": "Reina de la Estética"
+        "quote": "I used this for my history project and my teacher actually thought I wrote it by hand. The ink flow looks so natural!",
+        "author": "Sarah J.",
+        "role": "High School Student"
       },
       {
-        "quote": "En mis tiempos, tenía que garabatear notas a mano solo para que Jesse pudiera seguir el ritmo. Descuidado, desordenado, un verdadero dolor. Este sitio lo limpió todo. ¿Las variaciones de fuente? Digamos que son pura calidad A.",
-        "author": "Heisenberg",
-        "role": "El Químico"
+        "quote": "As a digital planner creator, this tool is a lifesaver. I can create handwritten-style stickers and inserts in seconds without needing an iPad.",
+        "author": "Mia Chen",
+        "role": "Digital Creator"
       },
       {
-        "quote": "Mi letra era tan temblorosa que el distribuidor ni siquiera podía leer mis notas. Este sitio arregló eso: ahora mis listas de compras se ven limpias, ¿y el estilo de fuente? Digamos que pega más fuerte que lo que fumo.",
-        "author": "Plant Peter",
-        "role": "Botánico Local"
+        "quote": "The best text-to-handwriting tool I've found. The ability to upload my own font and tweak the paper texture makes it incredibly versatile.",
+        "author": "Alex Rivera",
+        "role": "Graphic Designer"
       },
       {
-        "quote": "La escritura a mano debería ser más que solo palabras: debería sentirse seductora. Con este sitio, incluso mis notas se ven irresistibles, como una carta de amor en la pantalla. Suave, elegante e imposible de ignorar.",
-        "author": "Aggressive Armas",
-        "role": "Agente Secreto"
+        "quote": "I love how easy it is to use. I type out my study notes, print them, and they look beautiful. It makes studying so much more aesthetic.",
+        "author": "Emily Watson",
+        "role": "University Student"
       },
       {
-        "quote": "Escucha... intenté escribir una nota después de unos tragos, y digamos que parecía arte moderno. ¿Este sitio? Salvador total. Ahora mi letra se ve con clase incluso cuando no puedo caminar derecho. ¡Salud por eso!",
-        "author": "Drunk David",
-        "role": "Entusiasta del Vino"
+        "quote": "Great for generating 'handwritten' letters for marketing campaigns. It adds a personal touch that printed text just doesn't have.",
+        "author": "David K.",
+        "role": "Marketing Specialist"
       },
       {
-        "quote": "Mis letras no siempre se ven bonitas en papel. Este sitio hace que cada nota se sienta como una canción de amor: simple, elegante, inolvidable.",
-        "author": "Swirl Swift",
-        "role": "Compositora"
-      },
-      {
-        "quote": "En el campo, he garabateado notas en la oscuridad, con lluvia cayendo, casi ilegibles. ¿Este sitio? Hace que mi escritura sea nítida y clara cada vez. Esa es una maldita buena herramienta.",
-        "author": "Captain Price",
-        "role": "Fuerza Operativa 141"
-      },
-      {
-        "quote": "Siempre estoy en movimiento, y mis notas rápidas nunca se ven listas para la pasarela. Este sitio hace que todo sea chic y perfecto, como escritura a mano, pero hazlo moda.",
-        "author": "Jacked Jenner",
-        "role": "Modelo / Icono"
-      },
-      {
-        "quote": "Solía escribir tareas y obtener bajas calificaciones; por eso todos me llaman L. Pero probé una victoria usando este sitio. Mis notas nunca se han visto tan precisas.",
-        "author": "L",
-        "role": "Detective"
+        "quote": "Finally, a generator that doesn't look fake. The jitter and ink variation features are game-changers for realism.",
+        "author": "Chris T.",
+        "role": "Software Developer"
       }
     ],
-    "context": "¿Listo para crear tu propio contenido manuscrito? Únete a nuestra comunidad de estudiantes, creadores y profesionales que usan nuestro generador gratuito todos los días."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Consejos y Mejores Prácticas",

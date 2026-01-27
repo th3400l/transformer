@@ -59,6 +59,8 @@ interface MainPageProps {
   canvasRenderer: ICanvasRenderer | null;
   wordsPerPage: number;
   textCutoffSnippet: string | null;
+  onResetToDefaults: () => void;
+  isDirty: boolean;
 }
 
 export const MainPage: React.FC<MainPageProps> = ({
@@ -106,7 +108,9 @@ export const MainPage: React.FC<MainPageProps> = ({
   presentRoseRef,
   canvasRenderer,
   wordsPerPage,
-  textCutoffSnippet
+  textCutoffSnippet,
+  onResetToDefaults,
+  isDirty
 }) => {
   const { t } = useTranslation();
   // Live Preview Logic - Removed auto-generation as per user feedback
@@ -164,6 +168,8 @@ export const MainPage: React.FC<MainPageProps> = ({
             showPageLimitWarning={showPageLimitWarning}
             textCutoffSnippet={textCutoffSnippet}
             isDisabled={isPreviewRendering}
+            onResetToDefaults={onResetToDefaults}
+            isDirty={isDirty}
           />
         </div>
 

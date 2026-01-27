@@ -61,11 +61,12 @@ describe('StartScreen Integration Tests', () => {
     presentRoseRef: { current: null },
     canvasRenderer: null,
     wordsPerPage: 100,
-    textCutoffSnippet: null
-  };
-
-  beforeEach(() => {
-    vi.clearAllMocks();
+    textCutoffSnippet: null,
+      onResetToDefaults: vi.fn(),
+      isDirty: false
+    };
+    
+    beforeEach(() => {    vi.clearAllMocks();
   });
 
   describe('Section Rendering Order', () => {

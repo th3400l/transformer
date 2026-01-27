@@ -147,56 +147,41 @@
     "context": "Não importa o seu caso de uso, nosso gerador de caligrafia oferece a flexibilidade e a qualidade que você precisa."
   },
   "testimonials": {
-    "heading": "O Que Nossos Usuários Dizem",
-    "subheading": "Junte-se a milhares de usuários satisfeitos que confiam em nosso gerador de caligrafia para seus projetos",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Sempre que eu tinha que escrever as coisas, parecia uma bagunça total. Este site mudou o jogo de verdade — agora minhas notas parecem super fofas, e os estilos de fonte? Um arraso absoluto.",
-        "author": "Baddie Brown",
-        "role": "Rainha da Estética"
+        "quote": "Usei isso para meu projeto de história e meu professor realmente achou que eu tinha escrito à mão. O fluxo da tinta parece tão natural!",
+        "author": "Sarah J.",
+        "role": "Estudante do Ensino Médio"
       },
       {
-        "quote": "Antigamente, eu tinha que rabiscar notas à mão só para o Jesse conseguir acompanhar. Desleixado, bagunçado — um verdadeiro pesadelo. Este site limpou tudo. As variações de fonte? Digamos apenas que são puro grau A.",
-        "author": "Heisenberg",
-        "role": "O Químico"
+        "quote": "Como criadora de planners digitais, essa ferramenta é uma salvação. Posso criar adesivos e encartes com estilo manuscrito em segundos sem precisar de um iPad.",
+        "author": "Mia Chen",
+        "role": "Criadora Digital"
       },
       {
-        "quote": "Minha caligrafia era tão trêmula que o revendedor nem conseguia ler minhas notas. Este site resolveu isso — agora minhas listas de compras parecem limpas, e o estilo da fonte? Digamos que bate mais forte do que o que eu fumo.",
-        "author": "Plant Peter",
-        "role": "Botânico Local"
+        "quote": "A melhor ferramenta de texto para caligrafia que encontrei. A capacidade de enviar minha própria fonte e ajustar a textura do papel a torna incrivelmente versátil.",
+        "author": "Alex Rivera",
+        "role": "Designer Gráfico"
       },
       {
-        "quote": "A caligrafia deve ser mais do que apenas palavras — deve parecer sedutora. Com este site, até minhas notas parecem irresistíveis, como uma carta de amor na tela. Suave, elegante e impossível de ignorar.",
-        "author": "Aggressive Armas",
-        "role": "Agente Secreta"
+        "quote": "Adoro como é fácil de usar. Digito minhas notas de estudo, imprimo e elas ficam lindas. Torna o estudo muito mais estético.",
+        "author": "Emily Watson",
+        "role": "Estudante Universitária"
       },
       {
-        "quote": "Escute… tentei escrever uma nota depois de alguns copos e digamos que parecia arte moderna. Este site? Salvador total. Agora minha caligrafia parece elegante mesmo quando não consigo andar em linha reta. Um brinde a isso!",
-        "author": "Drunk David",
-        "role": "Entusiasta de Vinhos"
+        "quote": "Ótimo para gerar cartas 'manuscritas' para campanhas de marketing. Adiciona um toque pessoal que o texto impresso simplesmente não tem.",
+        "author": "David K.",
+        "role": "Especialista em Marketing"
       },
       {
-        "quote": "Minhas letras nem sempre ficam bonitas no papel. Este site faz cada nota parecer uma canção de amor — simples, elegante, inesquecível.",
-        "author": "Swirl Swift",
-        "role": "Compositora"
-      },
-      {
-        "quote": "No campo, já rabisquei notas no escuro, chuva caindo — quase ilegíveis. Este site? Torna minha escrita nítida e clara sempre. Essa é uma ferramenta muito boa.",
-        "author": "Captain Price",
-        "role": "Força-Tarefa 141"
-      },
-      {
-        "quote": "Estou sempre em movimento e minhas notas rápidas nunca parecem prontas para a passarela. Este site torna tudo chique e impecável — como caligrafia, mas fashion.",
-        "author": "Jacked Jenner",
-        "role": "Modelo / Ícone"
-      },
-      {
-        "quote": "Eu costumava fazer trabalhos e tirar notas baixas — é por isso que todos me chamam de L. Mas experimentei uma vitória usando este site. Minhas notas nunca pareceram tão precisas.",
-        "author": "L",
-        "role": "Detetive"
+        "quote": "Finalmente, um gerador que não parece falso. Os recursos de tremor e variação de tinta são revolucionários para o realismo.",
+        "author": "Chris T.",
+        "role": "Desenvolvedor de Software"
       }
     ],
-    "context": "Pronto para criar seu próprio conteúdo manuscrito? Junte-se à nossa comunidade de estudantes, criadores e profissionais que usam nosso gerador de caligrafia gratuito todos os dias."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Dicas e Melhores Práticas",

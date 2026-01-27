@@ -147,56 +147,41 @@
     "context": "Apa pun kebutuhan Anda, generator tulisan tangan kami memberikan fleksibilitas dan kualitas yang Anda butuhkan."
   },
   "testimonials": {
-    "heading": "Apa Kata Pengguna Kami",
-    "subheading": "Bergabunglah dengan ribuan pengguna puas yang mempercayai generator tulisan tangan kami untuk proyek mereka",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Setiap kali saya harus menulis sesuatu, hasilnya berantakan sekali. Situs ini benar-benar mengubah segalanya — sekarang catatan saya terlihat sangat lucu, dan gaya fontnya? Benar-benar luar biasa.",
-        "author": "Baddie Brown",
-        "role": "Ratu Estetika"
+        "quote": "Saya menggunakan ini untuk proyek sejarah saya dan guru saya benar-benar mengira saya menulisnya dengan tangan. Aliran tintanya terlihat sangat alami!",
+        "author": "Sarah J.",
+        "role": "Siswa SMA"
       },
       {
-        "quote": "Dulu saya harus mencoret-coret catatan dengan tangan supaya Jesse bisa mengikuti. Berantakan, kacau — benar-benar merepotkan. Situs ini membersihkan semuanya. Variasi font-nya? Anggap saja kualitas A murni.",
-        "author": "Heisenberg",
-        "role": "Sang Kimiawan"
+        "quote": "Sebagai pembuat perencana digital, alat ini sangat membantu. Saya bisa membuat stiker tulisan tangan dalam hitungan detik tanpa iPad.",
+        "author": "Mia Chen",
+        "role": "Kreator Digital"
       },
       {
-        "quote": "Tulisan tangan saya sangat gemetar sehingga penjual bahkan tidak bisa membaca catatan saya. Situs ini memperbaikinya — sekarang daftar belanja saya terlihat bersih, dan gaya font-nya? Anggap saja efeknya lebih kuat dari apa yang saya hisap.",
-        "author": "Peter Tanaman",
-        "role": "Ahli Botani Lokal"
+        "quote": "Alat teks-ke-tulisan tangan terbaik yang pernah saya temukan. Kemampuan mengunggah font sendiri dan menyesuaikan tekstur kertas sangat serbaguna.",
+        "author": "Alex Rivera",
+        "role": "Desainer Grafis"
       },
       {
-        "quote": "Tulisan tangan harus lebih dari sekadar kata-kata — ia harus terasa menggoda. Dengan situs ini, bahkan catatan saya terlihat tak tertahankan, seperti surat cinta di layar. Halus, bergaya, dan mustahil untuk diabaikan.",
-        "author": "Aggressive Armas",
-        "role": "Agen Rahasia"
+        "quote": "Saya suka betapa mudahnya digunakan. Saya mengetik catatan belajar, mencetaknya, dan terlihat indah.",
+        "author": "Emily Watson",
+        "role": "Mahasiswa"
       },
       {
-        "quote": "Dengarkan... saya mencoba menulis catatan setelah minum-minum, dan anggap saja hasilnya seperti seni modern. Situs ini? Penyelamat total. Sekarang tulisan saya terlihat berkelas bahkan ketika saya tidak bisa jalan lurus. Tos untuk itu!",
-        "author": "Daud Mabuk",
-        "role": "Penggemar Anggur"
+        "quote": "Bagus untuk membuat surat 'tulisan tangan' untuk pemasaran. Menambahkan sentuhan pribadi yang tidak dimiliki teks cetak.",
+        "author": "David K.",
+        "role": "Spesialis Pemasaran"
       },
       {
-        "quote": "Lirik lagu saya tidak selalu terlihat cantik di atas kertas. Situs ini membuat setiap catatan terasa seperti lagu cinta — sederhana, bergaya, tak terlupakan.",
-        "author": "Swirl Swift",
-        "role": "Penulis Lagu"
-      },
-      {
-        "quote": "Di lapangan, saya pernah menulis catatan dalam kegelapan, hujan deras — hampir tidak terbaca. Situs ini? Membuat tulisan saya tajam dan jelas setiap saat. Ini alat yang sangat bagus.",
-        "author": "Kapten Price",
-        "role": "Satuan Tugas 141"
-      },
-      {
-        "quote": "Saya selalu bepergian, dan catatan cepat saya tidak pernah terlihat siap untuk panggung mode. Situs ini membuat segalanya chic dan tanpa cela — seperti tulisan tangan, tapi modis.",
-        "author": "Jacked Jenner",
-        "role": "Model / Ikon"
-      },
-      {
-        "quote": "Saya dulu sering mengerjakan tugas dan mendapat nilai rendah — itulah sebabnya semua orang memanggil saya L. Tapi saya merasakan kemenangan menggunakan situs ini. Catatan saya tidak pernah terlihat seakurat ini.",
-        "author": "L",
-        "role": "Detektif"
+        "quote": "Akhirnya, generator yang tidak terlihat palsu. Fitur getaran dan variasi tinta sangat mengubah realisme.",
+        "author": "Chris T.",
+        "role": "Pengembang Perangkat Lunak"
       }
     ],
-    "context": "Siap untuk membuat konten tulisan tangan Anda sendiri? Bergabunglah dengan komunitas siswa, kreator, dan profesional kami yang menggunakan generator tulisan tangan gratis kami setiap hari."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Tips & Praktik Terbaik",

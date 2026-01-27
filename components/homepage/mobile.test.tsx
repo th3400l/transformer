@@ -91,11 +91,13 @@ const mockProps: StartScreenProps = {
   onDownloadQualityChange: vi.fn(),
   presentRoseRef: { current: null },
   canvasRenderer: null,
-  wordsPerPage: 0,
+  wordsPerPage: 100,
   textCutoffSnippet: null,
+  onResetToDefaults: vi.fn(),
+  isDirty: false
 };
 
-describe('Mobile-Specific Features', () => {
+describe('Mobile Optimization Tests', () => {
   let originalInnerWidth: number;
 
   beforeEach(() => {

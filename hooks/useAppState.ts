@@ -85,6 +85,9 @@ export interface AppState {
 
   // Preview refresh
   previewRefreshToken: number;
+
+  // Dirty state
+  isDirty: boolean;
 }
 
 export interface AppStateSetters {
@@ -129,6 +132,7 @@ export interface AppStateSetters {
   setShowTour: (show: boolean) => void;
   setTourIndex: (index: number) => void;
   setPreviewRefreshToken: (token: number | ((prev: number) => number)) => void;
+  resetToDefaults: () => void;
 }
 
 export interface AppRefs {
@@ -260,8 +264,18 @@ content: 'Choose the paper style to match your needs.',
     }
   ]), []);
 
-  // Preview refresh
   const [previewRefreshToken, setPreviewRefreshToken] = useState(0);
+
+  // Compute isDirty
+  const isDirty = useMemo(() => {
+    return (
+      selectedFontId !== 'inkwell' ||
+      fontSize !== 24 ||
+      inkColor !== inkColors[0].value ||
+      inkBoldness !== 0.5 ||
+      paperDistortionLevel !== 5
+    );
+  }, [selectedFontId, fontSize, inkColor, inkBoldness, paperDistortionLevel]);
 
   // Refs
   const hasClearedFontsRef = useRef(false);
@@ -315,7 +329,8 @@ content: 'Choose the paper style to match your needs.',
     showTour,
     tourIndex,
     tourSteps,
-    previewRefreshToken
+    previewRefreshToken,
+    isDirty
   };
 
   const setters: AppStateSetters = useMemo(() => ({
@@ -359,7 +374,15 @@ content: 'Choose the paper style to match your needs.',
     setShowCustomFontDialog,
     setShowTour,
     setTourIndex,
-    setPreviewRefreshToken
+    setPreviewRefreshToken,
+    resetToDefaults: () => {
+      setSelectedFontId('inkwell');
+      setFontFamily("'Caveat', cursive");
+      setFontSize(24);
+      setInkColor(inkColors[0].value);
+      setInkBoldness(0.5);
+      setPaperDistortionLevel(5);
+    }
   }), []);
 
   const refs: AppRefs = useMemo(() => ({

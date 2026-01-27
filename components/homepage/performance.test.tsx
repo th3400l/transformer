@@ -62,42 +62,44 @@ const mockProps = {
   onDownloadQualityChange: vi.fn(),
   presentRoseRef: { current: null },
   canvasRenderer: null,
-  wordsPerPage: 0,
+  wordsPerPage: 100,
   textCutoffSnippet: null,
+  onResetToDefaults: vi.fn(),
+  isDirty: false
 };
 
-describe('Homepage Performance Tests', () => {
-  beforeEach(() => {
-    // Mock IntersectionObserver for lazy loading tests
-    global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
-      observe: vi.fn(),
-      unobserve: vi.fn(),
-      disconnect: vi.fn(),
-      root: null,
-      rootMargin: '',
-      thresholds: [],
-      takeRecords: vi.fn(),
-    }));
+beforeEach(() => {
+  // Mock IntersectionObserver for lazy loading tests
+  global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+    root: null,
+    rootMargin: '',
+    thresholds: [],
+    takeRecords: vi.fn(),
+  }));
 
-    // Mock performance API
-    if (!global.performance) {
-      global.performance = {} as Performance;
-    }
-    if (!global.performance.mark) {
-      global.performance.mark = vi.fn();
-    }
-    if (!global.performance.measure) {
-      global.performance.measure = vi.fn();
-    }
-    if (!global.performance.getEntriesByName) {
-      global.performance.getEntriesByName = vi.fn().mockReturnValue([]);
-    }
-  });
+  // Mock performance API
+  if (!global.performance) {
+    global.performance = {} as Performance;
+  }
+  if (!global.performance.mark) {
+    global.performance.mark = vi.fn();
+  }
+  if (!global.performance.measure) {
+    global.performance.measure = vi.fn();
+  }
+  if (!global.performance.getEntriesByName) {
+    global.performance.getEntriesByName = vi.fn().mockReturnValue([]);
+  }
+});
 
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
+afterEach(() => {
+  vi.clearAllMocks();
+});
 
+describe('Performance Tests for Homepage Content Sections', () => {
   describe('Lazy Loading Tests', () => {
     it('should lazy load below-the-fold content sections', async () => {
       const { container } = render(<StartScreen {...mockProps} />);

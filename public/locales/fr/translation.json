@@ -147,56 +147,41 @@
     "context": "Peu importe votre cas d'usage, notre générateur d'écriture offre la flexibilité et la qualité dont vous avez besoin."
   },
   "testimonials": {
-    "heading": "Ce Que Disent Nos Utilisateurs",
-    "subheading": "Rejoignez des milliers d'utilisateurs satisfaits qui font confiance à notre générateur d'écriture pour leurs projets",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "Chaque fois que je devais écrire des trucs, ça ressemblait à un désordre total. Ce site a vraiment changé la donne — maintenant mes notes sont super mignonnes, et les styles de police ? Absolument géniaux.",
-        "author": "Baddie Brown",
-        "role": "Reine de l'Esthétique"
+        "quote": "J'ai utilisé ceci pour mon projet d'histoire et mon professeur a vraiment cru que je l'avais écrit à la main. Le flux d'encre semble si naturel !",
+        "author": "Sarah J.",
+        "role": "Lycéenne"
       },
       {
-        "quote": "À l'époque, je devais griffonner des notes à la main juste pour que Jesse puisse suivre. Négligé, désordonné — une vraie galère. Ce site a tout nettoyé. Les variations de police ? Disons juste que c'est de la pure qualité A.",
-        "author": "Heisenberg",
-        "role": "Le Chimiste"
+        "quote": "En tant que créatrice de planificateurs numériques, cet outil est une bouée de sauvetage. Je peux créer des autocollants et des inserts manuscrits en quelques secondes sans iPad.",
+        "author": "Mia Chen",
+        "role": "Créatrice Numérique"
       },
       {
-        "quote": "Mon écriture était si tremblante que le distributeur ne pouvait même pas lire mes notes. Ce site a réglé ça : maintenant mes listes de courses sont propres, et le style de police ? Disons que ça frappe plus fort que ce que je fume.",
-        "author": "Plant Peter",
-        "role": "Botaniste Local"
+        "quote": "Le meilleur outil de conversion texte-écriture que j'ai trouvé. La possibilité de télécharger ma propre police et d'ajuster la texture du papier le rend incroyablement polyvalent.",
+        "author": "Alex Rivera",
+        "role": "Graphiste"
       },
       {
-        "quote": "L'écriture manuscrite devrait être plus que de simples mots — elle devrait être séduisante. Avec ce site, même mes notes ont l'air irrésistibles, comme une lettre d'amour à l'écran. Doux, élégant et impossible à ignorer.",
-        "author": "Aggressive Armas",
-        "role": "Agent Secret"
+        "quote": "J'adore sa facilité d'utilisation. Je tape mes notes de cours, je les imprime et elles sont magnifiques. Cela rend l'étude tellement plus esthétique.",
+        "author": "Emily Watson",
+        "role": "Étudiante"
       },
       {
-        "quote": "Écoutez... j'ai essayé d'écrire une note après quelques verres, et disons que ça ressemblait à de l'art moderne. Ce site ? Sauveur total. Maintenant mon écriture a de la classe même quand je ne peux pas marcher droit. Santé !",
-        "author": "Drunk David",
-        "role": "Amateur de Vin"
+        "quote": "Idéal pour générer des lettres 'manuscrites' pour des campagnes marketing. Cela ajoute une touche personnelle que le texte imprimé n'a tout simplement pas.",
+        "author": "David K.",
+        "role": "Spécialiste Marketing"
       },
       {
-        "quote": "Mes paroles ne sont pas toujours jolies sur papier. Ce site fait ressembler chaque note à une chanson d'amour — simple, élégant, inoubliable.",
-        "author": "Swirl Swift",
-        "role": "Compositrice"
-      },
-      {
-        "quote": "Sur le terrain, j'ai griffonné des notes dans le noir, sous la pluie battante — presque illisibles. Ce site ? Rend mon écriture nette et claire à chaque fois. C'est un sacré bon outil.",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "Je suis toujours en mouvement, et mes notes rapides n'ont jamais l'air prêtes pour le défilé. Ce site rend tout chic et impeccable — comme une écriture manuscrite, mais version mode.",
-        "author": "Jacked Jenner",
-        "role": "Modèle / Icône"
-      },
-      {
-        "quote": "J'avais l'habitude d'écrire des devoirs et d'avoir de mauvaises notes — c'est pour ça que tout le monde m'appelle L. Mais j'ai goûté à la victoire en utilisant ce site. Mes notes n'ont jamais été aussi précises.",
-        "author": "L",
-        "role": "Détective"
+        "quote": "Enfin un générateur qui ne fait pas faux. Les fonctionnalités de tremblement et de variation d'encre changent la donne pour le réalisme.",
+        "author": "Chris T.",
+        "role": "Développeur Logiciel"
       }
     ],
-    "context": "Prêt à créer votre propre contenu manuscrit ? Rejoignez notre communauté d'étudiants, créateurs et professionnels qui utilisent notre générateur gratuit chaque jour."
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "Conseils et Bonnes Pratiques",

@@ -147,56 +147,41 @@
     "context": "目的や用途を問わず、柔軟で高品質な手書き表現を提供します。"
   },
   "testimonials": {
-    "heading": "ユーザーの声",
-    "subheading": "世界中のユーザーが毎日このジェネレーターを愛用しています",
+    "heading": "What Our Users Say",
+    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
     "items": [
       {
-        "quote": "昔の字はカオスそのものでしたが、今はノートが可愛く仕上がります。フォントのバリエーションも最高。",
-        "author": "Baddie Brown",
-        "role": "美的センス勢"
+        "quote": "歴史のプロジェクトでこれを使ったら、先生は本当に手書きだと思いました。インクの流れがとても自然です！",
+        "author": "サラ J.",
+        "role": "高校生"
       },
       {
-        "quote": "誰かのために走り書きしていた頃よりずっと整っていて、しかも楽。フォントの揺らぎも本物みたい。",
-        "author": "Heisenberg",
-        "role": "化学教師"
+        "quote": "デジタルプランナーのクリエイターとして、このツールは救世主です。iPadなしで手書き風のステッカーやインサートを数秒で作成できます。",
+        "author": "ミア・チェン",
+        "role": "デジタルクリエイター"
       },
       {
-        "quote": "字が震えて読めないと言われがちだったけれど、このツールならいつもクリア。買い物リストまで見栄えします。",
-        "author": "Plant Peter",
-        "role": "ローカル植物男子"
+        "quote": "見つけた中で最高のテキスト手書き変換ツールです。自分のフォントをアップロードして紙の質感を調整できる機能は、驚くほど多用途です。",
+        "author": "アレックス・リベラ",
+        "role": "グラフィックデザイナー"
       },
       {
-        "quote": "手書きはただの文字じゃなく空気感。このサイトなら短いメモでさえ画面上のラブレターみたいに仕上がります。",
-        "author": "Aggressive Armas",
-        "role": "エージェント"
+        "quote": "使いやすさが大好きです。勉強ノートをタイプして印刷すると、美しく見えます。勉強がとても美的になります。",
+        "author": "エミリー・ワトソン",
+        "role": "大学生"
       },
       {
-        "quote": "飲んだ後の字は芸術作品っぽくなりがち。でもここで生成すればいつでも上品な見た目に。",
-        "author": "Drunk David",
-        "role": "ワイン好き"
+        "quote": "マーケティングキャンペーン用の「手書き」の手紙を作成するのに最適です。印刷されたテキストにはない個人的なタッチを加えます。",
+        "author": "デビッド K.",
+        "role": "マーケティングスペシャリスト"
       },
       {
-        "quote": "歌詞メモはごちゃつきがちだけど、これを使うと一筆一筆がラブソングみたいにきれい。",
-        "author": "Swirl Swift",
-        "role": "ソングライター"
-      },
-      {
-        "quote": "任務中に暗闇で書いたメモは読めたものじゃなかった。でも今は毎回シャープで読みやすい。",
-        "author": "Captain Price",
-        "role": "Task Force 141"
-      },
-      {
-        "quote": "移動が多くて書いたものが雑になりがち。ここなら走り書きでもランウェイ向けの仕上がりです。",
-        "author": "Jacked Jenner",
-        "role": "モデル / アイコン"
-      },
-      {
-        "quote": "以前は手書き課題で点を落としていたけれど、今は精度の高い仕上がりで胸を張れます。",
-        "author": "L",
-        "role": "探偵"
+        "quote": "ついに偽物に見えないジェネレーターが登場しました。ジッターとインクのバリエーション機能は、リアリズムにとって画期的です。",
+        "author": "クリス T.",
+        "role": "ソフトウェア開発者"
       }
     ],
-    "context": "さあ、あなたもリアルな手書きを作りましょう。学生、クリエイター、プロフェッショナルが日々活用しています。"
+    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
   },
   "tips": {
     "heading": "活用のコツ",
