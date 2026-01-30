@@ -57,10 +57,15 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                 <div className="flex items-center gap-3 sm:gap-4">
                     <button onClick={() => onNavigate('main')} className="flex items-center justify-center gap-2 sm:gap-3 group">
                         <RoseLogo size={32} className="shrink-0 translate-y-[1px] sm:w-[34px] sm:h-[34px] transition-transform group-hover:scale-105" />
-                        <span className="text-lg sm:text-2xl font-semibold uppercase tracking-[0.2em] sm:tracking-[0.28em] text-text">
-                            <span className="hidden sm:inline">Txt to handwriting</span>
-                            <span className="sm:hidden">Txt2HW</span>
-                        </span>
+                        <div className="flex flex-col items-start">
+                            <span className="text-lg sm:text-2xl font-semibold uppercase tracking-[0.2em] sm:tracking-[0.28em] text-text leading-none">
+                                <span className="hidden sm:inline">Txt to handwriting</span>
+                                <span className="sm:hidden">Txt2HW</span>
+                            </span>
+                            <span className="text-[10px] text-text-muted uppercase tracking-widest opacity-60 font-mono mt-1">
+                                A subsidiary of NSA Tools
+                            </span>
+                        </div>
                     </button>
                 </div>
 

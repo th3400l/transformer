@@ -370,7 +370,7 @@ export class SEOOptimizer implements ISEOOptimizer {
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        email: 'support@txttohandwriting.org',
+        email: 'nsa.tools@proton.me',
         availableLanguage: availableLanguages
       }
     };

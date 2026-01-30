@@ -360,7 +360,7 @@
       "section7Content1": "Usiamo Google Analytics con Consent Mode per capire come viene usato txttohandwriting.org e migliorare l'esperienza. I cookie di analytics restano disattivati finché non dai esplicito consenso tramite il banner mostrato alla prima visita. Se rifiuti, nessun dato analytics viene inviato a Google e il sito continua a funzionare normalmente.",
       "section7Content2": "Le impostazioni di consenso coprono i seguenti parametri Google: ad_storage, ad_personalization, ad_user_data e analytics_storage. Finché non dai l'ok, ciascun valore resta in stato \"denied\", impedendo la scrittura di cookie e l'invio di eventi. Quando accetti, li aggiorniamo a \"granted\" e salviamo la tua preferenza nel browser.",
       "section8Title": "8. Gestione del consenso",
-      "section8Content": "Puoi aggiornare o revocare il consenso in qualsiasi momento cancellando i dati del sito nel browser o contattando il nostro team. Saremo felici di aiutarti. Per domande su privacy o consenso, contattaci: support@txttohandwriting.org.",
+      "section8Content": "Puoi aggiornare o revocare il consenso in qualsiasi momento cancellando i dati del sito nel browser o contattando il nostro team. Saremo felici di aiutarti. Per domande su privacy o consenso, contattaci: nsa.tools@proton.me.",
       "supportHeadline": "Domande su questi termini?",
       "supportDesc": "Siamo felici di chiarire qualsiasi dubbio legale e aiutarti con i tuoi compiti."
     },

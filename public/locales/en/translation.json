@@ -258,7 +258,7 @@
       "description1": "txttohandwriting.org began as a simple project to bridge the gap between digital convenience and the personal touch of handwriting. In an increasingly digital world, the unique character of handwritten text often gets lost. We wanted to bring that back—without the hand cramps.",
       "description2": "Today, our platform serves thousands of students, educators, designers, and professionals worldwide. We use advanced canvas rendering technology to simulate natural ink flow, pressure variations, and paper textures, ensuring that every generated document looks authentically human. We are committed to keeping this tool free, private, and accessible to everyone.",
       "donateBtc": "Donate Bitcoin",
-      "donateBtcDesc": "Support the server costs and development. Wallet address support@txttohandwriting.org.",
+      "donateBtcDesc": "Support the server costs and development. Wallet address nsa.tools@proton.me.",
       "presentRose": "Support Us",
       "madeBy": "Designed & Developed by Th3-F00L",
       "keywords": "about txttohandwriting, handwriting generator mission, team, open source tool",
@@ -361,7 +361,7 @@
       "section7Content1": "We use Google Analytics with Consent Mode to understand how txttohandwriting.org is used and to keep improving the experience. Analytics cookies remain disabled until you explicitly grant consent through the banner shown when you first visit the site. If you decline, no analytics data is sent to Google and the site continues to function normally.",
       "section7Content2": "The consent settings cover the following Google parameters: ad_storage, ad_personalization, ad_user_data, and analytics_storage. Until you opt in, each of these values stays in the \"denied\" state, preventing cookies from being written and events from being sent. When you accept, we update those settings to \"granted\" and store your preference in your browser.",
       "section8Title": "8. Managing Your Consent",
-      "section8Content": "You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at support@txttohandwriting.org.",
+      "section8Content": "You can update or withdraw your consent at any time by clearing the site data in your browser or by reaching out to our team. We’ll be happy to assist and make sure your preferences are respected. For any privacy questions or consent-related requests, contact us at nsa.tools@proton.me.",
       "supportHeadline": "Questions about these terms?",
       "supportDesc": "We're happy to clarify anything legal-ish or help you keep your assignments in line."
     },

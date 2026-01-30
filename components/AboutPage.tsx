@@ -310,8 +310,9 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
 
 
 
-          <div className="text-center pt-8 border-t border-panel-border mt-8">
+          <div className="text-center pt-8 border-t border-panel-border mt-8 flex flex-col gap-2">
             <span className="font-mono text-sm text-accent opacity-80 hover:opacity-100 transition-opacity">{t('pages.about.madeBy')}</span>
+            <span className="text-xs text-text-muted uppercase tracking-widest opacity-60">A subsidiary of NSA Tools</span>
           </div>
         </div>
       </div>

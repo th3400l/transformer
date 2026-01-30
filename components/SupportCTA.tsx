@@ -6,7 +6,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const SUPPORT_EMAIL = 'support@txttohandwriting.org';
+export const SUPPORT_EMAIL = 'nsa.tools@proton.me';
 
 interface SupportCTAProps {
   headline?: string;

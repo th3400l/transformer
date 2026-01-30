@@ -13,6 +13,8 @@ import { GeneratedImage } from '../../types/gallery';
 // Lazy load non-critical components
 
 
+import { SideAdUnit } from '../SideAdUnit';
+
 interface MainPageProps {
   text: string;
   onTextChange: (value: string) => void;
@@ -234,7 +236,7 @@ export const MainPage: React.FC<MainPageProps> = ({
         </div>
       </section>
 
-
+      <SideAdUnit />
     </main>
   );
 };

@@ -360,7 +360,7 @@
       "section7Content1": "txttohandwriting.org는 Consent Mode가 적용된 Google Analytics를 사용해 사이트 이용 방식을 파악하고 개선합니다. 방문 시 표시되는 배너에서 동의하기 전까지 분석 쿠키는 비활성화됩니다. 거부해도 사이트는 정상 동작합니다.",
       "section7Content2": "동의 설정은 ad_storage, ad_personalization, ad_user_data, analytics_storage를 포함합니다. 동의 전에는 모두 \"denied\" 상태로 유지되어 쿠키와 이벤트 전송이 차단됩니다. 동의하면 \"granted\"로 업데이트되고 브라우저에 저장됩니다.",
       "section8Title": "8. 동의 관리",
-      "section8Content": "브라우저에서 사이트 데이터를 삭제하거나 팀에 문의해 언제든 동의를 변경 또는 철회할 수 있습니다. 요청은 성심껏 처리합니다. 문의: support@txttohandwriting.org.",
+      "section8Content": "브라우저에서 사이트 데이터를 삭제하거나 팀에 문의해 언제든 동의를 변경 또는 철회할 수 있습니다. 요청은 성심껏 처리합니다. 문의: nsa.tools@proton.me.",
       "supportHeadline": "약관에 대한 질문이 있나요?",
       "supportDesc": "법적 내용도 편하게 물어보세요."
     },
