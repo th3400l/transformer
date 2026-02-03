@@ -6,7 +6,6 @@ import { PaperTemplate, ICanvasRenderer, VariationRangeConfig, IPaperTextureMana
 import { GeneratedImage } from '../types/gallery';
 import { TemplateNamingService, EnhancedPaperTemplate } from '../services/templateNamingService';
 import { getErrorNotificationService } from '../services/errorNotificationService';
-import { AdUnit } from './AdUnit';
 
 interface OutputPanelProps {
   text: string;
@@ -230,9 +229,6 @@ export const OutputPanel: React.FC<OutputPanelProps> = ({
           className="shadow-lg"
         />
       </div>
-
-      {/* Ad Unit */}
-      <AdUnit />
 
     </div>
   );

@@ -6,7 +6,6 @@ import { DistortionLevel, InkColorOption } from '../app/constants';
 import { ICustomFontUploadManager } from '../types/customFontUpload';
 import { RoseSpinner } from './Spinner';
 import { ResetIcon } from './icons';
-import { AdUnit } from './AdUnit';
 
 interface LabPanelProps {
   text: string;
@@ -277,9 +276,6 @@ const LabPanel: React.FC<LabPanelProps> = ({
             </div>
           </div>
         </div>
-
-        {/* Ad Unit */}
-        <AdUnit className="flex-shrink-0" />
 
         <div className="border-t border-panel-border pt-4 flex flex-col gap-2 mt-auto flex-shrink-0">
           <button

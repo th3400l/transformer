@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                                 <span className="sm:hidden">Txt2HW</span>
                             </span>
                             <span className="text-[10px] text-text-muted uppercase tracking-widest opacity-60 font-mono mt-1">
-                                A subsidiary of NSA Tools
+                                A subsidiary of nsa.tools
                             </span>
                         </div>
                     </button>
