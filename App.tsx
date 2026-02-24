@@ -74,7 +74,7 @@ import {
 } from './app/seo';
 import { tips } from './content/homepage';
 
-const GENERATION_DELAY_MS = 3000;
+const GENERATION_DELAY_MS = 0;
 
 import InteractiveBackground from './components/InteractiveBackground';
 
@@ -628,8 +628,7 @@ const App: React.FC = () => {
     setters.setShowPageLimitWarning(estimatedPages > 5);
 
     try {
-      // Artificial delay to simulate processing time (Requirement: Time limit with loading screen)
-      await new Promise(resolve => setTimeout(resolve, GENERATION_DELAY_MS));
+      // Removed artificial delay to simulate processing time
 
       const pageResults = await renderPages(pages);
       const newImages: GeneratedImage[] = [];

@@ -461,8 +461,7 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
       setRenderError(null);
       renderAbortRef.current = false;
 
-      // Artificial loading delay as requested by user (Actual time + 500ms)
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Removed artificial loading delay
 
       // Request ID Check: If a new render request started during the wait, abort this one silently
       if (requestId !== renderRequestIdRef.current) {
