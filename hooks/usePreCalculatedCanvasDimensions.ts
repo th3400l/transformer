@@ -58,8 +58,14 @@ const calculateDimensionsSync = (
   const isDesktop = viewportWidth >= 1024;
 
   // Available space accounting for padding
-  const availableWidth = containerWidth - (padding * 2);
-  const availableHeight = containerHeight - (padding * 2);
+  // Some mobile browsers can temporarily report 0-sized containers during layout/orientation.
+  // Fall back to viewport dimensions so we never generate invalid canvas sizes.
+  const rawAvailableWidth = containerWidth - (padding * 2);
+  const rawAvailableHeight = containerHeight - (padding * 2);
+  const fallbackWidth = Math.max(200, viewportWidth - (padding * 2));
+  const fallbackHeight = Math.max(260, window.innerHeight - (padding * 2));
+  const availableWidth = rawAvailableWidth > 0 ? rawAvailableWidth : fallbackWidth;
+  const availableHeight = rawAvailableHeight > 0 ? rawAvailableHeight : fallbackHeight;
 
   // Calculate dimensions based on aspect ratio and constraints
   let canvasWidth: number;
@@ -91,13 +97,17 @@ const calculateDimensionsSync = (
     canvasHeight = maxDimension / aspectRatio;
   }
 
+  // Final safety clamp to avoid invalid 0/negative dimensions.
+  canvasWidth = Math.max(1, Math.round(canvasWidth));
+  canvasHeight = Math.max(1, Math.round(Math.min(Math.max(canvasHeight, minHeight), maxHeight)));
+
   // Calculate scale factor for high-DPI displays
   const devicePixelRatio = window.devicePixelRatio || 1;
   const scale = Math.min(devicePixelRatio, 2); // Cap at 2x for performance
 
   return {
-    width: Math.round(canvasWidth),
-    height: Math.round(canvasHeight),
+    width: canvasWidth,
+    height: canvasHeight,
     scale,
     isMobile,
     isTablet,
@@ -143,7 +153,15 @@ export const usePreCalculatedCanvasDimensions = (
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
     };
-  }, [config]);
+  }, [
+    config.containerRef,
+    config.aspectRatio,
+    config.minWidth,
+    config.maxWidth,
+    config.minHeight,
+    config.maxHeight,
+    config.padding
+  ]);
 
   return dimensions;
 };

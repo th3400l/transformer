@@ -104,6 +104,7 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
   const renderRequestIdRef = useRef<number>(0);
   const [renderProgress, setRenderProgress] = useState<number>(0); // Progress for progressive rendering (0-100)
   const [isProgressiveRendering, setIsProgressiveRendering] = useState<boolean>(false);
+  const resizeTimeoutRef = useRef<number | null>(null);
 
   // Notify parent of rendering state changes
   useEffect(() => {
@@ -299,7 +300,6 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
       // Update canvas in viewport for visual feedback
       // We do this inside the loop so user sees it growing
       if (canvasViewportRef.current && currentCanvas) {
-        const tempCanvas = currentCanvas.cloneNode(true) as HTMLCanvasElement;
         const viewportNode = canvasViewportRef.current;
 
         // Clear viewport and add temporary canvas
@@ -307,34 +307,34 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
           canvasRef.current.parentNode.removeChild(canvasRef.current);
         }
 
-        canvasRef.current = tempCanvas;
-        tempCanvas.className = 'w-full h-full object-contain';
+        canvasRef.current = currentCanvas;
+        currentCanvas.className = 'w-full h-full object-contain';
 
         // Set canvas size immediately using pre-calculated or current dimensions
         const dims = preCalculatedDimensions || dimensions;
         if (dims) {
-          tempCanvas.style.width = `${dims.width}px`;
-          tempCanvas.style.height = `${dims.height}px`;
+          currentCanvas.style.width = `${dims.width}px`;
+          currentCanvas.style.height = `${dims.height}px`;
         }
 
         // Apply responsive canvas styling
         if (dimensions.isMobile || dimensions.isTablet) {
-          tempCanvas.style.maxWidth = '100%';
-          tempCanvas.style.height = 'auto';
-          tempCanvas.style.touchAction = 'none';
+          currentCanvas.style.maxWidth = '100%';
+          currentCanvas.style.height = 'auto';
+          currentCanvas.style.touchAction = 'none';
         } else {
-          tempCanvas.style.maxWidth = '100%';
+          currentCanvas.style.maxWidth = '100%';
         }
 
         if (skipInitialAnimation) {
-          tempCanvas.style.transform = 'translate(0px, 0px)';
-          tempCanvas.style.transition = 'none';
-          tempCanvas.style.animation = 'none';
+          currentCanvas.style.transform = 'translate(0px, 0px)';
+          currentCanvas.style.transition = 'none';
+          currentCanvas.style.animation = 'none';
         }
-        tempCanvas.style.willChange = 'transform';
+        currentCanvas.style.willChange = 'transform';
 
         viewportNode.innerHTML = '';
-        viewportNode.appendChild(tempCanvas);
+        viewportNode.appendChild(currentCanvas);
       }
 
       startIndex = endIndex;
@@ -617,11 +617,13 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
     recalculate();
 
     // Debounce canvas re-rendering
-    const timeoutId = setTimeout(() => {
+    if (resizeTimeoutRef.current !== null) {
+      window.clearTimeout(resizeTimeoutRef.current);
+    }
+
+    resizeTimeoutRef.current = window.setTimeout(() => {
       renderCanvas();
     }, 150);
-
-    return () => clearTimeout(timeoutId);
   }, [renderCanvas, recalculate]);
 
   // Update container styles when dimensions change (Requirements: 5.1, 5.2, 5.3)
@@ -743,14 +745,17 @@ export const CanvasOutput: React.FC<CanvasOutputProps> = ({
 
   // Handle window resize and orientation changes (Requirements: 5.5)
   useEffect(() => {
-    const cleanup = handleResize();
+    handleResize();
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
-      cleanup();
+      if (resizeTimeoutRef.current !== null) {
+        window.clearTimeout(resizeTimeoutRef.current);
+        resizeTimeoutRef.current = null;
+      }
     };
   }, [handleResize]);
 

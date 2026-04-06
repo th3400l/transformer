@@ -104,8 +104,17 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
     const containerRect = container.getBoundingClientRect();
     const deviceInfo = detectDeviceType();
 
-    // Available space accounting for padding
-    const availableWidth = containerRect.width - (padding * 2);
+    // Available space accounting for padding.
+    // Some mobile browsers briefly report 0px container size during orientation/layout transitions.
+    // Use viewport-based fallback so we never compute invalid (<= 0) canvas sizes.
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const rawAvailableWidth = containerRect.width - (padding * 2);
+    const rawAvailableHeight = containerRect.height - (padding * 2);
+    const fallbackWidth = Math.max(200, viewportWidth - (padding * 2));
+    const fallbackHeight = Math.max(260, viewportHeight - (padding * 2));
+    const availableWidth = rawAvailableWidth > 0 ? rawAvailableWidth : fallbackWidth;
+    const availableHeight = rawAvailableHeight > 0 ? rawAvailableHeight : fallbackHeight;
 
     // Calculate dimensions based on aspect ratio and constraints
     let canvasWidth: number;
@@ -135,13 +144,17 @@ export const useResponsiveCanvas = (config: ResponsiveCanvasConfig) => {
       canvasHeight = canvasWidth / aspectRatio;
     }
 
+    // Final safety clamp: avoid invalid sizes that can crash canvas on mobile browsers.
+    canvasWidth = Math.max(1, Math.round(canvasWidth));
+    canvasHeight = Math.max(1, Math.round(Math.min(Math.max(canvasHeight, minHeight), maxHeight)));
+
     // Calculate scale factor for high-DPI displays
     const devicePixelRatio = window.devicePixelRatio || 1;
     const scale = Math.min(devicePixelRatio, 2); // Cap at 2x for performance
 
     const newDimensions: CanvasDimensions = {
-      width: Math.round(canvasWidth),
-      height: Math.round(canvasHeight),
+      width: canvasWidth,
+      height: canvasHeight,
       scale,
       isMobile: deviceInfo.isMobile,
       isTablet: deviceInfo.isTablet,

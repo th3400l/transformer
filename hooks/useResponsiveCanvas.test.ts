@@ -168,6 +168,39 @@ describe('useResponsiveCanvas', () => {
       expect(result.current.dimensions.width).toBeGreaterThanOrEqual(minWidth);
       expect(result.current.dimensions.height).toBeGreaterThanOrEqual(minHeight);
     });
+
+    it('should keep dimensions valid when container size is temporarily zero', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        writable: true,
+        configurable: true,
+        value: 390
+      });
+
+      Object.defineProperty(window, 'innerHeight', {
+        writable: true,
+        configurable: true,
+        value: 844
+      });
+
+      mockContainer.getBoundingClientRect = vi.fn(() => ({
+        width: 0,
+        height: 0,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0,
+        toJSON: () => ({})
+      }));
+
+      const { result } = renderHook(() =>
+        useResponsiveCanvas({ containerRef })
+      );
+
+      expect(result.current.dimensions.width).toBeGreaterThan(0);
+      expect(result.current.dimensions.height).toBeGreaterThan(0);
+    });
   });
 
   describe('Orientation Change Handling', () => {
