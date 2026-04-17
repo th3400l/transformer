@@ -274,13 +274,13 @@
       "q2": "Posso usar isso para o meu negócio paralelo?",
       "a2": "Com certeza. Faça seus memes, crie a marca do seu Depop, o que for. Vá buscar o seu dinheiro. Nenhum crédito é necessário, mas uma menção seria icônica.",
       "q3": "Vocês estão lendo meus pensamentos malucos?",
-      "a3": "Não, não conseguimos ver nada. Não somos como aquele alien Mar... kek... enfim, para ser franco, não precisamos dos seus dados. Nossos servidores são como pedras, de qualquer forma. Seus segredos estão seguros conosco, bestie.",
+      "a3": "Não, não conseguimos ver nada. Não somos como aquele alien Mar... kek... enfim, para ser franco, não precisamos dos seus dados. Nossos servidores são como pedras, de qualquer forma. Seus segredos estão seguros conosco, amigo.",
       "q4": "Qual é a dos downloads?",
-      "a4": "No momento, são apenas PNGs. Estão ficando… com alta qualidade. Podemos adicionar mais formatos mais tarde, se a vibe for boa.",
+      "a4": "No momento, são apenas PNGs. Estão ficando… com alta qualidade. Podemos adicionar mais formatos mais tarde, se a atmosfera for boa.",
       "q5": "Por que a fonte parece um pouco estranha?",
-      "a5": "Provavelmente é o seu navegador. Tente atualizá-lo. Se ainda parecer suspeito, pode ser apenas o seu sistema operacional fazendo as coisas dele. É uma vibe, não uma ciência exata.",
-      "q6": "Minha faculdade pede cópias físicas, o que devo fazer?",
-      "a6": "Te ajudo, garota/garoto! Tenho uma solução perfeita para você",
+      "a5": "Provavelmente é o seu navegador. Tente atualizá-lo. Se ainda parecer suspeito, pode ser apenas o seu sistema operacional fazendo as coisas dele. É uma atmosfera, não uma ciência exata.",
+      "q6": "Qual é a melhor maneira de imprimir estes documentos?",
+      "a6": "Recomendamos exportar para PDF e usar 'Tamanho Real' nas configurações da sua impressora para manter a escala e resolução corretas.",
       "supportHeadline": "Ainda confuso ou quer criticar um bug?",
       "supportDesc": "Envie uma nota para a equipe e responderemos mais rápido do que você consegue dizer cursiva."
     },
@@ -354,7 +354,7 @@
       "section3Title": "3. Propriedade Intelectual",
       "section3Content": "O texto que você digita é seu. As imagens geradas a partir do seu texto podem ser usadas para fins pessoais e comerciais. No entanto, as fontes, o design e a marca do txttohandwriting.org são propriedade dos proprietários do site e não podem ser usados sem permissão.",
       "section4Title": "4. Isenção de Garantias",
-      "section4Content": "Nosso site é fornecido em uma base \"como está\". Não oferecemos garantias, expressas ou implícitas, e por meio deste nos isentamos e negamos todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um propósito específico ou não violação de propriedade intelectual ou outra violação de direitos.",
+      "section4Content": "Utilizamos o Google AdSense para apresentar anúncios. Estes serviços podem utilizar cookies para fornecer conteúdo relevante. Consulte a nossa Política de Privacidade para mais detalhes.",
       "section5Title": "5. Limitação de Responsabilidade",
       "section5Content": "Em nenhum caso o txttohandwriting.org ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro, ou devido à interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em nosso site, mesmo que tenhamos sido notificados oralmente ou por escrito da possibilidade de tais danos.",
       "section6Title": "6. Alterações nos Termos",
@@ -382,7 +382,7 @@
     }
   },
   "blog": {
-    "title": "O Blog",
+    "title": "Artigos",
     "backToLab": "Voltar ao laboratório",
     "backToAll": "Voltar para todas as postagens",
     "readMore": "Clique para ler mais →",
@@ -393,7 +393,7 @@
   "blogPosts": {
     "glow-up-your-notes": {
       "title": "Dê um Glow Up nas suas Anotações: Guia Definitivo de Conversores de Texto para Manuscrito",
-      "content": "<p>Vamos ser sinceros: seus apontamentos estão meio sem graça. Você quer ser a pessoa com notas estéticas no Studygram, mas blocos de texto digitado não dão a vibe. Entra o <strong>conversor de texto para escrita à mão</strong>, o life hack para romantizar os estudos.</p>\n<h2>O que são geradores de escrita à mão?</h2>\n<p>Um <strong>gerador de escrita à mão</strong> transforma seu texto digital em manuscrito fofo. Perfeito para ter o charme do escrito à mão sem câimbras. Para guias de estudo ou designs do planner, uma <strong>ferramenta gratuita de texto para manuscrito</strong> vira sua bestie.</p>\n<h2>Encontre sua estética de fonte</h2>\n<p>O glow‑up vem da fonte certa, aquela que grita “você”. Mais clean e elegante ou casual e bagunçada? Temos várias opções. Um bom <strong>conversor de escrita à mão online</strong> te dá escolha para ir de biologia a história. Útil e super estético.</p>"
+      "content": "<p>Vamos ser sinceros: seus apontamentos estão meio sem graça. Você quer ser a pessoa com notas estéticas no Studygram, mas blocos de texto digitado não dão a atmosfera. Entra o <strong>conversor de texto para escrita à mão</strong>, o life hack para romantizar os estudos.</p>\n<h2>O que são geradores de escrita à mão?</h2>\n<p>Um <strong>gerador de escrita à mão</strong> transforma seu texto digital em manuscrito fofo. Perfeito para ter o charme do escrito à mão sem câimbras. Para guias de estudo ou designs do planner, uma <strong>ferramenta gratuita de texto para manuscrito</strong> vira sua amigo.</p>\n<h2>Encontre sua estética de fonte</h2>\n<p>O glow‑up vem da fonte certa, aquela que grita “você”. Mais clean e elegante ou casual e bagunçada? Temos várias opções. Um bom <strong>conversor de escrita à mão online</strong> te dá escolha para ir de biologia a história. Útil e super estético.</p>"
     },
     "fix-your-studygram": {
       "title": "Por Que seu Studygram Está Flopando (e Como um Gerador de Caligrafia Pode Resolver)",
@@ -416,7 +416,7 @@
       "content": "<p>Acha que geradores de escrita são só para tarefas? Pense de novo. As possibilidades criativas são infinitas. Aqui vão nossos 5 usos favoritos.</p>\n<h2>1. Props para D&D e TTRPG</h2>\n<p>Mestres de RPG: nada imerge mais do que uma carta física. Gere um aviso “rabiscado às pressas” com fonte bagunçada e fundo de pergaminho.</p>\n<h2>2. Scrapbooking digital</h2>\n<p>Adicione legendas aos seus collages sem stylus. Mantém o DIY e o layout limpo.</p>\n<h2>3. Cartões de receita estéticos</h2>\n<p>Digite a receita secreta da vovó, escolha uma fonte cursiva e imprima em papel cartão. Presente personalizado incrível.</p>\n<h2>4. Frases para redes sociais</h2>\n<p>Chega de usar as mesmas fontes do Canva. Uma citação manuscrita em fundo texturizado se destaca no feed.</p>\n<h2>5. Cartas de amor (a gente não conta)</h2>\n<p>Escrever você mesmo é mais romântico, mas se sua letra parece de galinha, o gerador ajuda. Escolha uma fonte crível.</p>"
     },
     "print-ready-handwriting": {
-      "title": "Escrita Pronta para Imprimir: Margens, Espaçamento e Vibes de Papel",
+      "title": "Escrita Pronta para Imprimir: Margens, Espaçamento e Textura de Papel",
       "content": "<p>Páginas manuscritas ficam lindas na tela, mas a impressão pode derrubar a magia. Alguns ajustes mantêm tudo limpo e crível no papel.</p>\n<h2>Comece pela página, não pela fonte</h2>\n<p>Escolha o papel primeiro e depois ajuste margens e tamanho da fonte. Um pouco de espaço em branco nas bordas deixa a página com cara de caderno real.</p>\n<h2>Exporte com inteligência</h2>\n<p>Use alta qualidade para imprimir e exporte em PDF se precisar de várias páginas. Se a impressora for exigente, use tintas neutras e texturas sutis.</p>"
     },
     "handwritten-touches-for-work": {

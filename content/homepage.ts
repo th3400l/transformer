@@ -95,20 +95,20 @@ export const heroContent: HeroContent = {
 export const howItWorksSteps: Step[] = [
   {
     number: 1,
-    title: "Enter Your Text",
-    description: "Type or paste the text you want to convert into handwriting. Our tool supports up to 6 pages of content, perfect for assignments, notes, or creative projects. Simply enter your text in the input field and watch the magic happen in real-time. The intuitive interface makes it easy to get started, whether you're creating a single page or multiple pages of handwritten content. You can edit and refine your text at any time before generating the final output.",
+    title: "Input Your Text",
+    description: "Enter or paste the text you wish to convert. Our platform supports extensive multi-page documents, making it ideal for academic assignments, detailed notes, or professional correspondence. The real-time preview allows you to monitor the transformation as you type, ensuring full control over the final output.",
     icon: "edit"
   },
   {
     number: 2,
-    title: "Customize Your Style",
-    description: "Choose from 9 handwriting fonts, select paper templates (blank, lined, or dotted), and adjust ink colors and boldness to match your aesthetic. Upload your own handwriting font for a truly personal touch. Customize every detail to create the perfect handwritten look. Adjust the ink weight to make your writing lighter or bolder, select from multiple ink colors including black, blue, red, and green, and fine-tune the distortion level to control how realistic your handwriting appears.",
+    title: "Personalize the Style",
+    description: "Select from our curated library of handwriting fonts and high-resolution paper templates, including lined, grid, and blank options. You can further refine the appearance by adjusting ink color, stroke boldness, and natural distortion levels to achieve a truly authentic handwritten aesthetic.",
     icon: "palette"
   },
   {
     number: 3,
-    title: "Generate & Download",
-    description: "Click generate to create your handwritten pages. Download as high-quality PNG images or compile into a PDF. All processing happens in your browser—completely private. No data ever leaves your device, ensuring your content stays secure and confidential. Choose your preferred image quality settings, download individual pages or use bulk download for multiple pages, and save your work in the format that works best for your needs. Everything is processed locally for maximum privacy and speed.",
+    title: "Generate and Export",
+    description: "Produce high-quality handwritten pages instantly. Your documents can be exported as PNG images or compiled into a professional PDF. All processing is performed locally within your browser, ensuring that your data remains private and secure at all times.",
     icon: "download"
   }
 ];
@@ -119,47 +119,47 @@ export const howItWorksSteps: Step[] = [
 
 export const features: Feature[] = [
   {
-    title: "Realistic Handwriting Variations",
-    description: "Our advanced rendering engine creates authentic handwriting with natural variations in baseline, slant, and ink intensity. Each generation is unique, with subtle imperfections that make your text look genuinely handwritten, not computer-generated. Experience the difference with realistic baseline jitter, variable letter slant, and natural ink color variations.",
+    title: "Advanced Rendering Engine",
+    description: "Our proprietary engine simulates natural handwriting variations, including baseline jitter and variable letter slant. This ensures that every generated document looks genuinely handcrafted rather than computer-generated.",
     icon: "pen",
     benefits: [
-      "Natural baseline jitter",
-      "Variable letter slant",
-      "Ink color variations",
-      "Micro-tilts and imperfections"
+      "Natural baseline alignment",
+      "Dynamic letter variations",
+      "Authentic ink simulation",
+      "Realistic imperfections"
     ]
   },
   {
-    title: "Multiple Paper Templates",
-    description: "Choose from a variety of paper templates to match your needs. Blank pages for creative freedom, lined paper for structured notes, or dotted grids for bullet journals. Each template features authentic paper textures for added realism. Perfect for students, creators, and professionals who need the right paper for every project.",
+    title: "Professional Paper Templates",
+    description: "Choose from a variety of professional templates designed for different use cases. From structured lined paper for academic work to dotted grids for planning, each template features realistic textures.",
     icon: "template",
     benefits: [
-      "Blank, lined, and dotted options",
-      "Authentic paper textures",
-      "High-resolution templates",
-      "Optimized for printing"
+      "Lined, Grid, and Blank options",
+      "High-resolution textures",
+      "Optimized for printing",
+      "Multiple aesthetic styles"
     ]
   },
   {
-    title: "Custom Font Upload",
-    description: "Make it truly yours by uploading your own handwriting font. Our tool supports TTF, OTF, and WOFF formats, allowing you to use your actual handwriting or any custom font you've created. Store up to 2 personal fonts for quick access. Transform your unique handwriting style into digital format and use it whenever you need.",
+    title: "Custom Typeface Support",
+    description: "For a truly personal touch, you can upload your own handwriting font (TTF, OTF, or WOFF). This allows you to digitize your unique writing style and use it across all your generated documents.",
     icon: "upload",
     benefits: [
-      "Upload your own handwriting",
-      "Support for TTF, OTF, WOFF",
-      "2 custom font slots",
-      "Instant preview"
+      "Upload personal fonts",
+      "Supports standard formats",
+      "Secure local storage",
+      "Instant style application"
     ]
   },
   {
-    title: "100% Free & Private",
-    description: "No subscriptions, no hidden fees, no data collection. Everything runs in your browser—your text never touches our servers. Use it for personal projects, school assignments, or commercial work. No credit required, though always appreciated. Your privacy is our priority, with complete client-side processing ensuring your content stays yours.",
+    title: "Privacy and Security",
+    description: "We prioritize your data security. By utilizing client-side processing, we ensure that your text and fonts never leave your device. Our tool is free, private, and requires no registration.",
     icon: "lock",
     benefits: [
-      "Completely free forever",
-      "No signup required",
-      "Client-side processing",
-      "Commercial use allowed"
+      "No data collection",
+      "Zero server-side storage",
+      "Secure browser processing",
+      "Fully private workflow"
     ]
   }
 ];

@@ -252,67 +252,48 @@ const AboutPage: React.FC<PageProps> = ({ onGoBack }) => {
       )}
       <div className="relative z-10 bg-panel-bg backdrop-blur-lg border border-panel-border rounded-xl shadow-2xl p-6 md:p-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[var(--panel-border)] pb-6 mb-8 gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-accent tracking-tight">{t('pages.about.title', 'About The Vibe')}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-accent tracking-tight">{t('pages.about.title', 'About Our Mission')}</h1>
           <Button
             variant="ghost"
             onClick={onGoBack}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-text-muted hover:text-text hover:bg-control-bg"
           >
             <ArrowLeftIcon className="w-4 h-4" />
-            {t('pages.about.back', 'Back to the lab')}
+            {t('pages.about.back', 'Back to Tool')}
           </Button>
         </div>
 
         <div className="text-text-muted space-y-8 leading-relaxed text-lg">
           <p>
-            <strong className="text-text">txttohandwriting.org</strong> {t('pages.about.description1', 'started as a late-night dare to make digital notes feel less robotic and more like the doodled pages we grew up with.')}
+            <strong className="text-text">txttohandwriting.org</strong> {t('pages.about.description1', 'was developed to bridge the gap between digital efficiency and the personal touch of traditional handwriting. Our goal is to provide a high-quality, accessible tool for students, educators, and creators who need to generate realistic handwritten documents.')}
           </p>
           <p>
-            {t('pages.about.description2', 'Today the generator powers students, designers, and serial procrastinators who still want their submissions to look handcrafted.')}
+            {t('pages.about.description2', 'We utilize advanced browser-based rendering techniques to ensure that every generated page looks authentic, with natural variations in letter spacing and baseline alignment. Privacy is a core pillar of our platform; all text processing occurs locally on your device, ensuring your data never leaves your browser.')}
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 mt-10">
-            <div className="p-8 md:p-10 rounded-2xl border border-panel-border bg-control-bg/40 md:col-span-2 hover:border-accent transition-all duration-300">
+            <div className="p-8 md:p-10 rounded-2xl border border-panel-border bg-control-bg/40 md:col-span-2">
               <div className="max-w-2xl">
-                <h2 className="text-2xl font-bold text-text mb-4">{t('pages.about.community', 'Open to the community')}</h2>
+                <h2 className="text-2xl font-bold text-text mb-4">{t('pages.about.community', 'Commitment to Quality')}</h2>
                 <p className="text-lg text-text-muted leading-relaxed">
-                  {t('pages.about.communityDesc', 'Feature ideas, bug reports, and meme-worthy suggestions all land in the same inbox.')}
+                  {t('pages.about.communityDesc', 'We are constantly refining our algorithms and expanding our font library based on user feedback. If you have suggestions for new features or find any issues, we encourage you to reach out.')}
                 </p>
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center mt-8">
                 <a
-                  href={BUY_ME_A_COFFEE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-rose-500/50 text-sm"
+                  href={`mailto:${SUPPORT_EMAIL}`}
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-accent text-bg hover:bg-accent-hover shadow-lg shadow-accent/20 px-8 py-3.5 rounded-full font-bold transition-all"
                 >
-                  <HeartIcon className="w-5 h-5" /> {t('pages.about.presentRose', 'Present a Rose')}
+                  {t('pages.about.contact', 'Contact Support')}
                 </a>
-                <a
-                  href={`mailto:${SUPPORT_EMAIL}?subject=Bitcoin%20Donation&body=Hey%20team,%20drop%20me%20the%20current%20BTC%20wallet%20so%20I%20can%20support%20the%20project.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-accent text-bg hover:bg-accent-hover shadow-lg shadow-accent/20 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent/50 text-sm"
-                >
-                  <span className="text-lg">₿</span> {t('pages.about.donateBtc', 'Donate a Bitcoin')}
-                </a>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-panel-border/50">
-                <p className="text-sm text-text-muted flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span>
-                  {t('pages.about.donateBtcDesc')}
-                </p>
               </div>
             </div>
           </div>
 
-
-
           <div className="text-center pt-8 border-t border-panel-border mt-8 flex flex-col gap-2">
-            <span className="font-mono text-sm text-accent opacity-80 hover:opacity-100 transition-opacity">{t('pages.about.madeBy')}</span>
-            <span className="text-xs text-text-muted uppercase tracking-widest opacity-60">A subsidiary of NSA Tools</span>
+            <span className="font-mono text-sm text-accent opacity-80">{t('pages.about.madeBy', 'Developed by the Text to Handwriting Team')}</span>
+            <span className="text-xs text-text-muted uppercase tracking-widest opacity-60">Providing Digital Productivity Solutions</span>
           </div>
         </div>
       </div>

@@ -216,7 +216,7 @@
     "mission": {
       "badge": "हमारा मिशन",
       "heading": "हमने यह क्यों बनाया?",
-      "description": "हम ऐसे भविष्य में विश्वास करते हैं जहां छात्र अपने आइडिया पर फोकस करें, न कि असाइनमेंट लिखते समय हाथ दुखे। डिजिटल युग को अपनाने का समय है, लेकिन असली हस्तलेखन वाला वाइब बनाए रखते हुए।"
+      "description": "हम ऐसे भविष्य में विश्वास करते हैं जहां छात्र अपने आइडिया पर फोकस करें, न कि असाइनमेंट लिखते समय हाथ दुखे। डिजिटल युग को अपनाने का समय है, लेकिन असली हस्तलेखन वाला अनुभव बनाए रखते हुए।"
     },
     "lab": {
       "heading": "लैब",
@@ -250,12 +250,12 @@
   },
   "pages": {
     "about": {
-      "title": "वाइब के बारे में",
+      "title": "अनुभव के बारे में",
       "back": "लैब पर वापस",
       "community": "कम्युनिटी के लिए खुला",
       "communityDesc": "फीचर आइडिया, बग रिपोर्ट और मीम‑लेवल सुझाव एक ही इनबॉक्स में आते हैं। हम सच में सब पढ़ते हैं।",
       "description1": "यह एक देर‑रात की चुनौती से शुरू हुआ ताकि डिजिटल नोट्स कम रोबोटिक और हमारी बचपन की डूडल वाली पेजेज जैसे लगें। जो एक छोटा स्क्रिप्ट होना था, वह blend modes, टेक्सचर मैनेजर और बहुत सारी कॉफी बन गया।",
-      "description2": "आज यह जनरेटर छात्रों, डिज़ाइनरों और सीरियल प्रॉक्रैस्टिनेटर्स को ताकत देता है जो अपने काम को हाथ‑लिखा दिखाना चाहते हैं। हम भरोसेमंद इंक जिटर, रिस्पॉन्सिव कैनवस और इतनी तेज़ एक्सपीरियंस पर फोकस करते हैं कि आप डेडलाइन से 30 मिनट पहले काम खत्म कर सकें।",
+      "description2": "आज यह जनरेटर छात्रों, डिज़ाइनरों और छात्र और पेशेवर को ताकत देता है जो अपने काम को हाथ‑लिखा दिखाना चाहते हैं। हम भरोसेमंद इंक जिटर, रिस्पॉन्सिव कैनवस और इतनी तेज़ एक्सपीरियंस पर फोकस करते हैं कि आप डेडलाइन से 30 मिनट पहले काम खत्म कर सकें।",
       "donateBtc": "बिटकॉइन दान करें",
       "donateBtcDesc": "वॉलेट एड्रेस जल्द आएगा—तब तक हमें संदेश करें, हम ताज़ा डिटेल भेज देंगे।",
       "presentRose": "गुलाब पेश करें",
@@ -275,12 +275,12 @@
       "q3": "क्या आप मेरे पागल विचार पढ़ रहे हैं?",
       "a3": "नहीं, हमें कुछ नहीं दिखता। हमें आपका डेटा नहीं चाहिए। हमारे सर्वर पत्थर जैसे हैं। आपके सीक्रेट सुरक्षित हैं।",
       "q4": "डाउनलोड का क्या सीन है?",
-      "a4": "अभी सिर्फ PNG। हाई क्वालिटी। बाद में और फॉर्मैट जोड़ सकते हैं अगर वाइब सही हुई।",
+      "a4": "अभी सिर्फ PNG। हाई क्वालिटी। बाद में और फॉर्मैट जोड़ सकते हैं अगर अनुभव सही हुई।",
       "q5": "फ़ॉन्ट थोड़ा अजीब क्यों लगता है?",
-      "a5": "शायद आपका ब्राउज़र। अपडेट करके देखें। फिर भी अजीब लगे तो OS वजह हो सकता है। ये वाइब है, सटीक विज्ञान नहीं।",
-      "q6": "मेरी फैकल्टी हार्डकॉपी मांगती है, क्या करूँ?",
-      "a6": "मेरे पास आपके लिए परफेक्ट समाधान है",
-      "supportHeadline": "अभी भी कन्फ्यूज़ हैं या किसी बग को रोस्ट करना है?",
+      "a5": "शायद आपका ब्राउज़र। अपडेट करके देखें। फिर भी अजीब लगे तो OS वजह हो सकता है। ये अनुभव है, सटीक विज्ञान नहीं।",
+      "q6": "इन दस्तावेजों को प्रिंट करने का सबसे अच्छा तरीका क्या है?",
+      "a6": "हम सही स्केलिंग और रिज़ॉल्यूशन बनाए रखने के लिए PDF में एक्सपोर्ट करने और अपने प्रिंटर सेटिंग्स में 'एक्चुअल साइज़' का उपयोग करने की सलाह देते हैं।",
+      "supportHeadline": "अभी भी कन्फ्यूज़ हैं या किसी बग को आलोचना करना है?",
       "supportDesc": "टीम को लिखें और हम cursive कहने से पहले जवाब देंगे।"
     },
     "changelog": {
@@ -296,7 +296,7 @@
             "कुछ बग ठीक किए गए और नए सुधार।",
             "बहु-भाषा समर्थन कार्यक्षमता जोड़ी गई।"
           ],
-          "mood": "वैश्विक वाइब्स।"
+          "mood": "वैश्विक अनुभव्स।"
         },
         "v1-4": {
           "tagline": "नेक्स्ट‑लेवल रियलिज़्म और परफॉर्मेंस।",
@@ -351,7 +351,7 @@
       "section3Title": "3. बौद्धिक संपदा",
       "section3Content": "आपका इनपुट टेक्स्ट आपका है। आपके टेक्स्ट से बनी इमेजेज़ को व्यक्तिगत और व्यावसायिक उपयोग के लिए इस्तेमाल किया जा सकता है। हालांकि, txttohandwriting.org के फ़ॉन्ट, डिज़ाइन और ब्रांडिंग साइट मालिकों की संपत्ति हैं और अनुमति बिना उपयोग नहीं किए जा सकते।",
       "section4Title": "4. वारंटी अस्वीकरण",
-      "section4Content": "हमारी वेबसाइट \"जैसी है\" आधार पर उपलब्ध है। हम कोई भी स्पष्ट या निहित वारंटी नहीं देते, जिसमें व्यापारयोग्यता, किसी विशेष उद्देश्य के लिए उपयुक्तता या बौद्धिक संपदा के उल्लंघन का न होना शामिल है।",
+      "section4Content": "हम विज्ञापन दिखाने के लिए Google AdSense का उपयोग करते हैं। ये सेवाएँ प्रासंगिक सामग्री प्रदान करने के लिए कुकीज़ का उपयोग कर सकती हैं। विवरण के लिए कृपया हमारी गोपनीयता नीति देखें।",
       "section5Title": "5. दायित्व की सीमा",
       "section5Content": "किसी भी स्थिति में txttohandwriting.org या इसके आपूर्तिकर्ता किसी भी नुकसान (डेटा या मुनाफे की हानि या बिज़नेस रुकावट सहित) के लिए जिम्मेदार नहीं होंगे, जो हमारे वेबसाइट पर उपलब्ध सामग्री के उपयोग या उपयोग न कर पाने से उत्पन्न हो—भले ही हमें इसकी सूचना दी गई हो।",
       "section6Title": "6. शर्तों में बदलाव",
@@ -379,7 +379,7 @@
     }
   },
   "blog": {
-    "title": "ब्लॉग",
+    "title": "लेख",
     "backToLab": "लैब पर वापस",
     "backToAll": "सभी पोस्ट पर वापस",
     "readMore": "और पढ़ें →",
@@ -390,19 +390,19 @@
   "blogPosts": {
     "glow-up-your-notes": {
       "title": "अपने नोट्स को Glow Up दें: एस्थेटिक टेक्स्ट‑टू‑हैंडराइटिंग कनवर्टर की अल्टीमेट गाइड",
-      "content": "<p>ईमानदारी से कहें, आपके लेक्चर नोट्स थोड़े फीके लग रहे हैं। आप Studygram वाली एस्थेटिक नोट्स वाले स्टूडेंट बनना चाहते हैं, लेकिन टाइप किए हुए लंबे टेक्स्ट वही वाइब नहीं देते। यहाँ आता है <strong>text‑to‑handwriting converter</strong>—पढ़ाई को थोड़ा रोमांटिक बनाने का सबसे बड़ा लाइफ‑हैक।</p>\n<h2>Handwriting Generators की असल बात क्या है?</h2>\n<p>हमारा <strong>handwriting generator</strong> आपके बोरिंग डिजिटल टेक्स्ट को प्यारी हैंडराइटिंग में बदल देता है। हाथ दर्द किए बिना handwritten चार्म चाहिए तो यह परफेक्ट है। चाहे स्टडी गाइड को खूबसूरत बनाना हो या डिजिटल प्लानर के लिए डिजाइन बनाना, एक <strong>free text to handwriting tool</strong> आपका नया bestie है।</p>\n<h2>अपना फ़ॉन्ट एस्थेटिक ढूंढें</h2>\n<p>Glow‑up की कुंजी है ऐसा फ़ॉन्ट जो ‘आप’ को दिखाए। साफ, एलिगेंट स्क्रिप्ट या थोड़ा कैज़ुअल स्क्रॉल? हमारे पास आपकी एनर्जी के हिसाब से ढेर सारे फ़ॉन्ट हैं। एक पर मत रुकिए—ट्राय कीजिए। अच्छा <strong>online handwriting converter</strong> आपको विकल्प देता है ताकि आप बायो नोट्स से हिस्ट्री निबंध तक स्विच कर सकें। इससे आपके स्टडी मटेरियल उपयोगी ही नहीं, सुपर एस्थेटिक भी बन जाते हैं।</p>"
+      "content": "<p>ईमानदारी से कहें, आपके लेक्चर नोट्स थोड़े फीके लग रहे हैं। आप Studygram वाली एस्थेटिक नोट्स वाले स्टूडेंट बनना चाहते हैं, लेकिन टाइप किए हुए लंबे टेक्स्ट वही अनुभव नहीं देते। यहाँ आता है <strong>text‑to‑handwriting converter</strong>—पढ़ाई को थोड़ा रोमांटिक बनाने का सबसे बड़ा लाइफ‑हैक।</p>\n<h2>Handwriting Generators की असल बात क्या है?</h2>\n<p>हमारा <strong>handwriting generator</strong> आपके बोरिंग डिजिटल टेक्स्ट को प्यारी हैंडराइटिंग में बदल देता है। हाथ दर्द किए बिना handwritten चार्म चाहिए तो यह परफेक्ट है। चाहे स्टडी गाइड को खूबसूरत बनाना हो या डिजिटल प्लानर के लिए डिजाइन बनाना, एक <strong>free text to handwriting tool</strong> आपका नया मित्र है।</p>\n<h2>अपना फ़ॉन्ट एस्थेटिक ढूंढें</h2>\n<p>Glow‑up की कुंजी है ऐसा फ़ॉन्ट जो ‘आप’ को दिखाए। साफ, एलिगेंट स्क्रिप्ट या थोड़ा कैज़ुअल स्क्रॉल? हमारे पास आपकी एनर्जी के हिसाब से ढेर सारे फ़ॉन्ट हैं। एक पर मत रुकिए—ट्राय कीजिए। अच्छा <strong>online handwriting converter</strong> आपको विकल्प देता है ताकि आप बायो नोट्स से हिस्ट्री निबंध तक स्विच कर सकें। इससे आपके स्टडी मटेरियल उपयोगी ही नहीं, सुपर एस्थेटिक भी बन जाते हैं।</p>"
     },
     "fix-your-studygram": {
       "title": "आपका Studygram लो‑की फ्लॉप क्यों हो रहा है (और कैसे हैंडराइटिंग जनरेटर इसे ठीक करता है)",
-      "content": "<p>आपके पास पेस्टल हाइलाइटर, वॉशी टेप और आइस्ड कॉफी है। फिर भी Studygram पर हाइप नहीं? शायद कंटेंट की वजह से। वही Times New Roman देखकर सब बोर हो जाते हैं। स्क्रॉल रोकना है तो विजुअल्स दमदार होने चाहिए। और एस्थेटिक handwritten notes से बेहतर कुछ नहीं।</p>\n<h2>सीक्रेट सॉस: टेक्स्ट को ऑनलाइन हैंडराइटिंग में बदलें</h2>\n<p>कोई भी सब कुछ हाथ से नहीं लिख सकता, खासकर जब कल तीन असाइनमेंट हों। इसलिए <strong>text to handwriting online tool</strong> काम आता है। आप नोट्स, to‑do, पसंदीदा कोट्स टाइप करते हैं और तुरंत <strong>टेक्स्ट को इमेज में कन्वर्ट</strong> कर देते हैं, वह भी खूबसूरत हैंडराइटिंग में।</p>\n<p>सोचिए, किसी चैप्टर का खूबसूरत handwritten summary स्टोरी में डालना—यूनिक, eye‑catching, और लगता है आपने बहुत मेहनत की है। यही है <strong>free online handwriting generator</strong> की ताकत—कंटेंट को बेसिक से आइकॉनिक बनाना।</p>\n<h2>इसे और पॉप कैसे बनाएं</h2>\n<p>सिर्फ सादे बैकग्राउंड पर न चिपकाएं। हमारे टूल से पेपर वाइब चुनें—lined, grid या plain—and अपने थीम के हिसाब से ink color लें। PNG डाउनलोड करें और Canva या GoodNotes में डाल दें। यही है Studygram कंटेंट बनाने का सीक्रेट जिसे लोग सेव और शेयर करते हैं।</p>"
+      "content": "<p>आपके पास पेस्टल हाइलाइटर, वॉशी टेप और आइस्ड कॉफी है। फिर भी Studygram पर उत्साह नहीं? शायद कंटेंट की वजह से। वही Times New Roman देखकर सब बोर हो जाते हैं। स्क्रॉल रोकना है तो विजुअल्स दमदार होने चाहिए। और एस्थेटिक handwritten notes से बेहतर कुछ नहीं।</p>\n<h2>सीक्रेट सॉस: टेक्स्ट को ऑनलाइन हैंडराइटिंग में बदलें</h2>\n<p>कोई भी सब कुछ हाथ से नहीं लिख सकता, खासकर जब कल तीन असाइनमेंट हों। इसलिए <strong>text to handwriting online tool</strong> काम आता है। आप नोट्स, to‑do, पसंदीदा कोट्स टाइप करते हैं और तुरंत <strong>टेक्स्ट को इमेज में कन्वर्ट</strong> कर देते हैं, वह भी खूबसूरत हैंडराइटिंग में।</p>\n<p>सोचिए, किसी चैप्टर का खूबसूरत handwritten summary स्टोरी में डालना—यूनिक, eye‑catching, और लगता है आपने बहुत मेहनत की है। यही है <strong>free online handwriting generator</strong> की ताकत—कंटेंट को बेसिक से आइकॉनिक बनाना।</p>\n<h2>इसे और पॉप कैसे बनाएं</h2>\n<p>सिर्फ सादे बैकग्राउंड पर न चिपकाएं। हमारे टूल से पेपर अनुभव चुनें—lined, grid या plain—and अपने थीम के हिसाब से ink color लें। PNG डाउनलोड करें और Canva या GoodNotes में डाल दें। यही है Studygram कंटेंट बनाने का सीक्रेट जिसे लोग सेव और शेयर करते हैं।</p>"
     },
     "create-your-own-handwriting-font": {
       "title": "अपना खुद का हैंडराइटिंग फ़ॉन्ट कैसे बनाएं (बिना दिमाग खोए)",
-      "content": "<p>क्या आप txttohandwriting.org पर <strong>अपनी असली हैंडराइटिंग</strong> देखना चाहते हैं? आप कर सकते हैं। अपनी लिखावट को फ़ॉन्ट में बदलना मुश्किल लगता है, लेकिन कई टूल इसे आसान, मजेदार और लगभग मुफ्त बनाते हैं।</p>\n<h2>स्टेप 1: हैंडराइटिंग सैंपल तैयार करें</h2>\n<p>एक टेम्पलेट प्रिंट करें या टैबलेट पर लिखें। बेसलाइन स्थिर रखें, पसंदीदा पेन इस्तेमाल करें, और हर अक्षर साफ लिखें—upper, lower, numbers, punctuation। शीट जितनी साफ होगी, फ़ॉन्ट उतना साफ होगा।</p>\n<ul>\n  <li><strong>Calligraphr टेम्पलेट:</strong> <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> से गाइड शीट प्रिंट करें, डार्क पेन से लिखें और 300 dpi पर स्कैन करें या साफ फोटो लें।</li>\n  <li><strong>Procreate या Affinity:</strong> <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> या <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> में लिखकर ट्रांसपेरेंट PNG एक्सपोर्ट करें।</li>\n</ul>\n<h2>स्टेप 2: अक्षरों को फ़ॉन्ट फ़ाइल में बदलें</h2>\n<p>ये फ्री (या लगभग फ्री) जनरेटर्स हेवी‑लिफ्टिंग कर देते हैं:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – friendly, web‑based, polished TTF/OTF के लिए सबसे तेज़। Free tier में एक फ़ॉन्ट।</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – spacing और ligatures के लिए browser editor।</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – पूरी तरह free, grid‑based, और bold geometric experiments के लिए बढ़िया।</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – macOS/Windows/Linux के लिए donationware, आसान SVG import।</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (paid) या <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> (iPad) अगर आपको pro finish चाहिए।</li>\n</ul>\n<p>शीट अपलोड करें, हर कैरेक्टर align करें, preview चेक करें (खासकर “g”, “s” और spacing), फिर TTF/OTF/WOFF/WOFF2 में एक्सपोर्ट करें—जैसा हमारा uploader पसंद करता है।</p>\n<h2>स्टेप 3: डिटेल्स पॉलिश करें</h2>\n<p>ज्यादातर editors baseline, kerning और line height adjust करने देते हैं। “Zany fox jumps high” जैसी टेस्ट लाइन से wobble पकड़ में आ जाते हैं।</p>\n<h2>स्टेप 4: txttohandwriting.org पर अपलोड करें</h2>\n<p>लैब में जाएं, <strong>Custom → Upload</strong> पर क्लिक करें, फ़ॉन्ट ड्रॉप करें और नाम दें। हम प्रति अकाउंट दो custom फ़ॉन्ट रखते हैं, इसलिए फेवरेट्स तैयार रखें।</p>\n<p>बस! एक दोपहर में आपका signature handwriting style planners, study notes और journals में दिखेगा। ट्राय करें तो टैग करें—हम गैलरी में हाइप करेंगे।</p>"
+      "content": "<p>क्या आप txttohandwriting.org पर <strong>अपनी असली हैंडराइटिंग</strong> देखना चाहते हैं? आप कर सकते हैं। अपनी लिखावट को फ़ॉन्ट में बदलना मुश्किल लगता है, लेकिन कई टूल इसे आसान, मजेदार और लगभग मुफ्त बनाते हैं।</p>\n<h2>स्टेप 1: हैंडराइटिंग सैंपल तैयार करें</h2>\n<p>एक टेम्पलेट प्रिंट करें या टैबलेट पर लिखें। बेसलाइन स्थिर रखें, पसंदीदा पेन इस्तेमाल करें, और हर अक्षर साफ लिखें—upper, lower, numbers, punctuation। शीट जितनी साफ होगी, फ़ॉन्ट उतना साफ होगा।</p>\n<ul>\n  <li><strong>Calligraphr टेम्पलेट:</strong> <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> से गाइड शीट प्रिंट करें, डार्क पेन से लिखें और 300 dpi पर स्कैन करें या साफ फोटो लें।</li>\n  <li><strong>Procreate या Affinity:</strong> <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> या <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> में लिखकर ट्रांसपेरेंट PNG एक्सपोर्ट करें।</li>\n</ul>\n<h2>स्टेप 2: अक्षरों को फ़ॉन्ट फ़ाइल में बदलें</h2>\n<p>ये फ्री (या लगभग फ्री) जनरेटर्स हेवी‑लिफ्टिंग कर देते हैं:</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – friendly, web‑based, polished TTF/OTF के लिए सबसे तेज़। Free tier में एक फ़ॉन्ट।</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – spacing और ligatures के लिए browser editor।</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – पूरी तरह free, grid‑based, और bold geometric experiments के लिए बढ़िया।</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – macOS/Windows/Linux के लिए donationware, आसान SVG import।</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (paid) या <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> (iPad) अगर आपको pro finish चाहिए।</li>\n</ul>\n<p>शीट अपलोड करें, हर कैरेक्टर align करें, preview चेक करें (खासकर “g”, “s” और spacing), फिर TTF/OTF/WOFF/WOFF2 में एक्सपोर्ट करें—जैसा हमारा uploader पसंद करता है।</p>\n<h2>स्टेप 3: डिटेल्स पॉलिश करें</h2>\n<p>ज्यादातर editors baseline, kerning और line height adjust करने देते हैं। “Zany fox jumps high” जैसी टेस्ट लाइन से wobble पकड़ में आ जाते हैं।</p>\n<h2>स्टेप 4: txttohandwriting.org पर अपलोड करें</h2>\n<p>लैब में जाएं, <strong>Custom → Upload</strong> पर क्लिक करें, फ़ॉन्ट ड्रॉप करें और नाम दें। हम प्रति अकाउंट दो custom फ़ॉन्ट रखते हैं, इसलिए फेवरेट्स तैयार रखें।</p>\n<p>बस! एक दोपहर में आपका signature handwriting style planners, study notes और journals में दिखेगा। ट्राय करें तो टैग करें—हम गैलरी में उत्साह करेंगे।</p>"
     },
     "paper-texture-science": {
       "title": "पेपर टेक्सचर साइंस: यह क्यों मायने रखता है",
-      "content": "<p>कभी सोचा क्यों कुछ डिजिटल नोट्स नकली लगते हैं और कुछ असली जैसे? सब कुछ <strong>paper texture</strong> पर निर्भर है। एकदम सफेद, फ्लैट बैकग्राउंड “computer‑generated” चिल्लाता है, लेकिन हल्का grain या shadow depth पेज को ज़िंदा कर देता है।</p>\n<h2>माइक्रो‑डिटेल्स</h2>\n<p>रियल पेपर परफेक्ट नहीं होता। उसमें fibers, हल्की unevenness और अलग‑अलग जगह ink absorption होता है। हमारा जनरेटर इन <strong>micro‑details</strong> को simulate करता है ताकि टेक्स्ट पेपर <em>पर</em> बैठे, ऊपर न तैरे। चाहे crisp lined paper हो या rough parchment—texture ही realism का silent hero है।</p>\n<h2>मूड के हिसाब से टेक्सचर</h2>\n<p>सही बैकग्राउंड ही vibe सेट करता है। <strong>Graph paper</strong> precision और math के लिए, <strong>lined paper</strong> क्लासरूम नॉस्टैल्जिया के लिए, और <strong>plain textured paper</strong> स्केच और free‑form journaling के लिए। बैकग्राउंड को हल्का मत लो—यह आधा aesthetic है।</p>"
+      "content": "<p>कभी सोचा क्यों कुछ डिजिटल नोट्स नकली लगते हैं और कुछ असली जैसे? सब कुछ <strong>paper texture</strong> पर निर्भर है। एकदम सफेद, फ्लैट बैकग्राउंड “computer‑generated” चिल्लाता है, लेकिन हल्का grain या shadow depth पेज को ज़िंदा कर देता है।</p>\n<h2>माइक्रो‑डिटेल्स</h2>\n<p>रियल पेपर परफेक्ट नहीं होता। उसमें fibers, हल्की unevenness और अलग‑अलग जगह ink absorption होता है। हमारा जनरेटर इन <strong>micro‑details</strong> को simulate करता है ताकि टेक्स्ट पेपर <em>पर</em> बैठे, ऊपर न तैरे। चाहे crisp lined paper हो या rough parchment—texture ही realism का silent hero है।</p>\n<h2>मूड के हिसाब से टेक्सचर</h2>\n<p>सही बैकग्राउंड ही atmosphere सेट करता है। <strong>Graph paper</strong> precision और math के लिए, <strong>lined paper</strong> क्लासरूम नॉस्टैल्जिया के लिए, और <strong>plain textured paper</strong> स्केच और free‑form journaling के लिए। बैकग्राउंड को हल्का मत लो—यह आधा aesthetic है।</p>"
     },
     "psychology-handwritten-notes": {
       "title": "हैंडराइटिंग बनाम टाइपिंग: मनोविज्ञान",
@@ -410,10 +410,10 @@
     },
     "creative-ways-to-use-handwriting-generators": {
       "title": "स्कूल से आगे: हैंडराइटिंग जनरेटर के 5 क्रिएटिव यूज़",
-      "content": "<p>सोचते हैं handwriting generators सिर्फ homework के लिए हैं? फिर सोचिए। क्रिएटिव संभावनाएँ बहुत हैं। यहाँ हमारे टॉप 5 तरीके हैं:</p>\n<h2>1. D&D और TTRPG Props</h2>\n<p>डंगन मास्टर्स, सुनिए। एक goblin के पास मिली चिट्ठी जैसा प्रॉप गेम को immersive बना देता है। messy font और parchment background के साथ “जल्दी में लिखा” warning या ancient riddle बनाइए।</p>\n<h2>2. डिजिटल स्क्रैपबुकिंग</h2>\n<p>Stylus के बिना भी फोटो कोलाज पर captions जोड़िए। DIY vibe रहेगा और layout साफ रहेगा।</p>\n<h2>3. एस्थेटिक रेसिपी कार्ड्स</h2>\n<p>दादी की सीक्रेट रेसिपी टाइप करें, cursive font चुनें और cardstock पर प्रिंट करें—बेहतरीन पर्सनल गिफ्ट।</p>\n<h2>4. सोशल मीडिया कोट्स</h2>\n<p>हर कोई Canva के वही फ़ॉन्ट इस्तेमाल करता है। textured background पर handwritten quote feed में अलग दिखता है।</p>\n<h2>5. लव लेटर्स (हम नहीं बताएँगे)</h2>\n<p>खुद लिखना ज़्यादा रोमांटिक है, लेकिन अगर आपकी handwriting “चिकन वॉक” जैसी है, तो जनरेटर आपका wingman हो सकता है।</p>"
+      "content": "<p>सोचते हैं handwriting generators सिर्फ homework के लिए हैं? फिर सोचिए। क्रिएटिव संभावनाएँ बहुत हैं। यहाँ हमारे टॉप 5 तरीके हैं:</p>\n<h2>1. D&D और TTRPG Props</h2>\n<p>डंगन मास्टर्स, सुनिए। एक goblin के पास मिली चिट्ठी जैसा प्रॉप गेम को immersive बना देता है। messy font और parchment background के साथ “जल्दी में लिखा” warning या ancient riddle बनाइए।</p>\n<h2>2. डिजिटल स्क्रैपबुकिंग</h2>\n<p>Stylus के बिना भी फोटो कोलाज पर captions जोड़िए। DIY atmosphere रहेगा और layout साफ रहेगा।</p>\n<h2>3. एस्थेटिक रेसिपी कार्ड्स</h2>\n<p>दादी की सीक्रेट रेसिपी टाइप करें, cursive font चुनें और cardstock पर प्रिंट करें—बेहतरीन पर्सनल गिफ्ट।</p>\n<h2>4. सोशल मीडिया कोट्स</h2>\n<p>हर कोई Canva के वही फ़ॉन्ट इस्तेमाल करता है। textured background पर handwritten quote feed में अलग दिखता है।</p>\n<h2>5. लव लेटर्स (हम नहीं बताएँगे)</h2>\n<p>खुद लिखना ज़्यादा रोमांटिक है, लेकिन अगर आपकी handwriting “चिकन वॉक” जैसी है, तो जनरेटर आपका सहायक हो सकता है।</p>"
     },
     "print-ready-handwriting": {
-      "title": "प्रिंट‑रेडी हैंडराइटिंग: मार्जिन, स्पेसिंग और पेपर वाइब्स",
+      "title": "प्रिंट‑रेडी हैंडराइटिंग: मार्जिन, स्पेसिंग और पेपर अनुभव्स",
       "content": "<p>स्क्रीन पर handwritten पेज सुंदर लगते हैं, लेकिन प्रिंट पर मामला बिगड़ सकता है। कुछ छोटे बदलाव पेज को साफ और भरोसेमंद बनाए रखते हैं।</p>\n<h2>फ़ॉन्ट से पहले पेज</h2>\n<p>पहले पेपर टेम्पलेट चुनें, फिर margins और font size सेट करें ताकि टेक्स्ट “सांस” ले सके। किनारों पर थोड़ा white space रखें—यह असली नोटबुक जैसा feel देता है।</p>\n<h2>स्मार्ट एक्सपोर्ट</h2>\n<p>प्रिंट के लिए high quality चुनें, और multi‑page के लिए PDF एक्सपोर्ट करें। अगर प्रिंटर नखरीला है तो neutral ink colors रखें और बहुत हल्की textures से बचें।</p>"
     },
     "handwritten-touches-for-work": {

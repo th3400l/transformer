@@ -216,7 +216,7 @@
     "mission": {
       "badge": "Sứ mệnh của chúng tôi",
       "heading": "Vì sao chúng tôi xây dựng điều này?",
-      "description": "Chúng tôi tin vào tương lai nơi học sinh có thể tập trung vào ý tưởng thay vì đau tay khi viết bài. Đã đến lúc bước vào kỷ nguyên số nhưng vẫn giữ được vibe chữ viết tay thật."
+      "description": "Chúng tôi tin vào tương lai nơi học sinh có thể tập trung vào ý tưởng thay vì đau tay khi viết bài. Đã đến lúc bước vào kỷ nguyên số nhưng vẫn giữ được atmosphere chữ viết tay thật."
     },
     "lab": {
       "heading": "Phòng Lab",
@@ -277,9 +277,9 @@
       "q4": "Chuyện tải xuống thế nào?",
       "a4": "Hiện tại chỉ có PNG. Chất lượng cao. Có thể sẽ thêm định dạng khác sau.",
       "q5": "Vì sao phông chữ trông hơi lạ?",
-      "a5": "Có thể do trình duyệt. Hãy thử cập nhật. Nếu vẫn kỳ, có thể do hệ điều hành. Đây là vibe, không phải khoa học chính xác.",
-      "q6": "Khoa yêu cầu bản in, tôi phải làm sao?",
-      "a6": "Mình có giải pháp hoàn hảo cho bạn.",
+      "a5": "Có thể do trình duyệt. Hãy thử cập nhật. Nếu vẫn kỳ, có thể do hệ điều hành. Đây là atmosphere, không phải khoa học chính xác.",
+      "q6": "What is the best way to print these documents?",
+      "a6": "We recommend exporting to PDF and using 'Actual Size' in your printer settings to maintain correct scaling and resolution.",
       "supportHeadline": "Vẫn chưa rõ hoặc muốn báo lỗi?",
       "supportDesc": "Gửi tin cho đội ngũ, chúng tôi sẽ phản hồi nhanh."
     },
@@ -320,7 +320,7 @@
           "mood": "Mạnh mẽ và bóng bẩy."
         },
         "v1-2": {
-          "tagline": "Một cú glow-up mới với tự do sáng tạo hơn.",
+          "tagline": "Một cú improvement mới với tự do sáng tạo hơn.",
           "highlights": [
             "Thiết kế lại phòng lab để điều khiển, xem trước và thư viện liền mạch trên mọi kích thước màn hình.",
             "Trình quản lý tải font cá nhân với hướng dẫn từng bước và hai slot riêng.",
@@ -351,7 +351,7 @@
       "section3Title": "3. Quyền sở hữu trí tuệ",
       "section3Content": "Văn bản bạn nhập là của bạn. Hình ảnh tạo ra có thể dùng cho mục đích cá nhân và thương mại. Tuy nhiên, phông chữ, thiết kế và thương hiệu của txttohandwriting.org thuộc sở hữu của chủ trang web và không được sử dụng khi chưa có phép.",
       "section4Title": "4. Từ chối bảo đảm",
-      "section4Content": "Trang web được cung cấp trên cơ sở nguyên trạng. Chúng tôi không đưa ra bảo đảm rõ ràng hay ngụ ý và từ chối mọi bảo đảm khác bao gồm tính thương mại, phù hợp mục đích cụ thể hoặc không vi phạm quyền sở hữu trí tuệ hay các quyền khác.",
+      "section4Content": "We use Google AdSense to serve advertisements. These services may use cookies to provide relevant content. Please refer to our Privacy Policy for details.",
       "section5Title": "5. Giới hạn trách nhiệm",
       "section5Content": "Trong mọi trường hợp, txttohandwriting.org hoặc nhà cung cấp không chịu trách nhiệm cho bất kỳ thiệt hại nào (bao gồm mất dữ liệu, lợi nhuận hoặc gián đoạn kinh doanh) phát sinh từ việc sử dụng hoặc không thể sử dụng tài liệu trên trang, ngay cả khi đã được thông báo về khả năng thiệt hại.",
       "section6Title": "6. Thay đổi điều khoản",
@@ -379,7 +379,7 @@
     }
   },
   "blog": {
-    "title": "Blog",
+    "title": "Articles",
     "backToLab": "Quay lại phòng lab",
     "backToAll": "Quay lại tất cả bài",
     "readMore": "Nhấp để đọc thêm ->",
@@ -390,11 +390,11 @@
   "blogPosts": {
     "glow-up-your-notes": {
       "title": "Glow Up cho ghi chú: Hướng dẫn tối thượng về trình chuyển văn bản thành chữ viết tay thẩm mỹ",
-      "content": "<p>Thú thật nhé, ghi chú bài giảng của bạn trông hơi nhạt. Bạn muốn là người có notes aesthetic trên Studygram, nhưng những bức tường chữ gõ thì không có vibe đó. Đây là nhân vật chính: <strong>text‑to‑handwriting converter</strong>. Life‑hack đỉnh cho ai muốn “romanticize” việc học.</p>\n<h2>Handwriting Generator thực sự là gì?</h2>\n<p><strong>handwriting generator</strong> như của chúng mình biến văn bản số thành chữ viết tay dễ thương. Hoàn hảo khi bạn muốn cảm giác viết tay mà không đau tay. Dù là làm study guide đẹp hay thiết kế cho planner số, một <strong>free text to handwriting tool</strong> sẽ là bestie mới.</p>\n<h2>Chọn vibe font của bạn</h2>\n<p>Chìa khóa glow‑up là một font “đúng chất bạn”. Script sạch‑sang hay nét viết casual, hơi lộn xộn? Bọn mình có đủ lựa chọn. Đừng dừng ở một kiểu—hãy thử! Một <strong>online handwriting converter</strong> tốt cho bạn nhiều option để chuyển từ ghi chú sinh học sang bài lịch sử dễ dàng. Vừa hữu ích vừa siêu thẩm mỹ.</p>"
+      "content": "<p>Thú thật nhé, ghi chú bài giảng của bạn trông hơi nhạt. Bạn muốn là người có notes aesthetic trên Studygram, nhưng những bức tường chữ gõ thì không có atmosphere đó. Đây là nhân vật chính: <strong>text‑to‑handwriting converter</strong>. Life‑hack đỉnh cho ai muốn “romanticize” việc học.</p>\n<h2>Handwriting Generator thực sự là gì?</h2>\n<p><strong>handwriting generator</strong> như của chúng mình biến văn bản số thành chữ viết tay dễ thương. Hoàn hảo khi bạn muốn cảm giác viết tay mà không đau tay. Dù là làm study guide đẹp hay thiết kế cho planner số, một <strong>free text to handwriting tool</strong> sẽ là friend mới.</p>\n<h2>Chọn atmosphere font của bạn</h2>\n<p>Chìa khóa glow‑up là một font “đúng chất bạn”. Script sạch‑sang hay nét viết casual, hơi lộn xộn? Bọn mình có đủ lựa chọn. Đừng dừng ở một kiểu—hãy thử! Một <strong>online handwriting converter</strong> tốt cho bạn nhiều option để chuyển từ ghi chú sinh học sang bài lịch sử dễ dàng. Vừa hữu ích vừa siêu thẩm mỹ.</p>"
     },
     "fix-your-studygram": {
       "title": "Vì sao Studygram của bạn đang tụt mood (và cách generator chữ viết tay cứu bạn)",
-      "content": "<p>Bạn có bút highlight pastel, washi tape và cà phê đá. Vậy sao Studygram vẫn chưa nổi? Có thể do nội dung. Nhìn Times New Roman mãi chán lắm. Muốn dừng scroll, bạn cần visual thật hút. Và chẳng gì nói “tui ổn áp” bằng ghi chú chữ viết tay đẹp.</p>\n<h2>“Nước sốt” bí mật: đổi text sang chữ viết tay online</h2>\n<p>Không ai có thời gian chép hết mọi thứ bằng tay, nhất là khi mai có ba bài nộp. Lúc đó <strong>text to handwriting online tool</strong> cực hữu dụng. Bạn gõ notes, to‑do, quote… rồi <strong>chuyển thành ảnh</strong> chữ viết tay đẹp ngay.</p>\n<p>Tưởng tượng story với một bản tóm tắt chương theo style chữ viết tay chuẩn chỉnh. Độc đáo, bắt mắt, và nhìn như bạn đầu tư cực nhiều. Đó là sức mạnh của <strong>free online handwriting generator</strong>: nâng content từ basic lên iconic.</p>\n<h2>Cách làm nó nổi bật hơn</h2>\n<p>Đừng dán lên nền trơn. Chọn paper vibe—kẻ dòng, ô vuông hoặc trơn—và màu mực hợp theme. Tải PNG rồi thả vào Canva hoặc GoodNotes. Đó là bí kíp để tạo content Studygram được lưu và chia sẻ.</p>"
+      "content": "<p>Bạn có bút highlight pastel, washi tape và cà phê đá. Vậy sao Studygram vẫn chưa nổi? Có thể do nội dung. Nhìn Times New Roman mãi chán lắm. Muốn dừng scroll, bạn cần visual thật hút. Và chẳng gì nói “tui ổn áp” bằng ghi chú chữ viết tay đẹp.</p>\n<h2>“Nước sốt” bí mật: đổi text sang chữ viết tay online</h2>\n<p>Không ai có thời gian chép hết mọi thứ bằng tay, nhất là khi mai có ba bài nộp. Lúc đó <strong>text to handwriting online tool</strong> cực hữu dụng. Bạn gõ notes, to‑do, quote… rồi <strong>chuyển thành ảnh</strong> chữ viết tay đẹp ngay.</p>\n<p>Tưởng tượng story với một bản tóm tắt chương theo style chữ viết tay chuẩn chỉnh. Độc đáo, bắt mắt, và nhìn như bạn đầu tư cực nhiều. Đó là sức mạnh của <strong>free online handwriting generator</strong>: nâng content từ basic lên iconic.</p>\n<h2>Cách làm nó nổi bật hơn</h2>\n<p>Đừng dán lên nền trơn. Chọn paper atmosphere—kẻ dòng, ô vuông hoặc trơn—và màu mực hợp theme. Tải PNG rồi thả vào Canva hoặc GoodNotes. Đó là bí kíp để tạo content Studygram được lưu và chia sẻ.</p>"
     },
     "create-your-own-handwriting-font": {
       "title": "Tạo font chữ viết tay của riêng bạn (không cần căng não)",
@@ -410,10 +410,10 @@
     },
     "creative-ways-to-use-handwriting-generators": {
       "title": "Top 5 cách sáng tạo dùng generator chữ viết tay ngoài trường học",
-      "content": "<p>Generator chữ viết tay không chỉ dành cho bài tập. Đây là 5 cách tụi mình thích nhất:</p>\n<h2>1. Đạo cụ D&D và TTRPG</h2>\n<p>Thư “viết vội” trên nền giấy cổ làm game nhập vai hơn.</p>\n<h2>2. Scrapbooking số</h2>\n<p>Thêm caption viết tay mà không cần bút stylus.</p>\n<h2>3. Thẻ công thức nấu ăn</h2>\n<p>Gõ công thức gia truyền, chọn font viết tay và in lên card.</p>\n<h2>4. Quote mạng xã hội</h2>\n<p>Quote viết tay trên nền textured sẽ nổi bật trong feed.</p>\n<h2>5. Thư tình (không ai biết)</h2>\n<p>Viết tay lãng mạn hơn, nhưng nếu chữ xấu thì generator sẽ là wingman.</p>"
+      "content": "<p>Generator chữ viết tay không chỉ dành cho bài tập. Đây là 5 cách tụi mình thích nhất:</p>\n<h2>1. Đạo cụ D&D và TTRPG</h2>\n<p>Thư “viết vội” trên nền giấy cổ làm game nhập vai hơn.</p>\n<h2>2. Scrapbooking số</h2>\n<p>Thêm caption viết tay mà không cần bút stylus.</p>\n<h2>3. Thẻ công thức nấu ăn</h2>\n<p>Gõ công thức gia truyền, chọn font viết tay và in lên card.</p>\n<h2>4. Quote mạng xã hội</h2>\n<p>Quote viết tay trên nền textured sẽ nổi bật trong feed.</p>\n<h2>5. Thư tình (không ai biết)</h2>\n<p>Viết tay lãng mạn hơn, nhưng nếu chữ xấu thì generator sẽ là assistant.</p>"
     },
     "print-ready-handwriting": {
-      "title": "Chữ viết tay sẵn sàng để in: lề, khoảng cách và vibe giấy",
+      "title": "Chữ viết tay sẵn sàng để in: lề, khoảng cách và atmosphere giấy",
       "content": "<p>Trên màn hình đẹp chưa chắc in ra vẫn đẹp. Một vài chỉnh nhẹ giúp trang sạch và đáng tin.</p>\n<h2>Bắt đầu từ trang, không phải font</h2>\n<p>Chọn template giấy trước, rồi chỉnh lề và cỡ chữ để nội dung “thở”. Chừa viền trắng một chút sẽ giống trang vở thật.</p>\n<h2>Xuất file thông minh</h2>\n<p>In thì chọn chất lượng cao, nhiều trang thì xuất PDF. Nếu máy in khó tính, dùng màu mực trung tính và texture nhẹ.</p>"
     },
     "handwritten-touches-for-work": {

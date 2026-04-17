@@ -279,8 +279,8 @@
       "a4": "Saat ini hanya PNG. Hasilnya... kualitas tinggi. Kami mungkin akan menambahkan lebih banyak format nanti jika suasananya tepat.",
       "q5": "Mengapa font-nya terlihat agak aneh?",
       "a5": "Mungkin karena browser Anda. Coba perbarui. Jika masih terlihat mencurigakan, mungkin itu hanya sistem operasi Anda yang beraksi. Ini soal rasa, bukan sains yang tepat.",
-      "q6": "Fakultas saya meminta salinan fisik, apa yang harus saya lakukan?",
-      "a6": "Aku mengerti kawan! Aku punya solusi sempurna untukmu",
+      "q6": "Apa cara terbaik untuk mencetak dokumen-dokumen ini?",
+      "a6": "Kami merekomendasikan mengekspor ke PDF dan menggunakan 'Ukuran Sebenarnya' di pengaturan printer Anda untuk menjaga penskalaan dan resolusi yang benar.",
       "supportHeadline": "Masih bingung atau ingin melaporkan bug?",
       "supportDesc": "Kirim pesan kepada tim dan kami akan membalas lebih cepat daripada Anda bisa mengucapkan tulisan sambung."
     },
@@ -354,7 +354,7 @@
       "section3Title": "3. Kekayaan Intelektual",
       "section3Content": "Teks yang Anda masukkan adalah milik Anda sendiri. Gambar yang dihasilkan dari teks Anda dapat digunakan untuk tujuan pribadi dan komersial. Namun, font, desain, dan branding txttohandwriting.org adalah milik pemilik situs web dan tidak boleh digunakan tanpa izin.",
       "section4Title": "4. Penafian Jaminan",
-      "section4Content": "Situs web kami disediakan atas dasar \"apa adanya\". Kami tidak memberikan jaminan, tersurat maupun tersirat, dan dengan ini menolak dan meniadakan semua jaminan lainnya termasuk, tanpa batasan, jaminan tersirat atau kondisi kelayakan jual, kesesuaian untuk tujuan tertentu, atau non-pelanggaran kekayaan intelektual atau pelanggaran hak lainnya.",
+      "section4Content": "Kami menggunakan Google AdSense untuk menayangkan iklan. Layanan ini dapat menggunakan cookie untuk menyediakan konten yang relevan. Silakan lihat Kebijakan Privasi kami untuk detailnya.",
       "section5Title": "5. Batasan Tanggung Jawab",
       "section5Content": "Dalam keadaan apa pun txttohandwriting.org atau pemasoknya tidak akan bertanggung jawab atas kerusakan apa pun (termasuk, tanpa batasan, kerusakan karena kehilangan data atau keuntungan, atau karena gangguan bisnis) yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan materi di situs web kami, bahkan jika kami telah diberitahu secara lisan atau tertulis tentang kemungkinan kerusakan tersebut.",
       "section6Title": "6. Perubahan Syarat",
@@ -382,7 +382,7 @@
     }
   },
   "blog": {
-    "title": "Blog",
+    "title": "Artikel",
     "backToLab": "Kembali ke lab",
     "backToAll": "Kembali ke semua tulisan",
     "readMore": "Klik untuk membaca lebih lanjut →",
@@ -393,11 +393,11 @@
   "blogPosts": {
     "glow-up-your-notes": {
       "title": "Glow Up Catatanmu: Panduan Utama Konverter Teks ke Tulisan Tangan Estetik",
-      "content": "<p>Jujur saja, catatan kuliahmu terlihat agak hambar. Kamu ingin punya catatan estetik yang beda di Studygram, tapi teks panjang yang diketik itu bukan vibe‑nya. Masuklah <strong>konverter teks ke tulisan tangan</strong>, life hack buat meromantisasi hidup belajar.</p>\n<h2>Apa sih generator tulisan tangan?</h2>\n<p><strong>Generator tulisan tangan</strong> seperti kami mengubah teks digital menjadi tulisan tangan yang lucu. Cocok kalau kamu mau kesan tulisan tangan tanpa pegal. Untuk ringkasan belajar atau desain planner digital, <strong>alat gratis teks ke tulisan tangan</strong> adalah bestie baru kamu.</p>\n<h2>Mencari estetika font kamu</h2>\n<p>Glow‑up dimulai dari font yang “kamu banget”. Mau rapi dan elegan atau santai dan berantakan? Kami punya banyak pilihan. <strong>Konverter tulisan tangan online</strong> yang bagus memberi opsi agar kamu bisa ganti dari catatan bio ke esai sejarah. Hasilnya: berguna dan estetik.</p>"
+      "content": "<p>Jujur saja, catatan kuliahmu terlihat agak hambar. Kamu ingin punya catatan estetik yang beda di Studygram, tapi teks panjang yang diketik itu bukan suasana‑nya. Masuklah <strong>konverter teks ke tulisan tangan</strong>, life hack buat meromantisasi hidup belajar.</p>\n<h2>Apa sih generator tulisan tangan?</h2>\n<p><strong>Generator tulisan tangan</strong> seperti kami mengubah teks digital menjadi tulisan tangan yang lucu. Cocok kalau kamu mau kesan tulisan tangan tanpa pegal. Untuk ringkasan belajar atau desain planner digital, <strong>alat gratis teks ke tulisan tangan</strong> adalah teman baru kamu.</p>\n<h2>Mencari estetika font kamu</h2>\n<p>Glow‑up dimulai dari font yang “kamu banget”. Mau rapi dan elegan atau santai dan berantakan? Kami punya banyak pilihan. <strong>Konverter tulisan tangan online</strong> yang bagus memberi opsi agar kamu bisa ganti dari catatan bio ke esai sejarah. Hasilnya: berguna dan estetik.</p>"
     },
     "fix-your-studygram": {
       "title": "Kenapa Studygram‑mu Kurang Hype (Dan Cara Generator Tulisan Tangan Memperbaikinya)",
-      "content": "<p>Kamu punya highlighter pastel, washi tape, dan kopi dingin. Jadi kenapa Studygram‑mu belum dapat hype? Mungkin kontennya. Melihat Times New Roman yang sama itu membosankan. Kalau mau menghentikan scroll, kamu butuh visual yang kece. Dan tidak ada yang bilang “hidupku rapi” seperti catatan tulisan tangan yang estetik.</p>\n<h2>Rahasia utamanya: ubah teks ke tulisan tangan online</h2>\n<p>Tidak ada waktu menulis semuanya manual, apalagi besok ada tiga tugas. Di sinilah <strong>alat online teks ke tulisan tangan</strong> membantu. Kamu bisa mengetik dan <strong>mengubah teks menjadi gambar</strong> tulisan tangan yang indah.</p>\n<p>Bayangkan story dengan ringkasan bab bergaya tulisan tangan yang rapi. Unik, menarik perhatian, dan terlihat lebih effort. Itulah kekuatan <strong>generator tulisan tangan gratis</strong>: mengangkat konten dari basic ke iconic.</p>\n<h2>Biar makin pop</h2>\n<p>Jangan tempel di latar polos. Pilih vibe kertas—bergaris, kotak, atau polos—dan warna tinta yang sesuai tema. Unduh PNG lalu masukkan ke Canva atau GoodNotes. Ini rahasia konten Studygram yang bikin orang simpan dan bagikan.</p>"
+      "content": "<p>Kamu punya highlighter pastel, washi tape, dan kopi dingin. Jadi kenapa Studygram‑mu belum dapat excitement? Mungkin kontennya. Melihat Times New Roman yang sama itu membosankan. Kalau mau menghentikan scroll, kamu butuh visual yang kece. Dan tidak ada yang bilang “hidupku rapi” seperti catatan tulisan tangan yang estetik.</p>\n<h2>Rahasia utamanya: ubah teks ke tulisan tangan online</h2>\n<p>Tidak ada waktu menulis semuanya manual, apalagi besok ada tiga tugas. Di sinilah <strong>alat online teks ke tulisan tangan</strong> membantu. Kamu bisa mengetik dan <strong>mengubah teks menjadi gambar</strong> tulisan tangan yang indah.</p>\n<p>Bayangkan story dengan ringkasan bab bergaya tulisan tangan yang rapi. Unik, menarik perhatian, dan terlihat lebih effort. Itulah kekuatan <strong>generator tulisan tangan gratis</strong>: mengangkat konten dari basic ke iconic.</p>\n<h2>Biar makin pop</h2>\n<p>Jangan tempel di latar polos. Pilih suasana kertas—bergaris, kotak, atau polos—dan warna tinta yang sesuai tema. Unduh PNG lalu masukkan ke Canva atau GoodNotes. Ini rahasia konten Studygram yang bikin orang simpan dan bagikan.</p>"
     },
     "create-your-own-handwriting-font": {
       "title": "Cara Membuat Font Tulisan Tanganmu Sendiri (Tanpa Pusing)",
@@ -413,7 +413,7 @@
     },
     "creative-ways-to-use-handwriting-generators": {
       "title": "Top 5 Cara Kreatif Memakai Generator Tulisan Tangan di Luar Sekolah",
-      "content": "<p>Generator tulisan tangan bukan cuma untuk PR. Berikut 5 ide kreatif favorit kami.</p>\n<h2>1. Properti D&D dan TTRPG</h2>\n<p>Surat “dicoret buru‑buru” di atas kertas perkamen bikin sesi terasa nyata.</p>\n<h2>2. Scrapbooking digital</h2>\n<p>Tambahkan caption tanpa stylus, tetap DIY dan rapi.</p>\n<h2>3. Kartu resep estetik</h2>\n<p>Tulis resep rahasia nenek, pilih font kursif, lalu cetak.</p>\n<h2>4. Kutipan media sosial</h2>\n<p>Kutipan tulisan tangan di atas tekstur kertas lebih menonjol di feed.</p>\n<h2>5. Surat cinta</h2>\n<p>Kalau tulisan tanganmu susah dibaca, generator bisa jadi wingman‑mu.</p>"
+      "content": "<p>Generator tulisan tangan bukan cuma untuk PR. Berikut 5 ide kreatif favorit kami.</p>\n<h2>1. Properti D&D dan TTRPG</h2>\n<p>Surat “dicoret buru‑buru” di atas kertas perkamen bikin sesi terasa nyata.</p>\n<h2>2. Scrapbooking digital</h2>\n<p>Tambahkan caption tanpa stylus, tetap DIY dan rapi.</p>\n<h2>3. Kartu resep estetik</h2>\n<p>Tulis resep rahasia nenek, pilih font kursif, lalu cetak.</p>\n<h2>4. Kutipan media sosial</h2>\n<p>Kutipan tulisan tangan di atas tekstur kertas lebih menonjol di feed.</p>\n<h2>5. Surat cinta</h2>\n<p>Kalau tulisan tanganmu susah dibaca, generator bisa jadi assistant‑mu.</p>"
     },
     "print-ready-handwriting": {
       "title": "Tulisan Tangan Siap Cetak: Margin, Spasi, dan Vibe Kertas",

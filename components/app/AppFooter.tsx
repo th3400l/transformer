@@ -75,7 +75,7 @@ export const AppFooter: React.FC<AppFooterProps> = ({ onNavigate, onPresentRose 
         </button>
       </div>
       <div className="mt-4 pt-4 border-t border-[var(--panel-border)] text-[var(--text-muted)]">
-        <p>&copy; {new Date().getFullYear()} txttohandwriting.org. {t('footer.rights')} <span className="mx-2 opacity-50">|</span> A subsidiary of nsa.tools</p>
+        <p>&copy; {new Date().getFullYear()} txttohandwriting.org. {t('footer.rights')} <span className="mx-2 opacity-50">|</span> Providing Digital Productivity Solutions</p>
       </div>
     </footer>
   );

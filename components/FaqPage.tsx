@@ -17,76 +17,67 @@ const FaqPage: React.FC<PageProps> = ({ onGoBack }) => {
     <div className="w-full max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-8 animate-fade-in">
       <div className="bg-[var(--panel-bg)] backdrop-blur-lg border border-[var(--panel-border)] rounded-xl shadow-lg p-6 md:p-10">
         <div className="flex justify-between items-center border-b border-[var(--panel-border)] pb-4 mb-6">
-          <h1 className="text-3xl font-bold text-[var(--accent-color)]">{t('pages.faq.title', 'The 411 (FAQ)')}</h1>
+          <h1 className="text-3xl font-bold text-[var(--accent-color)]">{t('pages.faq.title', 'Frequently Asked Questions')}</h1>
           <button
             onClick={onGoBack}
             className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-color)] transition-colors"
           >
-            &larr; {t('pages.faq.back', 'Back to the lab')}
+            &larr; {t('pages.faq.back', 'Back to Tool')}
           </button>
         </div>
         <div className="space-y-4">
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q1', 'Is this actually free?')}
+              {t('pages.faq.q1', 'Is this tool free to use?')}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a1', "Fr fr, it's free. No cap. We're not about that subscription life. Go wild(Don't break anything).")}
+              {t('pages.faq.a1', "Yes, the Handwriting Generator is completely free to use. We do not require any subscriptions or hidden fees. Our goal is to provide a valuable utility for students and professionals alike.")}
             </p>
           </details>
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q2', 'Can I use this for my side hustle?')}
+              {t('pages.faq.q2', 'Can I use the output for commercial projects?')}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a2', 'Totally. Make your memes, brand your Depop, whatever. Go get that bread. No credit needed, but a shoutout would be iconic.')}
+              {t('pages.faq.a2', 'Yes, you are free to use the generated images and PDFs for personal, educational, or commercial projects. No attribution is required, though we appreciate it if you share the tool with others.')}
             </p>
           </details>
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q3', 'Are you reading my unhinged thoughts?')}
+              {t('pages.faq.q3', 'Is my data secure and private?')}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a3', "Nah, we can't see a thing. We are not like that alien Mar..kek... ahem.. nvm, to be frank we don't need your data. Our servers are like stones anyway. Your secrets are safe with us, bestie.")}
+              {t('pages.faq.a3', "Your privacy is our priority. All text conversion and image generation happen locally in your web browser. We do not store or transmit your text to any external servers.")}
             </p>
           </details>
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q4', "What's the deal with downloads?")}
+              {t('pages.faq.q4', "What file formats are supported for download?")}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a4', "Right now it's just PNGs. It's giving... high quality. We might add more formats later if the vibes are right.")}
+              {t('pages.faq.a4', "Currently, you can download your handwritten pages as high-quality PNG images or compile them into a single PDF document.")}
             </p>
           </details>
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q5', 'Why does the font look kinda off?')}
+              {t('pages.faq.q5', 'Why does the font appearance vary across devices?')}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a5', "It's probably your browser. Try updating it. If it's still looking sus, it might just be your OS doing its thing. It's a vibe, not an exact science.")}
+              {t('pages.faq.a5', "Handwriting rendering depends on browser font rendering engines. For the best and most consistent results, we recommend using a modern, updated browser like Chrome, Firefox, or Edge.")}
             </p>
           </details>
           <details className="p-4 border border-[var(--panel-border)] rounded-lg group">
             <summary className="font-semibold text-[var(--text-color)] cursor-pointer list-none flex justify-between items-center">
-              {t('pages.faq.q6', 'My faculty asks for hardcopies, what should I do?')}
+              {t('pages.faq.q6', 'How can I print the generated pages?') ? t('pages.faq.q6', 'How can I print the generated pages?') : 'How can I print the generated pages?'}
               <span className="text-[var(--text-muted)] transform transition-transform duration-300 group-open:rotate-180">&darr;</span>
             </summary>
             <p className="mt-4 text-[var(--text-muted)]">
-              {t('pages.faq.a6', 'I got ya girl/boy!. I have a perfect solution fo you ')}
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--accent-color)] hover:underline font-medium"
-              >
-                {t('common.clickHere', 'visit here')}
-              </a>
-              (watch fully)
+              {t('pages.faq.a6', 'After generating your pages, download them as a PDF. You can then print this PDF using your standard printer settings. For the most realistic look, we recommend using high-quality paper and a color printer.')}
             </p>
           </details>
         </div>

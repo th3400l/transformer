@@ -1,427 +1,356 @@
 {
   "common": {
-    "startCreating": "Commencer à Créer",
+    "startCreating": "Commencer à créer",
     "learnMore": "En savoir plus",
     "viewFaq": "Voir la FAQ",
-    "readBlog": "Lire le Blog",
+    "readBlog": "Lire les articles du blog",
     "loading": "Chargement...",
     "generating": "Génération...",
     "download": "Télécharger",
     "preview": "Aperçu",
-    "backToLab": "Retour au labo",
-    "customFont": "Importer une Police",
-    "manageFonts": "Gérer les Polices",
-    "inkColor": "Couleur d'Encre",
+    "backToLab": "Retour à l'outil",
+    "customFont": "Charger une police personnalisée",
+    "manageFonts": "Gérer les polices",
+    "inkColor": "Couleur de l'encre",
+    "paper": "Papier",
+    "style": "Style",
+    "content": "Contenu",
+    "clickHere": "cliquez ici",
+    "selectInk": "Choisir l'encre",
     "colors": {
       "black": "Noir",
       "blue": "Bleu",
       "red": "Rouge",
       "green": "Vert"
-    },
-    "selectInk": "Choisir l'Encre",
-    "paper": "Papier",
-    "style": "Style",
-    "content": "Contenu",
-    "clickHere": "visitez ici"
+    }
   },
   "seo": {
-    "title": "Générateur d'Écriture Manuscrite - Convertir Texte en Écriture Réaliste",
-    "description": "Générez du texte manuscrit réaliste avec des polices, modèles et couleurs d'encre personnalisables. Parfait pour créer des échantillons d'écriture authentiques avec de multiples modèles de papier.",
-    "keywords": "générateur d'écriture manuscrite, texte vers écriture manuscrite, convertir texte en écriture, texte manuscrit, polices personnalisées, écriture réaliste, convertisseur texte écriture, générateur écriture en ligne, outil écriture gratuit, générateur de police manuscrite, studygram, notes esthétiques, écriture numérique, générateur de notes manuscrites, créateur d'écriture"
+    "title": "Générateur d'écriture manuscrite - Convertir du texte en écriture réelle en ligne",
+    "description": "Transformez votre texte dactylographié en documents manuscrits authentiques avec notre générateur d'écriture gratuit. Plusieurs polices, modèles de papier et export PDF disponibles."
   },
   "hero": {
-    "headline": "Transformez votre Texte en Écriture Authentique",
-    "subheadline": "Créez des notes manuscrites, des devoirs et des designs réalistes avec notre générateur d'écriture en ligne gratuit. Sans inscription, 100% privé.",
-    "cta": "Commencer Gratuitement",
+    "headline": "Transformez votre texte en écriture authentique",
+    "subheadline": "Créez des notes, devoirs et designs manuscrits réalistes avec notre générateur en ligne gratuit. Qualité professionnelle, 100% privé.",
+    "cta": "Commencer gratuitement",
     "keywords": [
       "générateur d'écriture manuscrite",
       "texte vers écriture manuscrite",
-      "convertir texte en écriture manuscrite",
+      "convertir texte en écriture",
       "outil d'écriture gratuit"
     ]
   },
   "howItWorks": {
-    "heading": "Comment ça Marche",
-    "subheading": "Transformez votre texte en écriture authentique en trois étapes simples",
+    "heading": "Comment ça marche",
+    "subheading": "Générez un texte manuscrit professionnel en trois étapes simples",
     "steps": [
       {
-        "title": "Entrez Votre Texte",
-        "description": "Tapez ou collez le texte que vous souhaitez convertir en écriture manuscrite. Notre outil prend en charge jusqu'à 6 pages de contenu, parfait pour les devoirs, notes ou projets créatifs."
+        "title": "Saisissez votre texte",
+        "description": "Saisissez ou collez le texte que vous souhaitez convertir. Notre outil prend en charge les documents multi-pages, idéal pour les travaux académiques et professionnels."
       },
       {
-        "title": "Personnalisez Votre Style",
-        "description": "Choisissez parmi 9 polices d'écriture, sélectionnez des modèles de papier (blanc, ligné ou pointillé) et ajustez les couleurs d'encre et l'épaisseur pour correspondre à votre esthétique."
+        "title": "Personnalisez votre style",
+        "description": "Choisissez parmi des polices professionnelles et des modèles de papier (vierge, ligné ou pointillé) pour obtenir l'esthétique souhaitée."
       },
       {
-        "title": "Générer et Télécharger",
-        "description": "Cliquez sur générer pour créer vos pages manuscrites. Téléchargez-les sous forme d'images PNG haute qualité ou compilez-les en PDF. Tout se passe dans votre navigateur — complètement privé."
+        "title": "Exportez votre document",
+        "description": "Générez et téléchargez vos pages en images PNG de haute qualité ou en un seul PDF. Tout le traitement est sécurisé et effectué localement."
       }
     ],
-    "context": "Notre générateur d'écriture manuscrite permet de créer facilement un texte manuscrit réaliste pour tous les usages. Que vous soyez étudiant en train de faire des devoirs, créateur de contenu qui conçoit des publications esthétiques, ou professionnel qui ajoute des touches personnelles aux documents, notre outil offre des résultats authentiques à chaque fois."
+    "context": "Notre générateur offre un flux de travail fluide pour créer des textes manuscrits réalistes. Idéal pour les étudiants, enseignants et professionnels souhaitant une touche personnelle."
   },
   "features": {
-    "heading": "Fonctionnalités Puissantes",
-    "subheading": "Tout ce dont vous avez besoin pour créer une écriture réaliste et authentique pour n'importe quel usage",
+    "heading": "Fonctionnalités avancées",
+    "subheading": "Des outils de haute qualité pour une simulation d'écriture authentique",
     "items": [
       {
-        "title": "Variations d'Écriture Réalistes",
-        "description": "Notre moteur de rendu avancé crée une écriture authentique avec des variations naturelles de ligne de base, d'inclinaison et d'intensité d'encre.",
+        "title": "Variations réalistes",
+        "description": "Notre moteur de rendu simule les variations naturelles de l'écriture, incluant les irrégularités de ligne et l'inclinaison variable des lettres.",
         "benefits": [
-          "Instabilité naturelle de la ligne de base",
-          "Inclinaison variable des lettres",
-          "Variations de couleur d'encre",
-          "Micro-inclinaisons et imperfections"
+          "Alignement naturel",
+          "Inclinaison variable",
+          "Variations d'intensité d'encre",
+          "Imperfections réalistes"
         ]
       },
       {
-        "title": "Multiples Modèles de Papier",
-        "description": "Choisissez parmi une variété de modèles de papier pour répondre à vos besoins. Pages blanches pour la liberté créative, papier ligné pour des notes structurées ou grilles pointillées pour les bullet journals.",
+        "title": "Modèles professionnels",
+        "description": "Choisissez parmi des modèles de papier haute résolution, incluant des options lignées, quadrillées et vierges avec des textures authentiques.",
         "benefits": [
-          "Options blanc, ligné et pointillé",
+          "Options lignées et pointillées",
           "Textures de papier authentiques",
-          "Modèles haute résolution",
+          "Sortie haute résolution",
           "Optimisé pour l'impression"
         ]
       },
       {
-        "title": "Importation de Police Personnalisée",
-        "description": "Faites-le vraiment vôtre en important votre propre police d'écriture. Notre outil prend en charge les formats TTF, OTF et WOFF, vous permettant d'utiliser votre véritable écriture.",
+        "title": "Support de police personnalisée",
+        "description": "Chargez votre propre police d'écriture (TTF, OTF, WOFF) pour créer des documents numériques personnalisés.",
         "benefits": [
-          "Importez votre propre écriture",
-          "Support pour TTF, OTF, WOFF",
-          "2 emplacements pour polices personnalisées",
-          "Aperçu instantané"
+          "Numérisez votre écriture",
+          "Support des formats standards",
+          "Plusieurs emplacements de polices",
+          "Application instantanée"
         ]
       },
       {
-        "title": "100% Gratuit et Privé",
-        "description": "Pas d'abonnement, pas de frais cachés, pas de collecte de données. Tout s'exécute dans votre navigateur — votre texte ne touche jamais nos serveurs.",
+        "title": "Sécurisé et privé",
+        "description": "La confidentialité est notre priorité. Tout le traitement du texte s'effectue localement dans votre navigateur, vos données ne quittent jamais votre appareil.",
         "benefits": [
-          "Complètement gratuit pour toujours",
+          "Service totalement gratuit",
           "Aucune inscription requise",
           "Traitement côté client",
-          "Usage commercial autorisé"
+          "Utilisation commerciale autorisée"
         ]
       }
     ],
-    "context": "Notre générateur d'écriture combine une technologie de rendu avancée avec un design convivial pour offrir des résultats professionnels."
+    "context": "Allier technologie avancée et simplicité d'utilisation pour des résultats professionnels."
   },
   "useCases": {
-    "heading": "Qui Utilise Notre Générateur ?",
-    "subheading": "Des étudiants aux professionnels, découvrez comment les gens utilisent notre outil pour créer du contenu manuscrit authentique",
+    "heading": "Qui utilise notre outil ?",
+    "subheading": "Des solutions polyvalentes pour les besoins académiques, créatifs et professionnels",
     "items": [
       {
-        "title": "Étudiants et Éducateurs",
-        "description": "Parfait pour créer des devoirs manuscrits, des notes d'étude et des feuilles d'exercices. Générez des soumissions manuscrites d'apparence authentique pour les cours en ligne.",
-        "examplesLabel": "Parfait Pour :",
+        "title": "Étudiants & Enseignants",
+        "description": "Créez des devoirs, guides d'étude et fiches pédagogiques réalistes.",
+        "examplesLabel": "Idéal pour :",
         "examples": [
           "Devoirs scolaires",
-          "Notes d'étude et résumés",
-          "Feuilles d'exercices",
-          "Échantillons d'écriture"
+          "Résumés de cours",
+          "Supports pédagogiques",
+          "Exercices d'écriture"
         ]
       },
       {
-        "title": "Créateurs de Contenu et Designers",
-        "description": "Élevez votre Studygram, vos designs de bullet journal ou vos projets de design avec des éléments manuscrits authentiques. Créez des publications accrocheuses pour les réseaux sociaux.",
-        "examplesLabel": "Parfait Pour :",
+        "title": "Créateurs & Designers",
+        "description": "Améliorez vos journaux numériques et designs pour réseaux sociaux avec une écriture authentique.",
+        "examplesLabel": "Idéal pour :",
         "examples": [
-          "Publications Studygram",
-          "Designs de bullet journal",
-          "Contenu réseaux sociaux",
-          "Pages de planificateur numérique"
+          "Designs de journaling",
+          "Graphismes réseaux sociaux",
+          "Inserts de planning numérique",
+          "Typographie créative"
         ]
       },
       {
-        "title": "Professionnels et Entreprises",
-        "description": "Ajoutez une touche personnelle aux communications d'entreprise, créez des notes de remerciement de style manuscrit ou concevez des supports marketing uniques.",
-        "examplesLabel": "Parfait Pour :",
+        "title": "Usage professionnel",
+        "description": "Ajoutez une touche personnelle à votre correspondance professionnelle et vos supports marketing.",
+        "examplesLabel": "Idéal pour :",
         "examples": [
+          "Correspondance commerciale",
           "Notes de remerciement",
-          "Lettres personnelles",
-          "Supports marketing",
-          "Génération de signatures"
+          "Marketing personnalisé",
+          "Signatures de documents"
         ]
       }
     ],
-    "context": "Peu importe votre cas d'usage, notre générateur d'écriture offre la flexibilité et la qualité dont vous avez besoin."
+    "context": "Des options flexibles pour chaque besoin d'écriture manuscrite."
   },
   "testimonials": {
-    "heading": "What Our Users Say",
-    "subheading": "Join thousands of satisfied users who trust our handwriting generator for their projects",
+    "heading": "Avis des utilisateurs",
+    "subheading": "Fait confiance par des milliers d'utilisateurs pour la qualité de sa simulation d'écriture",
     "items": [
       {
-        "quote": "J'ai utilisé ceci pour mon projet d'histoire et mon professeur a vraiment cru que je l'avais écrit à la main. Le flux d'encre semble si naturel !",
+        "quote": "Le réalisme du flux d'encre est impressionnant. Cela a considérablement amélioré la qualité de mes notes de cours.",
         "author": "Sarah J.",
-        "role": "Lycéenne"
+        "role": "Étudiante universitaire"
       },
       {
-        "quote": "En tant que créatrice de planificateurs numériques, cet outil est une bouée de sauvetage. Je peux créer des autocollants et des inserts manuscrits en quelques secondes sans iPad.",
+        "quote": "Un outil polyvalent pour les créateurs. La possibilité de charger ses propres polices est un atout majeur.",
         "author": "Mia Chen",
-        "role": "Créatrice Numérique"
+        "role": "Artiste numérique"
       },
       {
-        "quote": "Le meilleur outil de conversion texte-écriture que j'ai trouvé. La possibilité de télécharger ma propre police et d'ajuster la texture du papier le rend incroyablement polyvalent.",
-        "author": "Alex Rivera",
-        "role": "Graphiste"
-      },
-      {
-        "quote": "J'adore sa facilité d'utilisation. Je tape mes notes de cours, je les imprime et elles sont magnifiques. Cela rend l'étude tellement plus esthétique.",
-        "author": "Emily Watson",
-        "role": "Étudiante"
-      },
-      {
-        "quote": "Idéal pour générer des lettres 'manuscrites' pour des campagnes marketing. Cela ajoute une touche personnelle que le texte imprimé n'a tout simplement pas.",
+        "quote": "Très efficace pour créer des lettres manuscrites authentiques pour des campagnes de communication. Résultats très professionnels.",
         "author": "David K.",
-        "role": "Spécialiste Marketing"
-      },
-      {
-        "quote": "Enfin un générateur qui ne fait pas faux. Les fonctionnalités de tremblement et de variation d'encre changent la donne pour le réalisme.",
-        "author": "Chris T.",
-        "role": "Développeur Logiciel"
+        "role": "Consultant marketing"
       }
     ],
-    "context": "Ready to create your own handwritten content? Join our community of students, creators, and professionals who use our free handwriting generator every day."
+    "context": "Rejoignez une communauté d'utilisateurs exploitant la simulation d'écriture professionnelle."
   },
   "tips": {
-    "heading": "Conseils et Bonnes Pratiques",
-    "subheading": "Tirez le meilleur parti de votre générateur d'écriture avec ces conseils d'experts",
+    "heading": "Conseils d'utilisation",
+    "subheading": "Optimisez vos résultats avec ces stratégies",
     "items": [
       {
-        "title": "Choisissez la Bonne Police",
-        "description": "Différentes polices conviennent mieux à différents usages. Utilisez des polices script élégantes pour les documents formels, des polices décontractées pour les notes personnelles et des polices claires pour la lisibilité."
+        "title": "Choix de la police",
+        "description": "Choisissez une police adaptée au ton de votre document. Utilisez des styles formels pour les lettres et décontractés pour les notes personnelles."
       },
       {
-        "title": "Ajustez l'Épaisseur de l'Encre",
-        "description": "Contrôlez le poids de votre écriture en ajustant l'épaisseur de l'encre. Des réglages plus légers créent une écriture délicate et féminine, tandis que des réglages plus épais produisent des traits forts et assurés."
+        "title": "Ajustement de l'épaisseur",
+        "description": "Ajustez l'épaisseur de l'encre pour simuler différents types de stylos, du feutre fin au stylo à bille."
       },
       {
-        "title": "Sélectionnez le Bon Modèle",
-        "description": "Associez votre modèle de papier à votre contenu. Le papier ligné convient mieux aux notes structurées et aux devoirs, les pages blanches à la liberté créative et les grilles pointillées aux bullet journals."
+        "title": "Alignement sur le modèle",
+        "description": "Assurez-vous que votre texte s'aligne correctement sur les lignes ou la grille du modèle choisi pour un maximum de réalisme."
       },
       {
-        "title": "Aperçu Avant de Générer",
-        "description": "Utilisez l'aperçu en direct pour vérifier votre texte avant de générer. Cela fait gagner du temps et garantit que votre contenu ressemble exactement à ce que vous souhaitez."
-      },
-      {
-        "title": "Utilisez le Téléchargement Groupé pour Plusieurs Pages",
-        "description": "Vous générez plusieurs pages ? Utilisez la fonction de téléchargement groupé pour enregistrer toutes vos pages en une seule fois. Choisissez votre paramètre de qualité préféré et téléchargez tout sous forme de fichier ZIP."
+        "title": "Aperçu final",
+        "description": "Vérifiez toujours votre document via l'aperçu en direct avant l'exportation pour valider la mise en forme."
       }
     ],
-    "context": "Ces conseils vous aideront à créer un texte manuscrit plus réaliste et d'apparence professionnelle."
+    "context": "Ces directives vous aident à obtenir le résultat le plus authentique possible."
   },
   "mainPage": {
     "mobileControls": "Contrôles",
-    "mobilePreview": "Aperçu et Galerie",
+    "mobilePreview": "Aperçu",
     "updatingPreview": "Mise à jour de l'aperçu...",
     "mission": {
       "badge": "Notre Mission",
-      "heading": "Pourquoi avons-nous construit ceci ?",
-      "description": "Nous croyons en un avenir où les étudiants peuvent se concentrer sur leurs idées au lieu d'avoir des crampes aux mains en écrivant des devoirs. Sans blague, il est temps d'embrasser l'ère numérique tout en gardant cette ambiance manuscrite authentique."
+      "heading": "Solutions d'écriture professionnelles",
+      "description": "Nous nous dévouons à fournir une plateforme gratuite de haute qualité pour convertir le texte numérique en écriture manuscrite réaliste, facilitant la réussite académique et professionnelle."
     },
     "lab": {
-      "heading": "Le Labo",
+      "heading": "Lab d'écriture",
       "version": "v1.4.1",
       "inputLabel": "Contenu",
-      "placeholder": "Tapez votre texte ici...",
+      "placeholder": "Saisissez votre texte ici...",
       "style": "Style",
-      "size": "Taille",
-      "paperRealism": "Réalisme du Papier",
+      "size": "Taille de police",
+      "paperRealism": "Niveau de réalisme",
       "ultra": "Ultra",
-      "high": "Élevé",
+      "high": "Haut",
       "low": "Bas",
-      "inkBoldness": "Épaisseur de l'Encre"
+      "inkBoldness": "Épaisseur de l'encre"
     },
     "output": {
-      "title": "Aperçu en Direct",
-      "template": "Modèle",
+      "title": "Aperçu du document",
+      "template": "Modèle de papier",
       "loading": "Chargement...",
-      "loadingTemplate": "Chargement du modèle de papier...",
-      "initializing": "Initialisation du moteur d'écriture...",
-      "presentRose": "Offrir une Rose"
+      "loadingTemplate": "Chargement du modèle...",
+      "initializing": "Initialisation du moteur...",
+      "presentRose": "Nous soutenir"
     }
   },
   "footer": {
-    "about": "À Propos",
-    "blog": "Le Blog",
-    "changelog": "Journal des Modifications",
-    "terms": "Conditions Générales",
-    "faq": "Foire Aux Questions",
+    "about": "À propos",
+    "blog": "Insights",
+    "changelog": "Mises à jour",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Confidentialité",
+    "faq": "FAQ",
     "rights": "Tous droits réservés."
   },
   "pages": {
     "about": {
-      "title": "À Propos de The Vibe",
-      "back": "Retour au labo",
-      "community": "Ouvert à la communauté",
-      "communityDesc": "Idées de fonctionnalités, rapports de bugs et suggestions dignes de mèmes atterrissent dans la même boîte de réception. Nous lisons sincèrement tout ce qui arrive.",
-      "description1": "a commencé comme un défi nocturne pour rendre les notes numériques moins robotiques et plus comme les pages gribouillées avec lesquelles nous avons grandi. Ce qui devait être un petit script s'est transformé en modes de fusion, gestionnaires de textures et beaucoup trop de tasses de café.",
-      "description2": "Aujourd'hui, le générateur propulse des étudiants, des designers et des procrastinateurs en série qui veulent toujours que leurs soumissions aient l'air faites à la main. Nous sommes obsédés par le tremblement crédible de l'encre, les toiles réactives et le maintien de l'expérience assez rapide pour finir ce devoir trente minutes avant la date limite.",
-      "donateBtc": "Donner un Bitcoin",
-      "donateBtcDesc": "Adresse du portefeuille bientôt disponible ; d'ici là, envoyez-nous un message et nous vous enverrons les derniers détails personnellement.",
-      "presentRose": "Offrir une Rose",
-      "madeBy": "Fait avec $ par Th3-F00L",
-      "keywords": "à propos de txttohandwriting, mission générateur écriture, équipe txttohandwriting",
-      "supportHeadline": "Besoin d'aide, de commentaires ou juste envie de dire bonjour ?",
-      "supportDesc": "Nous répondons nous-mêmes à chaque e-mail. Vos captures d'écran, idées de fonctionnalités et victoires maintiennent ce projet en vie."
+      "title": "À propos de notre plateforme",
+      "back": "Retour à l'outil",
+      "community": "Qualité et Innovation",
+      "communityDesc": "Nous privilégions les retours utilisateurs pour améliorer continuellement nos algorithmes de rendu.",
+      "description1": "txttohandwriting.org a été fondé pour combler le fossé entre la commodité numérique et le charme authentique de l'écriture manuscrite. Notre mission est de fournir un outil professionnel accessible pour créer des documents manuscrits en ligne.",
+      "description2": "Notre plateforme sert une communauté mondiale diversifiée. Nous utilisons une technologie de rendu avancée pour simuler les motifs naturels de l'écriture, garantissant des résultats de haute fidélité tout en respectant la vie privée.",
+      "donateBtc": "Nous contacter",
+      "donateBtcDesc": "Pour toute demande de support ou de développement, veuillez nous contacter par e-mail.",
+      "presentRose": "Soutenir le projet",
+      "madeBy": "Développé par l'équipe Text to Handwriting Team",
+      "keywords": "à propos, générateur écriture, mission, outil professionnel, confidentialité",
+      "supportHeadline": "Contacter notre équipe",
+      "supportDesc": "Nous accueillons vos questions, suggestions et retours professionnels."
     },
     "faq": {
-      "title": "Le 411 (FAQ)",
-      "back": "Retour au labo",
-      "keywords": "faq générateur écriture, support outil écriture, aide écriture manuscrite",
-      "q1": "Est-ce vraiment gratuit ?",
-      "a1": "Sérieusement, c'est gratuit. Pas de blague. Nous ne sommes pas dans cette vie d'abonnement. Allez-y à fond (Ne cassez rien).",
-      "q2": "Puis-je utiliser ceci pour mon activité secondaire ?",
-      "a2": "Totalement. Faites vos mèmes, marquez votre Depop, peu importe. Allez chercher cet argent. Aucun crédit nécessaire, mais une mention serait iconique.",
-      "q3": "Lisez-vous mes pensées détraquées ?",
-      "a3": "Non, on ne peut rien voir. On n'est pas comme cet alien Mar... kek... euh... peu importe, pour être franc on n'a pas besoin de vos données. Nos serveurs sont comme des pierres de toute façon. Vos secrets sont en sécurité avec nous, bestie.",
-      "q4": "C'est quoi l'affaire avec les téléchargements ?",
-      "a4": "Pour l'instant, c'est juste des PNG. Ça donne... de la haute qualité. Nous pourrions ajouter plus de formats plus tard si l'ambiance est bonne.",
-      "q5": "Pourquoi la police a l'air un peu bizarre ?",
-      "a5": "C'est probablement votre navigateur. Essayez de le mettre à jour. Si ça a toujours l'air suspect, c'est peut-être juste votre système d'exploitation qui fait des siennes. C'est une ambiance, pas une science exacte.",
-      "q6": "Ma faculté demande des copies papier, que dois-je faire ?",
-      "a6": "Je te tiens mec/meuf ! J'ai une solution parfaite pour toi",
-      "supportHeadline": "Toujours confus ou envie de critiquer un bug ?",
-      "supportDesc": "Envoyez un mot à l'équipe et nous répondrons plus vite que vous ne pouvez dire cursive."
+      "title": "Foire Aux Questions",
+      "back": "Retour à l'outil",
+      "keywords": "aide générateur écriture, support, confidentialité, guide d'utilisation",
+      "q1": "Ce service est-il gratuit ?",
+      "a1": "Oui, notre générateur est entièrement gratuit. Nous ne demandons ni inscription ni abonnement.",
+      "q2": "Puis-je utiliser le résultat à des fins commerciales ?",
+      "a2": "Oui, vous disposez de la pleine propriété des documents générés pour vos projets personnels, académiques ou commerciaux.",
+      "q3": "Comment ma vie privée est-elle protégée ?",
+      "a3": "Tout le traitement est effectué localement dans votre navigateur. Nous ne stockons ni ne transmettons aucun texte saisi.",
+      "q4": "Quels formats sont disponibles au téléchargement ?",
+      "a4": "Vous pouvez télécharger vos pages en images PNG de haute qualité ou en document PDF multi-pages.",
+      "q5": "Comment améliorer la qualité du rendu ?",
+      "a5": "Assurez-vous que le zoom de votre navigateur est à 100% et utilisez un navigateur moderne. Vous pouvez aussi ajuster les réglages de réalisme.",
+      "q6": "Quelle est la meilleure façon d'imprimer ces documents ?",
+      "a6": "Nous recommandons d'exporter en PDF et d'utiliser l'option 'Taille réelle' dans vos paramètres d'impression pour conserver l'échelle et la résolution.",
+      "supportHeadline": "Besoin d'aide supplémentaire ?",
+      "supportDesc": "Pour toute question technique, veuillez contacter notre équipe."
     },
     "changelog": {
-      "title": "Journal des Modifications",
-      "back": "Retour au labo",
-      "productUpdates": "Mises à jour du produit",
-      "description": "Chaque amélioration, ajustement et grande révélation que nous avons expédiés depuis le lancement. Nous gardons les choses humaines : pas de jargon, juste ce qui a changé et pourquoi c'est important pour vos notes.",
-      "mood": "Ambiance",
-      "keywords": "mises à jour produit, changelog txttohandwriting, nouvelles fonctionnalités",
+      "title": "Mises à jour produit",
+      "back": "Retour à l'outil",
+      "productUpdates": "Journal des modifications",
+      "description": "Restez informé des dernières améliorations et fonctionnalités ajoutées à notre plateforme.",
+      "mood": "Statut",
       "entries": {
         "v1-4-1": {
-          "tagline": "Amélioration de l'expérience pour tous.",
+          "tagline": "Support multilingue et stabilité améliorés.",
           "highlights": [
-            "Correction de quelques bugs et nouvelles améliorations.",
-            "Ajout de la fonctionnalité de support multilingue."
+            "Implémentation du cadre de localisation multilingue.",
+            "Optimisation des performances de rendu pour les scripts complexes."
           ],
-          "mood": "Vibes mondiales."
+          "mood": "Stable"
         },
         "v1-4": {
-          "tagline": "Niveau supérieur de réalisme et de performance.",
+          "tagline": "Mise à jour majeure du moteur et interface raffinée.",
           "highlights": [
-            "Nouvelle refonte de l'interface utilisateur avec un système de design plus propre et moderne.",
-            "Amélioration de la génération d'images avec une fidélité plus élevée et de meilleures textures d'encre.",
-            "Amélioration du rendu d'image en direct au niveau supérieur pour un retour instantané.",
-            "Moteur optimisé pour un traitement plus rapide et des interactions plus fluides."
+            "Refonte de l'interface pour un meilleur flux de travail.",
+            "Amélioration de la simulation de texture d'encre.",
+            "Optimisation du moteur d'aperçu en direct."
           ],
-          "mood": "Nouveau départ, nouvelle année, nouvelles notes."
-        },
-        "v1-3": {
-          "tagline": "Plus de contrôle, une meilleure qualité et une expérience plus fluide.",
-          "highlights": [
-            "Révision du design de l'interface pour une expérience plus intuitive et esthétiquement plaisante.",
-            "Ajout de l'option de contrôle du poids de l'encre pour un contrôle plus fin sur l'apparence de l'écriture.",
-            "Ajout de l'option de télécharger toutes les images générées en un seul fichier PDF.",
-            "Ajout de l'option de qualité d'image (Haute, Moyenne, Basse) pour équilibrer qualité et taille de fichier.",
-            "Correction de divers bugs connus pour améliorer la stabilité et les performances."
-          ],
-          "mood": "Se sentir puissant et poli."
-        },
-        "v1-2": {
-          "tagline": "Une nouvelle amélioration avec une nouvelle liberté créative.",
-          "highlights": [
-            "Redesign majeur du laboratoire pour que les contrôles, l'aperçu et la galerie s'intègrent ensemble sur chaque taille d'écran.",
-            "Gestionnaire d'importation de polices personnalisées avec guide étape par étape et deux emplacements personnels pour votre écriture.",
-            "Ajustement des performances sur Chrome, Safari, Firefox et Edge pour que les pages s'affichent plus rapidement et semblent plus fluides."
-          ],
-          "mood": "Aujourd'hui ressemble à une toute nouvelle page de planificateur."
-        },
-        "v1-0": {
-          "tagline": "Le jour où txttohandwriting.org est devenu public.",
-          "highlights": [
-            "Lancement du laboratoire d'écriture manuscrite avec aperçu instantané, couleurs d'encre et curseurs de réalisme.",
-            "Introduction de l'étagère Paper Vibe avec des modèles blancs, pointillés et lignés prêts à être téléchargés en PNG.",
-            "Ouverture de la galerie d'images avec vue plein écran, étiquettes de séquence et téléchargements en un clic."
-          ],
-          "mood": "Papillons du premier jour d'école, mais pour les nerds de la papeterie."
+          "mood": "Mise à jour majeure"
         }
       }
     },
     "terms": {
-      "title": "Conditions Générales",
-      "back": "Retour au Générateur",
-      "keywords": "conditions d'utilisation générateur écriture, politique de confidentialité txttohandwriting, mentions légales",
+      "title": "Conditions d'utilisation",
+      "back": "Retour à l'outil",
       "lastUpdated": "Dernière mise à jour",
-      "welcome": "Bienvenue sur txttohandwriting.org ! Ces conditions générales décrivent les règles et réglementations pour l'utilisation de notre site web. En accédant à ce site web, nous supposons que vous acceptez ces conditions générales. Ne continuez pas à utiliser txttohandwriting.org si vous n'acceptez pas toutes les conditions générales énoncées sur cette page.",
-      "section1Title": "1. Acceptation des Conditions",
-      "section1Content": "Le service est fourni \"tel quel\" et \"selon disponibilité\" sans aucune garantie. Nous ne garantissons pas que le service sera ininterrompu ou sans erreur.",
-      "section2Title": "2. Utilisation du Service",
-      "section2Content": "Vous acceptez d'utiliser notre service uniquement à des fins légales. Vous êtes seul responsable du contenu que vous créez et convertissez. Vous acceptez de ne pas utiliser le service pour créer tout contenu diffamatoire, obscène ou autrement répréhensible.",
-      "section3Title": "3. Propriété Intellectuelle",
-      "section3Content": "Le texte que vous saisissez est le vôtre. Les images générées à partir de votre texte peuvent être utilisées à des fins personnelles et commerciales. Cependant, les polices, le design et la marque de txttohandwriting.org sont la propriété des propriétaires du site web et ne peuvent être utilisés sans permission.",
-      "section4Title": "4. Avis de Non-responsabilité",
-      "section4Content": "Notre site web est fourni sur une base \"tel quel\". Nous ne donnons aucune garantie, expresse ou implicite, et rejetons et nions par la présente toutes les autres garanties, y compris, sans limitation, les garanties implicites ou conditions de qualité marchande, d'adéquation à un usage particulier, ou de non-violation de la propriété intellectuelle ou autre violation des droits.",
-      "section5Title": "5. Limitation de Responsabilité",
-      "section5Content": "En aucun cas txttohandwriting.org ou ses fournisseurs ne seront responsables de tout dommage (y compris, sans limitation, les dommages pour perte de données ou de profit, ou en raison d'une interruption d'activité) découlant de l'utilisation ou de l'incapacité d'utiliser les matériaux sur notre site web, même si nous avons été informés oralement ou par écrit de la possibilité de tels dommages.",
-      "section6Title": "6. Modifications des Conditions",
-      "section6Content": "Nous nous réservons le droit de réviser ces conditions générales à tout moment. En utilisant ce site web, vous êtes censé revoir ces conditions régulièrement pour vous assurer que vous comprenez toutes les conditions générales régissant l'utilisation de ce site web.",
-      "section7Title": "7. Analyses et Cookies",
-      "section7Content1": "Nous utilisons Google Analytics avec le Mode Consentement pour comprendre comment txttohandwriting.org est utilisé et pour continuer à améliorer l'expérience. Les cookies d'analyse restent désactivés jusqu'à ce que vous donniez explicitement votre consentement via la bannière affichée lors de votre première visite sur le site. Si vous refusez, aucune donnée d'analyse n'est envoyée à Google et le site continue de fonctionner normalement.",
-      "section7Content2": "Les paramètres de consentement couvrent les paramètres Google suivants : ad_storage, ad_personalization, ad_user_data et analytics_storage. Jusqu'à ce que vous acceptiez, chacune de ces valeurs reste à l'état \"refusé\", empêchant l'écriture de cookies et l'envoi d'événements. Lorsque vous acceptez, nous mettons à jour ces paramètres à \"autorisé\" et stockons votre préférence dans votre navigateur.",
-      "section8Title": "8. Gestion de Votre Consentement",
-      "section8Content": "Vous pouvez mettre à jour ou retirer votre consentement à tout moment en effaçant les données du site dans votre navigateur ou en contactant notre équipe. Nous serons heureux de vous aider et de nous assurer que vos préférences sont respectées. Pour toute question sur la confidentialité ou demande liée au consentement, contactez-nous à : bientôt disponible.",
-      "supportHeadline": "Des questions sur ces conditions ?",
-      "supportDesc": "Nous sommes heureux de clarifier tout ce qui est légal ou de vous aider à garder vos devoirs en ordre."
+      "welcome": "En utilisant txttohandwriting.org, vous acceptez de vous conformer aux conditions suivantes. Si vous n'êtes pas d'accord, veuillez cesser d'utiliser le service.",
+      "section1Title": "1. Fourniture du service",
+      "section1Content": "Le service est fourni 'en l'état'. Nous nous réservons le droit de modifier les fonctionnalités sans préavis.",
+      "section2Title": "2. Conduite de l'utilisateur",
+      "section2Content": "Les utilisateurs sont responsables de la légalité du contenu converti. L'usage à des fins trompeuses ou illégales est strictement interdit.",
+      "section3Title": "3. Propriété intellectuelle",
+      "section3Content": "Les utilisateurs conservent la propriété de leur texte. Tous les logiciels et marques restent la propriété de txttohandwriting.org.",
+      "section4Title": "4. Confidentialité et Publicité",
+      "section4Content": "Nous utilisons Google AdSense. Veuillez vous référer à notre politique de confidentialité pour plus de détails.",
+      "supportHeadline": "Demandes juridiques",
+      "supportDesc": "Pour toute question sur nos conditions, contactez notre équipe juridique."
     },
-    "notFound": {
-      "title": "Page Non Trouvée | txttohandwriting.org",
-      "description": "Nous n'avons pas pu trouver la page que vous cherchiez. Retournez au laboratoire d'écriture pour continuer à créer.",
-      "keywords": "générateur écriture 404, page non trouvée"
-    },
-    "blog": {
-      "title": "Blog d'Inspiration Écriture Manuscrite | txttohandwriting.org",
-      "description": "Guides, inspiration et conseils pour transformer du texte dactylographié en écriture manuscrite esthétique pour Studygram, planificateurs et devoirs.",
-      "keywords": "blog écriture manuscrite, conseils studygram, inspiration notes"
-    },
-    "blogPost": {
-      "keywords": "blog écriture, conseils, inspiration"
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "back": "Retour à l'outil",
+      "lastUpdated": "Dernière mise à jour",
+      "intro": "La confidentialité est primordiale. Cette politique décrit comment nous protégeons vos données via un traitement local.",
+      "dataCollectionTitle": "1. Collecte de données",
+      "dataCollectionContent": "Nous ne collectons ni ne stockons les textes saisis. Tout se passe localement sur votre appareil.",
+      "localProcessingTitle": "2. Sécurité côté client",
+      "localProcessingContent": "Notre plateforme utilise le JavaScript côté client pour garantir la sécurité et la confidentialité de vos documents.",
+      "cookiesTitle": "3. Cookies et Publicité",
+      "cookiesContent": "Nous utilisons Google AdSense. Vous pouvez désactiver la publicité personnalisée dans les réglages Google.",
+      "analyticsTitle": "4. Analyses",
+      "analyticsContent": "Nous utilisons des analyses anonymisées pour améliorer l'expérience utilisateur.",
+      "contactTitle": "5. Contact",
+      "contactContent": "Pour toute question relative à la confidentialité : privacy@txttohandwriting.org.",
+      "supportHeadline": "Votre vie privée compte",
+      "supportDesc": "Nous nous engageons à respecter les plus hauts standards de protection des données."
     }
   },
   "blog": {
-    "title": "Le Blog",
-    "backToLab": "Retour au labo",
-    "backToAll": "Retour à tous les articles",
-    "readMore": "Cliquer pour lire la suite →",
-    "by": "Par",
-    "ctaHeadline": "Des idées d’articles ou des retours ? ",
-    "ctaDescription": "Partage ce que tu veux voir sur le blog ou tes astuces d’écriture manuscrite."
+    "title": "Insights Éducatifs",
+    "backToLab": "Retour à l'outil",
+    "backToAll": "Tous les articles",
+    "readMore": "Lire l'article complet",
+    "by": "Auteur :",
+    "ctaHeadline": "Retours & Contributions",
+    "ctaDescription": "Nous valorisons les insights professionnels de la communauté éducative."
   },
   "blogPosts": {
-    "glow-up-your-notes": {
-      "title": "Relooke Tes Notes : Le Guide Ultime des Convertisseurs Texte‑en‑Manuscrit Esthétiques",
-      "content": "<p>Soyons honnêtes, tes notes de cours sont un peu fades. Tu veux être cette personne avec des notes esthétiques qui cartonnent sur Studygram, mais tes blocs de texte tapés ne font pas l’affaire. Voici la star : le <strong>convertisseur texte‑en‑écriture manuscrite</strong>. C’est le meilleur life hack pour romantiser ses études.</p>\n<h2>Le vrai truc des générateurs d’écriture manuscrite</h2>\n<p>Un <strong>générateur d’écriture</strong> comme le nôtre prend ton texte numérique et le transforme en une écriture mignonne. Parfait pour avoir le charme du manuscrit sans les crampes. Que tu crées une fiche de révision agréable à lire ou des designs pour ton planner numérique, un <strong>outil gratuit texte‑en‑manuscrit</strong> devient ton meilleur allié.</p>\n<h2>Trouver ta font aesthetic</h2>\n<p>Le glow‑up, c’est la bonne police : celle qui crie “toi”. Plutôt script propre et élégant ou griffonnage casual ? Notre site a toute une sélection de polices pour ton énergie. Ne t’arrête pas à une seule — teste ! Un bon <strong>convertisseur manuscrit en ligne</strong> donne des options pour passer des notes de bio aux dissertations d’histoire. Résultat : utile et ultra esthétique.</p>"
+    "benefits-of-handwritten-notes": {
+      "title": "Les bénéfices cognitifs des notes manuscrites : Pourquoi l'analogique compte encore",
+      "content": "<p>À l'ère du tout numérique, l'écriture manuscrite reste un outil puissant pour le développement cognitif et la mémorisation. La recherche montre que le fait d'écrire à la main sollicite le cerveau d'une manière que le clavier ne peut égaler.</p><h2>La science de la mémorisation</h2><p>L'écriture manuscrite force le cerveau à traiter l'information plus en profondeur. L'engagement haptique crée une mémoire motrice plus forte, facilitant le rappel des informations lors des examens.</p><h2>Améliorer la concentration</h2><p>Travailler avec des documents de style manuscrit aide à réduire la fatigue numérique. Les variations naturelles offrent une expérience de lecture plus organique, favorisant une meilleure attention.</p>"
     },
-    "fix-your-studygram": {
-      "title": "Pourquoi Ton Studygram Flop (Et Comment un Générateur d’Écriture Peut le Sauver)",
-      "content": "<p>Tu as les surligneurs pastel, le washi tape et le café glacé. Alors pourquoi ton Studygram ne buzz pas ? Peut‑être le contenu. Regarder le même Times New Roman, c’est l’ennui total. Si tu veux arrêter le scroll, il te faut des visuels qui claquent. Et rien ne dit “j’ai ma vie en main” comme des notes manuscrites impeccables.</p>\n<h2>La sauce secrète : convertir du texte en manuscrit en ligne</h2>\n<p>Personne n’a le temps de tout écrire à la main, surtout quand trois devoirs sont pour demain. C’est là qu’un <strong>outil texte‑en‑écriture manuscrite</strong> devient indispensable. Tu tapes tes notes, tes to‑do, tes citations, et tu <strong>convertis le texte en image</strong> d’écriture au style parfait.</p>\n<p>Imagine poster un résumé manuscrit nickel d’un chapitre. C’est unique, accrocheur, et on dirait que tu as fait dix fois plus d’efforts. Voilà la puissance d’un <strong>générateur d’écriture gratuit en ligne</strong> : il fait passer ton contenu de basique à iconique.</p>\n<h2>Comment le rendre encore plus stylé</h2>\n<p>Ne colle pas ça sur un fond blanc. Choisis une vibe de papier — ligné, quadrillé ou simple — et une couleur d’encre qui match. Télécharge le PNG et glisse‑le dans Canva ou ton appli de notes comme GoodNotes. C’est le secret d’un contenu Studygram qui donne envie d’enregistrer et de partager. De rien.</p>"
+    "effective-study-materials": {
+      "title": "Comment créer des supports d'étude efficaces avec un générateur d'écriture",
+      "content": "<p>La présentation de l'information est clé. Utilisez différents styles pour distinguer les titres et les définitions. Notre outil permet de créer une hiérarchie visuelle claire pour faciliter la révision.</p><h2>Le pouvoir de la personnalisation</h2><p>En ajustant la couleur de l'encre et le type de papier, vous adaptez vos notes à votre style d'apprentissage.</p>"
     },
     "create-your-own-handwriting-font": {
-      "title": "Créer Ta Propre Police Manuscrite (Sans Perdre la Tête)",
-      "content": "<p>Tu rêves de voir <strong>ta propre écriture</strong> dans txttohandwriting.org ? C’est possible. Faire une police à partir de tes gribouillis paraît pro, mais le web propose des outils simples, gratuits (ou presque) et super DIY.</p>\n<h2>Étape 1 : Prépare un échantillon</h2>\n<p>Imprime un modèle ou écris sur tablette avec un pinceau neutre. Garde une ligne de base stable, utilise un stylo que tu aimes, et écris clairement toutes les lettres — majuscules, minuscules, chiffres, ponctuation. Plus la feuille est propre, plus la police sera propre.</p>\n<ul>\n  <li><strong>Modèle Calligraphr :</strong> imprime la feuille guide de <a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a>, écris avec un stylo foncé, puis scanne à 300 dpi ou prends une photo nette.</li>\n  <li><strong>Procreate ou Affinity :</strong> des apps comme <a href=\"https://procreate.com/\" target=\"_blank\" rel=\"noopener\">Procreate</a> ou <a href=\"https://affinity.serif.com/en-us/designer/ipad/\" target=\"_blank\" rel=\"noopener\">Affinity Designer</a> facilitent tout — exporte simplement un PNG transparent.</li>\n</ul>\n<h2>Étape 2 : Transformer les lettres en fichier de police</h2>\n<p>Voici les meilleurs générateurs gratuits (ou presque) pour faire le gros du travail :</p>\n<ul>\n  <li><a href=\"https://www.calligraphr.com/\" target=\"_blank\" rel=\"noopener\">Calligraphr</a> – convivial, en ligne, et le moyen le plus rapide d’obtenir un TTF/OTF propre. La version gratuite gère une police à la fois.</li>\n  <li><a href=\"https://glyphrstudio.com/online/\" target=\"_blank\" rel=\"noopener\">Glyphr Studio</a> – éditeur navigateur pour ajuster l’espacement et les ligatures.</li>\n  <li><a href=\"https://www.fontstruct.com/\" target=\"_blank\" rel=\"noopener\">FontStruct</a> – 100% gratuit, basé sur une grille, parfait pour des lettres géométriques.</li>\n  <li><a href=\"https://birdfont.org/\" target=\"_blank\" rel=\"noopener\">Birdfont</a> – donationware pour macOS, Windows et Linux avec un flux d’import SVG facile.</li>\n  <li><a href=\"https://www.fontself.com/\" target=\"_blank\" rel=\"noopener\">Fontself</a> (payant, plugin Illustrator/Photoshop) ou <a href=\"https://www.ifontmaker.com/\" target=\"_blank\" rel=\"noopener\">iFontMaker</a> sur iPad pour un rendu pro.</li>\n</ul>\n<p>Importe ta feuille, aligne chaque caractère, vérifie les aperçus (surtout “g”, “s” et l’espacement), puis exporte en TTF, OTF ou WOFF/WOFF2 — exactement ce que notre upload aime.</p>\n<h2>Étape 3 : Peaufiner les détails</h2>\n<p>La plupart des éditeurs permettent d’ajuster la ligne de base, le kerning et l’interligne. Un petit polish évite un rendu trop “sautillant”. Teste une phrase comme « Zany fox jumps high » pour repérer les défauts avant export.</p>\n<h2>Étape 4 : Importer dans txttohandwriting.org</h2>\n<p>Va dans le lab, clique <strong>Custom → Upload</strong>, dépose ton fichier et donne‑lui un nom. Nous gardons deux polices personnalisées par compte, alors choisis tes préférées.</p>\n<p>C’est tout ! En moins d’un après‑midi, tu peux afficher ton style sur tes planners, notes et journaux. Si tu testes, tague‑nous — on mettra ta police à l’honneur dans la galerie.</p>"
+      "title": "Guide technique : Créer et utiliser sa propre police d'écriture",
+      "content": "<p>Conservez votre identité unique en chargeant votre propre écriture comme police de caractères. Ce guide explique les étapes techniques pour créer un fichier compatible.</p><h2>Étape 1 : Capture des échantillons</h2><p>Utilisez un stylo foncé sur papier blanc. Scannez en 300 DPI pour un résultat professionnel.</p>"
     },
-    "paper-texture-science": {
-      "title": "La Science de la Texture du Papier : Pourquoi Ça Compte",
-      "content": "<p>Tu t’es déjà demandé pourquoi certaines notes numériques semblent fausses et d’autres paraissent réelles ? Tout est dans la <strong>texture du papier</strong>. Un fond parfaitement blanc et plat crie “généré par ordinateur”, tandis qu’un léger grain ou une ombre donne vie à la page.</p>\n<h2>Les micro‑détails</h2>\n<p>Le papier réel n’est pas parfait : fibres, petites irrégularités, absorption d’encre variable. Notre générateur simule ces <strong>micro‑détails</strong> pour que le texte repose sur le papier, pas au‑dessus. Papier ligné net ou parchemin rugueux, la texture est l’héroïne du réalisme.</p>\n<h2>Associer texture et mood</h2>\n<p>Le bon fond fixe l’ambiance. Le papier quadrillé évoque précision et maths, idéal pour des schémas. Le papier ligné rappelle la salle de classe. Et le papier texturé uni ? Un canevas parfait pour croquis et journaling libre. Ne sous‑estime pas le fond : il fait la moitié de l’esthétique.</p>"
-    },
-    "psychology-handwritten-notes": {
-      "title": "La Psychologie des Notes Manuscrites vs. la Dactylo",
-      "content": "<p>On connaît tous le débat : ordinateur vs. cahier. Mais il y a une vraie science derrière l’<strong>avantage du manuscrit</strong>. Les études montrent que l’écriture à la main active plus de zones du cerveau, améliorant mémoire et compréhension.</p>\n<h2>Pourquoi le cerveau aime les courbes</h2>\n<p>La frappe est mécanique et répétitive ; chaque “A” se ressemble. L’écriture manuscrite implique des mouvements spatiaux uniques pour chaque lettre. Cet effort cognitif aide à fixer l’info en mémoire long terme. C’est pourquoi la fiche que tu as écrite à la main (ou générée pour en avoir l’air) paraît plus familière qu’un PDF tapé.</p>\n<h2>Le compromis numérique</h2>\n<p>Mais soyons honnêtes : écrire à la main, c’est lent. Les <strong>outils texte‑vers‑manuscrit</strong> comblent le fossé. Tu gardes la vitesse de la frappe avec les bénéfices visuels et cognitifs du manuscrit. Résultat : une connexion plus humaine que les polices standard, pour des notes qui ressemblent moins à des données et plus à du <em>savoir</em>.</p>"
-    },
-    "creative-ways-to-use-handwriting-generators": {
-      "title": "Top 5 Façons Créatives d’Utiliser un Générateur d’Écriture Au‑Delà de l’École",
-      "content": "<p>Tu penses que les générateurs d’écriture ne servent qu’aux devoirs ? Détrompe‑toi. Les possibilités créatives sont infinies. Voici nos 5 usages préférés pour s’amuser (et parfois gagner).</p>\n<h2>1. Accessoires pour D&D et TTRPG</h2>\n<p>MJ, écoutez : rien n’immerge plus les joueurs qu’une lettre trouvée sur un gobelin. Génère un avertissement “griffonné à la hâte” ou une énigme ancienne avec une police brouillonne et notre fond parchemin.</p>\n<h2>2. Scrapbooking numérique</h2>\n<p>Ajoute des légendes à tes collages sans stylet. Ça garde l’esthétique DIY tout en restant propre et éditable.</p>\n<h2>3. Cartes de recettes esthétiques</h2>\n<p>Tape la recette secrète de cookies de mamie, choisis une police cursive et imprime sur carton. Cadeau personnalisé incroyable (ou aimant trop mignon).</p>\n<h2>4. Citations pour réseaux sociaux</h2>\n<p>Arrête d’utiliser les mêmes polices Canva que tout le monde. Une citation manuscrite sur un fond texturé ressort dans le feed et paraît plus authentique.</p>\n<h2>5. Lettres d’amour (on ne dira rien)</h2>\n<p>Ok, écrire soi‑même est plus romantique, mais si ton écriture ressemble à un passage de poulet sur la page, un générateur peut être ton wingman. Choisis juste une police crédible.</p>"
-    },
-    "print-ready-handwriting": {
-      "title": "Écriture Prête à Imprimer : Marges, Espacement et Vibes de Papier",
-      "content": "<p>Les pages manuscrites sont magnifiques à l’écran, mais l’impression peut tout gâcher. Quelques réglages suffisent pour garder un rendu propre et crédible sur papier.</p>\n<h2>Commence par la page, pas par la police</h2>\n<p>Choisis d’abord le modèle de papier, puis ajuste marges et taille de police pour laisser respirer le texte. Un peu d’espace blanc sur les bords donne l’impression d’une vraie page de cahier, pas d’un visuel plein cadre.</p>\n<h2>Exporte intelligemment</h2>\n<p>Utilise la haute qualité pour l’impression et exporte en PDF si tu veux de la cohérence sur plusieurs pages. Si ton imprimante est capricieuse, garde des encres neutres et évite les textures trop légères — le subtil paraît plus authentique.</p>"
-    },
-    "handwritten-touches-for-work": {
-      "title": "Touches Manuscrites pour les Projets Pros (Sans Faire Amateur)",
-      "content": "<p>L’écriture manuscrite n’est pas réservée à l’école. Un petit callout manuscrit peut rendre une proposition, un moodboard ou un doc d’onboarding plus humain — sans faire brouillon.</p>\n<h2>Utilise‑la en accent, pas sur toute la page</h2>\n<p>Garde le contenu principal tapé et ajoute des touches manuscrites pour les titres, citations ou actions. Ça guide l’attention et reste lisible pour les clients et l’équipe.</p>\n<h2>Adapte le ton</h2>\n<p>Choisis une police propre, reste sur de l’encre noire ou bleue, et associe‑la à un papier ligné ou à une texture subtile. L’objectif : “intentionnel”, pas “scrapbook”.</p>"
+    "science-of-paper-textures": {
+      "title": "La psychologie de la texture du papier dans l'apprentissage numérique",
+      "content": "<p>Pourquoi sommes-nous plus connectés à l'information sur une page texturée ? Les textures fournissent des indices sensoriels qui renforcent l'engagement.</p><h2>Simuler le réalisme</h2><p>Notre générateur simule les micro-détails de l'absorption de l'encre sur divers types de papier, signalant au cerveau que le contenu est concret.</p>"
     }
   }
 }

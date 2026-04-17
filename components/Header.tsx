@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                                 <span className="sm:hidden">Txt2HW</span>
                             </span>
                             <span className="text-[10px] text-text-muted uppercase tracking-widest opacity-60 font-mono mt-1">
-                                A subsidiary of nsa.tools
+                                High Fidelity Simulation Platform
                             </span>
                         </div>
                     </button>
@@ -76,16 +76,16 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                         <Button
                             variant="icon"
                             onClick={() => setIsEngineMenuOpen(!isEngineMenuOpen)}
-                            aria-label="Generation Engine"
-                            title="Generation Engine"
+                            aria-label="Generation Engine Settings"
+                            title="Engine Settings"
                         >
                             <GearIcon className="w-6 h-6" />
                         </Button>
                         {isEngineMenuOpen && (
                             <div className="absolute right-0 mt-2 w-48 bg-panel-bg border border-panel-border rounded-lg shadow-xl py-1 z-10 backdrop-blur-xl">
-                                <div className="px-3 py-1.5 text-xs font-semibold text-text-muted uppercase tracking-wider">GEN ENGINE</div>
+                                <div className="px-3 py-1.5 text-xs font-semibold text-text-muted uppercase tracking-wider">CORE ENGINE</div>
                                 <div className="flex items-center justify-between px-3 py-2 text-text bg-control-bg border-y border-panel-border">
-                                    <span className="font-medium">Version 1.4.1</span>
+                                    <span className="font-medium">Stable v1.4.1</span>
                                     <CheckIcon className="w-5 h-5 text-accent" />
                                 </div>
                             </div>
@@ -95,8 +95,8 @@ const Header: React.FC<HeaderProps> = ({ theme, setTheme, onNavigate, currentPag
                     <Button
                         variant="icon"
                         onClick={toggleTheme}
-                        aria-label="Toggle theme"
-                        title={getTooltipText()}
+                        aria-label="Change Color Theme"
+                        title="Change Theme"
                     >
                         {currentTheme === 'nightlight' && <MoonIcon className="w-6 h-6" />}
                         {currentTheme === 'dark' && <HeartIcon className="w-6 h-6" />}

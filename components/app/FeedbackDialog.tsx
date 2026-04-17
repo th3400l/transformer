@@ -40,7 +40,7 @@ export const FeedbackDialog: React.FC<FeedbackDialogProps> = ({
 
         <div className="space-y-3 text-[var(--text-color)]">
           <h3 id="feedback-dialog-title" className="text-2xl font-semibold">
-            Loving the handwritten vibes?
+            Loving the handwriting styles?
           </h3>
           <p className="text-sm leading-relaxed text-[var(--text-muted)]">
             We'd love to hear how it's working for you. Drop us a note at <span className="text-[var(--accent-color)]">{supportEmail}</span> or pass the link to a friend who could use prettier notes.

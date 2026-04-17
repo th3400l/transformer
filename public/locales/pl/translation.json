@@ -216,7 +216,7 @@
     "mission": {
       "badge": "Nasza misja",
       "heading": "Dlaczego to zbudowaliśmy?",
-      "description": "Wierzymy w przyszłość, w której uczniowie skupiają się na pomysłach, zamiast dostawać skurczy od pisania zadań. Czas wejść w cyfrowy wiek, zachowując autentyczny vibe pisma odręcznego."
+      "description": "Wierzymy w przyszłość, w której uczniowie skupiają się na pomysłach, zamiast dostawać skurczy od pisania zadań. Czas wejść w cyfrowy wiek, zachowując autentyczny atmosphere pisma odręcznego."
     },
     "lab": {
       "heading": "Lab",
@@ -275,11 +275,11 @@
       "q3": "Czy czytacie moje odklejone myśli?",
       "a3": "Nie, nic nie widzimy. Nie potrzebujemy twoich danych. Nasze serwery są jak kamienie. Twoje sekrety są bezpieczne.",
       "q4": "O co chodzi z pobieraniem?",
-      "a4": "Na razie tylko PNG. Jest wysoko‑jakościowo. Możemy dodać inne formaty, jeśli vibe będzie pasował.",
+      "a4": "Na razie tylko PNG. Jest wysoko‑jakościowo. Możemy dodać inne formaty, jeśli atmosphere będzie pasował.",
       "q5": "Dlaczego font wygląda trochę dziwnie?",
-      "a5": "To pewnie twoja przeglądarka. Zaktualizuj ją. Jeśli nadal wygląda podejrzanie, to może system. To vibe, nie nauka.",
-      "q6": "Moja uczelnia chce wydruki, co mam zrobić?",
-      "a6": "Mam dla ciebie idealne rozwiązanie",
+      "a5": "To pewnie twoja przeglądarka. Zaktualizuj ją. Jeśli nadal wygląda podejrzanie, to może system. To atmosphere, nie nauka.",
+      "q6": "What is the best way to print these documents?",
+      "a6": "We recommend exporting to PDF and using 'Actual Size' in your printer settings to maintain correct scaling and resolution.",
       "supportHeadline": "Wciąż niejasne albo chcesz zhejtować buga?",
       "supportDesc": "Napisz do ekipy, a odpiszemy szybciej, niż powiesz 'kursywa'."
     },
@@ -351,7 +351,7 @@
       "section3Title": "3. Własność intelektualna",
       "section3Content": "Wprowadzony tekst należy do Ciebie. Wygenerowane obrazy można wykorzystywać do celów osobistych i komercyjnych. Jednak fonty, design i branding txttohandwriting.org są własnością właścicieli strony i nie mogą być używane bez zgody.",
       "section4Title": "4. Wyłączenie odpowiedzialności",
-      "section4Content": "Nasza strona jest udostępniana \"tak jak jest\". Nie udzielamy żadnych gwarancji, wyraźnych ani dorozumianych, w tym gwarancji przydatności handlowej, przydatności do określonego celu lub nienaruszania praw własności intelektualnej.",
+      "section4Content": "We use Google AdSense to serve advertisements. These services may use cookies to provide relevant content. Please refer to our Privacy Policy for details.",
       "section5Title": "5. Ograniczenie odpowiedzialności",
       "section5Content": "W żadnym wypadku txttohandwriting.org ani jego dostawcy nie ponoszą odpowiedzialności za szkody (w tym utratę danych, zysków lub przerwy w działalności) wynikające z używania lub niemożności używania materiałów na stronie, nawet jeśli zostaliśmy o tym poinformowani.",
       "section6Title": "6. Zmiany regulaminu",
@@ -379,7 +379,7 @@
     }
   },
   "blog": {
-    "title": "Blog",
+    "title": "Articles",
     "backToLab": "Wróć do labu",
     "backToAll": "Wróć do wszystkich wpisów",
     "readMore": "Czytaj dalej →",
@@ -390,11 +390,11 @@
   "blogPosts": {
     "glow-up-your-notes": {
       "title": "Glow Up Twoich notatek: kompletny przewodnik po estetycznych konwerterach tekstu na pismo odręczne",
-      "content": "<p>Bądźmy szczerzy, Twoje notatki z wykładów wyglądają trochę blado. Chcesz być tą osobą z estetycznymi notatkami na Studygramie, ale ściany tekstu z klawiatury nie mają klimatu. Wchodzi główny bohater: <strong>konwerter tekstu na pismo odręczne</strong>. To największy life‑hack dla tych, którzy chcą zromantyzować naukę.</p>\n<h2>O co chodzi z generatorami pisma odręcznego?</h2>\n<p><strong>Generator pisma odręcznego</strong> jak nasz zamienia nudny tekst cyfrowy w urocze pismo. Idealne, gdy chcesz efektu ręcznych notatek bez bólu dłoni. Niezależnie od tego, czy robisz ładny skrypt, czy projekt do cyfrowego planera, <strong>darmowe narzędzie tekst‑na‑pismo</strong> stanie się Twoim bestie.</p>\n<h2>Znajdź swoją estetykę fontu</h2>\n<p>Klucz do glow‑up to font, który krzyczy „to ja”. Wolisz czysty, elegancki skrypt czy luźne, chaotyczne bazgroły? U nas jest cały lineup. Nie trzymaj się jednego—testuj! Dobry <strong>online handwriting converter</strong> daje wybór, więc możesz przełączać się między bio a historią. Dzięki temu notatki są nie tylko użyteczne, ale też super estetyczne.</p>"
+      "content": "<p>Bądźmy szczerzy, Twoje notatki z wykładów wyglądają trochę blado. Chcesz być tą osobą z estetycznymi notatkami na Studygramie, ale ściany tekstu z klawiatury nie mają klimatu. Wchodzi główny bohater: <strong>konwerter tekstu na pismo odręczne</strong>. To największy life‑hack dla tych, którzy chcą zromantyzować naukę.</p>\n<h2>O co chodzi z generatorami pisma odręcznego?</h2>\n<p><strong>Generator pisma odręcznego</strong> jak nasz zamienia nudny tekst cyfrowy w urocze pismo. Idealne, gdy chcesz efektu ręcznych notatek bez bólu dłoni. Niezależnie od tego, czy robisz ładny skrypt, czy projekt do cyfrowego planera, <strong>darmowe narzędzie tekst‑na‑pismo</strong> stanie się Twoim friend.</p>\n<h2>Znajdź swoją estetykę fontu</h2>\n<p>Klucz do glow‑up to font, który krzyczy „to ja”. Wolisz czysty, elegancki skrypt czy luźne, chaotyczne bazgroły? U nas jest cały lineup. Nie trzymaj się jednego—testuj! Dobry <strong>online handwriting converter</strong> daje wybór, więc możesz przełączać się między bio a historią. Dzięki temu notatki są nie tylko użyteczne, ale też super estetyczne.</p>"
     },
     "fix-your-studygram": {
       "title": "Dlaczego Twój Studygram cicho flopuje (i jak generator pisma może to naprawić)",
-      "content": "<p>Masz pastelowe zakreślacze, washi tape i mrożoną kawę. To czemu Studygram nie łapie hype’u? Może przez content. Wpatrywanie się w ciągle ten sam Times New Roman to totalny ziew. Jeśli chcesz zatrzymać scroll, potrzebujesz wizualu, który robi robotę. I nic nie mówi „mam ogarnięte życie” tak jak estetyczne notatki pisane odręcznie.</p>\n<h2>Sekretny sos: zamień tekst na pismo online</h2>\n<p>Nikt nie ma czasu przepisywać wszystkiego ręcznie, szczególnie gdy jutro są trzy zadania. Tu wjeżdża <strong>narzędzie tekst‑na‑pismo online</strong>. Wpisujesz notatki, listy rzeczy do zrobienia, cytaty i od razu <strong>zamieniasz tekst w obraz</strong> pięknego pisma.</p>\n<p>Wyobraź sobie relację z idealnie odręcznym podsumowaniem rozdziału. Unikalne, przyciąga uwagę i wygląda jakbyś włożył(a) w to masę pracy. Taka jest moc <strong>darmowego generatora pisma</strong>.</p>\n<h2>Jak sprawić, żeby to klikało</h2>\n<p>Nie wrzucaj na pusty background. Wybierz vibe papieru—liniowany, w kratkę albo czysty—i dobierz kolor tuszu do motywu. Pobierz PNG i wrzuć do Canvy lub GoodNotes. To sekret treści Studygram, które ludzie zapisują i udostępniają.</p>"
+      "content": "<p>Masz pastelowe zakreślacze, washi tape i mrożoną kawę. To czemu Studygram nie łapie excitement’u? Może przez content. Wpatrywanie się w ciągle ten sam Times New Roman to totalny ziew. Jeśli chcesz zatrzymać scroll, potrzebujesz wizualu, który robi robotę. I nic nie mówi „mam ogarnięte życie” tak jak estetyczne notatki pisane odręcznie.</p>\n<h2>Sekretny sos: zamień tekst na pismo online</h2>\n<p>Nikt nie ma czasu przepisywać wszystkiego ręcznie, szczególnie gdy jutro są trzy zadania. Tu wjeżdża <strong>narzędzie tekst‑na‑pismo online</strong>. Wpisujesz notatki, listy rzeczy do zrobienia, cytaty i od razu <strong>zamieniasz tekst w obraz</strong> pięknego pisma.</p>\n<p>Wyobraź sobie relację z idealnie odręcznym podsumowaniem rozdziału. Unikalne, przyciąga uwagę i wygląda jakbyś włożył(a) w to masę pracy. Taka jest moc <strong>darmowego generatora pisma</strong>.</p>\n<h2>Jak sprawić, żeby to klikało</h2>\n<p>Nie wrzucaj na pusty background. Wybierz atmosphere papieru—liniowany, w kratkę albo czysty—i dobierz kolor tuszu do motywu. Pobierz PNG i wrzuć do Canvy lub GoodNotes. To sekret treści Studygram, które ludzie zapisują i udostępniają.</p>"
     },
     "create-your-own-handwriting-font": {
       "title": "Jak stworzyć własny font pisma odręcznego (bez utraty zmysłów)",
@@ -410,10 +410,10 @@
     },
     "creative-ways-to-use-handwriting-generators": {
       "title": "Top 5 kreatywnych sposobów użycia generatorów pisma poza szkołą",
-      "content": "<p>Myślisz, że generatory pisma są tylko do zadań? Pomyśl jeszcze raz. Oto nasze top 5 kreatywnych zastosowań.</p>\n<h2>1. D&D i TTRPG rekwizyty</h2>\n<p>Dungeon Masterzy, słuchajcie. Nic nie wciąga tak jak list znaleziony na zwłokach goblina. Wygeneruj „pośpiesznie nabazgrany” ostrzegawczy list na pergaminie.</p>\n<h2>2. Scrapbooking cyfrowy</h2>\n<p>Dodawaj podpisy do kolaży bez użycia rysika. Zachowasz DIY vibe i czytelny layout.</p>\n<h2>3. Estetyczne karty z przepisami</h2>\n<p>Wpisz przepis babci, wybierz kursywę i wydrukuj na kartonie. Idealny, spersonalizowany prezent.</p>\n<h2>4. Cytaty do social media</h2>\n<p>Przestań używać tych samych fontów z Canvy. Odręczny cytat na teksturowanym tle wyróżnia się w feedzie.</p>\n<h2>5. Listy miłosne (nie powiemy nikomu)</h2>\n<p>Własnoręcznie to romantyczniej, ale jeśli Twoje pismo wygląda jak po spacerze kury, generator może być Twoim wingmanem.</p>"
+      "content": "<p>Myślisz, że generatory pisma są tylko do zadań? Pomyśl jeszcze raz. Oto nasze top 5 kreatywnych zastosowań.</p>\n<h2>1. D&D i TTRPG rekwizyty</h2>\n<p>Dungeon Masterzy, słuchajcie. Nic nie wciąga tak jak list znaleziony na zwłokach goblina. Wygeneruj „pośpiesznie nabazgrany” ostrzegawczy list na pergaminie.</p>\n<h2>2. Scrapbooking cyfrowy</h2>\n<p>Dodawaj podpisy do kolaży bez użycia rysika. Zachowasz DIY atmosphere i czytelny layout.</p>\n<h2>3. Estetyczne karty z przepisami</h2>\n<p>Wpisz przepis babci, wybierz kursywę i wydrukuj na kartonie. Idealny, spersonalizowany prezent.</p>\n<h2>4. Cytaty do social media</h2>\n<p>Przestań używać tych samych fontów z Canvy. Odręczny cytat na teksturowanym tle wyróżnia się w feedzie.</p>\n<h2>5. Listy miłosne (nie powiemy nikomu)</h2>\n<p>Własnoręcznie to romantyczniej, ale jeśli Twoje pismo wygląda jak po spacerze kury, generator może być Twoim assistantem.</p>"
     },
     "print-ready-handwriting": {
-      "title": "Pismo gotowe do druku: marginesy, odstępy i papierowy vibe",
+      "title": "Pismo gotowe do druku: marginesy, odstępy i papierowy atmosphere",
       "content": "<p>Na ekranie wygląda świetnie, ale druk może zepsuć efekt. Kilka drobnych ustawień sprawi, że wydruki będą czyste i wiarygodne.</p>\n<h2>Zacznij od strony, nie od fontu</h2>\n<p>Najpierw wybierz szablon papieru, potem ustaw marginesy i rozmiar fontu. Trochę „oddechu” na krawędziach daje wrażenie prawdziwej strony zeszytu.</p>\n<h2>Eksportuj mądrze</h2>\n<p>Do druku wybierz wysoką jakość, a przy wielu stronach export PDF. Jeśli drukarka jest kapryśna, trzymaj się neutralnych kolorów tuszu i delikatnych tekstur.</p>"
     },
     "handwritten-touches-for-work": {

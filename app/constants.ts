@@ -175,60 +175,57 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   {
     version: '1.4.1',
     date: 'January 2026',
-    tagline: 'Refining the experience for everyone.',
+    tagline: 'Refining the core experience and global accessibility.',
     highlights: [
-      'Fixed some bugs and new improvements.',
-      'Added multiple language support functionality.'
+      'Implemented critical bug fixes and stability improvements.',
+      'Expanded multi-language support to reach a broader international audience.'
     ],
-    mood: 'Global vibes.'
+    mood: 'Stable Release'
   },
   {
     version: '1.4',
     date: 'January 2026',
-    tagline: 'Next level realism and performance.',
+    tagline: 'Enhanced realism engine and interface overhaul.',
     highlights: [
-      'New UI overhaul with a cleaner, modern design system.',
-      'Improved generation of images with higher fidelity and better ink textures.',
-      'Improved live image rendering to the next level for instant feedback.',
-      'Optimized the engine for faster processing and smoother interactions.'
+      'Redesigned the user interface for improved workflow and accessibility.',
+      'Upgraded the rendering engine for higher fidelity ink textures and better realism.',
+      'Optimized the live preview system for lower latency and smoother interactions.'
     ],
-    mood: 'Fresh start, new year, new notes.',
-    changeType: 'new-year'
+    mood: 'Major Update',
+    changeType: 'major'
   },
   {
     version: '1.3',
     date: 'October 2025',
-    tagline: 'More control, higher quality, and a smoother experience.',
+    tagline: 'Enhanced control features and professional export options.',
     highlights: [
-      'UI design revisit for a more intuitive and aesthetically pleasing experience.',
-      'Added Ink weight control option for finer control over the handwriting appearance.',
-      'Added the option to download all generated images as a single PDF file.',
-      'Added image quality option (High, Medium, Low) to balance quality and file size.',
-      'Fixed various known bugs to improve stability and performance.'
+      'Introduced ink weight controls for precise customization of handwriting styles.',
+      'Added PDF export functionality for streamlined document compilation.',
+      'Implemented image quality settings to optimize for either file size or resolution.'
     ],
-    mood: 'Feeling powerful and polished.'
+    mood: 'Performance Focus'
   },
   {
     version: '1.2',
     date: 'September 2025',
-    tagline: 'A fresh glow-up with new creative freedom.',
+    tagline: 'Interface optimization and custom typeface support.',
     highlights: [
-      'Major redesign of the lab so controls, preview, and gallery flow together on every screen size.',
-      'Custom font upload manager with step-by-step guidance and two personal slots for your handwriting.',
-      'Performance tune-up across Chrome, Safari, Firefox, and Edge so pages render faster and feel smoother.'
+      'Optimized the responsive layout for a seamless experience across all device types.',
+      'Launched the custom font manager, allowing users to upload and use their own handwriting fonts.',
+      'Improved cross-browser compatibility and rendering performance.'
     ],
-    mood: 'Today feels like a brand-new planner spread.'
+    mood: 'Feature Expansion'
   },
   {
     version: '1.0',
     date: 'September 2025',
-    tagline: 'The day txttohandwriting.org went public.',
+    tagline: 'Initial release of the professional handwriting simulation platform.',
     highlights: [
-      'Launched the handwriting lab with instant preview, ink colours, and realism sliders.',
-      'Introduced the Paper Vibe shelf with blank, dotted, and lined templates ready to download as PNGs.',
-      'Opened the image gallery with full-screen view, sequence labels, and one-click downloads.'
+      'Launched the core handwriting engine with real-time preview and customization sliders.',
+      'Introduced professional paper templates including lined, dotted, and blank options.',
+      'Implemented a high-resolution gallery and export system for seamless workflow.'
     ],
-    mood: 'First-day-of-school butterflies, but for stationery nerds.',
+    mood: 'Public Launch',
     changeType: 'launch-2025'
   }
 ];

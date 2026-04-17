@@ -278,8 +278,8 @@
       "a4": "현재는 PNG만 제공합니다. 고화질이에요. 나중에 다른 형식도 추가할 수 있습니다.",
       "q5": "폰트가 좀 이상해 보여요",
       "a5": "대부분 브라우저 문제입니다. 업데이트해 보세요. 그래도 이상하면 OS 특성일 수 있어요.",
-      "q6": "교수님이 종이 출력본을 요구해요. 어떻게 하죠?",
-      "a6": "걱정 마세요. 해결책이 있습니다.",
+      "q6": "What is the best way to print these documents?",
+      "a6": "We recommend exporting to PDF and using 'Actual Size' in your printer settings to maintain correct scaling and resolution.",
       "supportHeadline": "아직 헷갈리거나 버그를 찾았나요?",
       "supportDesc": "메시지 주세요. 빠르게 답할게요."
     },
@@ -351,7 +351,7 @@
       "section3Title": "3. 지적 재산권",
       "section3Content": "입력한 텍스트는 사용자 소유입니다. 생성된 이미지는 개인 및 상업적 용도로 사용할 수 있습니다. 단, txttohandwriting.org의 폰트, 디자인, 브랜드는 사이트 소유자의 자산이며 허가 없이 사용할 수 없습니다.",
       "section4Title": "4. 보증 부인",
-      "section4Content": "웹사이트는 있는 그대로 제공됩니다. 명시적 또는 묵시적 보증을 하지 않으며, 상품성, 특정 목적 적합성, 지적 재산권 비침해 등에 대한 모든 보증을 부인합니다.",
+      "section4Content": "We use Google AdSense to serve advertisements. These services may use cookies to provide relevant content. Please refer to our Privacy Policy for details.",
       "section5Title": "5. 책임 제한",
       "section5Content": "txttohandwriting.org 또는 공급자는 데이터 손실이나 수익 손실, 영업 중단 등 어떠한 손해에 대해서도 책임을 지지 않습니다. 이는 사용 또는 사용 불능으로 인해 발생한 손해를 포함합니다.",
       "section6Title": "6. 약관 변경",
@@ -379,7 +379,7 @@
     }
   },
   "blog": {
-    "title": "블로그",
+    "title": "Articles",
     "backToLab": "실험실로 돌아가기",
     "backToAll": "전체 글로 돌아가기",
     "readMore": "자세히 보기 →",
