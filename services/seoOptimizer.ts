@@ -403,14 +403,6 @@ export class SEOOptimizer implements ISEOOptimizer {
       description: this.appDescription,
       inLanguage: languages,
       availableLanguage: availableLanguages,
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: `${this.baseUrl}/?q={search_term_string}`
-        },
-        'query-input': 'required name=search_term_string'
-      },
       publisher: {
         '@type': 'Organization',
         name: 'txttohandwriting.org',

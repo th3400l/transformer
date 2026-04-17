@@ -224,6 +224,7 @@ const App: React.FC = () => {
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'FAQ', path: buildLocalizedPath('/faq', activeLanguage) }
         ]));
+        noindex = false;
         break;
       case 'terms':
         title = t('pages.terms.title', 'Terms & Conditions | txttohandwriting.org');
@@ -234,6 +235,7 @@ const App: React.FC = () => {
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'Terms & Conditions', path: buildLocalizedPath('/terms', activeLanguage) }
         ]));
+        noindex = false;
         break;
       case 'privacy':
         title = t('pages.privacy.title', 'Privacy Policy | txttohandwriting.org');
@@ -244,6 +246,7 @@ const App: React.FC = () => {
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'Privacy Policy', path: buildLocalizedPath('/privacy', activeLanguage) }
         ]));
+        noindex = false;
         break;
       case 'about':
         title = t('pages.about.title', 'About txttohandwriting.org | Meet the Team and Mission');
@@ -254,6 +257,7 @@ const App: React.FC = () => {
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'About', path: buildLocalizedPath('/about', activeLanguage) }
         ]));
+        noindex = false;
         break;
       case 'blog':
         title = t('pages.blog.title', 'Handwriting Inspiration Blog | txttohandwriting.org');
@@ -264,8 +268,10 @@ const App: React.FC = () => {
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) }
         ]));
+        noindex = false;
         break;
       case 'blogPost':
+        noindex = false;
         if (activeBlogPost) {
           const articleBody = stripHtmlTags(activeBlogPost.content);
           const snippet = articleBody.slice(0, 155);

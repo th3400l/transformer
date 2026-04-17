@@ -23,10 +23,10 @@ export const SideAdUnit: React.FC = () => {
   return (
     <>
       <div className="fixed left-6 top-1/2 -translate-y-1/2 w-60 z-40">
-        <AdUnit />
+        <AdUnit slot="side-left" />
       </div>
       <div className="fixed right-6 top-1/2 -translate-y-1/2 w-60 z-40">
-        <AdUnit />
+        <AdUnit slot="side-right" />
       </div>
     </>
   );

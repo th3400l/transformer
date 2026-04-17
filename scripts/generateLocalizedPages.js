@@ -193,12 +193,20 @@ const updateJsonLdLanguage = (html, locale) => {
   return html.replace(/"inLanguage":\s*"[^"]+"/gi, `"inLanguage": "${locale}"`);
 };
 
-const updateHtml = (html, meta) => {
+const updateHtml = (html, meta, headline) => {
   let updated = html;
 
   updated = updateHtmlLang(updated, meta.lang);
   updated = updateHtmlDir(updated, meta.dir);
   updated = updated.replace(/<title>[\s\S]*?<\/title>/i, `<title>${htmlEscape(meta.title)}</title>`);
+
+  // Inject localized H1 into root for SEO
+  if (headline) {
+    updated = updated.replace(
+      /<div id="root">[\s\S]*?<\/div>/i,
+      `<div id="root"><h1>${htmlEscape(headline)}</h1></div>`
+    );
+  }
 
   updated = updateMetaTag(updated, 'name', 'description', meta.description);
   updated = updateMetaTag(updated, 'property', 'og:description', meta.description);
@@ -219,6 +227,10 @@ const updateHtml = (html, meta) => {
   updated = updateLinkTag(updated, 'canonical', meta.canonical);
   updated = updateMetaTag(updated, 'property', 'og:url', meta.canonical);
   updated = updateMetaTag(updated, 'name', 'twitter:url', meta.canonical);
+
+  const robotsDirective = meta.noindex ? 'noindex, nofollow' : 'index, follow';
+  updated = updateMetaTag(updated, 'name', 'robots', robotsDirective);
+  updated = updateMetaTag(updated, 'name', 'googlebot', robotsDirective);
 
   updated = updated.replace(/<link\s+[^>]*rel=["']alternate["'][^>]*>\s*/gi, '');
   const alternateLinks = meta.alternates
@@ -322,7 +334,8 @@ const getRouteMeta = (lang, routePath, blogPost) => {
     alternates,
     lang,
     locale,
-    dir
+    dir,
+    noindex: routePath === '/notFound'
   };
 };
 
@@ -337,7 +350,38 @@ const allRoutes = [
 languages.forEach((language) => {
   allRoutes.forEach(({ path: routePath, post }) => {
     const meta = getRouteMeta(language, routePath, post);
-    const updatedHtml = updateHtml(baseHtml, meta);
+    
+    // Determine the primary headline for H1
+    let headline = '';
+    if (post) {
+      headline = getTranslation(language, `blogPosts.${post.slug}.title`) || post.title;
+    } else {
+      switch (routePath) {
+        case '/':
+          headline = getTranslation(language, 'hero.headline');
+          break;
+        case '/about':
+          headline = getTranslation(language, 'pages.about.title');
+          break;
+        case '/faq':
+          headline = getTranslation(language, 'pages.faq.title');
+          break;
+        case '/terms':
+          headline = getTranslation(language, 'pages.terms.title');
+          break;
+        case '/privacy':
+          headline = getTranslation(language, 'pages.privacy.title');
+          break;
+        case '/blog':
+          headline = getTranslation(language, 'pages.blog.title');
+          break;
+        case '/changelog':
+          headline = getTranslation(language, 'pages.changelog.title');
+          break;
+      }
+    }
+
+    const updatedHtml = updateHtml(baseHtml, meta, headline);
     writeLocalizedPage(distRoot, language, routePath, updatedHtml);
   });
 });

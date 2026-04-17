@@ -123,7 +123,7 @@ export const MainPage: React.FC<MainPageProps> = ({
 
   return (
     <main className="flex-grow w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8" role="main" aria-label="Handwriting generator application">
-      <h1 className="sr-only">{t('seo.title')}</h1>
+      <div className="sr-only" aria-live="polite">{t('seo.title')}</div>
       {/* Mobile Tab Navigation (example, assuming this is part of the mobile layout) */}
       <div className="lg:hidden flex justify-center gap-4 mb-4">
         <button
