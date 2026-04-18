@@ -283,16 +283,29 @@ const getRouteMeta = (lang, routePath, blogPost) => {
     : null;
 
   const title = (() => {
+    let mainTitle = '';
     if (blogPost) {
-      return `${localizedBlogTitle} | txttohandwriting.org`;
+      mainTitle = getTranslation(lang, `blogPosts.${blogPost.slug}.title`) || blogPost.title;
+    } else {
+      switch (routePath) {
+        case '/about': mainTitle = getTranslation(lang, 'pages.about.title'); break;
+        case '/faq': mainTitle = getTranslation(lang, 'pages.faq.title'); break;
+        case '/terms': mainTitle = getTranslation(lang, 'pages.terms.title'); break;
+        case '/privacy': mainTitle = getTranslation(lang, 'pages.privacy.title'); break;
+        case '/blog': mainTitle = getTranslation(lang, 'pages.blog.title'); break;
+        case '/changelog': mainTitle = getTranslation(lang, 'pages.changelog.title'); break;
+        default: mainTitle = getTranslation(lang, 'seo.title'); break;
+      }
     }
-    if (routePath === '/about') return getTranslation(lang, 'pages.about.title');
-    if (routePath === '/faq') return getTranslation(lang, 'pages.faq.title');
-    if (routePath === '/terms') return getTranslation(lang, 'pages.terms.title');
-    if (routePath === '/privacy') return getTranslation(lang, 'pages.privacy.title');
-    if (routePath === '/blog') return getTranslation(lang, 'pages.blog.title');
-    if (routePath === '/changelog') return getTranslation(lang, 'pages.changelog.title');
-    return getTranslation(lang, 'seo.title');
+
+    if (!mainTitle) return getTranslation(lang, 'seo.title') || 'txttohandwriting.org';
+
+    // Intelligently append site name
+    const suffix = ' | txt2hw';
+    if (mainTitle.length + suffix.length <= 60) {
+      return mainTitle + suffix;
+    }
+    return mainTitle.slice(0, 60);
   })();
 
   const description = (() => {

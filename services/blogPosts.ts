@@ -17,7 +17,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: 'benefits-of-handwritten-notes',
-    title: 'The Cognitive Benefits of Handwritten Notes: Why Analog Still Matters',
+    title: 'Cognitive Benefits of Handwritten Notes: Why Analog Matters',
     date: '2025-09-17',
     author: 'Editorial Team',
     content: `
@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'effective-study-materials',
-    title: 'How to Create Effective Study Materials Using Handwriting Generators',
+    title: 'Creating Effective Study Materials with Handwriting Tools',
     date: '2025-09-17',
     author: 'Educational Specialist',
     content: `
@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'create-your-own-handwriting-font',
-    title: 'The Technical Guide to Creating and Using Your Own Handwriting Font',
+    title: 'Technical Guide: Creating Your Own Handwriting Font',
     date: '2025-09-26',
     author: 'Type Design Team',
     content: `
@@ -89,7 +89,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'science-of-paper-textures',
-    title: 'The Psychology of Paper Texture in Digital Learning',
+    title: 'Psychology of Paper Texture in Digital Learning',
     date: '2026-01-01',
     author: 'Design Researcher',
     content: `

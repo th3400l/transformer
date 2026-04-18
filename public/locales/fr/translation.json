@@ -25,7 +25,7 @@
     }
   },
   "seo": {
-    "title": "Générateur d'écriture manuscrite - Convertir du texte en écriture réelle en ligne",
+    "title": "Générateur d'écriture manuscrite - Convertir du texte en",
     "description": "Transformez votre texte dactylographié en documents manuscrits authentiques avec notre générateur d'écriture gratuit. Plusieurs polices, modèles de papier et export PDF disponibles."
   },
   "hero": {
@@ -337,19 +337,19 @@
   },
   "blogPosts": {
     "benefits-of-handwritten-notes": {
-      "title": "Les bénéfices cognitifs des notes manuscrites : Pourquoi l'analogique compte encore",
+      "title": "Les bénéfices cognitifs des notes manuscrites",
       "content": "<p>À l'ère du tout numérique, l'écriture manuscrite reste un outil puissant pour le développement cognitif et la mémorisation. La recherche montre que le fait d'écrire à la main sollicite le cerveau d'une manière que le clavier ne peut égaler.</p><h2>La science de la mémorisation</h2><p>L'écriture manuscrite force le cerveau à traiter l'information plus en profondeur. L'engagement haptique crée une mémoire motrice plus forte, facilitant le rappel des informations lors des examens.</p><h2>Améliorer la concentration</h2><p>Travailler avec des documents de style manuscrit aide à réduire la fatigue numérique. Les variations naturelles offrent une expérience de lecture plus organique, favorisant une meilleure attention.</p>"
     },
     "effective-study-materials": {
-      "title": "Comment créer des supports d'étude efficaces avec un générateur d'écriture",
+      "title": "Comment créer des supports d'étude efficaces avec un",
       "content": "<p>La présentation de l'information est clé. Utilisez différents styles pour distinguer les titres et les définitions. Notre outil permet de créer une hiérarchie visuelle claire pour faciliter la révision.</p><h2>Le pouvoir de la personnalisation</h2><p>En ajustant la couleur de l'encre et le type de papier, vous adaptez vos notes à votre style d'apprentissage.</p>"
     },
     "create-your-own-handwriting-font": {
-      "title": "Guide technique : Créer et utiliser sa propre police d'écriture",
+      "title": "Guide technique : Créer et utiliser sa propre police",
       "content": "<p>Conservez votre identité unique en chargeant votre propre écriture comme police de caractères. Ce guide explique les étapes techniques pour créer un fichier compatible.</p><h2>Étape 1 : Capture des échantillons</h2><p>Utilisez un stylo foncé sur papier blanc. Scannez en 300 DPI pour un résultat professionnel.</p>"
     },
     "science-of-paper-textures": {
-      "title": "La psychologie de la texture du papier dans l'apprentissage numérique",
+      "title": "La psychologie de la texture du papier dans l'apprentissage",
       "content": "<p>Pourquoi sommes-nous plus connectés à l'information sur une page texturée ? Les textures fournissent des indices sensoriels qui renforcent l'engagement.</p><h2>Simuler le réalisme</h2><p>Notre générateur simule les micro-détails de l'absorption de l'encre sur divers types de papier, signalant au cerveau que le contenu est concret.</p>"
     }
   }

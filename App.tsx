@@ -214,9 +214,17 @@ const App: React.FC = () => {
       ? localizedBlogPosts.find(post => post.slug === state.currentPostSlug)
       : undefined;
 
+    const formatTitle = (mainPart: string) => {
+      const suffix = ' | txt2hw';
+      if (mainPart.length + suffix.length <= 60) {
+        return mainPart + suffix;
+      }
+      return mainPart.slice(0, 60);
+    };
+
     switch (state.page) {
       case 'faq':
-        title = t('pages.faq.title', 'Handwriting Generator FAQ | txttohandwriting.org');
+        title = formatTitle(t('pages.faq.title', 'Handwriting Generator FAQ'));
         description = t('pages.faq.description', 'Answers to the most common questions about txttohandwriting.org — pricing, privacy, downloads, and usage rights.');
         keywords = t('pages.faq.keywords', `${DEFAULT_KEYWORDS}, handwriting generator faq, handwriting tool support`);
         structuredData.push(createFaqStructuredData());
@@ -227,7 +235,7 @@ const App: React.FC = () => {
         noindex = false;
         break;
       case 'terms':
-        title = t('pages.terms.title', 'Terms & Conditions | txttohandwriting.org');
+        title = formatTitle(t('pages.terms.title', 'Terms & Conditions'));
         description = t('pages.terms.description', 'Review the official terms of service, usage policies, and consent details for txttohandwriting.org.');
         keywords = t('pages.terms.keywords', `${DEFAULT_KEYWORDS}, handwriting generator terms, txttohandwriting terms of service`);
         structuredData.push(createTermsStructuredData(canonicalUrl, activeLocale));
@@ -238,7 +246,7 @@ const App: React.FC = () => {
         noindex = false;
         break;
       case 'privacy':
-        title = t('pages.privacy.title', 'Privacy Policy | txttohandwriting.org');
+        title = formatTitle(t('pages.privacy.title', 'Privacy Policy'));
         description = t('pages.privacy.description', 'Review how we protect your privacy and data at txttohandwriting.org.');
         keywords = t('pages.privacy.keywords', `${DEFAULT_KEYWORDS}, privacy policy, data security`);
         structuredData.push(createPrivacyStructuredData(canonicalUrl, activeLocale));
@@ -249,7 +257,7 @@ const App: React.FC = () => {
         noindex = false;
         break;
       case 'about':
-        title = t('pages.about.title', 'About txttohandwriting.org | Meet the Team and Mission');
+        title = formatTitle(t('pages.about.title', 'About Our Mission'));
         description = t('pages.about.description', 'Get to know the people and purpose behind txttohandwriting.org — a handwriting generator built for students, creators, and storytellers.');
         keywords = t('pages.about.keywords', `${DEFAULT_KEYWORDS}, about txttohandwriting, handwriting generator mission`);
         structuredData.push(createAboutStructuredData(canonicalUrl, activeLocale));
@@ -260,7 +268,7 @@ const App: React.FC = () => {
         noindex = false;
         break;
       case 'blog':
-        title = t('pages.blog.title', 'Handwriting Inspiration Blog | txttohandwriting.org');
+        title = formatTitle(t('pages.blog.title', 'Handwriting Inspiration Blog'));
         description = t('pages.blog.description', 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.');
         keywords = t('pages.blog.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`);
         structuredData.push(createBlogStructuredData(localizedBaseUrl, localizedBlogPosts, activeLocale));
@@ -275,7 +283,7 @@ const App: React.FC = () => {
         if (activeBlogPost) {
           const articleBody = stripHtmlTags(activeBlogPost.content);
           const snippet = articleBody.slice(0, 155);
-          title = `${activeBlogPost.title} | txttohandwriting.org`;
+          title = formatTitle(activeBlogPost.title);
           description = snippet.length === articleBody.length ? snippet : `${snippet}…`;
           keywords = t('pages.blogPost.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, ${activeBlogPost.title.toLowerCase()}`);
           structuredData.push(createBlogPostStructuredData(localizedBaseUrl, activeBlogPost, socialImageUrl, activeLocale));
@@ -286,7 +294,7 @@ const App: React.FC = () => {
           ]));
           customMetaTags.push({ property: 'og:type', content: 'article' });
         } else {
-          title = t('pages.blog.title', 'Handwriting Inspiration Blog | txttohandwriting.org');
+          title = formatTitle(t('pages.blog.title', 'Handwriting Inspiration Blog'));
           description = t('pages.blog.description', 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.');
           keywords = t('pages.blog.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, studygram handwriting tips`);
           structuredData.push(createBlogStructuredData(localizedBaseUrl, localizedBlogPosts, activeLocale));
@@ -297,7 +305,7 @@ const App: React.FC = () => {
         }
         break;
       case 'changelog':
-        title = t('pages.changelog.title', 'Changelog | txttohandwriting.org');
+        title = formatTitle(t('pages.changelog.title', 'Changelog'));
         description = t('pages.changelog.description', 'Follow every release of txttohandwriting.org, from launch day to the latest glow-up.');
         keywords = t('pages.changelog.keywords', `${DEFAULT_KEYWORDS}, product updates, txttohandwriting changelog`);
         structuredData.push(createChangelogStructuredData(canonicalUrl, activeLocale));
@@ -307,14 +315,14 @@ const App: React.FC = () => {
         ]));
         break;
       case 'notFound':
-        title = t('pages.notFound.title', 'Page Not Found | txttohandwriting.org');
+        title = formatTitle(t('pages.notFound.title', 'Page Not Found'));
         description = t('pages.notFound.description', 'We could not find the page you were looking for. Head back to the handwriting lab to keep creating.');
         keywords = t('pages.notFound.keywords', `${DEFAULT_KEYWORDS}, handwriting generator 404`);
         twitterCard = 'summary';
         noindex = true;
         break;
       default:
-        title = defaultTitle;
+        title = formatTitle(defaultTitle);
         description = defaultDescription;
         keywords = t('seo.keywords', DEFAULT_KEYWORDS);
         // Add Tips FAQ structured data for homepage
