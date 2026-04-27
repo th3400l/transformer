@@ -1,12 +1,7 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/:lang(en|es|fr|de|pt|id|zh|ja|ru|ko)", "destination": "/index.html" },
-    { "source": "/:lang(en|es|fr|de|pt|id|zh|ja|ru|ko)/:path*", "destination": "/index.html" },
-    { "source": "/terms", "destination": "/index.html" },
-    { "source": "/faq", "destination": "/index.html" },
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/changelog", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/blog/:slug*", "destination": "/index.html" }
+    { "source": "/((?!.*\\.[a-zA-Z0-9]+$).*)", "destination": "/index.html" }
   ]
 }

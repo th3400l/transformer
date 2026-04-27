@@ -228,6 +228,31 @@ export const validateStructuredData = (data: StructuredData): boolean => {
   }
 };
 
+export const createContactStructuredData = (
+  url: string,
+  email: string,
+  languageLocale = 'en-US'
+): StructuredData => ({
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact - txttohandwriting.org',
+  url,
+  description:
+    'Get in touch with the team behind txttohandwriting.org for support, feedback, and partnership inquiries.',
+  inLanguage: languageLocale,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'txttohandwriting.org',
+    email,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email,
+      availableLanguage: ['English']
+    }
+  }
+});
+
 export const getPathForPage = (page: Page, slug: string | null): string => {
   switch (page) {
     case 'terms':
@@ -238,6 +263,8 @@ export const getPathForPage = (page: Page, slug: string | null): string => {
       return '/faq';
     case 'about':
       return '/about';
+    case 'contact':
+      return '/contact';
     case 'blog':
       return '/blog';
     case 'blogPost':

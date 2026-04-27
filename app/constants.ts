@@ -152,6 +152,30 @@ export const FAQ_ENTRIES: FaqEntry[] = [
   {
     question: 'How do I print these to look real?',
     answer: "For best results, download the high-quality version. When printing, choose 'Actual Size' or 'Scale to 100%' in your printer settings to avoid stretching."
+  },
+  {
+    question: 'Can I upload my own handwriting as a custom font?',
+    answer: "Yes. Use the Custom Font upload area to add a TTF, OTF, or WOFF file. Tools like Calligraphr or Glyphr Studio can convert a scanned sample of your handwriting into one of these formats. Uploaded fonts stay in your browser's local storage and are never sent to our servers."
+  },
+  {
+    question: 'Is there a limit on how much text I can convert at once?',
+    answer: 'There is no fixed character limit. The practical limit is the number of pages your browser can render before it slows down. Typical desktop browsers handle a 30-page document smoothly. For longer documents, generate in batches of 10 to 20 pages and use the bulk download option.'
+  },
+  {
+    question: 'Does the tool work on mobile devices?',
+    answer: 'Yes. The interface is responsive and works on iOS Safari, Chrome on Android, and most other mobile browsers. For very long documents we recommend a desktop browser, since rendering many pages at once is faster on a larger device.'
+  },
+  {
+    question: 'What paper templates are available?',
+    answer: 'We currently offer blank, lined, dotted, and grid templates, with additional aged and notebook variants. Each template is designed to mimic the texture of physical paper, including subtle ink absorption and grain.'
+  },
+  {
+    question: 'How do I change the ink color or boldness of the writing?',
+    answer: 'The control panel includes ink color presets (black, blue, red, green) and a custom hex color picker. A separate boldness slider controls how heavily the ink is laid down on the page, which affects how realistic certain pen styles look.'
+  },
+  {
+    question: 'Are the generated pages safe to use for school assignments and creative work?',
+    answer: "You retain full ownership of any pages you generate, and the tool is widely used for note-taking, mock-ups, art projects, and creative writing. Always check your school's or client's specific guidelines on submitting machine-rendered handwriting."
   }
 ];
 
@@ -230,7 +254,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
   }
 ];
 
-export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog' | 'notFound' | 'privacy';
+export type Page = 'main' | 'terms' | 'faq' | 'blog' | 'blogPost' | 'about' | 'changelog' | 'notFound' | 'privacy' | 'contact';
 export type Theme = 'nightlight' | 'dark' | 'feminine';
 export const THEME_STORAGE_KEY = 'texttohandwriting-theme';
 

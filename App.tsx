@@ -35,6 +35,7 @@ const FaqPage = lazy(() => import('./components/FaqPage'));
 const BlogPage = lazy(() => import('./components/BlogPage'));
 const BlogPostPage = lazy(() => import('./components/BlogPostPage'));
 const AboutPage = lazy(() => import('./components/AboutPage'));
+const ContactPage = lazy(() => import('./components/ContactPage'));
 const ChangeLogPage = lazy(() => import('./components/ChangeLogPage'));
 const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
 const MainPage = lazy(() => import('./components/app/MainPage'));
@@ -65,6 +66,7 @@ import {
   createTermsStructuredData,
   createPrivacyStructuredData,
   createAboutStructuredData,
+  createContactStructuredData,
   createBlogStructuredData,
   createBlogPostStructuredData,
   createChangelogStructuredData,
@@ -264,6 +266,17 @@ const App: React.FC = () => {
         structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
           { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
           { name: 'About', path: buildLocalizedPath('/about', activeLanguage) }
+        ]));
+        noindex = false;
+        break;
+      case 'contact':
+        title = formatTitle(t('pages.contact.title', 'Contact Us'));
+        description = t('pages.contact.description', 'Reach the txttohandwriting.org team for support, partnerships, editorial pitches, and bug reports.');
+        keywords = t('pages.contact.keywords', `${DEFAULT_KEYWORDS}, contact, support, partnership inquiries`);
+        structuredData.push(createContactStructuredData(canonicalUrl, SUPPORT_EMAIL, activeLocale));
+        structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
+          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+          { name: 'Contact', path: buildLocalizedPath('/contact', activeLanguage) }
         ]));
         noindex = false;
         break;
@@ -792,6 +805,15 @@ const App: React.FC = () => {
         return (
           <Suspense fallback={<PageLoadingFallback />}>
             <AboutPage onGoBack={() => {
+              setters.setPage('main');
+              setters.setPreviewRefreshToken(token => token + 1);
+            }} />
+          </Suspense>
+        );
+      case 'contact':
+        return (
+          <Suspense fallback={<PageLoadingFallback />}>
+            <ContactPage onGoBack={() => {
               setters.setPage('main');
               setters.setPreviewRefreshToken(token => token + 1);
             }} />

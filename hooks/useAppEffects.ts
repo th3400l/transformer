@@ -126,6 +126,16 @@ export const useAppEffects = (
       return;
     }
 
+    if (rawPath === '/contact') {
+      setPageAndClear('contact');
+      return;
+    }
+
+    if (rawPath === '/privacy') {
+      setPageAndClear('privacy');
+      return;
+    }
+
     if (rawPath === '/changelog') {
       setPageAndClear('changelog');
       return;

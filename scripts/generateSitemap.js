@@ -12,6 +12,30 @@ const defaultLanguage = 'en';
 const toDateString = (date) => date.toISOString().split('T')[0];
 const fallbackLastMod = toDateString(new Date());
 
+const getNested = (obj, key) =>
+  key.split('.').reduce(
+    (acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined),
+    obj
+  );
+
+const loadTranslation = (language) => {
+  const filePath = path.join(repoRoot, 'public', 'locales', language, 'translation.json');
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    return null;
+  }
+};
+
+const hasTranslation = (translation, key) => {
+  if (!translation) return false;
+  const value = getNested(translation, key);
+  return value !== undefined && value !== null && value !== '';
+};
+
 const getLanguages = () => {
   const localesDir = path.join(repoRoot, 'public', 'locales');
   if (!fs.existsSync(localesDir)) {
@@ -50,10 +74,12 @@ const getBlogEntries = () => {
       : fallbackLastMod;
 
     return {
+      slug,
       path: `/blog/${slug}`,
       lastmod,
       changefreq: 'monthly',
-      priority: 0.65
+      priority: 0.65,
+      isBlogPost: true
     };
   });
 };
@@ -66,32 +92,47 @@ const buildUrl = (language, pathName) => {
   return `${baseUrl}${localizedPath}`;
 };
 
-const buildAlternates = (languages, pathName) => {
-  const alternates = languages.map((language) => ({
+const buildAlternates = (eligibleLanguages, pathName) => {
+  const alternates = eligibleLanguages.map((language) => ({
     hreflang: language,
     href: buildUrl(language, pathName)
   }));
-
   alternates.push({
     hreflang: 'x-default',
     href: buildUrl(defaultLanguage, pathName)
   });
-
   return alternates;
 };
 
 const staticPages = [
-  { path: '/', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 1.0 },
+  { path: '/', lastmod: fallbackLastMod, changefreq: 'weekly', priority: 1.0 },
   { path: '/about', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
-  { path: '/faq', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.6 },
+  { path: '/faq', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
+  { path: '/contact', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
   { path: '/terms', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.4 },
   { path: '/privacy', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.4 },
-  { path: '/blog', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
+  { path: '/blog', lastmod: fallbackLastMod, changefreq: 'weekly', priority: 0.8 },
   { path: '/changelog', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.6 }
 ];
 
 const languages = getLanguages();
-const pages = [...staticPages, ...getBlogEntries()];
+const translationCache = new Map();
+languages.forEach((lang) => {
+  translationCache.set(lang, loadTranslation(lang));
+});
+
+const blogEntries = getBlogEntries();
+const pages = [...staticPages, ...blogEntries];
+
+const eligibleLanguagesForPage = (page) => {
+  if (!page.isBlogPost) {
+    return languages;
+  }
+  return languages.filter((lang) => {
+    if (lang === defaultLanguage) return true;
+    return hasTranslation(translationCache.get(lang), `blogPosts.${page.slug}.content`);
+  });
+};
 
 const lines = [
   '<?xml version="1.0" encoding="UTF-8"?>',
@@ -99,9 +140,10 @@ const lines = [
 ];
 
 pages.forEach((page) => {
-  const alternates = buildAlternates(languages, page.path);
+  const eligibleLanguages = eligibleLanguagesForPage(page);
+  const alternates = buildAlternates(eligibleLanguages, page.path);
 
-  languages.forEach((language) => {
+  eligibleLanguages.forEach((language) => {
     lines.push('  <url>');
     lines.push(`    <loc>${buildUrl(language, page.path)}</loc>`);
     lines.push(`    <lastmod>${page.lastmod}</lastmod>`);
@@ -122,4 +164,4 @@ lines.push('</urlset>');
 
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
 fs.writeFileSync(outputPath, lines.join('\n'));
-console.log(`Sitemap written to ${outputPath}`);
+console.log(`Sitemap written to ${outputPath} (${pages.length} routes across eligible languages).`);
