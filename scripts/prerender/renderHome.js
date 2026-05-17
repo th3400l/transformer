@@ -4,17 +4,17 @@ const HOMEPAGE_STEPS = [
   {
     title: 'Enter Your Text',
     description:
-      'Input or paste the text you wish to convert. Our tool supports multi-page content, ideal for academic and professional documents.'
+      'Input or paste the text you want to convert into handwriting. The tool supports extensive multi-page content, automatically flowing across as many pages as needed — ideal for long academic assignments, lecture notes, and professional documents. A real-time preview renders every change as you type, so you keep full control over spacing and page layout before exporting.'
   },
   {
     title: 'Customize Your Style',
     description:
-      'Select from professional handwriting fonts and paper templates (blank, lined, or dotted) to achieve your desired aesthetic.'
+      'Select from professional handwriting fonts and high-resolution paper templates (blank, lined, or dotted) for academic, creative, and professional work. Adjust ink color, stroke boldness, font size, and natural distortion, or upload your own TTF, OTF, or WOFF font. Every adjustment is reflected live in the preview so you can fine-tune realism before exporting.'
   },
   {
     title: 'Export Your Document',
     description:
-      'Generate and download your pages as high-quality PNG images or a single PDF. All processing is secure and performed locally.'
+      'Generate and download your pages as sharp PNG images for Studygram and design work, or compile an entire multi-page document into a single professional PDF ready for printing or submission. All rendering and export is performed locally in your browser, so your data never leaves your device. No signup, no watermark, and no limit on how many documents you create.'
   }
 ];
 
@@ -22,7 +22,7 @@ const HOMEPAGE_FEATURES = [
   {
     title: 'Realistic Variations',
     description:
-      'Our rendering engine simulates natural handwriting variations, including baseline jitter and variable letter slant.',
+      'Our handwriting engine simulates the natural variations of real penmanship, including baseline jitter, variable letter slant, randomized spacing, and subtle ink pooling at stroke ends. Every character renders slightly differently, so no two letters look identical and no document ever appears computer-generated, even across long multi-page assignments.',
     benefits: [
       'Natural baseline alignment',
       'Variable letter slant',
@@ -33,7 +33,7 @@ const HOMEPAGE_FEATURES = [
   {
     title: 'Professional Templates',
     description:
-      'Choose from high-resolution paper templates, including lined, dotted, and blank options with authentic textures.',
+      'Choose from a curated library of high-resolution paper templates: structured lined paper for academic essays and homework, dotted grids for bullet journaling and planning, or clean blank sheets for letters and creative work. Each template ships with authentic paper textures and accurate margins so output looks realistic on screen and when printed at full size.',
     benefits: [
       'Lined and dotted options',
       'Authentic paper textures',
@@ -44,7 +44,7 @@ const HOMEPAGE_FEATURES = [
   {
     title: 'Custom Font Support',
     description:
-      'Upload your own handwriting font (TTF, OTF, WOFF) to create personalized digital documents.',
+      'Upload your own handwriting font in TTF, OTF, or WOFF format and apply it instantly across every generated document. Digitize your real writing style, a teacher’s script, or a brand signature and reuse it consistently for notes, assignments, and designs. Fonts are stored locally in your browser, so your personal typeface never leaves your device.',
     benefits: [
       'Digitize your handwriting',
       'Support for standard formats',
@@ -55,7 +55,7 @@ const HOMEPAGE_FEATURES = [
   {
     title: 'Secure and Private',
     description:
-      'We prioritize user privacy. All text processing occurs locally in your browser, ensuring your data never leaves your device.',
+      'A fully client-side architecture keeps every step — text input, font rendering, and image export — inside your browser, so your text, uploaded fonts, and generated documents never reach our servers. There are no accounts, no content tracking, and no server-side storage. The handwriting generator is completely free and private by design.',
     benefits: [
       'Completely free service',
       'No registration required',

@@ -108,7 +108,7 @@ const staticPages = [
   { path: '/', lastmod: fallbackLastMod, changefreq: 'weekly', priority: 1.0 },
   { path: '/about', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
   { path: '/faq', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
-  { path: '/contact', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7 },
+  { path: '/contact', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.7, translationKey: 'pages.contact.title' },
   { path: '/terms', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.4 },
   { path: '/privacy', lastmod: fallbackLastMod, changefreq: 'monthly', priority: 0.4 },
   { path: '/blog', lastmod: fallbackLastMod, changefreq: 'weekly', priority: 0.8 },
@@ -125,13 +125,23 @@ const blogEntries = getBlogEntries();
 const pages = [...staticPages, ...blogEntries];
 
 const eligibleLanguagesForPage = (page) => {
-  if (!page.isBlogPost) {
-    return languages;
+  if (page.isBlogPost) {
+    return languages.filter((lang) => {
+      if (lang === defaultLanguage) return true;
+      return hasTranslation(translationCache.get(lang), `blogPosts.${page.slug}.content`);
+    });
   }
-  return languages.filter((lang) => {
-    if (lang === defaultLanguage) return true;
-    return hasTranslation(translationCache.get(lang), `blogPosts.${page.slug}.content`);
-  });
+  // Static pages whose copy is never translated (e.g. /contact) must only be
+  // listed for the default language; the localized variants are noindex and
+  // canonicalized to English, so including them would resurface the
+  // "Duplicate, Google chose different canonical" issue.
+  if (page.translationKey) {
+    return languages.filter((lang) => {
+      if (lang === defaultLanguage) return true;
+      return hasTranslation(translationCache.get(lang), page.translationKey);
+    });
+  }
+  return languages;
 };
 
 const lines = [

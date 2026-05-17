@@ -62,7 +62,6 @@ import {
 import {
   stripHtmlTags,
   createFaqStructuredData,
-  createTipsFaqStructuredData,
   createTermsStructuredData,
   createPrivacyStructuredData,
   createAboutStructuredData,
@@ -74,7 +73,6 @@ import {
   validateStructuredData,
   getPathForPage
 } from './app/seo';
-import { tips } from './content/homepage';
 
 const GENERATION_DELAY_MS = 0;
 
@@ -182,7 +180,7 @@ const App: React.FC = () => {
       ? normalizePath(state.missingPath)
       : null;
     const canonicalPath = missingPath || buildLocalizedPath(basePath, activeLanguage);
-    const canonicalUrl = `${normalizedCanonicalBase}${canonicalPath === '/' ? '' : canonicalPath}`;
+    let canonicalUrl = `${normalizedCanonicalBase}${canonicalPath === '/' ? '' : canonicalPath}`;
     const localizedRootPath = buildLocalizedPath('/', activeLanguage);
     const localizedBaseUrl = `${normalizedCanonicalBase}${localizedRootPath === '/' ? '' : localizedRootPath}`;
     
@@ -273,12 +271,22 @@ const App: React.FC = () => {
         title = formatTitle(t('pages.contact.title', 'Contact Us'));
         description = t('pages.contact.description', 'Reach the txttohandwriting.org team for support, partnerships, editorial pitches, and bug reports.');
         keywords = t('pages.contact.keywords', `${DEFAULT_KEYWORDS}, contact, support, partnership inquiries`);
-        structuredData.push(createContactStructuredData(canonicalUrl, SUPPORT_EMAIL, activeLocale));
-        structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-          { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
-          { name: 'Contact', path: buildLocalizedPath('/contact', activeLanguage) }
-        ]));
-        noindex = false;
+        // The contact page has no translated copy, so every localized
+        // /<lang>/contact is the English page under a localized URL. Match the
+        // prerender: noindex untranslated variants and canonicalize them to
+        // the English /contact so Google stops reporting duplicate canonicals.
+        if (activeLanguage !== DEFAULT_LANGUAGE && !i18n.exists('pages.contact.title')) {
+          noindex = true;
+          const englishContactPath = buildLocalizedPath('/contact', DEFAULT_LANGUAGE);
+          canonicalUrl = `${normalizedCanonicalBase}${englishContactPath === '/' ? '' : englishContactPath}`;
+        } else {
+          structuredData.push(createContactStructuredData(canonicalUrl, SUPPORT_EMAIL, activeLocale));
+          structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
+            { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+            { name: 'Contact', path: buildLocalizedPath('/contact', activeLanguage) }
+          ]));
+          noindex = false;
+        }
         break;
       case 'blog':
         title = formatTitle(t('pages.blog.title', 'Handwriting Inspiration Blog'));
@@ -294,18 +302,36 @@ const App: React.FC = () => {
       case 'blogPost':
         noindex = false;
         if (activeBlogPost) {
+          // A localized blog post that has no real translation is just the
+          // English article served under a localized URL. Prerendering marks
+          // it noindex; the hydrated app must agree (otherwise Googlebot
+          // renders JS, sees index,follow and a self-canonical, and reports
+          // "Duplicate, Google chose different canonical"). Mark it noindex
+          // and point the canonical at the English original so signals
+          // consolidate instead of competing.
+          const isUntranslatedLocalizedPost =
+            activeLanguage !== DEFAULT_LANGUAGE &&
+            !i18n.exists(`blogPosts.${activeBlogPost.slug}.content`);
+
           const articleBody = stripHtmlTags(activeBlogPost.content);
           const snippet = articleBody.slice(0, 155);
           title = formatTitle(activeBlogPost.title);
           description = snippet.length === articleBody.length ? snippet : `${snippet}…`;
           keywords = t('pages.blogPost.keywords', `${DEFAULT_KEYWORDS}, handwriting blog, ${activeBlogPost.title.toLowerCase()}`);
-          structuredData.push(createBlogPostStructuredData(localizedBaseUrl, activeBlogPost, socialImageUrl, activeLocale));
-          structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
-            { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
-            { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) },
-            { name: activeBlogPost.title, path: buildLocalizedPath(`/blog/${activeBlogPost.slug}`, activeLanguage) }
-          ]));
           customMetaTags.push({ property: 'og:type', content: 'article' });
+
+          if (isUntranslatedLocalizedPost) {
+            noindex = true;
+            const englishPostPath = buildLocalizedPath(`/blog/${activeBlogPost.slug}`, DEFAULT_LANGUAGE);
+            canonicalUrl = `${normalizedCanonicalBase}${englishPostPath === '/' ? '' : englishPostPath}`;
+          } else {
+            structuredData.push(createBlogPostStructuredData(localizedBaseUrl, activeBlogPost, socialImageUrl, activeLocale));
+            structuredData.push(createBreadcrumbStructuredData(normalizedCanonicalBase, [
+              { name: 'Home', path: buildLocalizedPath('/', activeLanguage) },
+              { name: 'Blog', path: buildLocalizedPath('/blog', activeLanguage) },
+              { name: activeBlogPost.title, path: buildLocalizedPath(`/blog/${activeBlogPost.slug}`, activeLanguage) }
+            ]));
+          }
         } else {
           title = formatTitle(t('pages.blog.title', 'Handwriting Inspiration Blog'));
           description = t('pages.blog.description', 'Guides, inspiration, and tips for turning typed text into aesthetic handwriting for Studygram, planners, and assignments.');
@@ -338,8 +364,9 @@ const App: React.FC = () => {
         title = formatTitle(defaultTitle);
         description = defaultDescription;
         keywords = t('seo.keywords', DEFAULT_KEYWORDS);
-        // Add Tips FAQ structured data for homepage
-        structuredData.push(createTipsFaqStructuredData(tips));
+        // Emit the full FAQ schema so the hydrated DOM matches the prerendered
+        // homepage exactly (avoids a runtime/prerender FAQPage content mismatch).
+        structuredData.push(createFaqStructuredData());
     }
 
     if (customMetaTags.length === 0) {

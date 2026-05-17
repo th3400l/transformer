@@ -5,12 +5,9 @@ export const buildWebsiteStructuredData = (baseUrl, locale) => ({
   '@type': 'WebSite',
   name: 'txttohandwriting.org',
   url: baseUrl,
-  inLanguage: locale,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${baseUrl}/blog?q={search_term_string}`,
-    'query-input': 'required name=search_term_string'
-  }
+  inLanguage: locale
+  // No sitewide search exists, so no SearchAction. A SearchAction here made
+  // Google crawl the literal template URL "/?q={search_term_string}".
 });
 
 export const buildOrganizationStructuredData = (baseUrl) => ({

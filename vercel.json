@@ -1,6 +1,35 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.txttohandwriting.org" }],
+      "destination": "https://txttohandwriting.org/:path*",
+      "permanent": true
+    },
+
+    { "source": "/blog/paper-texture-science", "destination": "/blog/science-of-paper-textures", "permanent": true },
+    { "source": "/:lang/blog/paper-texture-science", "destination": "/blog/science-of-paper-textures", "permanent": true },
+
+    { "source": "/blog/psychology-handwritten-notes", "destination": "/blog/benefits-of-handwritten-notes", "permanent": true },
+    { "source": "/:lang/blog/psychology-handwritten-notes", "destination": "/blog/benefits-of-handwritten-notes", "permanent": true },
+
+    { "source": "/blog/print-ready-handwriting", "destination": "/blog", "permanent": true },
+    { "source": "/:lang/blog/print-ready-handwriting", "destination": "/blog", "permanent": true },
+
+    { "source": "/blog/glow-up-your-notes", "destination": "/blog", "permanent": true },
+    { "source": "/:lang/blog/glow-up-your-notes", "destination": "/blog", "permanent": true },
+
+    { "source": "/blog/fix-your-studygram", "destination": "/blog", "permanent": true },
+    { "source": "/:lang/blog/fix-your-studygram", "destination": "/blog", "permanent": true },
+
+    { "source": "/blog/handwritten-touches-for-work", "destination": "/blog", "permanent": true },
+    { "source": "/:lang/blog/handwritten-touches-for-work", "destination": "/blog", "permanent": true },
+
+    { "source": "/blog/creative-ways-to-use-handwriting-generators", "destination": "/blog", "permanent": true },
+    { "source": "/:lang/blog/creative-ways-to-use-handwriting-generators", "destination": "/blog", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!.*\\.[a-zA-Z0-9]+$).*)", "destination": "/index.html" }
   ]

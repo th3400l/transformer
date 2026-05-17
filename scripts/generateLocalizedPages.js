@@ -174,6 +174,12 @@ const buildRouteContent = (lang, locale, routePath, post) => {
     const description = articleBody.slice(0, 160);
     const localizedPost = { ...post, title: localizedTitle, content: localizedContent };
     const noindex = lang !== defaultLanguage && !hasOwnTranslation(translations, lang, `blogPosts.${post.slug}.content`);
+    // An untranslated localized post is the English article under a localized
+    // URL. Canonicalize it to the English original (instead of self-canonical)
+    // so Search Console consolidates signals rather than reporting
+    // "Duplicate, Google chose different canonical", and skip the BlogPosting
+    // schema so we don't assert a duplicate article on a canonicalized page.
+    const englishCanonicalUrl = buildCanonicalUrl(baseUrl, defaultLanguage, defaultLanguage, routePath);
     return {
       title: formatTitle(localizedTitle),
       description: description.length === articleBody.length ? description : `${description}…`,
@@ -182,18 +188,20 @@ const buildRouteContent = (lang, locale, routePath, post) => {
         'pages.blogPost.keywords',
         `handwriting blog, ${localizedTitle.toLowerCase()}, txttohandwriting`
       ),
-      canonicalUrl,
+      canonicalUrl: noindex ? englishCanonicalUrl : canonicalUrl,
       noindex,
       ogType: 'article',
       bodyHtml: renderBlogPostBody(translate, lang, locale, localizedPost),
-      structuredData: [
-        ...sharedSchemas,
-        buildBlogPostStructuredData(localizedRootUrl, localizedPost, socialImage, locale),
-        buildBreadcrumbStructuredData(baseUrl, breadcrumb(lang, [
-          { name: translate(lang, 'pages.blog.title', 'Blog'), path: buildLocalizedPath(defaultLanguage, lang, '/blog') },
-          { name: localizedTitle, path: buildLocalizedPath(defaultLanguage, lang, `/blog/${post.slug}`) }
-        ]))
-      ]
+      structuredData: noindex
+        ? [...sharedSchemas]
+        : [
+            ...sharedSchemas,
+            buildBlogPostStructuredData(localizedRootUrl, localizedPost, socialImage, locale),
+            buildBreadcrumbStructuredData(baseUrl, breadcrumb(lang, [
+              { name: translate(lang, 'pages.blog.title', 'Blog'), path: buildLocalizedPath(defaultLanguage, lang, '/blog') },
+              { name: localizedTitle, path: buildLocalizedPath(defaultLanguage, lang, `/blog/${post.slug}`) }
+            ]))
+          ]
     };
   }
 
@@ -347,21 +355,31 @@ const buildRouteContent = (lang, locale, routePath, post) => {
         'pages.contact.description',
         'Reach the txttohandwriting.org team for support, partnerships, editorial pitches, and bug reports.'
       );
+      // The contact page carries no translated copy in any locale, so every
+      // /<lang>/contact is the English page under a localized URL. Search
+      // Console reports all of them as "Duplicate, Google chose different
+      // canonical". Mark untranslated localized variants noindex and point
+      // their canonical at the English /contact so signals consolidate.
+      const contactUntranslated =
+        lang !== defaultLanguage && !hasOwnTranslation(translations, lang, 'pages.contact.title');
+      const englishContactUrl = buildCanonicalUrl(baseUrl, defaultLanguage, defaultLanguage, routePath);
       return {
         title: formatTitle(title),
         description,
         keywords: translate(lang, 'pages.contact.keywords', 'contact, support, txttohandwriting'),
-        canonicalUrl,
-        noindex: false,
+        canonicalUrl: contactUntranslated ? englishContactUrl : canonicalUrl,
+        noindex: contactUntranslated,
         ogType: 'website',
         bodyHtml: renderContactBody(translate, lang, supportEmail),
-        structuredData: [
-          ...sharedSchemas,
-          buildContactStructuredData(canonicalUrl, locale, supportEmail),
-          buildBreadcrumbStructuredData(baseUrl, breadcrumb(lang, [
-            { name: title, path: buildLocalizedPath(defaultLanguage, lang, '/contact') }
-          ]))
-        ]
+        structuredData: contactUntranslated
+          ? [...sharedSchemas]
+          : [
+              ...sharedSchemas,
+              buildContactStructuredData(canonicalUrl, locale, supportEmail),
+              buildBreadcrumbStructuredData(baseUrl, breadcrumb(lang, [
+                { name: title, path: buildLocalizedPath(defaultLanguage, lang, '/contact') }
+              ]))
+            ]
       };
     }
     case '/blog':

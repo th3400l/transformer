@@ -96,19 +96,19 @@ export const howItWorksSteps: Step[] = [
   {
     number: 1,
     title: "Input Your Text",
-    description: "Enter or paste the text you wish to convert. Our platform supports extensive multi-page documents, making it ideal for academic assignments, detailed notes, or professional correspondence. The real-time preview allows you to monitor the transformation as you type, ensuring full control over the final output.",
+    description: "Enter or paste the text you want to convert into handwriting. The handwriting generator supports extensive multi-page documents, automatically flowing your content across as many pages as needed, which makes it ideal for long academic assignments, detailed lecture notes, journal entries, and professional correspondence. A real-time preview renders every change as you type, so you keep full control over line breaks, spacing, and page layout before you export anything. You can edit, re-paste, or reorganize your text at any point without losing your chosen style.",
     icon: "edit"
   },
   {
     number: 2,
     title: "Personalize the Style",
-    description: "Select from our curated library of handwriting fonts and high-resolution paper templates, including lined, grid, and blank options. You can further refine the appearance by adjusting ink color, stroke boldness, and natural distortion levels to achieve a truly authentic handwritten aesthetic.",
+    description: "Select from a curated library of handwriting fonts and high-resolution paper templates, including lined, grid, and blank options for academic, creative, and professional work. Refine the appearance further by adjusting ink color, stroke boldness, font size, and natural distortion so the result matches the exact pen and paper you have in mind. Prefer your own handwriting? Upload a custom TTF, OTF, or WOFF font and apply it instantly. Every adjustment is reflected live in the preview, letting you fine-tune realism before exporting.",
     icon: "palette"
   },
   {
     number: 3,
     title: "Generate and Export",
-    description: "Produce high-quality handwritten pages instantly. Your documents can be exported as PNG images or compiled into a professional PDF. All processing is performed locally within your browser, ensuring that your data remains private and secure at all times.",
+    description: "Produce high-quality handwritten pages instantly and download them in the format you need. Export individual pages as sharp PNG images for Studygram posts and design work, or compile an entire multi-page document into a single professional PDF ready for printing or submission. All rendering and export is performed locally within your browser, so your data never leaves your device and remains private and secure at every step. There is no signup, no watermark, and no limit on how many documents you create.",
     icon: "download"
   }
 ];
@@ -120,7 +120,7 @@ export const howItWorksSteps: Step[] = [
 export const features: Feature[] = [
   {
     title: "Advanced Rendering Engine",
-    description: "Our proprietary engine simulates natural handwriting variations, including baseline jitter and variable letter slant. This ensures that every generated document looks genuinely handcrafted rather than computer-generated.",
+    description: "Our proprietary handwriting engine simulates the natural variations of real penmanship, including baseline jitter, variable letter slant, randomized spacing, and subtle ink pooling at stroke ends. Every character is rendered slightly differently, so no two letters look identical and no document ever appears computer-generated. The result is realistic handwritten text that holds up to close inspection, whether you are creating a single note or a multi-page assignment.",
     icon: "pen",
     benefits: [
       "Natural baseline alignment",
@@ -131,7 +131,7 @@ export const features: Feature[] = [
   },
   {
     title: "Professional Paper Templates",
-    description: "Choose from a variety of professional templates designed for different use cases. From structured lined paper for academic work to dotted grids for planning, each template features realistic textures.",
+    description: "Choose from a curated library of professional paper templates designed for different use cases. Use structured lined paper for academic essays and homework, dotted grids for bullet journaling and planning, or clean blank sheets for letters and creative work. Each template ships with high-resolution paper textures and accurate margins so your handwritten output looks authentic both on screen and when printed at full size.",
     icon: "template",
     benefits: [
       "Lined, Grid, and Blank options",
@@ -142,7 +142,7 @@ export const features: Feature[] = [
   },
   {
     title: "Custom Typeface Support",
-    description: "For a truly personal touch, you can upload your own handwriting font (TTF, OTF, or WOFF). This allows you to digitize your unique writing style and use it across all your generated documents.",
+    description: "For a truly personal touch, upload your own handwriting font in TTF, OTF, or WOFF format and apply it instantly across every generated document. This lets you digitize your real writing style, a teacher's script, or a brand signature and reuse it consistently for notes, assignments, and designs. Fonts are stored locally in your browser, so your personal typeface never leaves your device and is ready the next time you visit.",
     icon: "upload",
     benefits: [
       "Upload personal fonts",
@@ -153,7 +153,7 @@ export const features: Feature[] = [
   },
   {
     title: "Privacy and Security",
-    description: "We prioritize your data security. By utilizing client-side processing, we ensure that your text and fonts never leave your device. Our tool is free, private, and requires no registration.",
+    description: "We prioritize your data security through a fully client-side architecture. Every step, from text input to font rendering and final image export, happens locally inside your browser, so your text, uploaded fonts, and generated documents never reach our servers. There are no accounts, no tracking of your content, and no server-side storage. The handwriting generator is completely free, private by design, and requires no registration to start creating.",
     icon: "lock",
     benefits: [
       "No data collection",

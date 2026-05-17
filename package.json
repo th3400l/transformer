@@ -15,7 +15,8 @@
     "validate:filesize": "tsx scripts/validateFileSize.ts",
     "test:performance": "npm run validate:filesize && npm test -- performanceBenchmark.test.ts",
     "generate:sitemap": "node scripts/generateSitemap.js",
-    "generate:localized-pages": "node scripts/generateLocalizedPages.js"
+    "generate:localized-pages": "node scripts/generateLocalizedPages.js",
+    "submit:indexnow": "node scripts/indexNow.js"
   },
   "dependencies": {
     "html-to-image": "^1.11.11",

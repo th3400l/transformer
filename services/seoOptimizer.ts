@@ -275,10 +275,16 @@ export class SEOOptimizer implements ISEOOptimizer {
   injectStructuredData(data: StructuredData | StructuredData[]): void {
     if (typeof document === 'undefined') return;
 
-    const existingScript = document.getElementById('seo-structured-data');
-    if (existingScript) {
-      existingScript.remove();
-    }
+    // Remove every JSON-LD block on the page before injecting the runtime one.
+    // The prerendered HTML ships its own <script type="application/ld+json">
+    // tags (WebApplication, Organization, WebSite, FAQPage, ...). If we only
+    // removed our previous #seo-structured-data node, hydration would leave
+    // BOTH the prerendered and the runtime FAQPage in the DOM, which Google
+    // Search Console reports as "Duplicate field FAQPage". Replacing all of
+    // them with a single consolidated graph guarantees exactly one block.
+    document
+      .querySelectorAll('script[type="application/ld+json"]')
+      .forEach(node => node.remove());
 
     const normalized = Array.isArray(data) ? data : [data];
     const DEFAULT_CONTEXT = 'https://schema.org';

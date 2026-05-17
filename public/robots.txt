@@ -6,11 +6,6 @@ Disallow: /.git/
 Disallow: /.vscode/
 Disallow: /test-*
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemaps
 Sitemap: https://txttohandwriting.org/sitemap.xml
-
-# Additional sitemaps
 Sitemap: https://txttohandwriting.org/sitemap-images.xml
