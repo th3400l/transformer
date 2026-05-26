@@ -6,7 +6,7 @@
  * discovery pipeline) re-crawl changed pages within minutes instead of days.
  *
  * Run AFTER the new build is live on production:
- *   SITE_URL=https://txttohandwriting.org node scripts/indexNow.js
+ *   SITE_URL=https://www.txttohandwriting.org node scripts/indexNow.js
  *
  * The public key file (public/<key>.txt) is deployed with the site so the
  * engines can verify ownership of the submitted host.
@@ -22,7 +22,7 @@ const INDEXNOW_KEY = '07c419ac5cd7b1f5ee717694aaf5465e';
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const MAX_URLS_PER_REQUEST = 10000;
 
-const baseUrl = (process.env.SITE_URL || 'https://txttohandwriting.org').replace(/\/+$/, '');
+const baseUrl = (process.env.SITE_URL || 'https://www.txttohandwriting.org').replace(/\/+$/, '');
 const host = new URL(baseUrl).host;
 
 const sitemapPath = path.join(repoRoot, 'public', 'sitemap.xml');

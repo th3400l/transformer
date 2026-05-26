@@ -299,7 +299,7 @@ export const seoContent: SEOContent = {
     "@type": "WebApplication",
     "name": "Text to Handwriting Generator",
     "description": "Free online tool to convert typed text into realistic handwriting",
-    "url": "https://txttohandwriting.org",
+    "url": "https://www.txttohandwriting.org",
     "applicationCategory": "UtilityApplication",
     "offers": {
       "@type": "Offer",

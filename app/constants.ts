@@ -119,7 +119,7 @@ export const PAPER_QUALITY_OVERRIDES: Record<DistortionLevel, Partial<QualityOve
 export const MAX_PAGES_PER_RUN = 9999;
 export const MAX_TOTAL_PAGES = 9999;
 export const FEEDBACK_DIALOG_DELAY_MS = 90000;
-export const DEFAULT_SITE_URL = 'https://txttohandwriting.org';
+export const DEFAULT_SITE_URL = 'https://www.txttohandwriting.org';
 export const DEFAULT_SOCIAL_IMAGE = `${DEFAULT_SITE_URL}/app-screenshot.jpg`;
 export const DEFAULT_KEYWORDS = 'handwriting generator, text to handwriting, custom fonts, realistic handwriting, handwritten text, paper templates, ink colors, study notes';
 

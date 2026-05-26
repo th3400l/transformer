@@ -7,5 +7,5 @@ Disallow: /.vscode/
 Disallow: /test-*
 
 # Sitemaps
-Sitemap: https://txttohandwriting.org/sitemap.xml
-Sitemap: https://txttohandwriting.org/sitemap-images.xml
+Sitemap: https://www.txttohandwriting.org/sitemap.xml
+Sitemap: https://www.txttohandwriting.org/sitemap-images.xml

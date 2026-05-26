@@ -67,7 +67,7 @@ export const DownloadStatus: React.FC<DownloadStatusProps> = ({
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
   };
 
-  const shareUrl = 'https://txttohandwriting.org';
+  const shareUrl = 'https://www.txttohandwriting.org';
   const shareMessage = 'I just turned my notes into gorgeous handwriting with txttohandwriting.org.';
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedMessage = encodeURIComponent(shareMessage);

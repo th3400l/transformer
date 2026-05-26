@@ -4,8 +4,8 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.txttohandwriting.org" }],
-      "destination": "https://txttohandwriting.org/:path*",
+      "has": [{ "type": "host", "value": "txttohandwriting.org" }],
+      "destination": "https://www.txttohandwriting.org/:path*",
       "permanent": true
     },
 

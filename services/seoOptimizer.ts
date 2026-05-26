@@ -51,7 +51,7 @@ export class SEOOptimizer implements ISEOOptimizer {
   private readonly activeLanguage: LanguageInfo;
 
   constructor(options: { languageCode?: string } = {}) {
-    this.baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://txttohandwriting.org';
+    this.baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://www.txttohandwriting.org';
     this.appName = 'Handwriting Generator - Convert Text to Handwriting Online';
     this.appDescription = 'Transform typed text into realistic handwriting with our free online handwriting generator. Create authentic handwritten notes, assignments, and designs with multiple fonts, paper templates, and ink colors. No signup required, 100% private and secure. Perfect for students, content creators, and professionals.';
     this.activeLanguage = getLanguageInfo(options.languageCode) || FALLBACK_LANGUAGE;

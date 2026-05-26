@@ -7,7 +7,7 @@ import { blogPosts } from './services/blogPosts';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     const isProduction = mode === 'production';
-    const siteUrl = env.SITE_URL || 'https://txttohandwriting.org';
+    const siteUrl = env.SITE_URL || 'https://www.txttohandwriting.org';
 
     return {
       plugins: [react()],
@@ -24,6 +24,9 @@ export default defineConfig(({ mode }) => {
         sourcemap: !isProduction,
         rollupOptions: {
           output: {
+            entryFileNames: 'assets/[name]-www-[hash].js',
+            chunkFileNames: 'assets/[name]-www-[hash].js',
+            assetFileNames: 'assets/[name]-www-[hash][extname]',
             // Advanced code splitting for better caching and smaller initial bundle
             manualChunks: (id) => {
               if (id.includes('vite/preload-helper')) {
