@@ -223,8 +223,7 @@ const buildRouteContent = (lang, locale, routePath, post) => {
         bodyHtml: renderHomeBody(translate, lang),
         structuredData: [
           ...sharedSchemas,
-          buildWebApplicationStructuredData(baseUrl, locale),
-          buildFaqStructuredData(faqEntries)
+          buildWebApplicationStructuredData(baseUrl, locale)
         ]
       };
     }

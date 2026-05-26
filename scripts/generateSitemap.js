@@ -62,12 +62,14 @@ const getBlogEntries = () => {
   }
 
   const source = fs.readFileSync(blogPath, 'utf8');
-  const slugMatches = Array.from(source.matchAll(/slug:\s*'([^']+)'/g));
-  const dateMatches = Array.from(source.matchAll(/date:\s*'([^']+)'/g));
+  const slugMatches = Array.from(source.matchAll(/slug:\s*'((?:\\'|[^'])+)'/g));
+  const titleMatches = Array.from(source.matchAll(/title:\s*'((?:\\'|[^'])+)'/g));
+  const dateMatches = Array.from(source.matchAll(/date:\s*'((?:\\'|[^'])+)'/g));
 
   return slugMatches.map((match, index) => {
-    const slug = match[1];
-    const dateValue = dateMatches[index]?.[1];
+    const slug = match[1].replace(/\\'/g, "'");
+    const title = (titleMatches[index]?.[1] || slug).replace(/\\'/g, "'");
+    const dateValue = dateMatches[index]?.[1]?.replace(/\\'/g, "'");
     const parsedDate = dateValue ? new Date(dateValue) : null;
     const lastmod = parsedDate && !Number.isNaN(parsedDate.valueOf())
       ? toDateString(parsedDate)
@@ -75,6 +77,7 @@ const getBlogEntries = () => {
 
     return {
       slug,
+      title,
       path: `/blog/${slug}`,
       lastmod,
       changefreq: 'monthly',
@@ -175,3 +178,25 @@ lines.push('</urlset>');
 const outputPath = path.join(repoRoot, 'public', 'sitemap.xml');
 fs.writeFileSync(outputPath, lines.join('\n'));
 console.log(`Sitemap written to ${outputPath} (${pages.length} routes across eligible languages).`);
+
+const imageSitemapLines = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+];
+
+blogEntries.forEach((entry) => {
+  imageSitemapLines.push('  <url>');
+  imageSitemapLines.push(`    <loc>${baseUrl}${entry.path}</loc>`);
+  imageSitemapLines.push(`    <lastmod>${entry.lastmod}</lastmod>`);
+  imageSitemapLines.push('    <image:image>');
+  imageSitemapLines.push(`      <image:loc>${baseUrl}/app-screenshot.jpg</image:loc>`);
+  imageSitemapLines.push(`      <image:title><![CDATA[${entry.title.replace(/\]\]>/g, ']]]]><![CDATA[>')}]]></image:title>`);
+  imageSitemapLines.push('    </image:image>');
+  imageSitemapLines.push('  </url>');
+});
+
+imageSitemapLines.push('</urlset>');
+
+const imageSitemapOutputPath = path.join(repoRoot, 'public', 'sitemap-images.xml');
+fs.writeFileSync(imageSitemapOutputPath, `${imageSitemapLines.join('\n')}\n`);
+console.log(`Image sitemap written to ${imageSitemapOutputPath} (${blogEntries.length} blog images).`);

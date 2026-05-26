@@ -364,9 +364,6 @@ const App: React.FC = () => {
         title = formatTitle(defaultTitle);
         description = defaultDescription;
         keywords = t('seo.keywords', DEFAULT_KEYWORDS);
-        // Emit the full FAQ schema so the hydrated DOM matches the prerendered
-        // homepage exactly (avoids a runtime/prerender FAQPage content mismatch).
-        structuredData.push(createFaqStructuredData());
     }
 
     if (customMetaTags.length === 0) {
